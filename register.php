@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>社團企業媒合平台</title>
-    <meta http-equiv = "refresh" content = "3; url = login.html">
+    
 </head>
 <?php
         $username = $_POST['username'] ??'';
@@ -13,7 +13,7 @@
 
         $link = mysqli_connect('localhost', 'root', '', 'SA');
         $sql = "select * from users where username = '$username'";
-        if (mysqli_query($link, $sql)) {
+        if (mysqli_num_rows($result)>0) {
             echo "帳號已存在，無法註冊";
         } else {
         $sql = "insert into users (username, password, level) VALUES ('$username', '$password', '$level')";
