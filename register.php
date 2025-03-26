@@ -12,6 +12,10 @@
         $level = $_POST['level'] ??'';
 
         $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $sql = "select * from users where username = '$username'";
+        if (mysqli_query($link, $sql)) {
+            echo "帳號已存在，無法註冊";
+        } else {
         $sql = "insert into users (username, password, level) VALUES ('$username', '$password', '$level')";
         if (mysqli_query($link, $sql))
             {
@@ -21,6 +25,7 @@
             {
                 echo "註冊失敗";
             }
+        }
 
             ini_set('display_errors', 1);
             error_reporting(E_ALL);
