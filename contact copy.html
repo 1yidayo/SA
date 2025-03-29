@@ -132,77 +132,35 @@ https://templatemo.com/tm-591-villa-agency
         <div class="col-lg-6">
           <form id="contact-form" action="" method="post">
             <div class="row">
-              <form>
-                <div class="row g-3">
-                    <div class="col-12">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected="">Select Your Car type</option>
-                            <option value="1">VW Golf VII</option>
-                            <option value="2">Audi A1 S-Line</option>
-                            <option value="3">Toyota Camry</option>
-                            <option value="4">BMW 320 ModernLine</option>
-                        </select>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-group">
-                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                                <span class="fas fa-map-marker-alt"></span> <span class="ms-1">Pick Up</span>
-                            </div>
-                            <input class="form-control" type="text" placeholder="Enter a City or Airport"
-                                aria-label="Enter a City or Airport">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <a href="#" class="text-start text-white d-block mb-2">Need a different drop-off location?</a>
-                        <div class="input-group">
-                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                                <span class="fas fa-map-marker-alt"></span><span class="ms-1">Drop off</span>
-                            </div>
-                            <input class="form-control" type="text" placeholder="Enter a City or Airport"
-                                aria-label="Enter a City or Airport">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-group">
-                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                                <span class="fas fa-calendar-alt"></span><span class="ms-1">Pick Up</span>
-                            </div>
-                            <input class="form-control" type="date">
-                            <select class="form-select ms-3" aria-label="Default select example">
-                                <option selected="">12:00AM</option>
-                                <option value="1">1:00AM</option>
-                                <option value="2">2:00AM</option>
-                                <option value="3">3:00AM</option>
-                                <option value="4">4:00AM</option>
-                                <option value="5">5:00AM</option>
-                                <option value="6">6:00AM</option>
-                                <option value="7">7:00AM</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="input-group">
-                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                                <span class="fas fa-calendar-alt"></span><span class="ms-1">Drop off</span>
-                            </div>
-                            <input class="form-control" type="date">
-                            <select class="form-select ms-3" aria-label="Default select example">
-                                <option selected="">12:00AM</option>
-                                <option value="1">1:00AM</option>
-                                <option value="2">2:00AM</option>
-                                <option value="3">3:00AM</option>
-                                <option value="4">4:00AM</option>
-                                <option value="5">5:00AM</option>
-                                <option value="6">6:00AM</option>
-                                <option value="7">7:00AM</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <button class="btn btn-light w-100 py-2">Book Now</button>
-                    </div>
-                </div>
-            </form>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="name">Full Name</label>
+                  <input type="name" name="name" id="name" placeholder="Your Name..." autocomplete="on" required>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="email">Email Address</label>
+                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your E-mail..." required="">
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="subject">Subject</label>
+                  <input type="subject" name="subject" id="subject" placeholder="Subject..." autocomplete="on" >
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <label for="message">Message</label>
+                  <textarea name="message" id="message" placeholder="Your Message"></textarea>
+                </fieldset>
+              </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="orange-button">Send Message</button>
+                </fieldset>
+              </div>
             </div>
           </form>
         </div>
