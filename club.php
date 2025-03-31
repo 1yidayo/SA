@@ -127,14 +127,8 @@ https://templatemo.com/tm-591-villa-agency
           </div> 
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  熱舞社到底在幹嘛 ?
-                </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div aria-labelledby="headingOne">
                 <div class="accordion-body">
-                    輔大熱舞社就是一群熱愛街舞的人一起學舞、練舞、表演，還會參加比賽和辦活動，讓大家在音樂和舞蹈中找到快樂和成長！
                 </div>
               </div>
             </div>
