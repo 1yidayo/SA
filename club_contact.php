@@ -9,6 +9,8 @@
     <?php
         $money = $_POST['money'];
         $people = $_POST['people'];
+        $school = $_POST['school'];
+        $club = $_POST['club'];
         $year = $_POST['year'];
         $type = $_POST['type'];
         $upload = $_POST['upload'];
