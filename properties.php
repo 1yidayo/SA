@@ -7,11 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Villa Agency - Property Detail Page</title>
+    <title>Villa Agency - Property Listing by TemplateMo</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
 
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="assets/css/fontawesome.css">
@@ -77,11 +76,11 @@ https://templatemo.com/tm-591-villa-agency
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                      <li><a href="index.html">Home</a></li>
-                      <li><a href="properties.html">Properties</a></li>
-                      <li><a href="property-details.html" class="active">Property Details</a></li>
+                      <li><a href="index.html">首頁</a></li>
+                      <li><a href="properties.html" class="active">社團活動</a></li>
+                      <li><a href="property-details.html">Property Details</a></li>
                       <li><a href="contact.html">Contact Us</a></li>
-                      <li><a href="#"><i class="fa fa-calendar"></i> Schedule a visit</a></li>
+                      <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i> 進階搜尋</a></li>
                   </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -98,83 +97,49 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h3>贊助需求
-          </h3>
+          <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
+          <h3>社團活動</h3>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="single-property section">
+  <div class="section properties">;
     <div class="container">
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="main-content">
-            <strong>輔大熱舞社期末成發</strong> 
-            
-            <br><br>輔仁大學熱舞社誠摯邀請您的贊助！
-
-            您好，我們是輔仁大學熱舞社，一個充滿熱情與活力的舞蹈社團，致力於推廣街舞文化，並提供學生展現自我與精進舞技的舞台。我們定期舉辦社內課程、成果發表、校內外交流賽事與大型公演，吸引眾多舞蹈愛好者參與，影響力深遠。<br>
-            
-            為了讓活動更加精彩，並提升社團整體運作，我們誠摯邀請貴公司/品牌贊助輔大熱舞社。我們將透過社群媒體曝光、活動現場宣傳、合作方案等方式，提供最佳的品牌曝光效益，讓您的企業形象深入年輕族群。<br>
-            
-            贊助可享回饋<br>
-            活動現場曝光：贊助商名稱/Logo 露出、背板宣傳<br>
-            社群媒體推廣：Instagram、Facebook 貼文/限時動態露出<br>
-            商品/服務合作：品牌聯名活動、產品試用宣傳<br>
-            
-            我們相信，透過雙方的合作，能夠達到共贏效果，讓品牌與街舞文化完美結合。如有合作意願，歡迎聯繫我們，一同打造熱血沸騰的街舞盛事！</a></p>
-          </div> 
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <div aria-labelledby="headingOne">
-                <div class="accordion-body">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="info-table">
+      <div class="row properties-box">
+        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
+        <?php
+          $link = mysqli_connect('localhost', 'root', '', 'SA');
+          $sql = "select * from club_requirements";
+          $result = mysqli_query($link, $sql);
+          while($row = mysqli_fetch_assoc($result)){
+            echo "<div class=item>
+            <h4><a href=club.php?requirement_num=", $row['requirement_num'], ">", $row['title'], "</a></h4>
             <ul>
-              <li>
-                <img src="assets/images/info-icon-01.png" alt="" style="max-width: 52px;">
-                <h4>預算範圍<br><span>$30,001-$50,000</span></h4>
-              </li>
-              <li>
-                <img src="assets/images/info-icon-02.png" alt="" style="max-width: 52px;">
-                <h4>社團規模<br><span>31-50人</span></h4>
-              </li>
-              <li>
-                <img src="assets/images/info-icon-03.png" alt="" style="max-width: 52px;">
-                <h4>社團成立年份<br><span>since 2004</span></h4>
-              </li>
-              <li>
-                <img src="assets/images/info-icon-01.png" alt="" style="max-width: 52px;">
-                <h4>活動類型<br><span>表演型</span></h4>
-              </li>
-              <li>
-                <img src="assets/images/info-icon-02.png" alt="" style="max-width: 52px;">
-                <h4>企劃書內容<br><span>放入完整企劃書</span></h4>
-              </li>
-              <li>
-                <img src="assets/images/info-icon-04.png" alt="" style="max-width: 52px;">
-                <h4><a href="https://www.instagram.com/__fjudc__/" target="_blank">instagram</a><br><span></span></h4>
-              </li>
+              <li>社團規模：<span>", $row['people'], "</span></li>
+              <li>預算範圍：<span>", $row['money'], "</span></li>
+              <li>活動類型：<span>", $row['type'], "</span></li>
             </ul>
-          </div>
+            <div class=main-button>
+              <a href=club.php?requirement_num=", $row['requirement_num'], ">了解活動詳情</a>
+            </div>
+          </div>";}
+            ?>
+        </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="pagination">
+            <li><a href="#">1</a></li>
+            <li><a class="is_active" href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">>></a></li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
-  <br>
-  <br>
-  <br>
 
- 
-
- 
-  <footer class="footer-no-gap">
+  <footer>
     <div class="container">
       <div class="col-lg-12">
         <p>Copyright © 2048 Villa Agency Co., Ltd. All rights reserved. 
