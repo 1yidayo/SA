@@ -138,27 +138,21 @@ https://templatemo.com/tm-591-villa-agency
           <div class=info-table>
             <ul>
               <li>
-                <img src=assets/images/info-icon-01.png style=max-width: 52px;>
                 <h4>預算範圍<br><span>", $row['money'], "</span></h4>
               </li>
               <li>
-                <img src=assets/images/info-icon-02.png style=max-width: 52px;>
                 <h4>社團規模<br><span>", $row['people'], "</span></h4>
               </li>
               <li>
-                <img src=assets/images/info-icon-03.png style=max-width: 52px;>
                 <h4>社團成立年份<br><span>since ", $row['year'], "</span></h4>
               </li>
               <li>
-                <img src=assets/images/info-icon-01.png style=max-width: 52px;>
                 <h4>活動類型<br><span>", $row['type'], "</span></h4>
               </li>
               <li>
-                <img src=assets/images/info-icon-02.png style=max-width: 52px;>
                 <h4>企劃書內容<br><span>", $row['upload'], "</span></h4>
               </li>
               <li>
-                <img src=assets/images/info-icon-04.png style=max-width: 52px;>
                 <h4><a href=", $row['ins'], " target=_blank>instagram</a><br><span></span></h4>
               </li>
             </ul>
