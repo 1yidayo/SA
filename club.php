@@ -134,6 +134,12 @@ https://templatemo.com/tm-591-villa-agency
         ?>
 
         <?php
+        $requirement_num = $_GET['requirement_num'];
+
+        $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $sql = "select * from club_requirements where requirement_num = '$requirement_num'";
+        $result = mysqli_query($link, $sql);
+        while($row = mysqli_fetch_assoc($result)){
         echo "<div class=col-lg-4>
           <div class=info-table>
             <ul>
@@ -157,7 +163,7 @@ https://templatemo.com/tm-591-villa-agency
               </li>
             </ul>
           </div>
-        </div>";
+        </div>"};
         ?>
       </div>
     </div>
