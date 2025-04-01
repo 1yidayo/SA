@@ -72,24 +72,14 @@ https://templatemo.com/tm-591-villa-agency
   </div>
   <!-- ***** Preloader End ***** -->
 
-  <ul class="nav">
-                            <li><a href="cl.html" class="active">首頁</a></li>
-                            <li><a href="properties.php">瀏覽</a></li>
-                            <li><a href="club contact.html">發布</a></li>
-                            <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
-                            </li>
-                        </ul>
+
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <h1>Villa</h1>
-                    </a>
-                    <!-- ***** Logo End ***** -->
+                    
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                       <li><a href="index.html">首頁</a></li>
