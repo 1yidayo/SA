@@ -108,62 +108,63 @@ https://templatemo.com/tm-591-villa-agency
   <div class="single-property section">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8">
-          <div class="main-content">
-            <strong>輔大熱舞社期末成發</strong> 
-            
-            <br><br>輔仁大學熱舞社誠摯邀請您的贊助！
+        <?php
+        $requirement_num = $_GET['requirement_num'];
 
-            您好，我們是輔仁大學熱舞社，一個充滿熱情與活力的舞蹈社團，致力於推廣街舞文化，並提供學生展現自我與精進舞技的舞台。我們定期舉辦社內課程、成果發表、校內外交流賽事與大型公演，吸引眾多舞蹈愛好者參與，影響力深遠。<br>
+        $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $sql = "select * from club_requirements where requirement_num = '$requirement_num'";
+        $result = mysqli_query($link, $sql);
+        while($row = mysqli_fetch_assoc($result)){
+        echo "<div class=col-lg-8>
+          <div class=main-content>
+            <strong>", $row['title'], "</strong> 
             
-            為了讓活動更加精彩，並提升社團整體運作，我們誠摯邀請貴公司/品牌贊助輔大熱舞社。我們將透過社群媒體曝光、活動現場宣傳、合作方案等方式，提供最佳的品牌曝光效益，讓您的企業形象深入年輕族群。<br>
-            
-            贊助可享回饋<br>
-            活動現場曝光：贊助商名稱/Logo 露出、背板宣傳<br>
-            社群媒體推廣：Instagram、Facebook 貼文/限時動態露出<br>
-            商品/服務合作：品牌聯名活動、產品試用宣傳<br>
-            
-            我們相信，透過雙方的合作，能夠達到共贏效果，讓品牌與街舞文化完美結合。如有合作意願，歡迎聯繫我們，一同打造熱血沸騰的街舞盛事！</a></p>
-          </div> 
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <div aria-labelledby="headingOne">
-                <div class="accordion-body">
+            <br><br>", $row['information'], 
+          "</div> 
+          <div class=accordion id=accordionExample>
+            <div class=accordion-item>
+              <div aria-labelledby=headingOne>
+                <div class=accordion-body>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="info-table">
+        </div>";
+        }
+        ?>
+
+        <?php
+        echo "<div class=col-lg-4>
+          <div class=info-table>
             <ul>
               <li>
-                <img src="assets/images/info-icon-01.png" alt="" style="max-width: 52px;">
-                <h4>預算範圍<br><span>$30,001-$50,000</span></h4>
+                <img src=assets/images/info-icon-01.png style=max-width: 52px;>
+                <h4>預算範圍<br><span>", $row['money'], "</span></h4>
               </li>
               <li>
-                <img src="assets/images/info-icon-02.png" alt="" style="max-width: 52px;">
-                <h4>社團規模<br><span>31-50人</span></h4>
+                <img src=assets/images/info-icon-02.png style=max-width: 52px;>
+                <h4>社團規模<br><span>", $row['people'], "</span></h4>
               </li>
               <li>
-                <img src="assets/images/info-icon-03.png" alt="" style="max-width: 52px;">
-                <h4>社團成立年份<br><span>since 2004</span></h4>
+                <img src=assets/images/info-icon-03.png style=max-width: 52px;>
+                <h4>社團成立年份<br><span>since ", $row['year'], "</span></h4>
               </li>
               <li>
-                <img src="assets/images/info-icon-01.png" alt="" style="max-width: 52px;">
-                <h4>活動類型<br><span>表演型</span></h4>
+                <img src=assets/images/info-icon-01.png style=max-width: 52px;>
+                <h4>活動類型<br><span>", $row['type'], "</span></h4>
               </li>
               <li>
-                <img src="assets/images/info-icon-02.png" alt="" style="max-width: 52px;">
-                <h4>企劃書內容<br><span>放入完整企劃書</span></h4>
+                <img src=assets/images/info-icon-02.png style=max-width: 52px;>
+                <h4>企劃書內容<br><span>", $row['upload'], "</span></h4>
               </li>
               <li>
-                <img src="assets/images/info-icon-04.png" alt="" style="max-width: 52px;">
-                <h4><a href="https://www.instagram.com/__fjudc__/" target="_blank">instagram</a><br><span></span></h4>
+                <img src=assets/images/info-icon-04.png style=max-width: 52px;>
+                <h4><a href=", $row['ins'], " target=_blank>instagram</a><br><span></span></h4>
               </li>
             </ul>
           </div>
-        </div>
+        </div>";
+        ?>
       </div>
     </div>
   </div>
