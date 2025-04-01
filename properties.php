@@ -25,6 +25,36 @@ TemplateMo 591 villa agency
 https://templatemo.com/tm-591-villa-agency
 
 -->
+
+    <style>
+.properties-box {
+    display: flex;
+    flex-wrap: wrap; /* 允許換行 */
+    gap: 20px; /* 設定間距 */
+    justify-content: flex-start; /* 讓內容從左到右排列 */
+}
+
+.properties-items {
+    width: 30%; /* 保持與原本大小相近 */
+    min-width: 300px; /* 避免縮小過度 */
+}
+
+/* 讓小螢幕時調整排列 */
+@media (max-width: 992px) {
+    .properties-items {
+        width: 45%; /* 平板改為兩欄 */
+    }
+}
+
+@media (max-width: 600px) {
+    .properties-items {
+        width: 100%; /* 手機版單欄 */
+    }
+}
+
+    </style>
+
+
   </head>
 
 <body>
@@ -108,23 +138,28 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row properties-box">
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
-        <?php
-          $link = mysqli_connect('localhost', 'root', '', 'SA');
-          $sql = "select * from club_requirements";
-          $result = mysqli_query($link, $sql);
-          while($row = mysqli_fetch_assoc($result)){
-            echo "<div class=item>
-            <h4><a href=club.php?requirement_num=", $row['requirement_num'], ">", $row['title'], "</a></h4>
-            <ul>
-              <li>社團規模：<span>", $row['people'], "</span></li>
-              <li>預算範圍：<span>", $row['money'], "</span></li>
-              <li>活動類型：<span>", $row['type'], "</span></li>
-            </ul>
-            <div class=main-button>
-              <a href=club.php?requirement_num=", $row['requirement_num'], ">了解活動詳情</a>
-            </div>
-          </div>";}
-            ?>
+    <?php
+        $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $sql = "SELECT * FROM club_requirements";
+        $result = mysqli_query($link, $sql);
+        while($row = mysqli_fetch_assoc($result)){
+            echo "<div class='properties-items'>
+                <div class='item'>
+                    <h4><a href='club.php?requirement_num=" . $row['requirement_num'] . "'>" . $row['title'] . "</a></h4>
+                    <ul>
+                        <li>社團規模：<span>" . $row['people'] . "</span></li>
+                        <li>預算範圍：<span>" . $row['money'] . "</span></li>
+                        <li>活動類型：<span>" . $row['type'] . "</span></li>
+                    </ul>
+                    <div class='main-button'>
+                        <a href='club.php?requirement_num=" . $row['requirement_num'] . "'>了解活動詳情</a>
+                    </div>
+                </div>
+            </div>";
+        }
+    ?>
+</div>
+
         </div>
       <div class="row">
         <!-- <div class="col-lg-12">
