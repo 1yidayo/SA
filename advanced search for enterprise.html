@@ -130,7 +130,7 @@ https://templatemo.com/tm-591-villa-agency
           </div>
         </div> -->
         <div class="col-lg-6" style="margin:auto">
-          <form id="contact-form" action="" method="post">
+          <form id="contact-form" action="aftersearchforen.php" method="post">
             <div class="row">
               <form>
                 <div class="row g-3">
@@ -138,41 +138,34 @@ https://templatemo.com/tm-591-villa-agency
                         <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                           <span class="ms-1"><b>預算範圍</b></span>
                             </div>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected="">$20,000以下</option>
-                            <option value="1">$20,001-$30,000</option>
-                            <option value="2">$30,001-$50,000</option>
-                            <option value="3">$50,001-$70,000</option>
-                            <option value="4">$70,001以上</option>
+                        <select class="form-select" aria-label="Default select example" name="money">
+                            <option selected="$20,000以下">$20,000以下</option>
+                            <option value="$20,001-$30,000">$20,001-$30,000</option>
+                            <option value="$30,001-$50,000">$30,001-$50,000</option>
+                            <option value="$50,001-$70,000">$50,001-$70,000</option>
+                            <option value="$70,001以上">$70,001以上</option>
                         </select>
                     </div>
                     <div class="col-12">
                       <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="ms-1"><b>社團規模</b></span>
                           </div>
-                      <select class="form-select" aria-label="Default select example">
-                          <option selected="">30人以下</option>
-                          <option value="1">31-50人</option>
-                          <option value="2">51-70人</option>
-                          <option value="3">71人以上</option>
+                      <select class="form-select" aria-label="Default select example" name="people">
+                          <option selected="30人以下">30人以下</option>
+                          <option value="31-50人">31-50人</option>
+                          <option value="51-70人">51-70人</option>
+                          <option value="71人以上">71人以上</option>
                       </select>
                   </div>
                     
                     <div class="col-12">
-                      <div class="input-group">
-                          <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                               <span class="ms-1"><b>活動類型</b></span>
-                          </div>
-                          <input class="form-control" type="text" placeholder="請輸入活動類型(eg:表演型、學術型)"
-                              aria-label="Enter a City or Airport">
-                      </div>
                       <div class="col-12">
                         <div class="input-group">
                             <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                                  <span class="ms-1"><b>社團名稱</b></span>
                             </div>
                             <input class="form-control" type="text" placeholder="請輸入社團名稱"
-                                aria-label="Enter a City or Airport">
+                                aria-label="Enter a City or Airport" name="club">
                         </div>
                         <div class="col-12">
                             <div class="input-group">
@@ -180,20 +173,11 @@ https://templatemo.com/tm-591-villa-agency
                                      <span class="ms-1"><b>社團學校</b></span>
                                 </div>
                                 <input class="form-control" type="text" placeholder="請輸入社團學校"
-                                    aria-label="Enter a City or Airport">
+                                    aria-label="Enter a City or Airport" name="school">
                             </div>
-                  </div>
-                      <div class="col-12">
-                      <div class="input-group">
-                          <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                               <span class="ms-1"><b>社群連結</b></span>
-                          </div>
-                          <input class="form-control" type="text" placeholder="請輸入相關社群連結"
-                              aria-label="Enter a City or Airport">
-                      </div>
                     </div>
                     <div class="col-12">
-                        <button class="btn btn-light w-100 py-2"><b>搜尋</b></button>
+                        <button class="btn btn-light w-100 py-2" type="submit"><b>搜尋</b></button>
                     </div>
                 </div>
             </form>
