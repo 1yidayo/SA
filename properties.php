@@ -82,12 +82,12 @@ https://templatemo.com/tm-591-villa-agency
                     
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                      <li><a href="index.html">首頁</a></li>
-                      <li><a href="properties.html" class="active">社團活動</a></li>
-                      <li><a href="property-details.html">Property Details</a></li>
-                      <li><a href="contact.html">Contact Us</a></li>
-                      <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i> 進階搜尋</a></li>
-                  </ul>   
+                            <li><a href="cl.html" class="active">首頁</a></li>
+                            <li><a href="properties.php">瀏覽</a></li>
+                            <li><a href="club contact.html">發布</a></li>
+                            <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
+                            </li>
+                        </ul>  
                     <a class='menu-trigger'>
                         <span>Menu</span>
                     </a>
