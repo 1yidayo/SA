@@ -163,7 +163,8 @@ https://templatemo.com/tm-591-villa-agency
               </li>
             </ul>
           </div>
-        </div>"};
+        </div>";
+        }
         ?>
       </div>
     </div>
