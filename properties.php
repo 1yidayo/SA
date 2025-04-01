@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>社團企業媒合平台</title>
+    <title>Villa Agency - Property Listing by TemplateMo</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -72,7 +72,13 @@ https://templatemo.com/tm-591-villa-agency
   </div>
   <!-- ***** Preloader End ***** -->
 
-  
+  <ul class="nav">
+                            <li><a href="cl.html" class="active">首頁</a></li>
+                            <li><a href="properties.php">瀏覽</a></li>
+                            <li><a href="club contact.html">發布</a></li>
+                            <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
+                            </li>
+                        </ul>
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
     <div class="container">
@@ -86,12 +92,12 @@ https://templatemo.com/tm-591-villa-agency
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                            <li><a href="cl.html" class="active">首頁</a></li>
-                            <li><a href="properties.php">瀏覽</a></li>
-                            <li><a href="club contact.html">發布</a></li>
-                            <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
-                            </li>
-                        </ul>   
+                      <li><a href="index.html">首頁</a></li>
+                      <li><a href="properties.html" class="active">社團活動</a></li>
+                      <li><a href="property-details.html">Property Details</a></li>
+                      <li><a href="contact.html">Contact Us</a></li>
+                      <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i> 進階搜尋</a></li>
+                  </ul>   
                     <a class='menu-trigger'>
                         <span>Menu</span>
                     </a>
