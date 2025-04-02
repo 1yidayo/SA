@@ -105,7 +105,7 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row">
         <div class="col-lg-12">
           <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
-          <h3>社團活動</h3>
+          <h3>企業贊助</h3>
         </div>
       </div>
     </div>
@@ -117,19 +117,18 @@ https://templatemo.com/tm-591-villa-agency
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
     <?php
         $link = mysqli_connect('localhost', 'root', '', 'SA');
-        $sql = "SELECT * FROM club_requirements";
+        $sql = "SELECT * FROM en_requirements";
         $result = mysqli_query($link, $sql);
         while($row = mysqli_fetch_assoc($result)){
             echo "<div class='properties-items'>
                 <div class='item'>
-                    <h4><a href='club.php?requirement_num=" . $row['requirement_num'] . "'>" . $row['title'] . "</a></h4>
+                    <h4><a href='enterprise.php?requirement_num=" . $row['requirement_num'] . "'>" . $row['title'] . "</a></h4>
                     <ul>
-                        <li>社團規模：<span>" . $row['people'] . "</span></li>
-                        <li>預算範圍：<span>" . $row['money'] . "</span></li>
-                        <li>活動類型：<span>" . $row['type'] . "</span></li>
+                        <li>贊助範圍：<span>" . $row['money'] . "</span></li>
+                        <li>企業發展類型：<span>" . $row['type'] . "</span></li>
                     </ul>
                     <div class='main-button'>
-                        <a href='club.php?requirement_num=" . $row['requirement_num'] . "'>了解活動詳情</a>
+                        <a href='enterprise.php?requirement_num=" . $row['requirement_num'] . "'>了解活動詳情</a>
                     </div>
                 </div>
             </div>";
