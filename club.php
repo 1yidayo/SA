@@ -138,7 +138,7 @@ https://templatemo.com/tm-591-villa-agency
                 <h4>企劃書內容<br><span>", $row['upload'], "</span></h4>
               </li>
               <li>
-                <h4><a href=", $row['ins'], " target=_blank>instagram</a><br><span></span></h4>
+                <h4><a href=", $row['ins'], " target=_blank>社群連結</a><br><span></span></h4>
               </li>
             </ul>
           </div>
