@@ -26,6 +26,33 @@ TemplateMo 591 villa agency
 https://templatemo.com/tm-591-villa-agency
 
 -->
+<style>
+.properties-box {
+    display: flex;
+    flex-wrap: wrap; /* 允許換行 */
+    gap: 20px; /* 設定間距 */
+    justify-content: flex-start; /* 讓內容從左到右排列 */
+}
+
+.properties-items {
+    width: 30%; /* 保持與原本大小相近 */
+    min-width: 300px; /* 避免縮小過度 */
+}
+
+/* 讓小螢幕時調整排列 */
+@media (max-width: 992px) {
+    .properties-items {
+        width: 45%; /* 平板改為兩欄 */
+    }
+}
+
+@media (max-width: 600px) {
+    .properties-items {
+        width: 100%; /* 手機版單欄 */
+    }
+}
+
+    </style>
 </head>
 
 <body>
@@ -119,7 +146,7 @@ https://templatemo.com/tm-591-villa-agency
         $money = mysqli_real_escape_string($link, $_POST['money']);
         $enterprise = mysqli_real_escape_string($link, $_POST['enterprise']);
 
-        $sql = "select * from club_requirements where money = '$money' and enterprise = '$enterprise'";
+        $sql = "select * from en_requirements where money = '$money' and enterprise = '$enterprise'";
 
         $result = mysqli_query($link, $sql);
 
