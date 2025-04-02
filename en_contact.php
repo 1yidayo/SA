@@ -17,7 +17,7 @@
         $information = $_POST['information'];
 
         $link = mysqli_connect('localhost', 'root', '', 'SA');
-        $sql = "insert into club_requirements (money, enterprise, type, code, ins, title, information) 
+        $sql = "insert into en_requirements (money, enterprise, type, code, ins, title, information) 
         VALUES ('$money', '$enterprise', '$type', '$code', '$ins', '$title', '$information')";
         if (mysqli_query($link, $sql))
             {
