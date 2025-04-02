@@ -58,7 +58,7 @@ https://templatemo.com/tm-591-villa-agency
                     <ul class="nav">
                             <li><a href="cl.html" class="active">首頁</a></li>
                             <li><a href="properties.php">瀏覽</a></li>
-                            <li><a href="club.php">發布</a></li>
+                            <li><a href="club contact.html">發布</a></li>
                             <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
                             </li>
                         </ul>  
@@ -138,7 +138,7 @@ https://templatemo.com/tm-591-villa-agency
                 <h4>企劃書內容<br><span>", $row['upload'], "</span></h4>
               </li>
               <li>
-                <h4><a href=", $row['ins'], " target=_blank>instagram</a><br><span></span></h4>
+                <h4><a href=", $row['ins'], " target=_blank>社群連結</a><br><span></span></h4>
               </li>
             </ul>
           </div>

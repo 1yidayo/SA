@@ -12,6 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
@@ -25,36 +26,6 @@ TemplateMo 591 villa agency
 https://templatemo.com/tm-591-villa-agency
 
 -->
-
-    <style>
-.properties-box {
-    display: flex;
-    flex-wrap: wrap; /* 允許換行 */
-    gap: 20px; /* 設定間距 */
-    justify-content: flex-start; /* 讓內容從左到右排列 */
-}
-
-.properties-items {
-    width: 30%; /* 保持與原本大小相近 */
-    min-width: 300px; /* 避免縮小過度 */
-}
-
-/* 讓小螢幕時調整排列 */
-@media (max-width: 992px) {
-    .properties-items {
-        width: 45%; /* 平板改為兩欄 */
-    }
-}
-
-@media (max-width: 600px) {
-    .properties-items {
-        width: 100%; /* 手機版單欄 */
-    }
-}
-
-    </style>
-
-
   </head>
 
 <body>
@@ -73,6 +44,8 @@ https://templatemo.com/tm-591-villa-agency
   <!-- ***** Preloader End ***** -->
 
 
+
+
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
     <div class="container">
@@ -80,15 +53,15 @@ https://templatemo.com/tm-591-villa-agency
             <div class="col-12">
                 <nav class="main-nav">
                     
+                    <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                            <li><a href="en.html" class="active">首頁</a></li>
-                            <li><a href="properties2.php">瀏覽</a></li>
-                            <li><a href="en contact.html">發布</a></li>
-                            <li><a href="advanced search for enterprise.html"><i
-                                        class="fa fa-calendar"></i>進階搜尋</ruby></a>
+                            <li><a href="cl.html" class="active">首頁</a></li>
+                            <li><a href="properties.php">瀏覽</a></li>
+                            <li><a href="club.php">發布</a></li>
+                            <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
                             </li>
-                        </ul> 
+                        </ul>  
                     <a class='menu-trigger'>
                         <span>Menu</span>
                     </a>
@@ -104,53 +77,79 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
-          <h3>企業贊助</h3>
+          <h3>贊助需求
+          </h3>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="section properties">;
+  <div class="single-property section">
     <div class="container">
-      <div class="row properties-box">
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
-    <?php
+      <div class="row">
+        <?php
+        $requirement_num = $_GET['requirement_num'];
+
         $link = mysqli_connect('localhost', 'root', '', 'SA');
-        $sql = "SELECT * FROM en_requirements";
+        $sql = "select * from en_requirements where requirement_num = '$requirement_num'";
         $result = mysqli_query($link, $sql);
         while($row = mysqli_fetch_assoc($result)){
-            echo "<div class='properties-items'>
-                <div class='item'>
-                    <h4><a href='enterprise.php?requirement_num=" . $row['requirement_num'] . "'>" . $row['title'] . "</a></h4>
-                    <ul>
-                        <li>贊助範圍：<span>" . $row['money'] . "</span></li>
-                        <li>企業發展類型：<span>" . $row['type'] . "</span></li>
-                    </ul>
-                    <div class='main-button'>
-                        <a href='enterprise.php?requirement_num=" . $row['requirement_num'] . "'>了解活動詳情</a>
-                    </div>
+        echo "<div class=col-lg-8>
+          <div class=main-content>
+            <strong>", $row['title'], "</strong> 
+            
+            <br><br>", $row['information'], 
+          "</div> 
+          <div class=accordion id=accordionExample>
+            <div class=accordion-item>
+              <div aria-labelledby=headingOne>
+                <div class=accordion-body>
                 </div>
-            </div>";
+              </div>
+            </div>
+          </div>
+        </div>";
         }
-    ?>
-</div>
+        ?>
 
-        </div>
-      <div class="row">
-        <!-- <div class="col-lg-12">
-          <ul class="pagination">
-            <li><a href="#">1</a></li>
-            <li><a class="is_active" href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">>></a></li>
-          </ul>
-        </div> -->
+        <?php
+        $requirement_num = $_GET['requirement_num'];
+
+        $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $sql = "select * from en_requirements where requirement_num = '$requirement_num'";
+        $result = mysqli_query($link, $sql);
+        while($row = mysqli_fetch_assoc($result)){
+        echo "<div class=col-lg-4>
+          <div class=info-table>
+            <ul>
+              <li>
+                <h4>贊助範圍<br><span>", $row['money'], "</span></h4>
+              </li>
+              <li>
+                <h4>企業發展類型<br><span>", $row['type'], "</span></h4>
+              </li>
+              <li>
+                <h4>企業統一編號<br><span>since ", $row['code'], "</span></h4>
+              </li>
+              <li>
+                <h4><a href=", $row['ins'], " target=_blank>社群連結</a><br><span></span></h4>
+              </li>
+            </ul>
+          </div>
+        </div>";
+        }
+        ?>
       </div>
     </div>
   </div>
+  <br>
+  <br>
+  <br>
 
-  <footer>
+ 
+
+ 
+  <footer class="footer-no-gap">
     <div class="container">
       <div class="col-lg-12">
         <p>Copyright © 2048 Villa Agency Co., Ltd. All rights reserved. 
