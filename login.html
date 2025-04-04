@@ -13,20 +13,22 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-    <!--
 
-TemplateMo 591 villa agency
+    <style>
+        .item-1 {
+            background: url('https://case.structsales.se/hs-fs/hubfs/Manpower-case-9.jpg?width=700&height=423&name=Manpower-case-9.jpg') no-repeat center center !important;
+            background-size: cover !important;
+            min-height: 100vh; /* 確保有高度才看得到背景 */
+        }
+    </style>
+    
 
-https://templatemo.com/tm-591-villa-agency
-
--->
 </head>
 
 <body>
@@ -44,10 +46,7 @@ https://templatemo.com/tm-591-villa-agency
     </div>
     <!-- ***** Preloader End ***** -->
 
-
-
     <!-- ***** Header Area Start ***** -->
-
     <div class="main-banner">
         <div class="owl-carousel owl-banner">
             <div class="item item-1">
@@ -56,10 +55,8 @@ https://templatemo.com/tm-591-villa-agency
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="section-heading">
-
                                     <h2>login</h2>
                                 </div>
-
                             </div>
                             <div class="col-lg-6">
                                 <form id="contact-form" action="login.php" method="post">
@@ -77,9 +74,6 @@ https://templatemo.com/tm-591-villa-agency
                                                 <input type="password" name="password" id="password"
                                                     placeholder="輸入密碼..." autocomplete="current-password" required>
                                             </fieldset>
-
-
-
                                             <div class="col-lg-12">
                                                 <fieldset>
                                                     <button type="submit" id="login-button"
@@ -88,33 +82,24 @@ https://templatemo.com/tm-591-villa-agency
                                                         class="orange-button">註冊</button>
                                                 </fieldset>
                                             </div>
-
                                             <script>
                                                 document.getElementById("register-button").addEventListener("click", function (event) {
-                                                    // 阻止註冊按鈕影響表單驗證
                                                     event.preventDefault();
                                                     window.location.href = "register.html";
                                                 });
                                             </script>
-
-
                                         </div>
+                                    </div>
                                 </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
-
-
     <!-- Scripts -->
-    <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/isotope.min.js"></script>
