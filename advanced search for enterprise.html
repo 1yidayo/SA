@@ -58,8 +58,10 @@ https://templatemo.com/tm-591-villa-agency
               <li><a href="en.html" class="active">首頁</a></li>
               <li><a href="properties.php">瀏覽</a></li>
               <li><a href="en contact.html">發布</a></li>
+              <li><a href="first.html">登出</a></li>
               <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
               </li>
+
             </ul>
             <a class='menu-trigger'>
               <span>Menu</span>
@@ -86,81 +88,75 @@ https://templatemo.com/tm-591-villa-agency
   <div class="contact-page section">
     <div class="container">
       <div class="row">
-        <!-- <div class="col-lg-6">
-          <div class="section-heading">
-            <h6>| Contact Us</h6>
-            <h2>發布贊助需求</h2>
-          </div>
-          <p>When you really need to download free CSS templates, please remember our website TemplateMo. Also, tell your friends about our website. Thank you for visiting. There is a variety of Bootstrap HTML CSS templates on our website. If you need more information, please contact us.</p>
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="item phone">
-                <img src="assets/images/phone-icon.png" alt="" style="max-width: 52px;">
-                <h6>010-020-0340<br><span>Phone Number</span></h6>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="item email">
-                <img src="assets/images/email-icon.png" alt="" style="max-width: 52px;">
-                <h6>info@villa.co<br><span>Business Email</span></h6>
-              </div>
-            </div>
-          </div>
-        </div> -->
+
         <div class="col-lg-6" style="margin:auto">
           <form id="contact-form" action="aftersearchforen.php" method="post">
-            <div class="row">
-              <form>
-                <div class="row g-3">
-                  <div class="col-12">
-                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>預算範圍</b></span>
-                    </div>
-                    <select class="form-select" aria-label="Default select example" name="money">
-                      <option selected="$20,000以下">$20,000以下</option>
-                      <option value="$20,001-$30,000">$20,001-$30,000</option>
-                      <option value="$30,001-$50,000">$30,001-$50,000</option>
-                      <option value="$50,001-$70,000">$50,001-$70,000</option>
-                      <option value="$70,001以上">$70,001以上</option>
-                    </select>
-                  </div>
-                  <div class="col-12">
-                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>社團規模</b></span>
-                    </div>
-                    <select class="form-select" aria-label="Default select example" name="people">
-                      <option selected="30人以下">30人以下</option>
-                      <option value="31-50人">31-50人</option>
-                      <option value="51-70人">51-70人</option>
-                      <option value="71人以上">71人以上</option>
-                    </select>
-                  </div>
+            <div class="row g-5">
 
-                  <div class="col-12">
-                    <div class="col-12">
-                      <div class="input-group">
-                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                          <span class="ms-1"><b>社團名稱</b></span>
-                        </div>
-                        <input class="form-control" type="text" placeholder="請輸入社團名稱"
-                          aria-label="Enter a City or Airport" name="club">
-                      </div>
-                      <div class="col-12">
-                        <div class="input-group">
-                          <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                            <span class="ms-1"><b>社團學校</b></span>
-                          </div>
-                          <input class="form-control" type="text" placeholder="請輸入社團學校"
-                            aria-label="Enter a City or Airport" name="school">
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <button class="btn btn-light w-100 py-2" type="submit"><b>搜尋</b></button>
-                      </div>
-                    </div>
-              </form>
+              <div class="col-12">
+                <label for="school">社團/學校</label>
+                <input class="form-control" type="text" placeholder="請輸入社團/學校" name="school">
+              </div>
+
+              <div class="col-12">
+                <label for="type">社團類別</label>
+                <select name="type" id="type" class="form-control">
+                  <option value="">請選擇</option>
+                  <option value="表演">表演類</option>
+                  <option value="運動">運動類</option>
+                  <option value="學術">學術研究</option>
+                  <option value="公益">公益志工</option>
+                  <option value="創業">創業競賽</option>
+                </select>
+              </div>
+
+
+              <div class="col-12">
+                <label for="region">地區</label>
+                <select name="region" id="region" class="form-control">
+                  <option value="">請選擇</option>
+                  <option value="北部">北部</option>
+                  <option value="中部">中部</option>
+                  <option value="南部">南部</option>
+                  <option value="東部">東部</option>
+                </select>
+              </div>
+
+
+              <div class="col-12">
+                <label for="event_time">預計活動月份</label>
+                <input type="month" name="event_time" id="event_time" class="form-control">
+              </div>
+
+
+              <div class="col-12">
+                <label for="support_type">需要的贊助類型</label>
+                <select name="support_type" id="support_type" class="form-control">
+                  <option value="">請選擇</option>
+                  <option value="金錢">金錢</option>
+                  <option value="物資">物資</option>
+                  <option value="場地">場地</option>
+                  <option value="提供實習">提供實習</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <label for="scale">社團規模（人數）</label>
+                <select name="scale" id="scale" class="form-control">
+                  <option value="">請選擇</option>
+                  <option value="1-20">1-20人</option>
+                  <option value="21-50">21-50人</option>
+                  <option value="51-100">51-100人</option>
+                  <option value="101+">101人以上</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <button class="btn btn-light w-100 py-2" type="submit"><b>搜尋</b></button>
+              </div>
             </div>
           </form>
+
         </div>
 
       </div>

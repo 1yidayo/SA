@@ -85,6 +85,7 @@ https://templatemo.com/tm-591-villa-agency
                             <li><a href="en.html" class="active">首頁</a></li>
                             <li><a href="properties.php">瀏覽</a></li>
                             <li><a href="en contact.html">發布</a></li>
+                            <li><a href="first.html">登出</a></li>
                             <li><a href="advanced search for enterprise.html"><i
                                         class="fa fa-calendar"></i>進階搜尋</ruby></a>
                             </li>
