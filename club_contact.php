@@ -14,14 +14,18 @@
         $club = $_POST['club'];
         $year = $_POST['year'];
         $type = $_POST['type'];
+        $area = $_POST['area'];
+        $date = $_POST['date'];
+        $require_type = $_POST['require_type'];
         $upload = $_POST['upload'];
         $ins = $_POST['ins'];
         $title = $_POST['title'];
         $information = $_POST['information'];
 
         $link = mysqli_connect('localhost', 'root', '', 'SA');
-        $sql = "insert into club_requirements (money, people, school, club, year, type, upload, ins, title, information) 
-        VALUES ('$money', '$people', '$school', '$club', '$year', '$type', '$upload', '$ins', '$title', '$information')";
+        $sql = "INSERT INTO club_requirements (money, people, school, club, year, type, area, date, require_type, upload, ins, title, information)
+        VALUES ('$money', '$people', '$school', '$club', '$year', '$type', '$area', '$date', '$require_type', '$upload', '$ins', '$title', '$information')";
+
         if (mysqli_query($link, $sql))
             {
                 echo "發布成功";

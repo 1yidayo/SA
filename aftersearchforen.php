@@ -98,9 +98,7 @@ https://templatemo.com/tm-591-villa-agency
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              <h1>Villa</h1>
-            </a>
+            
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
@@ -138,46 +136,81 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row properties-box">
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
         <?php
-        $link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SA');
+if (!$link) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
 
-        if (!$link) {
-            die("Database connection failed: " . mysqli_connect_error());
-        }
+$conditions = [];
 
-        $money = mysqli_real_escape_string($link, $_POST['money']);
-        $people = mysqli_real_escape_string($link, $_POST['people']);
-        $club = mysqli_real_escape_string($link, $_POST['club']);
-        $school = mysqli_real_escape_string($link, $_POST['school']);
+if (!empty($_POST['money'])) {
+    $money = mysqli_real_escape_string($link, $_POST['money']);
+    $conditions[] = "money = '$money'";
+}
+if (!empty($_POST['people'])) {
+    $people = mysqli_real_escape_string($link, $_POST['people']);
+    $conditions[] = "people = '$people'";
+}
+if (!empty($_POST['club'])) {
+    $club = mysqli_real_escape_string($link, $_POST['club']);
+    $conditions[] = "club = '$club'";
+}
+if (!empty($_POST['school'])) {
+    $school = mysqli_real_escape_string($link, $_POST['school']);
+    $conditions[] = "school = '$school'";
+}
+if (!empty($_POST['type'])) {
+    $type = mysqli_real_escape_string($link, $_POST['type']);
+    $conditions[] = "type = '$type'";
+}
+if (!empty($_POST['region'])) {
+    $region = mysqli_real_escape_string($link, $_POST['region']);
+    $conditions[] = "region = '$region'";
+}
+if (!empty($_POST['event_time'])) {
+    $event_time = mysqli_real_escape_string($link, $_POST['event_time']);
+    $conditions[] = "event_time = '$event_time'";
+}
+if (!empty($_POST['support_type'])) {
+    $support_type = mysqli_real_escape_string($link, $_POST['support_type']);
+    $conditions[] = "support_type = '$support_type'";
+}
+if (!empty($_POST['scale'])) {
+    $scale = mysqli_real_escape_string($link, $_POST['scale']);
+    $conditions[] = "scale = '$scale'";
+}
 
-        $sql = "select * from club_requirements where money = '$money' and people = '$people'
-         and club = '$club' and school = '$school'";
+$sql = "SELECT * FROM club_requirements";
+if (!empty($conditions)) {
+    $sql .= " WHERE " . implode(" AND ", $conditions);
+}
 
-        $result = mysqli_query($link, $sql);
+$result = mysqli_query($link, $sql);
+if (!$result) {
+    die("Query failed: " . mysqli_error($link));
+}
 
-        if (!$result) {
-            die("Query failed: " . mysqli_error($link));
-        }
+if (mysqli_num_rows($result) == 0) {
+    echo "<p>未找到符合的活動</p>";
+}
 
-        if (mysqli_num_rows($result) == 0) {
-            echo "<p>未找到符合的活動</p>";
-        }
+while ($row = mysqli_fetch_assoc($result)) {
+    echo "<div class='properties-items'>
+        <div class='item'>
+            <h4><a href='club.php?requirement_num=" . $row['requirement_num'] . "'>" . $row['title'] . "</a></h4>
+            <ul>
+                <li>社團規模：<span>" . $row['people'] . "</span></li>
+                <li>預算範圍：<span>" . $row['money'] . "</span></li>
+                <li>活動類型：<span>" . $row['type'] . "</span></li>
+            </ul>
+            <div class='main-button'>
+                <a href='club.php?requirement_num=" . $row['requirement_num'] . "'>了解活動詳情</a>
+            </div>
+        </div>
+    </div>";
+}
+?>
 
-        while($row = mysqli_fetch_assoc($result)){
-            echo "<div class='properties-items'>
-                <div class='item'>
-                    <h4><a href='club.php?requirement_num=" . $row['requirement_num'] . "'>" . $row['title'] . "</a></h4>
-                    <ul>
-                        <li>社團規模：<span>" . $row['people'] . "</span></li>
-                        <li>預算範圍：<span>" . $row['money'] . "</span></li>
-                        <li>活動類型：<span>" . $row['type'] . "</span></li>
-                    </ul>
-                    <div class='main-button'>
-                        <a href='club.php?requirement_num=" . $row['requirement_num'] . "'>了解活動詳情</a>
-                    </div>
-                </div>
-            </div>";
-        }
-    ?>
         </div>
       </div>
       <div class="row">
