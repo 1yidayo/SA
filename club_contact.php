@@ -8,35 +8,51 @@
 </head>
 <body>
     <?php
-        $money = $_POST['money'];
-        $people = $_POST['people'];
-        $school = $_POST['school'];
-        $club = $_POST['club'];
-        $year = $_POST['year'];
-        $type = $_POST['type'];
-        $area = $_POST['area'];
-        $date = $_POST['date'];
-        $require_type = $_POST['require_type'];
-        $upload = $_POST['upload'];
-        $ins = $_POST['ins'];
-        $title = $_POST['title'];
-        $information = $_POST['information'];
+  
+    $money = $_POST['money'];
+    $people = $_POST['people'];
+    $school = $_POST['school'];
+    $club = $_POST['club'];
+    $year = $_POST['year'];
+    $type = $_POST['type'];
+    $region = $_POST['region'];
+    $event_time = $_POST['event_time'];
+    $support_type = $_POST['support_type'];
+    $ins = $_POST['ins'];
+    $title = $_POST['title'];
+    $information = $_POST['information'];
 
-        $link = mysqli_connect('localhost', 'root', '', 'SA');
-        $sql = "INSERT INTO club_requirements (money, people, school, club, year, type, area, date, require_type, upload, ins, title, information)
-        VALUES ('$money', '$people', '$school', '$club', '$year', '$type', '$area', '$date', '$require_type', '$upload', '$ins', '$title', '$information')";
+   
+    $uploadDir = 'uploads/';
+    if (!file_exists($uploadDir)) {
+        mkdir($uploadDir, 0777, true);
+    }
 
-        if (mysqli_query($link, $sql))
-            {
-                echo "發布成功";
-            }
-            else
-            {
-                echo "發布失敗";
-            }
+    $uploadFile = $uploadDir . basename($_FILES['upload']['name']);
 
-            ini_set('display_errors', 1);
-            error_reporting(E_ALL);
-    ?>
+    if (move_uploaded_file($_FILES['upload']['tmp_name'], $uploadFile)) {
+        $upload = $uploadFile; 
+    } else {
+        $upload = ''; 
+    }
+                                                                           
+    $link = mysqli_connect('localhost', 'root', '', 'SA');
+
+    $sql = "INSERT INTO club_requirements 
+        (money, people, school, club, year, type, area, event_time, require_type, upload, ins, title, information)
+        VALUES 
+        ('$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information')";
+
+    if (mysqli_query($link, $sql)) {
+        echo "發布成功";
+    } else {
+        echo "發布失敗: " . mysqli_error($link);
+    }
+
+    ini_set('display_errors', 1);
+    error_reporting(E_ALL);
+?>
+
+
 </body>
 </html>

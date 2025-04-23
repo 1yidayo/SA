@@ -89,63 +89,65 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row">
         <?php
-        $requirement_num = $_GET['requirement_num'];
+$requirement_num = $_GET['requirement_num'];
 
-        $link = mysqli_connect('localhost', 'root', '', 'SA');
-        $sql = "select * from club_requirements where requirement_num = '$requirement_num'";
-        $result = mysqli_query($link, $sql);
-        while($row = mysqli_fetch_assoc($result)){
-        echo "<div class=col-lg-8>
-          <div class=main-content>
-            <strong>", $row['title'], "</strong> 
-            
-            <br><br>", $row['information'], 
-          "</div> 
-          <div class=accordion id=accordionExample>
-            <div class=accordion-item>
-              <div aria-labelledby=headingOne>
-                <div class=accordion-body>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>";
-        }
-        ?>
+$link = mysqli_connect('localhost', 'root', '', 'SA');
+$sql = "SELECT * FROM club_requirements WHERE requirement_num = '$requirement_num'";
+$result = mysqli_query($link, $sql);
+while($row = mysqli_fetch_assoc($result)){
+    echo "<div class='col-lg-8'>
+      <div class='main-content'>
+        <h2 class='mb-3'>" . htmlspecialchars($row['title']) . "</h2>
+        <p style='white-space: pre-wrap; font-size: 16px; line-height: 1.8;'>" . nl2br(htmlspecialchars($row['information'])) . "</p>
+      </div>
+    </div>";
+}
+?>
+
 
         <?php
-        $requirement_num = $_GET['requirement_num'];
+$requirement_num = $_GET['requirement_num'];
 
-        $link = mysqli_connect('localhost', 'root', '', 'SA');
-        $sql = "select * from club_requirements where requirement_num = '$requirement_num'";
-        $result = mysqli_query($link, $sql);
-        while($row = mysqli_fetch_assoc($result)){
-        echo "<div class=col-lg-4>
-          <div class=info-table>
-            <ul>
-              <li>
-                <h4>預算範圍<br><span>", $row['money'], "</span></h4>
-              </li>
-              <li>
-                <h4>社團規模<br><span>", $row['people'], "</span></h4>
-              </li>
-              <li>
-                <h4>社團成立年份<br><span>since ", $row['year'], "</span></h4>
-              </li>
-              <li>
-                <h4>活動類型<br><span>", $row['type'], "</span></h4>
-              </li>
-              <li>
-                <h4>企劃書內容<br><span>", $row['upload'], "</span></h4>
-              </li>
-              <li>
-                <h4><a href=", $row['ins'], " target=_blank>社群連結</a><br><span></span></h4>
-              </li>
-            </ul>
-          </div>
-        </div>";
-        }
-        ?>
+$link = mysqli_connect('localhost', 'root', '', 'SA');
+$sql = "SELECT * FROM club_requirements WHERE requirement_num = '$requirement_num'";
+$result = mysqli_query($link, $sql);
+$row = mysqli_fetch_assoc($result);  // 只抓一次資料
+?>
+
+<div class="col-lg-8">
+  <div class="main-content">
+    <strong><?= $row['title'] ?></strong>
+    <br><br>
+    <?= $row['information'] ?>
+  </div>
+</div>
+
+<div class="col-lg-4">
+  <div class="info-table">
+    <ul>
+      <li>
+        <h4>預算範圍<br><span><?= $row['money'] ?></span></h4>
+      </li>
+      <li>
+        <h4>社團規模<br><span><?= $row['people'] ?></span></h4>
+      </li>
+      <li>
+        <h4>社團成立年份<br><span>since <?= $row['year'] ?></span></h4>
+      </li>
+      <li>
+        <h4>活動類型<br><span><?= $row['type'] ?></span></h4>
+      </li>
+      <li>
+        <h4>企劃書內容<br><span><?= $row['upload'] ?></span></h4>
+      </li>
+      <li>
+        <h4><a href="<?= $row['ins'] ?>" target="_blank">社群連結</a><br><span></span></h4>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
       </div>
     </div>
   </div>
@@ -156,12 +158,10 @@ https://templatemo.com/tm-591-villa-agency
  
 
  
-  <footer class="footer-no-gap">
+  <footer>
     <div class="container">
-      <div class="col-lg-12">
-        <p>Copyright © 2048 Villa Agency Co., Ltd. All rights reserved. 
-        
-        Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a> Distribution: <a href="https://themewagon.com">ThemeWagon</a></p>
+      <div class="col-lg-8">
+        <p style="text-align: left; font-weight: bold;">社團企業媒合平台</p>
       </div>
     </div>
   </footer>
@@ -175,5 +175,6 @@ https://templatemo.com/tm-591-villa-agency
   <script src="assets/js/counter.js"></script>
   <script src="assets/js/custom.js"></script>
 
-  </body>
+</body>
+
 </html>

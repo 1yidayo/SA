@@ -125,8 +125,13 @@ https://templatemo.com/tm-591-villa-agency
                 <div class='item'>
                     <h4><a href='club.php?requirement_num=" . $row['requirement_num'] . "'>" . $row['title'] . "</a></h4>
                     <ul>
+                        <li><span>" . $row['school'] . "</span></li>
+                        <li><span>" . $row['club'] . "</span></li>
+                        <br>
                         <li>社團規模：<span>" . $row['people'] . "</span></li>
+                        <br>
                         <li>預算範圍：<span>" . $row['money'] . "</span></li>
+                        <br>
                         <li>活動類型：<span>" . $row['type'] . "</span></li>
                     </ul>
                     <div class='main-button'>
