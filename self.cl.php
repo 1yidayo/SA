@@ -27,9 +27,15 @@ TemplateMo 591 villa agency
 https://templatemo.com/tm-591-villa-agency
 
 -->
+<style>
+#grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+</style>
 </head>
 
-<body>
+
 
   <!-- ***** Preloader Start ***** -->
   <div id="js-preloader" class="js-preloader">
@@ -114,17 +120,11 @@ $stmt->execute();
 $result = $stmt->get_result();
 ?> -->
 
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-  <meta charset="UTF-8">
-  <title>發布歷史紀錄</title>
-  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-</head>
+
 
 <body>
-  <div class="container mt-5" style="">
-    
+  <div class="container mt-5"  style="">
+    <!-- id="grid" -->
     <div class="contact-page section">
         <div class="container">
           <div class="row">
@@ -190,10 +190,37 @@ $result = $stmt->get_result();
                   </div>
               </form>
             </div>
+            
     
           </div>
         </div>
-      </div><br>
+        
+      </div><br><br><br> 
+    <div id="calendar"></div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const calendarEl = document.getElementById('calendar');
+
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      headerToolbar: {
+        left: 'title',
+        center: '',
+        right: 'today prev,next'
+      },
+      initialDate: new Date(), // 你可以用 new Date() 自動載入今天
+      selectable: true,
+      dateClick: function(info) {
+        alert( info.dateStr + ' 目前沒有任何行程。' );
+      }
+    });
+
+    calendar.render();
+  });
+</script>
     <!-- <?php if ($result->num_rows > 0): ?>
       <table class="table table-bordered table-hover">
         <thead>

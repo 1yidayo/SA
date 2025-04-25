@@ -27,6 +27,12 @@ TemplateMo 591 villa agency
 https://templatemo.com/tm-591-villa-agency
 
 -->
+<style>
+#class {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+</style>
 </head>
 
 <body>
@@ -114,13 +120,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 ?> -->
 
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-  <meta charset="UTF-8">
-  <title>發布歷史紀錄</title>
-  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-</head>
+
 
 <body>
   <div class="container mt-5" style="">
