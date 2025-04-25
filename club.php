@@ -98,7 +98,7 @@ while($row = mysqli_fetch_assoc($result)){
     echo "<div class='col-lg-8'>
       <div class='main-content'>
         <h2 class='mb-3'>" . htmlspecialchars($row['title']) . "</h2>
-        <p style='white-space: pre-wrap; font-size: 16px; line-height: 1.8;'>" . nl2br(htmlspecialchars($row['information'])) . "</p>
+        <p style='white-space: pre-wrap; font-size: 16px; line-height: 1.8;'>" . nl2br(htmlspecialchars($row['topic'])) . "</p>
       </div>
     </div>";
 }
@@ -116,7 +116,7 @@ $row = mysqli_fetch_assoc($result);  // 只抓一次資料
 
 <div class="col-lg-8">
   <div class="main-content">
-    <strong><?= $row['title'] ?></strong>
+    <strong><?= $row[''] ?></strong>
     <br><br>
     <?= $row['information'] ?>
   </div>

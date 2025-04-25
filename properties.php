@@ -130,6 +130,8 @@ https://templatemo.com/tm-591-villa-agency
                         <li><span>" . $row['club'] . "</span></li>
                         <br>
                         <br>
+                        <li>活動主題：<span>" . $row['topic'] . "</span></li>
+                        <br>
                         <li>社團規模：<span>" . $row['people'] . "</span></li>
                         <br>
                         <li>預算範圍：<span>" . $row['money'] . "</span></li>
