@@ -59,7 +59,7 @@ https://templatemo.com/tm-591-villa-agency
               <li><a href="properties2.php">瀏覽</a></li>
               <li><a href="club contact.html">發布</a></li>
               <li><a href="clubhistory.php">發布歷史</a></li>
-              <li><a href="self.php">個人頁面</a></li>
+              <li><a href="self.en.php">個人頁面</a></li>
               <li><a href="first.html">登出</a></li>
               <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
               </li>
@@ -123,9 +123,61 @@ $result = $stmt->get_result();
 </head>
 
 <body>
-  <div class="container mt-5">
-    <h2 class="mb-4">您的個人檔案</h2>
-
+  <div class="container mt-5" style="">
+    
+    <div class="contact-page section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6" style="margin:left"><h2 class="mb-4">您的個人檔案</h2>
+              <form id="contact-form" action="club_contact.php" method="post" enctype="multipart/form-data" style="width: 80%; margin-left: 0%;" >
+     
+                    <div class="col-12">
+                      <div class="input-group">
+                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                          <span class="ms-1"><b>企業名稱</b></span>
+                        </div>
+                        <input class="form-control" type="text" placeholder="請輸入企業名稱(請輸入企業全名)" aria-label="請輸入企業全名"
+                          name="school">
+                      </div>
+                      <div class="col-12">
+                      <div class="input-group">
+                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                          <span class="ms-1"><b>行業別</b></span>
+                        </div>
+                        <input class="form-control" type="text" placeholder="請輸入行業別" aria-label="請輸入行業別"
+                          name="school">
+                      </div>
+                      <div class="col-12">
+                      <div class="input-group">
+                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                          <span class="ms-1"><b>統一編號</b></span>
+                        </div>
+                        <input class="form-control" type="text" placeholder="請輸入統一編號" aria-label="請輸入統一編號"
+                          name="school">
+                      </div>
+                      <div class="col-12">
+                      <div class="input-group">
+                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                          <span class="ms-1"><b>聯絡方式</b></span>
+                        </div>
+                        <input class="form-control" type="text" placeholder="請輸入聯絡方式" aria-label="請輸入聯絡方式"
+                          name="school">
+                      </div>
+                      <div class="col-lg-12">
+                        <fieldset>
+                      </div>
+                      <div class="col-12">
+                        <button class="btn btn-light w-100 py-2" type="submit"><b>發布</b></button>
+                      </div>
+                    </div>
+    
+                  </div>
+              </form>
+            </div>
+    
+          </div>
+        </div>
+      </div>
     <!-- <?php if ($result->num_rows > 0): ?>
       <table class="table table-bordered table-hover">
         <thead>
