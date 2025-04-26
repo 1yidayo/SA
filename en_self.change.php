@@ -98,7 +98,7 @@
             <label for="established_year" class="form-label"><b>聯絡方式</b></label>
             <input type="text" class="form-control" name="established_year" id="established_year" placeholder="請輸入聯絡方式">
           </div>
-          <button class="btn btn-dark w-100" type="submit"><b>儲存</b></button>
+          <button class="btn btn-dark w-100" type="submit"><b>儲存修改</b></button>
         </form>
       </div>
 

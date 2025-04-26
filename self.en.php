@@ -80,7 +80,7 @@
     <div class="row">
       <!-- 左邊表單 -->
       <div class="col-lg-6">
-        <h2 class="mb-4">您的個人檔案</h2>
+        <h2 class="mb-4">您的個人檔案&nbsp;&nbsp;&nbsp;<button class="btn btn-secondary" style="align:left" onclick="location.href='en_self.change.php'" type="button"><b>修改個人資料</b></button></h2>
         <form id="contact-form" action="club_contact.php" method="post" enctype="multipart/form-data">
           <div class="mb-3">
             <label for="school" class="form-label"><b>企業名稱</b></label>
@@ -98,7 +98,7 @@
             <label for="established_year" class="form-label"><b>聯絡方式</b></label>
             <input type="text" class="form-control" name="established_year" id="established_year" placeholder="請輸入聯絡方式">
           </div>
-          <button class="btn btn-dark w-100" type="submit"><b>發布</b></button>
+          <!-- <button class="btn btn-dark w-100" type="submit"><b>發布</b></button> -->
         </form>
       </div>
 

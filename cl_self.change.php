@@ -106,7 +106,7 @@
             <label for="social_link" class="form-label"><b>社群連結</b></label>
             <input type="text" class="form-control" name="social_link" id="social_link" placeholder="請輸入社群連結">
           </div>
-          <button class="btn btn-dark w-100" type="submit"><b>儲存</b></button>
+          <button class="btn btn-dark w-100" type="submit"><b>儲存修改</b></button>
         </form>
       </div>
 
