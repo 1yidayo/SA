@@ -72,13 +72,31 @@
             <b>修改個人資料</b>
           </button>
         </h2>
-        <form id="contact-form" action="club_contact.php" method="post" enctype="multipart/form-data">
-          <div class="mb-3"><label class="form-label"><b>學校名稱</b></label><input class="form-control" placeholder="您的學校全名"></div>
-          <div class="mb-3"><label class="form-label"><b>社團名稱</b></label><input class="form-control" placeholder="您的社團名稱"></div>
-          <div class="mb-3"><label class="form-label"><b>社團規模</b></label><input class="form-control" placeholder="您的社團規模"></div>
-          <div class="mb-3"><label class="form-label"><b>社團成立年份</b></label><input class="form-control" placeholder="您的社團成立年份"></div>
-          <div class="mb-3"><label class="form-label"><b>社團類型</b></label><input class="form-control" placeholder="您的社團類型"></div>
-          <div class="mb-3"><label class="form-label"><b>社群連結</b></label><input class="form-control" placeholder="您的社群連結"></div>
+        <form id="contact-form" action="" method="post" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label class="form-label"><b>學校名稱</b>
+            </label><input class="form-control" placeholder="您的學校全名" name="school">
+          </div>
+          <div class="mb-3">
+            <label class="form-label"><b>社團名稱</b>
+            </label><input class="form-control" placeholder="您的社團名稱" name="club">
+          </div>
+          <div class="mb-3">
+            <label class="form-label"><b>社團規模</b>
+            </label><input class="form-control" placeholder="您的社團規模" name="people">
+          </div>
+          <div class="mb-3">
+            <label class="form-label"><b>社團成立年份</b>
+            </label><input class="form-control" placeholder="您的社團成立年份" name="year">
+          </div>
+          <div class="mb-3">
+            <label class="form-label"><b>社團類型</b>
+            </label><input class="form-control" placeholder="您的社團類型" name="type">
+          </div>
+          <div class="mb-3">
+            <label class="form-label"><b>社群連結</b>
+            </label><input class="form-control" placeholder="您的社群連結" name="ins">
+          </div>
         </form>
       </div>
 

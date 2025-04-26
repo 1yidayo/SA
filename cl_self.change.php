@@ -72,40 +72,42 @@
         <h2 class="mb-4">修改您的個人檔案</h2>
     </div>
 
+    <?php
+    $
     <div class="contact-page section" style="margin-top: 20px;">
         <div class="row">
             <div class="col-lg-6" style="margin:auto">
                 <form id="contact-form" action="club_contact.php" method="post" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label for="school" class="form-label"><b>學校名稱</b></label>
-                        <input type="text" class="form-control" name="school" id="school" placeholder="請輸入學校全名">
-                    </div>
-                    <div class="mb-3">
-                        <label for="club_name" class="form-label"><b>社團名稱</b></label>
-                        <input type="text" class="form-control" name="club_name" id="club_name" placeholder="請輸入社團名稱">
-                    </div>
-                    <div class="mb-3">
-                        <label for="club_size" class="form-label"><b>社團規模</b></label>
-                        <input type="text" class="form-control" name="club_size" id="club_size" placeholder="請輸入社團規模">
-                    </div>
-                    <div class="mb-3">
-                        <label for="established_year" class="form-label"><b>社團成立年份</b></label>
-                        <input type="text" class="form-control" name="established_year" id="established_year"
-                            placeholder="請輸入社團成立年份">
-                    </div>
-                    <div class="mb-3">
-                        <label for="club_type" class="form-label"><b>社團類型</b></label>
-                        <input type="text" class="form-control" name="club_type" id="club_type" placeholder="請輸入社團類型">
-                    </div>
-                    <div class="mb-3">
-                        <label for="social_link" class="form-label"><b>社群連結</b></label>
-                        <input type="text" class="form-control" name="social_link" id="social_link"
-                            placeholder="請輸入社群連結">
-                    </div>
+                <div class="mb-3">
+                    <label class="form-label"><b>學校名稱</b>
+                    </label><input class="form-control" placeholder="您的學校全名" name="school">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><b>社團名稱</b>
+                    </label><input class="form-control" placeholder="您的社團名稱" name="club">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><b>社團規模</b>
+                    </label><input class="form-control" placeholder="您的社團規模" name="people">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><b>社團成立年份</b>
+                    </label><input class="form-control" placeholder="您的社團成立年份" name="year">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><b>社團類型</b>
+                    </label><input class="form-control" placeholder="您的社團類型" name="type">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><b>社群連結</b>
+                    </label><input class="form-control" placeholder="您的社群連結" name="ins">
+                </div>
                     <button class="btn btn-dark w-100" type="submit"><b>儲存修改</b></button>
+                </form>
             </div>
         </div>
     </div>
+    ?>
 
     <!-- Footer -->
     <footer class="mt-5">
