@@ -24,6 +24,7 @@
       padding: 15px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-family: serif;
     }
   </style>
 </head>
@@ -70,7 +71,7 @@
       <div class="row">
         <div class="col-lg-12">
           <span class="breadcrumb"><a href="#">Home</a> / My Page</span>
-          <h3>個人頁面</h3>
+          <h3>社團個人頁面</h3>
         </div>
       </div>
     </div>
@@ -80,33 +81,33 @@
     <div class="row">
       <!-- 左邊表單 -->
       <div class="col-lg-6">
-        <h2 class="mb-4">您的個人檔案</h2>
+        <h2 class="mb-4">您的個人檔案&nbsp;&nbsp;&nbsp;<button class="btn btn-secondary" style="align:left" onclick="location.href='cl_self.change.php'" type="button"><b>修改個人資料</b></button></h2>
         <form id="contact-form" action="club_contact.php" method="post" enctype="multipart/form-data">
           <div class="mb-3">
             <label for="school" class="form-label"><b>學校名稱</b></label>
-            <input type="text" class="form-control" name="school" id="school" placeholder="請輸入學校全名">
+            <input type="text" class="form-control" name="school" id="school" placeholder="您的學校全名">
           </div>
           <div class="mb-3">
             <label for="club_name" class="form-label"><b>社團名稱</b></label>
-            <input type="text" class="form-control" name="club_name" id="club_name" placeholder="請輸入社團名稱">
+            <input type="text" class="form-control" name="club_name" id="club_name" placeholder="您的社團名稱">
           </div>
           <div class="mb-3">
             <label for="club_size" class="form-label"><b>社團規模</b></label>
-            <input type="text" class="form-control" name="club_size" id="club_size" placeholder="請輸入社團規模">
+            <input type="text" class="form-control" name="club_size" id="club_size" placeholder="您的社團規模">
           </div>
           <div class="mb-3">
             <label for="established_year" class="form-label"><b>社團成立年份</b></label>
-            <input type="text" class="form-control" name="established_year" id="established_year" placeholder="請輸入社團成立年份">
+            <input type="text" class="form-control" name="established_year" id="established_year" placeholder="您的社團成立年份">
           </div>
           <div class="mb-3">
             <label for="club_type" class="form-label"><b>社團類型</b></label>
-            <input type="text" class="form-control" name="club_type" id="club_type" placeholder="請輸入社團類型">
+            <input type="text" class="form-control" name="club_type" id="club_type" placeholder="您的社團類型">
           </div>
           <div class="mb-3">
             <label for="social_link" class="form-label"><b>社群連結</b></label>
-            <input type="text" class="form-control" name="social_link" id="social_link" placeholder="請輸入社群連結">
+            <input type="text" class="form-control" name="social_link" id="social_link" placeholder="您的社群連結">
           </div>
-          <button class="btn btn-dark w-100" type="submit"><b>發布</b></button>
+          <!-- <button class="btn btn-dark w-100" onclick="location.href='cl_self.change.php'" type="button"><b>修改個人資料</b></button> -->
         </form>
       </div>
 
