@@ -21,7 +21,7 @@
             header("Location: cl.html");
             exit();
         } elseif($row['level'] === 'en') {
-            header("Location: en.html");
+            header("Location: insert.en.html");
             exit();
         } elseif($row['level'] === 'ai') {
             header("Location: ai.html");

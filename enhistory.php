@@ -125,100 +125,40 @@ $result = $stmt->get_result();
   <div class="container mt-5">
     <h2 class="mb-4">您的發布歷史</h2>
 
-    <?php
-session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: first.html");
-    exit();
-}
-
-$host = "localhost";
-$dbuser = "root";
-$dbpass = "";
-$dbname = "your_db_name"; // ← 改成你的 DB 名
-
-$conn = new mysqli($host, $dbuser, $dbpass, $dbname);
-$conn->set_charset("utf8");
-
-// 先處理表單送出（更新資料）
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['requirement_num'])) {
-    $requirement_num = $_POST['requirement_num'];
-    $money = $_POST['money'];
-    $type = $_POST['type'];
-    $code = $_POST['code'];
-    $ins = $_POST['ins'];
-    $title = $_POST['title'];
-    $information = $_POST['information'];
-
-    $update_sql = "
-        UPDATE club_requirements
-        SET money=?, type=?, code=?, ins=?, title=?, information=?
-        WHERE requirement_num=?
-    ";
-    $stmt = $conn->prepare($update_sql);
-    $stmt->bind_param("ssssssi", $money, $type, $code, $ins, $title, $information, $requirement_num);
-    $stmt->execute();
-}
-
-// 撈取該企業的資料
-$username = $_SESSION['username'];
-$sql = "SELECT * FROM club_requirements WHERE enterprise=? ORDER BY created_at DESC";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();
-?>
-
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-  <meta charset="UTF-8">
-  <title>我的發布歷史</title>
-  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-</head>
-<body>
-<div class="container mt-5">
-  <h2>我的發布紀錄（可直接修改）</h2>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>贊助範圍</th>
-        <th>類型</th>
-        <th>統一編號</th>
-        <th>聯絡方式</th>
-        <th>標題</th>
-        <th>內文</th>
-        <th>發布時間</th>
-        <th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php while ($row = $result->fetch_assoc()): ?>
-        <tr>
-          <form method="POST" action="enhistory.php">
-            <input type="hidden" name="requirement_num" value="<?= $row['requirement_num'] ?>">
-            <td><input type="text" class="form-control" name="money" value="<?= htmlspecialchars($row['money']) ?>"></td>
-            <td><input type="text" class="form-control" name="type" value="<?= htmlspecialchars($row['type']) ?>"></td>
-            <td><input type="text" class="form-control" name="code" value="<?= htmlspecialchars($row['code']) ?>"></td>
-            <td><input type="text" class="form-control" name="ins" value="<?= htmlspecialchars($row['ins']) ?>"></td>
-            <td><input type="text" class="form-control" name="title" value="<?= htmlspecialchars($row['title']) ?>"></td>
-            <td><textarea class="form-control" name="information"><?= htmlspecialchars($row['information']) ?></textarea></td>
-            <td><?= $row['created_at'] ?></td>
-            <td><button type="submit" class="btn btn-success btn-sm">儲存</button></td>
-          </form>
-        </tr>
-      <?php endwhile; ?>
-    </tbody>
-  </table>
-</div>
+    <?php if ($result->num_rows > 0): ?>
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>標題</th>
+            <th>學校</th>
+            <th>社團</th>
+            <th>預算</th>
+            <th>活動時間</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php while($row = $result->fetch_assoc()): ?>
+            <tr>
+              <td><?= htmlspecialchars($row['title']) ?></td>
+              <td><?= htmlspecialchars($row['school']) ?></td>
+              <td><?= htmlspecialchars($row['club']) ?></td>
+              <td><?= htmlspecialchars($row['money']) ?></td>
+              <td><?= htmlspecialchars($row['event_time']) ?></td>
+              <td>
+                <a href="view_post.php?id=<?= $row['id'] ?>" class="btn btn-info btn-sm">查看</a>
+                <a href="delete_post.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('確定要刪除這筆資料嗎？')">刪除</a>
+              </td>
+            </tr>
+          <?php endwhile; ?>
+        </tbody>
+      </table>
+    <?php else: ?>
+      <p>您尚未發布任何需求。</p>
+    <?php endif; ?>
+  </div>
 </body>
 </html>
-
-<?php
-$stmt->close();
-$conn->close();
-?>
-
 
 
   <footer>
