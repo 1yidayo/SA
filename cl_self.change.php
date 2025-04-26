@@ -17,15 +17,6 @@
   <link rel="stylesheet" href="assets/css/owl.css">
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-
-  <style>
-    #calendar {
-      background-color: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-  </style>
 </head>
 
 <body>
@@ -110,11 +101,6 @@
         </form>
       </div>
 
-      <!-- 右邊行事曆 -->
-      <div class="col-lg-6">
-        <h2 class="mb-4">行事曆</h2>
-        <div id="calendar"></div>
-      </div>
     </div>
   </div>
 
