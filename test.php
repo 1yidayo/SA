@@ -3,15 +3,12 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <title>社團企業媒合平台</title>
 
-  <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Additional CSS Files -->
   <link rel="stylesheet" href="assets/css/fontawesome.css">
   <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
   <link rel="stylesheet" href="assets/css/owl.css">
@@ -23,25 +20,15 @@
       background-color: white;
       padding: 15px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       font-family: serif;
     }
   </style>
 </head>
 
 <body>
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
 
-  <!-- ***** Header Area Start ***** -->
+  <!-- ***** Header ***** -->
   <header class="header-area header-sticky">
     <div class="container">
       <div class="row">
@@ -56,16 +43,14 @@
               <li><a href="first.html">登出</a></li>
               <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</a></li>
             </ul>
-            <a class='menu-trigger'>
-              <span>Menu</span>
-            </a>
+            <a class='menu-trigger'><span>Menu</span></a>
           </nav>
         </div>
       </div>
     </div>
   </header>
-  <!-- ***** Header Area End ***** -->
 
+  <!-- ***** Page Heading ***** -->
   <div class="page-heading header-text">
     <div class="container">
       <div class="row">
@@ -77,37 +62,23 @@
     </div>
   </div>
 
+  <!-- ***** Main Content ***** -->
   <div class="container mt-5">
     <div class="row">
       <!-- 左邊表單 -->
       <div class="col-lg-6">
-        <h2 class="mb-4">您的個人檔案&nbsp;&nbsp;&nbsp;<button class="btn btn-secondary" style="align:left" onclick="location.href='cl_self.change.php'" type="button"><b>修改個人資料</b></button></h2>
+        <h2 class="mb-4">您的個人檔案
+          <button class="btn btn-secondary" onclick="location.href='cl_self.change.php'" type="button">
+            <b>修改個人資料</b>
+          </button>
+        </h2>
         <form id="contact-form" action="club_contact.php" method="post" enctype="multipart/form-data">
-          <div class="mb-3">
-            <label for="school" class="form-label"><b>學校名稱</b></label>
-            <input type="text" class="form-control" name="school" id="school" placeholder="您的學校全名">
-          </div>
-          <div class="mb-3">
-            <label for="club_name" class="form-label"><b>社團名稱</b></label>
-            <input type="text" class="form-control" name="club_name" id="club_name" placeholder="您的社團名稱">
-          </div>
-          <div class="mb-3">
-            <label for="club_size" class="form-label"><b>社團規模</b></label>
-            <input type="text" class="form-control" name="club_size" id="club_size" placeholder="您的社團規模">
-          </div>
-          <div class="mb-3">
-            <label for="established_year" class="form-label"><b>社團成立年份</b></label>
-            <input type="text" class="form-control" name="established_year" id="established_year" placeholder="您的社團成立年份">
-          </div>
-          <div class="mb-3">
-            <label for="club_type" class="form-label"><b>社團類型</b></label>
-            <input type="text" class="form-control" name="club_type" id="club_type" placeholder="您的社團類型">
-          </div>
-          <div class="mb-3">
-            <label for="social_link" class="form-label"><b>社群連結</b></label>
-            <input type="text" class="form-control" name="social_link" id="social_link" placeholder="您的社群連結">
-          </div>
-          <!-- <button class="btn btn-dark w-100" onclick="location.href='cl_self.change.php'" type="button"><b>修改個人資料</b></button> -->
+          <div class="mb-3"><label class="form-label"><b>學校名稱</b></label><input class="form-control" placeholder="您的學校全名"></div>
+          <div class="mb-3"><label class="form-label"><b>社團名稱</b></label><input class="form-control" placeholder="您的社團名稱"></div>
+          <div class="mb-3"><label class="form-label"><b>社團規模</b></label><input class="form-control" placeholder="您的社團規模"></div>
+          <div class="mb-3"><label class="form-label"><b>社團成立年份</b></label><input class="form-control" placeholder="您的社團成立年份"></div>
+          <div class="mb-3"><label class="form-label"><b>社團類型</b></label><input class="form-control" placeholder="您的社團類型"></div>
+          <div class="mb-3"><label class="form-label"><b>社群連結</b></label><input class="form-control" placeholder="您的社群連結"></div>
         </form>
       </div>
 
@@ -119,26 +90,125 @@
     </div>
   </div>
 
+  <!-- 行事曆的 Modal -->
+  <div class="modal fade" id="eventModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">行程管理</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="modal-body-content"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- FullCalendar -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
   <script>
+    let calendar;
     document.addEventListener('DOMContentLoaded', function () {
       const calendarEl = document.getElementById('calendar');
-      const calendar = new FullCalendar.Calendar(calendarEl, {
+
+      // 先從 localStorage 讀取儲存的事件資料
+      const savedEvents = JSON.parse(localStorage.getItem('events')) || [];
+
+      // 建立日曆實例，並載入事件
+      calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         headerToolbar: {
           left: 'title',
           center: '',
           right: 'today prev,next'
         },
-        initialDate: new Date(),
         selectable: true,
+        events: savedEvents,  // 載入已儲存的事件
         dateClick: function (info) {
-          alert(info.dateStr + ' 目前沒有任何行程。');
+          showEventsModal(info.dateStr);
         }
       });
       calendar.render();
     });
+
+    // 顯示事件的 Modal
+    function showEventsModal(dateStr) {
+      const modalElement = document.getElementById('eventModal');
+      const eventModal = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
+
+      const events = calendar.getEvents().filter(event => event.startStr.startsWith(dateStr));
+      let html = `<h5>${dateStr}</h5>`;
+
+      if (events.length > 0) {
+        html += '<ul class="list-group">';
+        events.forEach(event => {
+          html += `<li class="list-group-item d-flex justify-content-between align-items-center">
+                    ${event.title}
+                    <button class="btn btn-sm btn-outline-primary" onclick="editEvent('${event.id}', '${dateStr}')">修改/刪除</button>
+                   </li>`;
+        });
+        html += '</ul>';
+      } else {
+        html += '<p>今日無行程</p>';
+      }
+
+      html += `<button class="btn btn-success mt-3" onclick="addEvent('${dateStr}')">新增行程</button>`;
+      document.getElementById('modal-body-content').innerHTML = html;
+
+      eventModal.show();
+    }
+
+    // 新增事件
+    function addEvent(dateStr) {
+      const title = prompt('請輸入行程名稱:');
+      if (title) {
+        const newEvent = {
+          id: String(Date.now()),
+          title: title,
+          start: dateStr
+        };
+
+        // 新增事件到日曆
+        calendar.addEvent(newEvent);
+
+        // 儲存事件到 localStorage
+        saveEvents();
+
+        showEventsModal(dateStr); // 重新刷新列表
+      }
+    }
+
+    // 編輯或刪除事件
+    function editEvent(id, dateStr) {
+      const event = calendar.getEventById(id);
+      if (!event) return;
+
+      const newTitle = prompt('修改行程名稱：\n（不輸入即可刪除）', event.title);
+      if (newTitle === null) return; // 使用者按取消
+      if (newTitle === '') {
+        // 若輸入空白，刪除
+        if (confirm('確定要刪除此行程嗎？')) {
+          event.remove();
+          saveEvents(); // 更新儲存的事件
+        }
+      } else {
+        event.setProp('title', newTitle);
+        saveEvents(); // 更新儲存的事件
+      }
+      showEventsModal(dateStr); // 更新列表
+    }
+
+    // 儲存所有事件到 localStorage
+    function saveEvents() {
+      const events = calendar.getEvents();
+      const eventsData = events.map(event => ({
+        id: event.id,
+        title: event.title,
+        start: event.start.toISOString()
+      }));
+
+      localStorage.setItem('events', JSON.stringify(eventsData));
+    }
   </script>
 
   <!-- Footer -->
@@ -157,6 +227,6 @@
   <script src="assets/js/owl-carousel.js"></script>
   <script src="assets/js/counter.js"></script>
   <script src="assets/js/custom.js"></script>
-</body>
 
+</body>
 </html>
