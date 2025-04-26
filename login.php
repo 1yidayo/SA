@@ -18,7 +18,7 @@
         $_SESSION['username'] = $row['username'];
         $_SESSION['level'] = $row['level'];
         if($row['level'] === 'cl'){
-            header("Location: cl.html");
+            header("Location: insert.cl.html");
             exit();
         } elseif($row['level'] === 'en') {
             header("Location: insert.en.html");
