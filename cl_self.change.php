@@ -73,13 +73,20 @@
     </div>
 
     <?php
-    $
-    <div class="contact-page section" style="margin-top: 20px;">
-        <div class="row">
-            <div class="col-lg-6" style="margin:auto">
-                <form id="contact-form" action="club_contact.php" method="post" enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label class="form-label"><b>學校名稱</b>
+    session_start();
+
+    $userID = $_SESSION['userID'];
+    $link = mysqli_connect('localhost', 'root', '', 'SA');
+    $sql = "SELECT * FROM identity WHERE userID = '$userID'";
+    $result = mysqli_query($link, $sql);
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<div class='contact-page section' style='margin-top: 20px;'>
+            <div class='row'>
+            <div class='col-lg-6' style='margin:auto'>
+                <form id='contact-form' action='club_edit.php' method='post' enctype='multipart/form-data'>
+                <div class='mb-3'>
+                    <label class='form-label'><b>學校名稱</b>
                     </label><input class="form-control" placeholder="您的學校全名" name="school">
                 </div>
                 <div class="mb-3">

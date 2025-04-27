@@ -73,30 +73,40 @@
 
         <h2 class="mb-4">修改您的個人檔案</h2>
     </div>
-    <div class="contact-page section" style="margin-top: 20px;">
-        <div class="row">
-            <div class="col-lg-6" style="margin:auto">
-                <form id="contact-form" action="club_contact.php" method="post" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label for="school" class="form-label"><b>企業名稱</b></label>
-                        <input type="text" class="form-control" name="school" id="school" placeholder="請輸入企業全名">
+    <?php
+    session_start();
+
+    $userID = $_SESSION['userID'];
+    $link = mysqli_connect('localhost', 'root', '', 'SA');
+    $sql = "SELECT * FROM identity WHERE userID = '$userID'";
+    $result = mysqli_query($link, $sql);
+
+    while ($row = mysqli_fetch_assoc($result)) {
+    echo "<div class='contact-page section style='margin-top: 20px;'>
+        <div class='row'>
+            <div class='col-lg-6' style='margin:auto'>
+                <form id='contact-form' action='en_edit.php' method='post' enctype='multipart/form-data'>
+                    <div class='mb-3'>
+                        <label for='enterprise' class='form-label'><b>企業名稱</b></label>
+                        <input type='text' class='form-control' name='enterprise' id='enterprise' value='", $row['enterprise'], "'>
                     </div>
-                    <div class="mb-3">
-                        <label for="club_name" class="form-label"><b>行業別</b></label>
-                        <input type="text" class="form-control" name="club_name" id="club_name" placeholder="請輸入行業別">
+                    <div class='mb-3'>
+                        <label for='entype' class='form-label'><b>行業別</b></label>
+                        <input type='text' class='form-control' name='entype' id='entype' value='", $row['entype'], "'>
                     </div>
-                    <div class="mb-3">
-                        <label for="club_size" class="form-label"><b>統一編號</b></label>
-                        <input type="text" class="form-control" name="club_size" id="club_size" placeholder="請輸入統一編號">
+                    <div class='mb-3'>
+                        <label for='code' class='form-label'><b>統一編號</b></label>
+                        <input type='text' class='form-control' name='code' id='code' value='", $row['code'], "'>
                     </div>
-                    <div class="mb-3">
-                        <label for="established_year" class="form-label"><b>聯絡方式</b></label>
-                        <input type="text" class="form-control" name="established_year" id="established_year"
-                            placeholder="請輸入聯絡方式">
+                    <div class='mb-3'>
+                        <label for='enins' class='form-label'><b>聯絡方式</b></label>
+                        <input type='text' class='form-control' name='enins' id='enins' value='", $row['enins'], "'>
                     </div>
-                    <button class="btn btn-dark w-100" type="submit"><b>儲存修改</b></button>
+                    <button class='btn btn-dark w-100' type='submit'><b>儲存修改</b></button>
                 </form>
-            </div>
+            </div>";
+            }
+            ?>
 
 
 
