@@ -94,8 +94,8 @@
             </label><br><b>", $row['code'], "</b>
           </div>
           <div class='mb-3'>
-            <label class='form-label'><b>聯絡方式：</b>
-            </label><br><b>", $row['enins'], "</b>
+            <label class='form-label'><b>社群連結：</b>
+            </label><br><a href=", $row['enins'], " target=_blank>", $row['enins'], "</a>
           </div>
         </form>
       </div>";

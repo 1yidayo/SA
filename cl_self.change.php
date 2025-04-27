@@ -87,33 +87,34 @@
                 <form id='contact-form' action='club_edit.php' method='post' enctype='multipart/form-data'>
                 <div class='mb-3'>
                     <label class='form-label'><b>學校名稱</b>
-                    </label><input class="form-control" placeholder="您的學校全名" name="school">
+                    </label><input class='form-control' name='school' value='", $row['school'], "'>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label"><b>社團名稱</b>
-                    </label><input class="form-control" placeholder="您的社團名稱" name="club">
+                <div class='mb-3'>
+                    <label class='form-label'><b>社團名稱</b>
+                    </label><input class='form-control' name='club' value='", $row['club'], "'>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label"><b>社團規模</b>
-                    </label><input class="form-control" placeholder="您的社團規模" name="people">
+                <div class='mb-3'>
+                    <label class='form-label'><b>社團規模</b>
+                    </label><input class='form-control' name='clsize' value='", $row['clsize'], "'>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label"><b>社團成立年份</b>
-                    </label><input class="form-control" placeholder="您的社團成立年份" name="year">
+                <div class='mb-3'>
+                    <label class='form-label'><b>社團成立年份</b>
+                    </label><input class='form-control' name='clyear' value='", $row['clyear'], "'>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label"><b>社團類型</b>
-                    </label><input class="form-control" placeholder="您的社團類型" name="type">
+                <div class='mb-3'>
+                    <label class='form-label'><b>社團類型</b>
+                    </label><input class='form-control' name='cltype' value='", $row['cltype'], "'>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label"><b>社群連結</b>
-                    </label><input class="form-control" placeholder="您的社群連結" name="ins">
+                <div class='mb-3'>
+                    <label class='form-label'><b>社群連結</b>
+                    </label><input class='form-control' name='clins' value='", $row['clins'], "'>
                 </div>
-                    <button class="btn btn-dark w-100" type="submit"><b>儲存修改</b></button>
+                    <button class='btn btn-dark w-100' type='submit'><b>儲存修改</b></button>
                 </form>
             </div>
         </div>
-    </div>
+    </div>";
+    }
     ?>
 
     <!-- Footer -->
