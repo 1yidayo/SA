@@ -18,12 +18,27 @@
         $_SESSION['userID'] = $row['userID'];
         $_SESSION['username'] = $row['username'];
         $_SESSION['level'] = $row['level'];
+        $userID = $_SESSION['userID'];
         if($row['level'] === 'cl'){
-            header("Location: insert.cl.html");
-            exit();
+            $check_sql = "SELECT * FROM identity WHERE userID = '$userID'";
+            $check_result = mysqli_query($link, $check_sql);
+            if (mysqli_num_rows($check_result) > 0) {
+                header("Location: cl.html");
+                exit();
+            } else {
+                header("Location: insert.cl.html");
+                exit();
+            }
         } elseif($row['level'] === 'en') {
-            header("Location: insert.en.html");
-            exit();
+            $check_sql = "SELECT * FROM identity WHERE userID = '$userID'";
+            $check_result = mysqli_query($link, $check_sql);
+            if (mysqli_num_rows($check_result) > 0) {
+                header("Location: en.html");
+                exit();
+            } else {
+                header("Location: insert.en.html");
+                exit();
+            }
         } elseif($row['level'] === 'ai') {
             header("Location: ai.html");
             exit();

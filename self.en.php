@@ -72,13 +72,35 @@
             <b>修改個人資料</b>
           </button>
         </h2>
-        <form id="contact-form" action="club_contact.php" method="post" enctype="multipart/form-data">
-          <div class="mb-3"><label class="form-label"><b>企業名稱</b></label><input class="form-control" placeholder="您的企業全名"></div>
-          <div class="mb-3"><label class="form-label"><b>行業別</b></label><input class="form-control" placeholder="您的行業別"></div>
-          <div class="mb-3"><label class="form-label"><b>統一編號</b></label><input class="form-control" placeholder="您的統一編號"></div>
-          <div class="mb-3"><label class="form-label"><b>聯絡方式</b></label><input class="form-control" placeholder="您的聯絡方式"></div>
+        <?php
+        session_start();
+        $userID = $_SESSION['userID'];
+        $link = mysqli_connect('localhost', 'root', '', 'SA');
+
+        $sql = "SELECT * FROM identity WHERE userID = '$userID'";
+        $result = mysqli_query($link, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+          echo "<form id='contact-form' action='' method='' enctype='multipart/form-data'>
+          <div class='mb-3'>
+            <label class='form-label'><b>企業名稱：</b>
+            </label><br><b>", $row['enterprise'], "</b>
+          </div>
+          <div class='mb-3'>
+            <label class='form-label'><b>行業別：</b>
+            </label><br><b>", $row['entype'], "</b>
+          </div>
+          <div class='mb-3'>
+            <label class='form-label'><b>統一編號：</b>
+            </label><br><b>", $row['code'], "</b>
+          </div>
+          <div class='mb-3'>
+            <label class='form-label'><b>聯絡方式：</b>
+            </label><br><b>", $row['enins'], "</b>
+          </div>
         </form>
-      </div>
+      </div>";
+        }
+        ?>
 
       <!-- 右邊行事曆 -->
       <div class="col-lg-6">
