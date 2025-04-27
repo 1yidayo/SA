@@ -126,7 +126,10 @@ https://templatemo.com/tm-591-villa-agency
                 <h4>贊助範圍<br><span>", $row['money'], "</span></h4>
               </li>
               <li>
-                <h4>企業發展類型<br><span>", $row['type'], "</span></h4>
+                <h4>企業名稱<br><span>", $row['enterprise'], "</span></h4>
+              </li>
+              <li>
+                <h4>企業行業別<br><span>", $row['type'], "</span></h4>
               </li>
               <li>
                 <h4>企業統一編號<br><span>", $row['code'], "</span></h4>
