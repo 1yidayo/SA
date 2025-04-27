@@ -8,7 +8,6 @@
 </head>
 <body>
     <?php
-  
     $money = $_POST['money'];
     $people = $_POST['people'];
     $school = $_POST['school'];
@@ -38,8 +37,8 @@
                                                                            
     $link = mysqli_connect('localhost', 'root', '', 'SA');
 
-    $sql = "INSERT INTO club_requirements 
-        (money, people, school, club, year, type, area, event_time, require_type, upload, ins, title, information)
+    $sql = "INSERT INTO club_requirements (money, people, school, club, year, type, area, event_time, require_type, upload, ins, title, information)
+
         VALUES 
         ('$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information')";
 
@@ -48,9 +47,7 @@
     } else {
         echo "發布失敗: " . mysqli_error($link);
     }
-
-    ini_set('display_errors', 1);
-    error_reporting(E_ALL);
+    
 ?>
 
 
