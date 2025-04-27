@@ -142,13 +142,11 @@ https://templatemo.com/tm-591-villa-agency
             die("Database connection failed: " . mysqli_connect_error());
         }
 
-        $money = mysqli_real_escape_string($link, $_POST['money']);
         $people = mysqli_real_escape_string($link, $_POST['people']);
-        $club = mysqli_real_escape_string($link, $_POST['club']);
+    
         $school = mysqli_real_escape_string($link, $_POST['school']);
 
-        $sql = "select * from club_requirements where money = '$money' and people = '$people'
-         and club = '$club' and school = '$school'";
+        $sql = "select * from club_requirements where  people = '$people' and school = '$school'";
 
         $result = mysqli_query($link, $sql);
 
