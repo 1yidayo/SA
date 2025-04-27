@@ -72,33 +72,43 @@
             <b>修改個人資料</b>
           </button>
         </h2>
-        <form id="contact-form" action="" method="post" enctype="multipart/form-data">
-          <div class="mb-3">
-            <label class="form-label"><b>學校名稱</b>
-            </label><input class="form-control" placeholder="您的學校全名" name="school">
+        <?php
+        session_start();
+        $userID = $_SESSION['userID'];
+        $link = mysqli_connect('localhost', 'root', '', 'SA');
+
+        $sql = "SELECT * FROM identity WHERE userID = '$userID'";
+        $result = mysqli_query($link, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+          echo "<form id='contact-form' action='' method='' enctype='multipart/form-data'>
+          <div class='mb-3'>
+            <label class='form-label'><b>學校名稱：</b>
+            </label><br><b>", $row['school'], "</b>
           </div>
-          <div class="mb-3">
-            <label class="form-label"><b>社團名稱</b>
-            </label><input class="form-control" placeholder="您的社團名稱" name="club">
+          <div class='mb-3'>
+            <label class='form-label'><b>社團名稱：</b>
+            </label><br><b>", $row['club'], "</b>
           </div>
-          <div class="mb-3">
-            <label class="form-label"><b>社團規模</b>
-            </label><input class="form-control" placeholder="您的社團規模" name="people">
+          <div class='mb-3'>
+            <label class='form-label'><b>社團規模：</b>
+            </label><br><b>", $row['clsize'], "</b>
           </div>
-          <div class="mb-3">
-            <label class="form-label"><b>社團成立年份</b>
-            </label><input class="form-control" placeholder="您的社團成立年份" name="year">
+          <div class='mb-3'>
+            <label class='form-label'><b>社團成立年分：</b>
+            </label><br><b>", $row['clyear'], "</b>
           </div>
-          <div class="mb-3">
-            <label class="form-label"><b>社團類型</b>
-            </label><input class="form-control" placeholder="您的社團類型" name="type">
+          <div class='mb-3'>
+            <label class='form-label'><b>社團類型：</b>
+            </label><br><b>", $row['cltype'], "</b>
           </div>
-          <div class="mb-3">
-            <label class="form-label"><b>社群連結</b>
-            </label><input class="form-control" placeholder="您的社群連結" name="ins">
+          <div class='mb-3'>
+            <label class='form-label'><b>社群連結：</b>
+            </label><br><a href=", $row['clins'], " target=_blank>", $row['clins'], "</a>
           </div>
         </form>
-      </div>
+      </div>";
+        }
+        ?>
 
       <!-- 右邊行事曆 -->
       <div class="col-lg-6">
