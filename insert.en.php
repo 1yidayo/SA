@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <meta http-equiv="refresh" content="3; url=en.html">
 </head>
 <body>
 <?php
+session_start();
+
 $enterprise = $_POST["enterprise"];
-$type = $_POST["type"];
+$entype = $_POST["entype"];
 $code = $_POST["code"];
-$ins = $_POST["ins"];
-$userID = $_POST['userID'];
+$enins = $_POST["enins"];
+$userID = $_SESSION['userID'];
 
 $link = mysqli_connect('localhost', 'root', '', 'SA');
 
-$sql = "INSERT INTO en_identity(enterprise, type, code, ins, userID) VALUES
- ('$enterprise', '$type', '$code', '$ins', '$userID')";
+$sql = "INSERT INTO identity(enterprise, entype, code, enins, userID) VALUES
+ ('$enterprise', '$entype', '$code', '$enins', '$userID')";
 
     if (mysqli_query($link, $sql)) {
         echo "新增完成";

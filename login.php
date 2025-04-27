@@ -15,6 +15,7 @@
     $sql = "select * from users where username = '$username' and password = '$password'";
     $result = mysqli_query($link, $sql);
     if($row = mysqli_fetch_assoc($result)){
+        $_SESSION['userID'] = $row['userID'];
         $_SESSION['username'] = $row['username'];
         $_SESSION['level'] = $row['level'];
         if($row['level'] === 'cl'){
