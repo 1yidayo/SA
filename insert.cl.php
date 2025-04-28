@@ -32,7 +32,7 @@ $sql = "INSERT INTO identity(school, club, clsize, clyear, cltype, clins, userID
         VALUES ('$school', '$club', '$clsize', '$clyear', '$cltype', '$clins', '$userID')";
 
 if (mysqli_query($link, $sql)) {
-    echo "<script>alert('新增完成！將自動返回首頁'); window.location.href='cl.html';</script>";
+    echo "<script>alert('新增完成！'); window.location.href='cl.html';</script>";
 } else {
     echo "<script>alert('新增失敗，請重新填寫！'); window.history.back();</script>";
 }
