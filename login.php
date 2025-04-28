@@ -56,11 +56,7 @@
             exit();
         } elseif($row['level'] === 'sc') {
             header("Location: sc.html");
-        }
-        else{
-            echo "<center><h1>無效的身分</h1></center>";
-        }
-    } else{
+        }else{
         echo "<h1>登入失敗！！！</h1>";
     }
 ?>

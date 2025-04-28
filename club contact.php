@@ -96,7 +96,13 @@ https://templatemo.com/tm-591-villa-agency
           $sql = "SELECT * FROM identity WHERE identityID = '" . $_SESSION['identityID'] . "'";
           $result = mysqli_query($link, $sql);
 
-          
+          if ($row = mysqli_fetch_assoc($result)) {
+            $school = $row['school'];
+            $club = $row['club'];
+            $clyear = $row['clyear'];
+            $cltype = $row['cltype'];
+            $clins = $row['clins'];
+          }
           ?>
           <input type="hidden" name="identityID" value="<?php echo $_SESSION['identityID']; ?>">
             <div class="row">
@@ -130,7 +136,7 @@ https://templatemo.com/tm-591-villa-agency
                       <span class="ms-1"><b>學校名稱</b></span>
                     </div>
                     <input class="form-control" type="text" placeholder="請輸入學校名稱(請輸入學校全名eg:輔仁大學)" aria-label="請輸入學校全名"
-                      name="school">
+                      name="school" VALUE="<?php echo $school; ?>" >
                   </div>
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
@@ -145,20 +151,23 @@ https://templatemo.com/tm-591-villa-agency
                       <option value="41-50">41-50</option>
                       <option value="50以上">50以上</option>
                     </select>
-
+                    
                   </div>
+                  <br>
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                       <span class="ms-1"><b>社團名稱</b></span>
                     </div>
-                    <input class="form-control" type="text" placeholder="請輸入社團名稱" aria-label="請輸社團名稱" name="club">
+                    <input class="form-control" type="text" placeholder="請輸入社團名稱" aria-label="請輸社團名稱" name="club"
+                    value="<?php echo $club; ?>" >
                   </div>
                   <div class="col-12">
                     <div class="input-group">
                       <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="ms-1"><b>社團成立年份</b></span>
                       </div>
-                      <input class="form-control" type="text" placeholder="請輸入年份" aria-label="請輸入年份" name="year">
+                      <input class="form-control" type="text" placeholder="請輸入年份" aria-label="請輸入年份" name="year"
+                       value="<?php echo $clyear; ?>" >
                     </div>
                   </div>
 
@@ -186,7 +195,7 @@ https://templatemo.com/tm-591-villa-agency
                     </div>
                   </div>
 
-
+                  <br>
                   <div class="col-12">
                     <div class="input-group">
                       <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
@@ -229,7 +238,7 @@ https://templatemo.com/tm-591-villa-agency
                         <span class="ms-1"><b>社群連結</b></span>
                       </div>
                       <input class="form-control" type="text" placeholder="請輸入相關社群連結"
-                        aria-label="Enter a City or Airport" name="ins">
+                        aria-label="Enter a City or Airport" name="ins" value="<?php echo $clins; ?>" >
                     </div>
                   </div>
 
