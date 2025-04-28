@@ -28,9 +28,6 @@ if (empty($school) || empty($club) || empty($clsize) || empty($clyear) || empty(
     exit();
 }
 
-$sql = "INSERT INTO identity(school, club, clsize, clyear, cltype, clins, userID) 
-        VALUES ('$school', '$club', '$clsize', '$clyear', '$cltype', '$clins', '$userID')";
-
 if (mysqli_query($link, $sql)) {
     echo "<script>alert('新增完成！'); window.location.href='cl.html';</script>";
 } else {
