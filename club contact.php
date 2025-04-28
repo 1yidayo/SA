@@ -90,7 +90,15 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row">
         <div class="col-lg-6" style="margin:auto">
           <form id="contact-form" action="club_contact.php" method="post" enctype="multipart/form-data">
+          <?php
+          session_start();
+          $link = mysqli_connect('localhost', 'root', '', 'SA');
+          $sql = "SELECT * FROM identity WHERE identityID = '" . $_SESSION['identityID'] . "'";
+          $result = mysqli_query($link, $sql);
 
+          
+          ?>
+          <input type="hidden" name="identityID" value="<?php echo $_SESSION['identityID']; ?>">
             <div class="row">
               <div class="col-12">
                 <div class="input-group">

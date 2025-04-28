@@ -20,9 +20,13 @@
         $_SESSION['level'] = $row['level'];
         $userID = $_SESSION['userID'];
         if($row['level'] === 'cl'){
-            $check_sql = "SELECT * FROM identity WHERE userID = '$userID'";
+            $userID = $row['userID'];
+
+            $check_sql = "SELECT identityID FROM identity WHERE userID = '$userID'";
             $check_result = mysqli_query($link, $check_sql);
-            if (mysqli_num_rows($check_result) > 0) {
+
+            if ($identity_row = mysqli_fetch_assoc($check_result)) {
+                $_SESSION['identityID'] = $identity_row['identityID'];
                 header("Location: cl.html");
                 exit();
             } else {
@@ -30,14 +34,19 @@
                 exit();
             }
         } elseif($row['level'] === 'en') {
-            $check_sql = "SELECT * FROM identity WHERE userID = '$userID'";
+            $userID = $row['userID'];
+
+            $check_sql = "SELECT identityID FROM identity WHERE userID = '$userID'";
             $check_result = mysqli_query($link, $check_sql);
-            if (mysqli_num_rows($check_result) > 0) {
+
+            if ($identity_row = mysqli_fetch_assoc($check_result)) {
+                $_SESSION['identityID'] = $identity_row['identityID'];
                 header("Location: en.html");
                 exit();
             } else {
                 header("Location: insert.en.html");
                 exit();
+            }
             }
         } elseif($row['level'] === 'ai') {
             header("Location: ai.html");
