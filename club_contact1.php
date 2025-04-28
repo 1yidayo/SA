@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>社團企業媒合平台</title>
-    <meta http-equiv="refresh" content="3; url=club contact.html">
 </head>
 <body>
     <?php
@@ -37,7 +36,7 @@
                                                                            
     $link = mysqli_connect('localhost', 'root', '', 'SA');
 
-    $sql = "INSERT INTO club_requirements (money, people, school, club, year, type, area, event_time, require_type, upload, ins, title, information)
+    $sql = "INSERT INTO club_requirements (money, people, school, club, year, type, region, event_time, support_type, upload, ins, title, information)
 
         VALUES 
         ('$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information')";

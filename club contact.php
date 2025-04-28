@@ -89,7 +89,7 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row">
         <div class="col-lg-6" style="margin:auto">
-          <form id="contact-form" action="club_contact.php" method="post" enctype="multipart/form-data">
+          <form id="contact-form" action="club_contact1.php" method="post" enctype="multipart/form-data">
           <?php
           session_start();
           $link = mysqli_connect('localhost', 'root', '', 'SA');
