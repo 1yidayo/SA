@@ -89,9 +89,10 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row">
         <div class="col-lg-6" style="margin:auto">
-          <form id="contact-form" action="en_contact.php" method="post">
+          <form id="contact-form" action="en_contact1.php" method="post">
             <div class="row">
               <form>
+              <input type="hidden" name="identityID" value=>
                 <div class="row g-3">
                   <div class="col-12">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
@@ -107,37 +108,77 @@ https://templatemo.com/tm-591-villa-agency
                   </div>
 
                   <div class="col-12">
-                    <div class="input-group">
+                    <div。 class="input-group">
                       <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                        <span class="ms-1"><b>企業名稱</b></span>
+                        <span class="ms-1"><b>校友姓名</b></span>
                       </div>
                       <input class="form-control" type="text" placeholder="請輸入企業名稱" aria-label="Enter a City or Airport"
-                        name="enterprise">
+                        name="enterprise" value="請輸入姓名">
                     </div>
-                    <div class="col-12">
-                      <div class="input-group">
-                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                          <span class="ms-1"><b>企業行業別</b></span>
-                        </div>
-                        <input class="form-control" type="text" placeholder="請輸入企業行業別(eg:科技業、金融業)"
-                          aria-label="Enter a City or Airport" name="type">
-                      </div>
-                      <div class="col-12">
-                        <div class="input-group">
-                          <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                            <span class="ms-1"><b>企業統一編號</b></span>
-                          </div>
-                          <input class="form-control" type="text" placeholder="請輸入企業統一編號"
-                            aria-label="Enter a City or Airport" name="code">
-                        </div>
 
                         <div class="input-group">
                           <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                            <span class="ms-1"><b>企業聯絡方式</b></span>
+                            <span class="ms-1"><b>校友聯絡方式</b></span>
                           </div>
-                          <input class="form-control" type="text" placeholder="請輸入企業聯絡方式"
-                            aria-label="Enter a City or Airport" name="enins">
+                          <input class="form-control" type="text" placeholder="請輸入校友聯絡方式"
+                            aria-label="Enter a City or Airport" name="ins" value="請輸入聯絡方式">
                         </div>
+                        <div class="col-12">
+                    <div class="input-group">
+                      <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                        <span class="ms-1"><b>活動地區</b></span>
+                      </div>
+                      <select class="form-select" name="region" id="region" required>
+                        <option value="">請選擇</option>
+                        <option value="北部">北部</option>
+                        <option value="中部">中部</option>
+                        <option value="南部">南部</option>
+                        <option value="東部">東部</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <br>
+                  <div class="col-12">
+                    <div class="input-group">
+                      <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                        <span class="ms-1"><b>預計活動月份</b></span>
+                      </div>
+                      <input type="date" name="event_time" id="event_time" class="form-control" required>
+                    </div>
+                  </div>
+
+
+                  <div class="col-12">
+                    <div class="input-group">
+                      <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                        <span class="ms-1"><b>可提供的贊助類型</b></span>
+                      </div>
+                      <select class="form-select" name="support_type" id="support_type" required>
+                        <option value="">請選擇</option>
+                        <option value="金錢">金錢</option>
+                        <option value="物資">物資</option>
+                        <option value="場地">場地</option>
+                        <option value="提供實習">提供實習</option>
+                      </select>
+                    </div>
+                  </div>
+                  <br>
+
+                  <div class="col-12">
+                    <div class="input-group">
+                      <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                        <span class="ms-1"><b>社團希望達到目的</b></span>
+                      </div>
+                      <select class="form-select" name="support_type" id="support_type" required>
+                        <option value="">請選擇</option>
+                        <option value="宣傳">宣傳</option>
+                        <option value="表演">表演</option>
+                      </select>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
 
                       </div>
                       <div class="col-12">

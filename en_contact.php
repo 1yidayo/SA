@@ -183,7 +183,7 @@ https://templatemo.com/tm-591-villa-agency
                   <div class="col-12">
                     <div class="input-group">
                       <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                        <span class="ms-1"><b>需要的贊助類型</b></span>
+                        <span class="ms-1"><b>可提供的贊助類型</b></span>
                       </div>
                       <select class="form-select" name="support_type" id="support_type" required>
                         <option value="">請選擇</option>
@@ -191,6 +191,20 @@ https://templatemo.com/tm-591-villa-agency
                         <option value="物資">物資</option>
                         <option value="場地">場地</option>
                         <option value="提供實習">提供實習</option>
+                      </select>
+                    </div>
+                  </div>
+                  <br>
+
+                  <div class="col-12">
+                    <div class="input-group">
+                      <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                        <span class="ms-1"><b>社團希望達到目的</b></span>
+                      </div>
+                      <select class="form-select" name="support_type" id="support_type" required>
+                        <option value="">請選擇</option>
+                        <option value="宣傳">宣傳</option>
+                        <option value="表演">表演</option>
                       </select>
                     </div>
                   </div>
