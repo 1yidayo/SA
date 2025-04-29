@@ -111,7 +111,7 @@ $requirement_num = $_GET['clrequirement_num'];
 $link = mysqli_connect('localhost', 'root', '', 'SA');
 $sql = "SELECT * FROM club_requirements WHERE clrequirement_num = '$clrequirement_num'";
 $result = mysqli_query($link, $sql);
-$row = mysqli_fetch_assoc($result);  // 只抓一次資料
+$row = mysqli_fetch_assoc($result);  
 ?>
 
 <div class="col-lg-8">
