@@ -13,7 +13,6 @@ $level = $_POST['level'];
 
 $link = mysqli_connect('localhost', 'root', '', 'SA');
 
-// 檢查帳號是否存在
 $check_user_sql = "SELECT * FROM users WHERE username = '$username'";
 $check_user_result = mysqli_query($link, $check_user_sql);
 if (mysqli_num_rows($check_user_result) == 0) {
