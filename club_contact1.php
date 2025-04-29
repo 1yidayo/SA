@@ -8,6 +8,7 @@
 </head>
 <body>
     <?php
+    $userID = $_SESSION['userID'];
     $money = $_POST['money'];
     $people = $_POST['people'];
     $school = $_POST['school'];
@@ -37,10 +38,10 @@
                                                                            
     $link = mysqli_connect('localhost', 'root', '', 'SA');
 
-    $sql = "INSERT INTO club_requirements (money, people, school, club, year, type, region, event_time, support_type, upload, ins, title, information)
+    $sql = "INSERT INTO club_requirements (userID, money, people, school, club, year, type, region, event_time, support_type, upload, ins, title, information)
 
         VALUES 
-        ('$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information')";
+        ('$userID', '$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information')";
 
     if (mysqli_query($link, $sql)) {
         echo "發布成功";

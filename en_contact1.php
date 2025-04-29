@@ -8,6 +8,7 @@
 </head>
 <body>
     <?php
+        $userID = $_SESSION['userID'];
         $money = $_POST['money'];
         $enterprise = $_POST['enterprise'];
         $type = $_POST['type'];
@@ -17,8 +18,8 @@
         $information = $_POST['information'];
 
         $link = mysqli_connect('localhost', 'root', '', 'SA');
-        $sql = "insert into en_requirements (money, enterprise, type, code, ins, title, information) 
-        VALUES ('$money', '$enterprise', '$type', '$code', '$ins', '$title', '$information')";
+        $sql = "insert into en_requirements (userID, money, enterprise, type, code, ins, title, information) 
+        VALUES ('$userID', '$money', '$enterprise', '$type', '$code', '$ins', '$title', '$information')";
         if (mysqli_query($link, $sql))
             {
                 echo "發布成功";
