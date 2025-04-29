@@ -26,8 +26,10 @@ if (empty($enterprise) || empty($entype) || empty($code) || empty($enins)) {
     exit();
 }
 
-    if (mysqli_query($link, $sql)) {
-        echo "新增完成";
+if (mysqli_query($link, $sql)) {
+    $identityID = mysqli_insert_id($link);
+    $_SESSION['identityID'] = $identityID;
+    echo "新增完成";
     } else {
         echo "新增失敗";
     }

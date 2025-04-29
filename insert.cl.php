@@ -29,6 +29,8 @@ if (empty($school) || empty($club) || empty($clsize) || empty($clyear) || empty(
 }
 
 if (mysqli_query($link, $sql)) {
+    $identityID = mysqli_insert_id($link);
+    $_SESSION['identityID'] = $identityID;
     echo "<script>alert('新增完成！'); window.location.href='cl.html';</script>";
 } else {
     echo "<script>alert('新增失敗，請重新填寫！'); window.history.back();</script>";
