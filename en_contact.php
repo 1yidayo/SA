@@ -128,7 +128,7 @@ https://templatemo.com/tm-591-villa-agency
                         <span class="ms-1"><b>企業名稱</b></span>
                       </div>
                       <input class="form-control" type="text" placeholder="請輸入企業名稱" aria-label="Enter a City or Airport"
-                        name="enterprise" value="<?php echo $enterprise; ?>">
+                        name="enterprise" value="<?php echo $enterprise; ?>" required>
                     </div>
                     <div class="col-12">
                       <div class="input-group">
@@ -136,7 +136,7 @@ https://templatemo.com/tm-591-villa-agency
                           <span class="ms-1"><b>企業行業別</b></span>
                         </div>
                         <input class="form-control" type="text" placeholder="請輸入企業行業別(eg:科技業、金融業)"
-                          aria-label="Enter a City or Airport" name="type" value="<?php echo $entype; ?>">
+                          aria-label="Enter a City or Airport" name="type" value="<?php echo $entype; ?>" required>
                       </div>
                       <div class="col-12">
                         <div class="input-group">
@@ -144,7 +144,7 @@ https://templatemo.com/tm-591-villa-agency
                             <span class="ms-1"><b>企業統一編號</b></span>
                           </div>
                           <input class="form-control" type="text" placeholder="請輸入企業統一編號"
-                            aria-label="Enter a City or Airport" name="code" value="<?php echo $code; ?>">
+                            aria-label="Enter a City or Airport" name="code" value="<?php echo $code; ?>" required>
                         </div>
 
                         <div class="input-group">
@@ -152,7 +152,7 @@ https://templatemo.com/tm-591-villa-agency
                             <span class="ms-1"><b>企業聯絡方式</b></span>
                           </div>
                           <input class="form-control" type="text" placeholder="請輸入企業聯絡方式"
-                            aria-label="Enter a City or Airport" name="ins" value="<?php echo $enins; ?>">
+                            aria-label="Enter a City or Airport" name="ins" value="<?php echo $enins; ?>" required>
                         </div>
                         <div class="col-12">
                     <div class="input-group">
@@ -217,7 +217,7 @@ https://templatemo.com/tm-591-villa-agency
                             <span class="ms-1"><b>內文標題</b></span>
                           </div>
                           <input class="form-control" type="text" placeholder="請輸入內文標題"
-                            aria-label="Enter a City or Airport" name="title">
+                            aria-label="Enter a City or Airport" name="title" required>
                         </div>
                       </div>
                       <div class="col-lg-12">
@@ -227,7 +227,7 @@ https://templatemo.com/tm-591-villa-agency
                               <span class="ms-1"><b>內文</b></span>
                             </div>
                             <textarea name="information" id="information" placeholder="請輸入內文內容"
-                              name="information"></textarea>
+                              name="information" required></textarea>
                         </fieldset>
                       </div>
                       <div class="col-12">
