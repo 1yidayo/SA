@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>社團企業媒合平台</title>
-    <meta http-equiv="refresh" content="10; url=club contact.php">
 </head>
 <body>
     <?php
@@ -45,10 +44,18 @@
         ('$identityID', '$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information')";
 
     if (mysqli_query($link, $sql)) {
-        echo "發布成功";
+        echo "<script>
+            alert('發布成功！');
+            window.location.href = 'club contact.php';
+        </script>";
+        exit();
     } else {
-        echo "發布失敗: " . mysqli_error($link);
-    }
+        echo "<script>
+            alert('發布失敗：" . mysqli_error($link) . "');
+            window.history.back();
+        </script>";
+}
+
     
 ?>
 
