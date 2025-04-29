@@ -143,10 +143,10 @@ $result = $stmt->get_result();
           <?php while($row = $result->fetch_assoc()): ?>
             <tr>
               <td><?= htmlspecialchars($row['title']) ?></td>
-              <td><?= htmlspecialchars($row['school']) ?></td>
-              <td><?= htmlspecialchars($row['club']) ?></td>
-              <td><?= htmlspecialchars($row['money']) ?></td>
-              <td><?= htmlspecialchars($row['event_time']) ?></td>
+              <td><?= htmlspecialchars($row['region']) ?></td>
+              <td><?= htmlspecialchars($row['date']) ?></td>
+              <td><?= htmlspecialchars($row['hope']) ?></td>
+              <td><?= htmlspecialchars($row['information']) ?></td>
               <td>
                 <a href="view_post.php?id=<?= $row['id'] ?>" class="btn btn-info btn-sm">查看</a>
                 <a href="delete_post.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('確定要刪除這筆資料嗎？')">刪除</a>
