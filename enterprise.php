@@ -88,10 +88,10 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row">
         <?php
-        $requirement_num = $_GET['requirement_num'];
+        $enrequirement_num = $_GET['enrequirement_num'];
 
         $link = mysqli_connect('localhost', 'root', '', 'SA');
-        $sql = "select * from en_requirements where requirement_num = '$requirement_num'";
+        $sql = "select * from en_requirements where enrequirement_num = '$enrequirement_num'";
         $result = mysqli_query($link, $sql);
         while($row = mysqli_fetch_assoc($result)){
         echo "<div class=col-lg-8>
