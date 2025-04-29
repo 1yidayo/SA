@@ -55,14 +55,16 @@ https://templatemo.com/tm-591-villa-agency
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li><a href="en.html" class="active">首頁</a></li>
-              <li><a href="properties.php">瀏覽</a></li>
-              <li><a href="en contact.html">發布</a></li>
-              <li><a href="enhistory.php">發布歷史</a></li>
-              <li><a href="first.html">登出</a></li>
-              <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
-              </li>
-            </ul>
+                            <li><a href="en.html" class="active">首頁</a></li>
+                            <li><a href="properties.php">瀏覽</a></li>
+                            <li><a href="en_contact.php">發布</a></li>
+                            <li><a href="enhistory.php">發布歷史</a></li>
+                            <li><a href="self.en.php">個人頁面</a></li>
+                            <li><a href="first.html">登出</a></li>
+                            <li><a href="advanced search for enterprise.html"><i
+                                        class="fa fa-calendar"></i>進階搜尋</ruby></a>
+                            </li>
+                        </ul>
             <a class='menu-trigger'>
               <span>Menu</span>
             </a>
@@ -152,6 +154,61 @@ https://templatemo.com/tm-591-villa-agency
                           <input class="form-control" type="text" placeholder="請輸入企業聯絡方式"
                             aria-label="Enter a City or Airport" name="ins" value="<?php echo $enins; ?>">
                         </div>
+                        <div class="col-12">
+                    <div class="input-group">
+                      <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                        <span class="ms-1"><b>活動地區</b></span>
+                      </div>
+                      <select class="form-select" name="region" id="region" required>
+                        <option value="">請選擇</option>
+                        <option value="北部">北部</option>
+                        <option value="中部">中部</option>
+                        <option value="南部">南部</option>
+                        <option value="東部">東部</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <br>
+                  <div class="col-12">
+                    <div class="input-group">
+                      <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                        <span class="ms-1"><b>預計活動月份</b></span>
+                      </div>
+                      <input type="date" name="event_time" id="event_time" class="form-control" required>
+                    </div>
+                  </div>
+
+
+                  <div class="col-12">
+                    <div class="input-group">
+                      <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                        <span class="ms-1"><b>可提供的贊助類型</b></span>
+                      </div>
+                      <select class="form-select" name="support_type" id="support_type" required>
+                        <option value="">請選擇</option>
+                        <option value="金錢">金錢</option>
+                        <option value="物資">物資</option>
+                        <option value="場地">場地</option>
+                        <option value="提供實習">提供實習</option>
+                      </select>
+                    </div>
+                  </div>
+                  <br>
+
+                  <div class="col-12">
+                    <div class="input-group">
+                      <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                        <span class="ms-1"><b>社團希望達到目的</b></span>
+                      </div>
+                      <select class="form-select" name="support_type" id="support_type" required>
+                        <option value="">請選擇</option>
+                        <option value="宣傳">宣傳</option>
+                        <option value="表演">表演</option>
+                      </select>
+                    </div>
+                  </div>
+                  <br>
 
                       </div>
                       <div class="col-12">
