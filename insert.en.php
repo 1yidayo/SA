@@ -21,6 +21,11 @@ $link = mysqli_connect('localhost', 'root', '', 'SA');
 $sql = "INSERT INTO identity(enterprise, entype, code, enins, userID) VALUES
  ('$enterprise', '$entype', '$code', '$enins', '$userID')";
 
+if (empty($enterprise) || empty($entype) || empty($code) || empty($enins)) {
+    echo "<script>alert('請填寫完整所有欄位！'); window.history.back();</script>";
+    exit();
+}
+
     if (mysqli_query($link, $sql)) {
         echo "新增完成";
     } else {

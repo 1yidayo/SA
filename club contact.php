@@ -89,8 +89,22 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row">
         <div class="col-lg-6" style="margin:auto">
-          <form id="contact-form" action="club_contact.php" method="post" enctype="multipart/form-data">
+          <form id="contact-form" action="club_contact1.php" method="post" enctype="multipart/form-data">
+          <?php
+          session_start();
+          $link = mysqli_connect('localhost', 'root', '', 'SA');
+          $sql = "SELECT * FROM identity WHERE identityID = '" . $_SESSION['identityID'] . "'";
+          $result = mysqli_query($link, $sql);
 
+          if ($row = mysqli_fetch_assoc($result)) {
+            $school = $row['school'];
+            $club = $row['club'];
+            $clyear = $row['clyear'];
+            $cltype = $row['cltype'];
+            $clins = $row['clins'];
+          }
+          ?>
+          <input type="hidden" name="identityID" value="<?php echo $_SESSION['identityID']; ?>">
             <div class="row">
               <div class="col-12">
                 <div class="input-group">
@@ -105,9 +119,9 @@ https://templatemo.com/tm-591-villa-agency
               <div class="row g-3">
                 <div class="col-12">
                   <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>預算範圍</b></span>
+                    <span class="ms-1"><b>預算範圍(必填)</b></span>
                   </div>
-                  <select class="form-select" aria-label="Default select example" name="money">
+                  <select class="form-select" aria-label="Default select example" name="money" required>
                     <option selected="$20,000以下">$20,000以下</option>
                     <option value="$20,001-$30,000">$20,001-$30,000</option>
                     <option value="$30,001-$50,000">$30,001-$50,000</option>
@@ -122,13 +136,14 @@ https://templatemo.com/tm-591-villa-agency
                       <span class="ms-1"><b>學校名稱</b></span>
                     </div>
                     <input class="form-control" type="text" placeholder="請輸入學校名稱(請輸入學校全名eg:輔仁大學)" aria-label="請輸入學校全名"
-                      name="school">
+                      name="school" VALUE="<?php echo $school; ?>" >
                   </div>
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                       <span class="ms-1"><b>預估規模</b></span>
                     </div>
-                    <select class="form-control" type="text" placeholder="選擇預估規模人數" aria-label="請輸入學校全名" name="people">
+                    <select class="form-control" type="text" placeholder="選擇預估規模人數" aria-label="請輸入學校全名" name="people"
+                      required>
                       <option selected="0-10人">0-10人</option>
                       <option value="11-20">11-20</option>
                       <option value="21-30">21-30</option>
@@ -136,20 +151,23 @@ https://templatemo.com/tm-591-villa-agency
                       <option value="41-50">41-50</option>
                       <option value="50以上">50以上</option>
                     </select>
-
+                    
                   </div>
+                  <br>
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                       <span class="ms-1"><b>社團名稱</b></span>
                     </div>
-                    <input class="form-control" type="text" placeholder="請輸入社團名稱" aria-label="請輸社團名稱" name="club">
+                    <input class="form-control" type="text" placeholder="請輸入社團名稱" aria-label="請輸社團名稱" name="club"
+                    value="<?php echo $club; ?>" >
                   </div>
                   <div class="col-12">
                     <div class="input-group">
                       <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="ms-1"><b>社團成立年份</b></span>
                       </div>
-                      <input class="form-control" type="text" placeholder="請輸入年份" aria-label="請輸入年份" name="year">
+                      <input class="form-control" type="text" placeholder="請輸入年份" aria-label="請輸入年份" name="year"
+                       value="<?php echo $clyear; ?>" >
                     </div>
                   </div>
 
@@ -159,7 +177,7 @@ https://templatemo.com/tm-591-villa-agency
                         <span class="ms-1"><b>活動類型</b></span>
                       </div>
                       <input class="form-control" type="text" placeholder="請輸入活動類型(eg:表演型、學術型)"
-                        aria-label="Enter a City or Airport" name="type">
+                        aria-label="Enter a City or Airport" name="type" required>
                     </div>
                   </div>
                   <div class="col-12">
@@ -167,7 +185,7 @@ https://templatemo.com/tm-591-villa-agency
                       <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="ms-1"><b>活動地區</b></span>
                       </div>
-                      <select class="form-select" name="region" id="region">
+                      <select class="form-select" name="region" id="region" required>
                         <option value="">請選擇</option>
                         <option value="北部">北部</option>
                         <option value="中部">中部</option>
@@ -177,13 +195,13 @@ https://templatemo.com/tm-591-villa-agency
                     </div>
                   </div>
 
-
+                  <br>
                   <div class="col-12">
                     <div class="input-group">
                       <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="ms-1"><b>預計活動月份</b></span>
                       </div>
-                      <input type="date" name="event_time" id="event_time" class="form-control">
+                      <input type="date" name="event_time" id="event_time" class="form-control" required>
                     </div>
                   </div>
 
@@ -193,7 +211,7 @@ https://templatemo.com/tm-591-villa-agency
                       <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="ms-1"><b>需要的贊助類型</b></span>
                       </div>
-                      <select class="form-select" name="support_type" id="support_type">
+                      <select class="form-select" name="support_type" id="support_type" required>
                         <option value="">請選擇</option>
                         <option value="金錢">金錢</option>
                         <option value="物資">物資</option>
@@ -210,7 +228,7 @@ https://templatemo.com/tm-591-villa-agency
                       <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="ms-2"><b>企劃書上傳</b></span>
                       </div>
-                      <input class="form-control" type="file" name="upload" accept=".pdf,.doc,.docx,.jpg,.png">
+                      <input class="form-control" type="file" name="upload" accept=".pdf,.doc,.docx,.jpg,.png" required>
                     </div>
                   </div>
 
@@ -220,7 +238,7 @@ https://templatemo.com/tm-591-villa-agency
                         <span class="ms-1"><b>社群連結</b></span>
                       </div>
                       <input class="form-control" type="text" placeholder="請輸入相關社群連結"
-                        aria-label="Enter a City or Airport" name="ins">
+                        aria-label="Enter a City or Airport" name="ins" value="<?php echo $clins; ?>" >
                     </div>
                   </div>
 
