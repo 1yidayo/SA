@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
-  <title>Villa Agency - Property Listing by TemplateMo</title>
+  <title>社團企業媒合平台</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,13 +19,7 @@
   <link rel="stylesheet" href="assets/css/owl.css">
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-  <!--
-
-TemplateMo 591 villa agency
-
-https://templatemo.com/tm-591-villa-agency
-
--->
+ 
 <style>
 .properties-box {
     display: flex;
@@ -70,26 +64,7 @@ https://templatemo.com/tm-591-villa-agency
   </div>
   <!-- ***** Preloader End ***** -->
 
-  <div class="sub-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-8">
-          <ul class="info">
-            <li><i class="fa fa-envelope"></i> info@company.com</li>
-            <li><i class="fa fa-map"></i> Sunny Isles Beach, FL 33160</li>
-          </ul>
-        </div>
-        <div class="col-lg-4 col-md-4">
-          <ul class="social-links">
-            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-            <li><a href="https://x.com/minthu" target="_blank"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
@@ -99,17 +74,19 @@ https://templatemo.com/tm-591-villa-agency
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
             <a href="index.html" class="logo">
-              <h1>Villa</h1>
+              <h1></h1>
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-                            <li><a href="cl.html" class="active">首頁</a></li>
-                            <li><a href="properties2.php">瀏覽</a></li>
-                            <li><a href="club contact.html">發布</a></li>
-                            <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
-                            </li>
-                        </ul>
+              <li><a href="cl.html" class="active">首頁</a></li>
+              <li><a href="properties2.php">瀏覽</a></li>
+              <li><a href="club contact.php">發布</a></li>
+              <li><a href="clubhistory.php">發布歷史</a></li>
+              <li><a href="self.cl.php">個人頁面</a></li>
+              <li><a href="first.html">登出</a></li>
+              <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</a></li>
+            </ul>
             <a class='menu-trigger'>
               <span>Menu</span>
             </a>
