@@ -119,10 +119,10 @@ https://templatemo.com/tm-591-villa-agency
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
     <?php
         session_start();
-
+        $identityID = $_SESSION['identityID'];
 
         $link = mysqli_connect('localhost', 'root', '', 'SA');
-        $sql = "SELECT * FROM en_requirements WHERE identityID = '{$_SESSION['identityID']}' ORDER BY created_at DESC";
+        $sql = "SELECT * FROM en_requirements WHERE CAST(identityID AS CHAR) = '$identityID'";
 
 
         $result = mysqli_query($link, $sql);
