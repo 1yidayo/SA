@@ -34,17 +34,15 @@
       <div class="row">
         <div class="col-12">
           <nav class="main-nav">
-          <ul class="nav">
-                            <li><a href="en.html" class="active">首頁</a></li>
-                            <li><a href="properties.php">瀏覽</a></li>
-                            <li><a href="en_contact.php">發布</a></li>
-                            <li><a href="enhistory.php">發布歷史</a></li>
-                            <li><a href="self.en.php">個人頁面</a></li>
-                            <li><a href="first.html">登出</a></li>
-                            <li><a href="advanced search for enterprise.html"><i
-                                        class="fa fa-calendar"></i>進階搜尋</ruby></a>
-                            </li>
-                        </ul>
+            <ul class="nav">
+              <li><a href="en.html" class="active">首頁</a></li>
+              <li><a href="properties.php">瀏覽</a></li>
+              <li><a href="en_contact.php">發布</a></li>
+              <li><a href="enhistory.php">發布歷史</a></li>
+              <li><a href="self.en.php">個人頁面</a></li>
+              <li><a href="first.html">登出</a></li>
+              <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a></li>
+            </ul>
             <a class='menu-trigger'><span>Menu</span></a>
           </nav>
         </div>
@@ -112,12 +110,12 @@
     </div>
   </div>
 
-  <!-- 行事曆的 Modal -->
+  <!-- FullCalendar Modal -->
   <div class="modal fade" id="eventModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">行程管理</h5>
+          <h5 class="modal-title" id="eventModalLabel"></h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <div class="modal-body" id="modal-body-content"></div>
@@ -125,12 +123,13 @@
     </div>
   </div>
 
-  <!-- FullCalendar -->
+  <!-- FullCalendar JS -->
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
     let calendar;
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', async function () {
       const calendarEl = document.getElementById('calendar');
       calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
@@ -141,65 +140,93 @@
         },
         selectable: true,
         dateClick: function (info) {
-          showEventsModal(info.dateStr);
+          showEventForm('add', { date: info.dateStr });
+        },
+        eventClick: function (info) {
+          showEventForm('edit', {
+            id: info.event.id,
+            title: info.event.title,
+            start: info.event.startStr,
+            end: info.event.endStr || info.event.startStr
+          });
+        },
+        events: async function (fetchInfo, successCallback, failureCallback) {
+          const res = await fetch('events_api.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'list' }) // 呼叫 list 操作來加載當前用戶的行程
+          });
+          const data = await res.json();
+          successCallback(data); // 顯示當前用戶的事件
         }
       });
       calendar.render();
     });
 
-    function showEventsModal(dateStr) {
-      const modalElement = document.getElementById('eventModal');
-      const eventModal = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
+    function showEventForm(mode, data) {
+      const modal = new bootstrap.Modal(document.getElementById('eventModal'));
+      const title = mode === 'add' ? '新增行程' : '修改行程';
+      document.getElementById('eventModalLabel').innerText = title;
 
-      const events = calendar.getEvents().filter(event => event.startStr.startsWith(dateStr));
-      let html = `<h5>${dateStr}</h5>`;
+      const form = `  
+        <form id="eventForm">
+          <input type="hidden" name="id" value="${data.id || ''}">
+          <div class="mb-3">
+            <label class="form-label">行程名稱</label>
+            <input type="text" name="title" class="form-control" value="${data.title || ''}" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">開始時間</label>
+            <input type="datetime-local" name="start" class="form-control" value="${data.start?.replace(' ', 'T') || (data.date + 'T00:00')}">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">結束時間</label>
+            <input type="datetime-local" name="end" class="form-control" value="${data.end?.replace(' ', 'T') || (data.date + 'T23:59')}">
+          </div>
+          <button type="submit" class="btn btn-primary">${mode === 'add' ? '新增' : '修改'}</button>
+          ${mode === 'edit' ? '<button type="button" class="btn btn-danger ms-2" onclick="deleteEvent(' + data.id + ')">刪除</button>' : ''}
+        </form>`;
 
-      if (events.length > 0) {
-        html += '<ul class="list-group">';
-        events.forEach(event => {
-          html += `<li class="list-group-item d-flex justify-content-between align-items-center">
-                    ${event.title}
-                    <button class="btn btn-sm btn-outline-primary" onclick="editEvent('${event.id}', '${dateStr}')">修改/刪除</button>
-                   </li>`;
+      document.getElementById('modal-body-content').innerHTML = form;
+
+      document.getElementById('eventForm').onsubmit = async function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const payload = Object.fromEntries(formData.entries());
+        payload.action = mode;
+
+        const res = await fetch('events_api.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
         });
-        html += '</ul>';
-      } else {
-        html += '<p>今日無行程</p>';
-      }
 
-      html += `<button class="btn btn-success mt-3" onclick="addEvent('${dateStr}')">新增行程</button>`;
-      document.getElementById('modal-body-content').innerHTML = html;
-
-      eventModal.show();
-    }
-
-    function addEvent(dateStr) {
-      const title = prompt('請輸入行程名稱:');
-      if (title) {
-        calendar.addEvent({
-          id: String(Date.now()),
-          title: title,
-          start: dateStr
-        });
-        showEventsModal(dateStr); // 重新刷新列表
-      }
-    }
-
-    function editEvent(id, dateStr) {
-      const event = calendar.getEventById(id);
-      if (!event) return;
-
-      const newTitle = prompt('修改行程名稱：\n（不輸入即可刪除）', event.title);
-      if (newTitle === null) return; // 使用者按取消
-      if (newTitle === '') {
-        // 若輸入空白，刪除
-        if (confirm('確定要刪除此行程嗎？')) {
-          event.remove();
+        const json = await res.json();
+        if (json.success) {
+          calendar.refetchEvents();
+          modal.hide();
+        } else {
+          alert(json.error || '操作失敗');
         }
-      } else {
-        event.setProp('title', newTitle);
       }
-      showEventsModal(dateStr); // 更新列表
+
+      modal.show();
+    }
+
+    async function deleteEvent(id) {
+      if (!confirm('確定要刪除這個行程嗎？')) return;
+      const res = await fetch('events_api.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'delete', id })
+      });
+      const json = await res.json();
+      if (json.success) {
+        calendar.refetchEvents();
+        bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
+      } else {
+        alert(json.error || '刪除失敗');
+      }
     }
   </script>
 
@@ -214,7 +241,7 @@
 
   <!-- Scripts -->
   <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/isotope.min.js"></script>
   <script src="assets/js/owl-carousel.js"></script>
   <script src="assets/js/counter.js"></script>
