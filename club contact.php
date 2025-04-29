@@ -238,7 +238,7 @@ https://templatemo.com/tm-591-villa-agency
                       <span class="ms-1"><b>社群連結</b></span>
                     </div>
                     <input class="form-control" type="text" placeholder="請輸入相關社群連結"
-                      aria-label="Enter a City or Airport" name="ins" value="<?php echo $clins; ?>" >
+                      name="ins" value="<?php echo $clins; ?>" >
                   </div>
                 </div>
 
