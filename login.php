@@ -49,11 +49,33 @@
             }
             }
         } elseif($row['level'] === 'ai') {
-            header("Location: ai.html");
-            exit();
+            $userID = $row['userID'];
+
+            $check_sql = "SELECT identityID FROM identity WHERE userID = '$userID'";
+            $check_result = mysqli_query($link, $check_sql);
+
+            if ($identity_row = mysqli_fetch_assoc($check_result)) {
+                $_SESSION['identityID'] = $identity_row['identityID'];
+                header("Location: ai.html");
+                exit();
+            } else {
+                header("Location: insert.ai.html");
+                exit();
+            }
         } elseif($row['level'] === 'de') {
-            header("Location: de.html");
-            exit();
+            $userID = $row['userID'];
+
+            $check_sql = "SELECT identityID FROM identity WHERE userID = '$userID'";
+            $check_result = mysqli_query($link, $check_sql);
+
+            if ($identity_row = mysqli_fetch_assoc($check_result)) {
+                $_SESSION['identityID'] = $identity_row['identityID'];
+                header("Location: de.html");
+                exit();
+            } else {
+                header("Location: insert.de.html");
+                exit();
+            }
         } elseif($row['level'] === 'sc') {
             header("Location: sc.html");
         }else{
