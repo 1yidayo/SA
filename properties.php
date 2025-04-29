@@ -125,7 +125,7 @@ https://templatemo.com/tm-591-villa-agency
         while($row = mysqli_fetch_assoc($result)){
             echo "<div class='properties-items'>
                 <div class='item'>
-                    <h4><a href='club.php?requirement_num=" . $row['requirement_num'] . "'>" . $row['title'] . "</a></h4>
+                    <h4><a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . $row['title'] . "</a></h4>
                     <ul>
                         <li><span>" . $row['school'] . "</span></li>
                         <li><span>" . $row['club'] . "</span></li>
@@ -140,7 +140,7 @@ https://templatemo.com/tm-591-villa-agency
                         <li>活動類型：<span>" . $row['type'] . "</span></li>
                     </ul>
                     <div class='main-button'>
-                        <a href='club.php?requirement_num=" . $row['requirement_num'] . "'>了解活動詳情</a>
+                        <a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>了解活動詳情</a>
                     </div>
                 </div>
             </div>";

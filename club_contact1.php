@@ -9,7 +9,7 @@
 <body>
     <?php
     session_start();
-    $userID = $_SESSION['userID'];
+    $identityID = $_SESSION['identityID'];
     $money = $_POST['money'];
     $people = $_POST['people'];
     $school = $_POST['school'];
@@ -39,10 +39,10 @@
                                                                            
     $link = mysqli_connect('localhost', 'root', '', 'SA');
 
-    $sql = "INSERT INTO club_requirements (userID, money, people, school, club, year, type, region, event_time, support_type, upload, ins, title, information)
+    $sql = "INSERT INTO club_requirements (identityID, money, people, school, club, year, type, region, event_time, support_type, upload, ins, title, information)
 
         VALUES 
-        ('$userID', '$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information')";
+        ('$identityID', '$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information')";
 
     if (mysqli_query($link, $sql)) {
         echo "發布成功";
