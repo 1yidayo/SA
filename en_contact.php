@@ -199,7 +199,7 @@ https://templatemo.com/tm-591-villa-agency
                   <div class="col-12">
                     <div class="input-group">
                       <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                        <span class="ms-1"><b>社團希望達到目的</b></span>
+                        <span class="ms-1"><b>希望社團達到目的</b></span>
                       </div>
                       <select class="form-select" name="hope" id="hope" required>
                         <option value="">請選擇</option>
