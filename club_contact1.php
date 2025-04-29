@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>社團企業媒合平台</title>
-    <meta http-equiv="refresh" content="3; url=club contact.php">
+    <meta http-equiv="refresh" content="10; url=club contact.php">
 </head>
 <body>
     <?php
+    session_start();
+    $identityID = $_SESSION['identityID'];
     $money = $_POST['money'];
     $people = $_POST['people'];
     $school = $_POST['school'];
@@ -37,10 +39,10 @@
                                                                            
     $link = mysqli_connect('localhost', 'root', '', 'SA');
 
-    $sql = "INSERT INTO club_requirements (money, people, school, club, year, type, region, event_time, support_type, upload, ins, title, information)
+    $sql = "INSERT INTO club_requirements (identityID, money, people, school, club, year, type, region, event_time, support_type, upload, ins, title, information)
 
         VALUES 
-        ('$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information')";
+        ('$identityID', '$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information')";
 
     if (mysqli_query($link, $sql)) {
         echo "發布成功";

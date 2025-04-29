@@ -8,6 +8,8 @@
 </head>
 <body>
     <?php
+        session_start();
+        $userID = $_SESSION['userID'];
         $money = $_POST['money'];
         $enterprise = $_POST['enterprise'];
         $type = $_POST['type'];

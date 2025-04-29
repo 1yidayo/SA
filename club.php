@@ -89,16 +89,16 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row">
         <?php
-$requirement_num = $_GET['requirement_num'];
+$clrequirement_num = $_GET['clrequirement_num'];
 
 $link = mysqli_connect('localhost', 'root', '', 'SA');
-$sql = "SELECT * FROM club_requirements WHERE requirement_num = '$requirement_num'";
+$sql = "SELECT * FROM club_requirements WHERE clrequirement_num = '$clrequirement_num'";
 $result = mysqli_query($link, $sql);
 while($row = mysqli_fetch_assoc($result)){
     echo "<div class='col-lg-8'>
       <div class='main-content'>
-        <h2 class='mb-3'>" . htmlspecialchars($row['title']) . "</h2>
-        <p style='white-space: pre-wrap; font-size: 16px; line-height: 1.8;'>" . nl2br(htmlspecialchars($row['topic'])) . "</p>
+        <h2 class='mb-3'>" . ($row['title']) . "</h2>
+        <p style='white-space: pre-wrap; font-size: 16px; line-height: 1.8;'>" . nl2br(htmlspecialchars($row['title'])) . "</p>
       </div>
     </div>";
 }
@@ -106,17 +106,17 @@ while($row = mysqli_fetch_assoc($result)){
 
 
         <?php
-$requirement_num = $_GET['requirement_num'];
+$requirement_num = $_GET['clrequirement_num'];
 
 $link = mysqli_connect('localhost', 'root', '', 'SA');
-$sql = "SELECT * FROM club_requirements WHERE requirement_num = '$requirement_num'";
+$sql = "SELECT * FROM club_requirements WHERE clrequirement_num = '$clrequirement_num'";
 $result = mysqli_query($link, $sql);
 $row = mysqli_fetch_assoc($result);  // 只抓一次資料
 ?>
 
 <div class="col-lg-8">
   <div class="main-content">
-    <strong><?= $row[''] ?></strong>
+    <strong><?= $row['information'] ?></strong>
     <br><br>
     <?= $row['information'] ?>
   </div>

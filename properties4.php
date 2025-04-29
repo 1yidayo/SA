@@ -82,14 +82,12 @@ https://templatemo.com/tm-591-villa-agency
                     
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                            <li><a href="en.html" class="active">首頁</a></li>
-                            <li><a href="properties.php">瀏覽</a></li>
-                            <li><a href="en_contact.php">發布</a></li>
-                            <li><a href="enhistory.php">發布歷史</a></li>
-                            <li><a href="self.en.php">個人頁面</a></li>
+                            <li><a href="de.html" class="active">首頁</a></li>
+                            <li><a href="properties4.php">瀏覽</a></li>
+                            <li><a href="department society contact.html">發布</a></li>
+                            <li><a href="dehistory.php">發布歷史</a></li>
                             <li><a href="first.html">登出</a></li>
-                            <li><a href="advanced search for enterprise.html"><i
-                                        class="fa fa-calendar"></i>進階搜尋</ruby></a>
+                            <li><a href="advanced search for department society.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
                             </li>
                         </ul>
                     <a class='menu-trigger'>
@@ -108,7 +106,7 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row">
         <div class="col-lg-12">
           <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
-          <h3>社團活動</h3>
+          <h3>企業贊助</h3>
         </div>
       </div>
     </div>
@@ -120,27 +118,18 @@ https://templatemo.com/tm-591-villa-agency
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
     <?php
         $link = mysqli_connect('localhost', 'root', '', 'SA');
-        $sql = "SELECT * FROM club_requirements";
+        $sql = "SELECT * FROM en_requirements";
         $result = mysqli_query($link, $sql);
         while($row = mysqli_fetch_assoc($result)){
             echo "<div class='properties-items'>
                 <div class='item'>
-                    <h4><a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . $row['title'] . "</a></h4>
+                    <h4><a href='enterprise.php?requirement_num=" . $row['requirement_num'] . "'>" . $row['title'] . "</a></h4>
                     <ul>
-                        <li><span>" . $row['school'] . "</span></li>
-                        <li><span>" . $row['club'] . "</span></li>
-                        <br>
-                        <br>
-                        <li>活動主題：<span>" . $row['title'] . "</span></li>
-                        <br>
-                        <li>社團規模：<span>" . $row['people'] . "</span></li>
-                        <br>
-                        <li>預算範圍：<span>" . $row['money'] . "</span></li>
-                        <br>
-                        <li>活動類型：<span>" . $row['type'] . "</span></li>
+                        <li>贊助範圍：<span>" . $row['money'] . "</span></li>
+                        <li>企業行業別：<span>" . $row['type'] . "</span></li>
                     </ul>
                     <div class='main-button'>
-                        <a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>了解活動詳情</a>
+                        <a href='enterprise.php?requirement_num=" . $row['requirement_num'] . "'>了解活動詳情</a>
                     </div>
                 </div>
             </div>";
