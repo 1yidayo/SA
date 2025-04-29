@@ -175,7 +175,7 @@ https://templatemo.com/tm-591-villa-agency
                       <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="ms-1"><b>預計活動月份</b></span>
                       </div>
-                      <input type="date" name="event_time" id="event_time" class="form-control" required>
+                      <input type="date" name="date" id="date" class="form-control" required>
                     </div>
                   </div>
 
@@ -185,7 +185,7 @@ https://templatemo.com/tm-591-villa-agency
                       <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="ms-1"><b>可提供的贊助類型</b></span>
                       </div>
-                      <select class="form-select" name="support_type" id="support_type" required>
+                      <select class="form-select" name="sponsorship" id="sponsorship" required>
                         <option value="">請選擇</option>
                         <option value="金錢">金錢</option>
                         <option value="物資">物資</option>
@@ -201,7 +201,7 @@ https://templatemo.com/tm-591-villa-agency
                       <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                         <span class="ms-1"><b>社團希望達到目的</b></span>
                       </div>
-                      <select class="form-select" name="support_type" id="support_type" required>
+                      <select class="form-select" name="hope" id="hope" required>
                         <option value="">請選擇</option>
                         <option value="宣傳">宣傳</option>
                         <option value="表演">表演</option>

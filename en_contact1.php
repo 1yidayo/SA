@@ -13,12 +13,16 @@
         $type = $_POST['type'];
         $code = $_POST['code'];
         $ins = $_POST['ins'];
+        $region = $_POST['region'];
+        $date = $_POST['date'];
+        $sponsorship = $_POST['sponsorship'];
+        $hope = $_POST['hope'];
         $title = $_POST['title'];
         $information = $_POST['information'];
 
         $link = mysqli_connect('localhost', 'root', '', 'SA');
-        $sql = "insert into en_requirements (money, enterprise, type, code, ins, title, information) 
-        VALUES ('$money', '$enterprise', '$type', '$code', '$ins', '$title', '$information')";
+        $sql = "insert into en_requirements (money, enterprise, type, code, ins, region, date, sponsorship, hope, title, information)
+        VALUES ('$money', '$enterprise', '$type', '$code', '$ins', '$region', '$date', '$sponsorship', '$hope', '$title', '$information')";
         if (mysqli_query($link, $sql))
             {
                 echo "發布成功";
