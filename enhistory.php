@@ -113,7 +113,7 @@ https://templatemo.com/tm-591-villa-agency
     </div>
   </div>
 
-  <div class="section properties">;
+  <div class="section properties">
     <div class="container">
       <div class="row properties-box">
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
@@ -127,9 +127,10 @@ https://templatemo.com/tm-591-villa-agency
 
         $result = mysqli_query($link, $sql);
         while($row = mysqli_fetch_assoc($result)){
+          
             echo "<div class='properties-items'>
                 <div class='item'>
-                    <h4><a href='club.php?clrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
+                    <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
                     <ul>
                         <li><span>" . $row['enterprise'] . "</span></li>
                         <br>
@@ -143,7 +144,7 @@ https://templatemo.com/tm-591-villa-agency
                         <li>贊助類型：<span>" . $row['sponsorship'] . "</span></li>
                     </ul>
                     <div class='main-button'>
-                        <a href='club.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
+                        <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
                     </div>
                 </div>
             </div>";
