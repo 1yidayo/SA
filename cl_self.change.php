@@ -87,27 +87,27 @@
                 <form id='contact-form' action='club_edit.php' method='post' enctype='multipart/form-data'>
                 <div class='mb-3'>
                     <label class='form-label'><b>學校名稱</b>
-                    </label><input class='form-control' name='school' value='", $row['school'], "'>
+                    </label><input class='form-control' name='school' value='", $row['school'], "' required>
                 </div>
                 <div class='mb-3'>
                     <label class='form-label'><b>社團名稱</b>
-                    </label><input class='form-control' name='club' value='", $row['club'], "'>
+                    </label><input class='form-control' name='club' value='", $row['club'], "' required>
                 </div>
                 <div class='mb-3'>
                     <label class='form-label'><b>社團規模</b>
-                    </label><input class='form-control' name='clsize' value='", $row['clsize'], "'>
+                    </label><input class='form-control' name='clsize' value='", $row['clsize'], "' required>
                 </div>
                 <div class='mb-3'>
                     <label class='form-label'><b>社團成立年份</b>
-                    </label><input class='form-control' name='clyear' value='", $row['clyear'], "'>
+                    </label><input class='form-control' name='clyear' value='", $row['clyear'], "' required>
                 </div>
                 <div class='mb-3'>
                     <label class='form-label'><b>社團類型</b>
-                    </label><input class='form-control' name='cltype' value='", $row['cltype'], "'>
+                    </label><input class='form-control' name='cltype' value='", $row['cltype'], "' required>
                 </div>
                 <div class='mb-3'>
                     <label class='form-label'><b>社群連結</b>
-                    </label><input class='form-control' name='clins' value='", $row['clins'], "'>
+                    </label><input class='form-control' name='clins' value='", $row['clins'], "' required>
                 </div>
                     <button class='btn btn-dark w-100' type='submit'><b>儲存修改</b></button>
                 </form>

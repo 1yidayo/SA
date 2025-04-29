@@ -88,19 +88,19 @@
                 <form id='contact-form' action='en_edit.php' method='post' enctype='multipart/form-data'>
                     <div class='mb-3'>
                         <label for='enterprise' class='form-label'><b>企業名稱</b></label>
-                        <input type='text' class='form-control' name='enterprise' id='enterprise' value='", $row['enterprise'], "'>
+                        <input type='text' class='form-control' name='enterprise' id='enterprise' value='", $row['enterprise'], "' required>
                     </div>
                     <div class='mb-3'>
                         <label for='entype' class='form-label'><b>行業別</b></label>
-                        <input type='text' class='form-control' name='entype' id='entype' value='", $row['entype'], "'>
+                        <input type='text' class='form-control' name='entype' id='entype' value='", $row['entype'], "' required>
                     </div>
                     <div class='mb-3'>
                         <label for='code' class='form-label'><b>統一編號</b></label>
-                        <input type='text' class='form-control' name='code' id='code' value='", $row['code'], "'>
+                        <input type='text' class='form-control' name='code' id='code' value='", $row['code'], "' required>
                     </div>
                     <div class='mb-3'>
                         <label for='enins' class='form-label'><b>聯絡方式</b></label>
-                        <input type='text' class='form-control' name='enins' id='enins' value='", $row['enins'], "'>
+                        <input type='text' class='form-control' name='enins' id='enins' value='", $row['enins'], "' required>
                     </div>
                     <button class='btn btn-dark w-100' type='submit'><b>儲存修改</b></button>
                 </form>
