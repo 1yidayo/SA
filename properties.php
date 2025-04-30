@@ -27,6 +27,22 @@ https://templatemo.com/tm-591-villa-agency
 -->
 
     <style>
+      .custom-filter-btn {
+    border: 2px solid #ff6600;
+    background-color: white;
+    color: #ff6600;
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: 0.3s ease-in-out;
+}
+
+.custom-filter-btn:hover {
+    background-color: #ff6600;
+    color: #fff;
+    text-decoration: none;
+}
+
 .properties-box {
     display: flex;
     flex-wrap: wrap; /* 允許換行 */
@@ -116,11 +132,28 @@ https://templatemo.com/tm-591-villa-agency
 
   <div class="section properties">;
     <div class="container">
+    <div class="text-center mb-4">
+    <a href="?filter=all" class="btn custom-filter-btn mx-1">全部</a>
+    <a href="?filter=金錢" class="btn custom-filter-btn mx-1">金錢</a>
+    <a href="?filter=物資" class="btn custom-filter-btn mx-1">物資</a>
+    <a href="?filter=場地" class="btn custom-filter-btn mx-1">場地</a>
+    <a href="?filter=提供實習" class="btn custom-filter-btn mx-1">提供實習</a>
+
+    </div>
+
       <div class="row properties-box">
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
     <?php
         $link = mysqli_connect('localhost', 'root', '', 'SA');
-        $sql = "SELECT * FROM club_requirements";
+        $filter = isset($_GET['filter']) ? $_GET['filter'] : 'all';
+
+        if ($filter === 'all') {
+            $sql = "SELECT * FROM club_requirements";
+        } else {
+            $filter_escaped = mysqli_real_escape_string($link, $filter);
+            $sql = "SELECT * FROM club_requirements WHERE support_type LIKE '%$filter_escaped%'";
+        }
+
         $result = mysqli_query($link, $sql);
         while($row = mysqli_fetch_assoc($result)){
             echo "<div class='properties-items'>
@@ -131,13 +164,11 @@ https://templatemo.com/tm-591-villa-agency
                         <li><span>" . $row['club'] . "</span></li>
                         <br>
                         <br>
-                        <li>活動主題：<span>" . $row['title'] . "</span></li>
-                        <br>
-                        <li>社團規模：<span>" . $row['people'] . "</span></li>
-                        <br>
-                        <li>預算範圍：<span>" . $row['money'] . "</span></li>
+                        <li>社團活動規模：<span>" . $row['people'] . "</span></li>
                         <br>
                         <li>活動類型：<span>" . $row['type'] . "</span></li>
+                        <br>
+                        <li>需要贊助類型：<span>" . $row['support_type'] . "</span></li>
                     </ul>
                     <div class='main-button'>
                         <a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>了解活動詳情</a>

@@ -176,7 +176,7 @@ https://templatemo.com/tm-591-villa-agency
                 <div class="col-12">
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>活動類型</b></span>
+                      <span class="ms-1"><b>活動類型(必填)</b></span>
                     </div>
                     <input class="form-control" type="text" placeholder="請輸入活動類型(eg:表演型、學術型)"
                       aria-label="Enter a City or Airport" name="type" required title="必填欄位！">
@@ -185,7 +185,7 @@ https://templatemo.com/tm-591-villa-agency
                 <div class="col-12">
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>活動地區</b></span>
+                      <span class="ms-1"><b>活動地區(必填)</b></span>
                     </div>
                     <select class="form-select" name="region" id="region" required title="必填欄位！">
                       <option value="">請選擇</option>
@@ -201,7 +201,7 @@ https://templatemo.com/tm-591-villa-agency
                 <div class="col-12">
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>預計活動月份</b></span>
+                      <span class="ms-1"><b>預計活動月份(必填)</b></span>
                     </div>
                     <input type="date" name="event_time" id="event_time" class="form-control" required>
                   </div>
@@ -210,7 +210,7 @@ https://templatemo.com/tm-591-villa-agency
                 <div class="col-12">
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>需要的贊助類型</b></span>
+                      <span class="ms-1"><b>需要的贊助類型(必填)</b></span>
                     </div>
                     <select class="form-select" name="support_type" id="support_type" required>
                       <option value="">請選擇</option>
@@ -226,7 +226,7 @@ https://templatemo.com/tm-591-villa-agency
                 <div class="col-15">
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-2"><b>企劃書上傳</b></span>
+                      <span class="ms-2"><b>企劃書上傳(必填)</b></span>
                     </div>
                     <input class="form-control" type="file" name="upload" accept=".pdf,.doc,.docx,.jpg,.png" required>
                   </div>
@@ -238,16 +238,16 @@ https://templatemo.com/tm-591-villa-agency
                       <span class="ms-1"><b>社群連結</b></span>
                     </div>
                     <input class="form-control" type="text" placeholder="請輸入相關社群連結"
-                      aria-label="Enter a City or Airport" name="ins" value="<?php echo $clins; ?>" >
+                      name="ins" value="<?php echo $clins; ?>" >
                   </div>
                 </div>
 
                 <div class="col-lg-12">
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>內文</b></span>
+                      <span class="ms-1"><b>內文(必填)</b></span>
                     </div>
-                    <textarea class="form-control" name="information" id="information" placeholder="請輸入內文內容"></textarea>
+                    <textarea class="form-control" name="information" id="information" placeholder="請輸入內文內容" require></textarea>
                   </div>
                 </div>
 
