@@ -25,17 +25,18 @@
         $link = mysqli_connect('localhost', 'root', '', 'SA');
         $sql = "insert into en_requirements (identityID, money, enterprise, type, code, ins, region, date, sponsorship, hope, title, information)
         VALUES ('$identityID', '$money', '$enterprise', '$type', '$code', '$ins', '$region', '$date', '$sponsorship', '$hope', '$title', '$information')";
-        if (mysqli_query($link, $sql))
-            {
-                echo "發布成功";
-            }
-            else
-            {
-                echo "發布失敗";
-            }
-
-            ini_set('display_errors', 1);
-            error_reporting(E_ALL);
+        if (mysqli_query($link, $sql)) {
+            echo "<script>
+                alert('發布成功！');
+                window.location.href = 'club contact.php';
+            </script>";
+            exit();
+        } else {
+            echo "<script>
+                alert('發布失敗：" . mysqli_error($link) . "');
+                window.history.back();
+            </script>";
+    }
     ?>
 </body>
 </html>
