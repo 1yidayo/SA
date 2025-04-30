@@ -115,6 +115,20 @@ https://templatemo.com/tm-591-villa-agency
 
   <div class="section properties">;
     <div class="container">
+    <div id="filter-buttons" class="text-center mb-4">
+  <div id="industry-buttons" class="mb-2">
+    <strong>行業別：</strong>
+
+  </div>
+  <div id="type-buttons" class="mb-2">
+    <strong>贊助類型：</strong>
+    <button class="btn btn-outline-warning mx-1 filter-btn" data-type="type" data-value="金錢">金錢</button>
+    <button class="btn btn-outline-warning mx-1 filter-btn" data-type="type" data-value="物資">物資</button>
+    <button class="btn btn-outline-warning mx-1 filter-btn" data-type="type" data-value="場地">場地</button>
+    <button class="btn btn-outline-warning mx-1 filter-btn" data-type="type" data-value="提供實習">提供實習</button>
+  </div>
+</div>
+
       <div class="row properties-box">
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
     <?php
@@ -122,19 +136,20 @@ https://templatemo.com/tm-591-villa-agency
         $sql = "SELECT * FROM en_requirements";
         $result = mysqli_query($link, $sql);
         while($row = mysqli_fetch_assoc($result)){
-            echo "<div class='properties-items'>
-                <div class='item'>
-                    <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
-                    <ul>
-                        <li>贊助範圍：<span>" . $row['money'] . "</span></li>
-                        <li>企業行業別：<span>" . $row['type'] . "</span></li>
-                    </ul>
-                    <div class='main-button'>
-                        <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
-                    </div>
-                </div>
-            </div>";
-        }
+          echo "<div class='properties-items sponsor-card' data-industry='" . $row['type'] . "' data-type='" . $row['sponsorship'] . "'>
+              <div class='item'>
+                  <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
+                  <ul>
+                      <li>贊助範圍：<span>" . $row['sponsorship'] . "</span></li>
+                      <li>企業行業別：<span>" . $row['type'] . "</span></li>
+                  </ul>
+                  <div class='main-button'>
+                      <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
+                  </div>
+              </div>
+          </div>";
+      }
+      
     ?>
 </div>
 
@@ -160,6 +175,18 @@ https://templatemo.com/tm-591-villa-agency
         </div>
     </footer>
 
+    <?php
+    $link = mysqli_connect('localhost', 'root', '', 'SA');
+    $sql = "SELECT DISTINCT type FROM en_requirements WHERE type IS NOT NULL AND type != ''";
+    $result = mysqli_query($link, $sql);
+
+    $industries = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $industries[] = $row['type'];
+    }
+    ?>
+
+
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -168,6 +195,68 @@ https://templatemo.com/tm-591-villa-agency
   <script src="assets/js/owl-carousel.js"></script>
   <script src="assets/js/counter.js"></script>
   <script src="assets/js/custom.js"></script>
+<script>
+  const selectedFilters = {
+  industry: null,
+  type: null
+};
+
+
+  // 初始化動態行業按鈕
+  const industriesFromDB = <?php echo json_encode($industries); ?>;
+  const industryContainer = document.getElementById('industry-buttons');
+
+  function createIndustryButton(industry) {
+    const btn = document.createElement('button');
+    btn.className = 'btn btn-outline-dark mx-1 filter-btn';
+    btn.dataset.type = 'industry';
+    btn.dataset.value = industry;
+    btn.innerText = industry;
+    btn.addEventListener('click', handleFilterClick);
+    industryContainer.appendChild(btn);
+  }
+
+  industriesFromDB.forEach(createIndustryButton);
+
+  function handleFilterClick(e) {
+  const btn = e.target;
+  const type = btn.dataset.type;
+  const value = btn.dataset.value;
+
+  // 先清除同類型的所有 active 狀態
+  document.querySelectorAll(`button[data-type="${type}"]`).forEach(b => b.classList.remove('active'));
+
+  // 設定選擇值
+  if (selectedFilters[type] === value) {
+    // 如果點同一個按鈕代表取消選擇
+    selectedFilters[type] = null;
+  } else {
+    selectedFilters[type] = value;
+    btn.classList.add('active');
+  }
+
+  filterResults();
+}
+
+
+  function filterResults() {
+    // 假設所有贊助內容都在 .sponsor-card 上
+    const cards = document.querySelectorAll('.sponsor-card');
+    cards.forEach(card => {
+      const cardIndustry = card.dataset.industry;
+      const cardType = card.dataset.type;
+
+      const matchIndustry = selectedFilters.industry.size === 0 || selectedFilters.industry.has(cardIndustry);
+      const matchType = selectedFilters.type.size === 0 || selectedFilters.type.has(cardType);
+
+      if (matchIndustry && matchType) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
 
   </body>
 </html>
