@@ -28,11 +28,11 @@ https://templatemo.com/tm-591-villa-agency
 
     <style>
 .properties-box {
-    display: flex;
-    flex-wrap: wrap; /* 允許換行 */
-    gap: 20px; /* 設定間距 */
-    justify-content: flex-start; /* 讓內容從左到右排列 */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
 }
+
 
 .properties-items {
     width: 30%; /* 保持與原本大小相近 */
@@ -130,27 +130,26 @@ https://templatemo.com/tm-591-villa-agency
 </div>
 
       <div class="row properties-box">
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
-    <?php
-        $link = mysqli_connect('localhost', 'root', '', 'SA');
-        $sql = "SELECT * FROM en_requirements";
-        $result = mysqli_query($link, $sql);
-        while($row = mysqli_fetch_assoc($result)){
-          echo "<div class='properties-items sponsor-card' data-industry='" . $row['type'] . "' data-type='" . $row['sponsorship'] . "'>
-              <div class='item'>
-                  <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
-                  <ul>
-                      <li>贊助範圍：<span>" . $row['sponsorship'] . "</span></li>
-                      <li>企業行業別：<span>" . $row['type'] . "</span></li>
-                  </ul>
-                  <div class='main-button'>
-                      <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
-                  </div>
-              </div>
-          </div>";
+      <?php
+      $link = mysqli_connect('localhost', 'root', '', 'SA');
+      $sql = "SELECT * FROM en_requirements";
+      $result = mysqli_query($link, $sql);
+      while($row = mysqli_fetch_assoc($result)){
+        echo "<div class='col-lg-4 col-md-6 align-self-center mb-30 properties-items sponsor-card' data-industry='" . $row['type'] . "' data-type='" . $row['sponsorship'] . "'>
+                <div class='item'>
+                    <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
+                    <ul>
+                        <li>贊助範圍：<span>" . $row['sponsorship'] . "</span></li>
+                        <li>企業行業別：<span>" . $row['type'] . "</span></li>
+                    </ul>
+                    <div class='main-button'>
+                        <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
+                    </div>
+                </div>
+              </div>";
       }
-      
     ?>
+
 </div>
 
         </div>
@@ -212,7 +211,11 @@ https://templatemo.com/tm-591-villa-agency
     btn.dataset.type = 'industry';
     btn.dataset.value = industry;
     btn.innerText = industry;
-    btn.addEventListener('click', handleFilterClick);
+    // 給所有篩選按鈕加上事件監聽（包含 HTML 寫死的贊助類型按鈕）
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', handleFilterClick);
+});
+
     industryContainer.appendChild(btn);
   }
 
@@ -239,23 +242,22 @@ https://templatemo.com/tm-591-villa-agency
 }
 
 
-  function filterResults() {
-    // 假設所有贊助內容都在 .sponsor-card 上
-    const cards = document.querySelectorAll('.sponsor-card');
-    cards.forEach(card => {
-      const cardIndustry = card.dataset.industry;
-      const cardType = card.dataset.type;
+function filterResults() {
+  const cards = document.querySelectorAll('.sponsor-card');
+  cards.forEach(card => {
+    const cardIndustry = card.dataset.industry;
+    const cardType = card.dataset.type;
 
-      const matchIndustry = selectedFilters.industry.size === 0 || selectedFilters.industry.has(cardIndustry);
-      const matchType = selectedFilters.type.size === 0 || selectedFilters.type.has(cardType);
+    const matchIndustry = !selectedFilters.industry || selectedFilters.industry === cardIndustry;
+    const matchType = !selectedFilters.type || selectedFilters.type === cardType;
 
-      if (matchIndustry && matchType) {
-        card.style.display = 'block';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
+    if (matchIndustry && matchType) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+};
 </script>
 
   </body>
