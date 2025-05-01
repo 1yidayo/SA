@@ -27,21 +27,22 @@ https://templatemo.com/tm-591-villa-agency
 -->
 
     <style>
-      .custom-filter-btn {
-    border: 2px solid #ff6600;
-    background-color: white;
-    color: #ff6600;
-    border-radius: 25px;
-    padding: 8px 20px;
-    font-weight: 500;
-    transition: 0.3s ease-in-out;
-}
+    .custom-filter-btn {
+      border: 2px solid #ff6600;
+      background-color: white;
+      color: #ff6600;
+      border-radius: 25px;
+      padding: 8px 20px;
+      font-weight: 500;
+      transition: 0.3s ease-in-out;
+    }
 
-.custom-filter-btn:hover {
-    background-color: #ff6600;
-    color: #fff;
-    text-decoration: none;
-}
+    .custom-filter-btn:hover,
+    .custom-filter-btn.active {
+      background-color: #ff6600;
+      color: #fff;
+      text-decoration: none;
+    }
 
 .properties-box {
     display: flex;
@@ -131,13 +132,20 @@ https://templatemo.com/tm-591-villa-agency
 
   <div class="section properties">;
     <div class="container">
-    <div class="text-center mb-4">
-    <a href="?filter=all" class="btn custom-filter-btn mx-1">全部</a>
-    <a href="?filter=金錢" class="btn custom-filter-btn mx-1">金錢</a>
-    <a href="?filter=物資" class="btn custom-filter-btn mx-1">物資</a>
-    <a href="?filter=場地" class="btn custom-filter-btn mx-1">場地</a>
-    <a href="?filter=提供實習" class="btn custom-filter-btn mx-1">提供實習</a>
+    <?php
+  $filter = $_GET['filter'] ?? 'all';
+  $types = ['金錢', '物資', '場地', '提供實習'];
 
+  function buildFilterUrl($type) {
+    return '?filter=' . urlencode($type);
+}
+?>
+
+<div class="text-center mb-4">
+  <a href="<?= buildFilterUrl('all') ?>" class="btn custom-filter-btn mx-1 <?= $filter === 'all' ? 'active' : '' ?>">全部</a>
+  <?php foreach ($types as $type): ?>
+    <a href="<?= buildFilterUrl($type) ?>" class="btn custom-filter-btn mx-1 <?= $filter === $type ? 'active' : '' ?>"><?= $type ?></a>
+  <?php endforeach; ?>
     </div>
 
       <div class="row properties-box">
