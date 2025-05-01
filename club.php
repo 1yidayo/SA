@@ -80,7 +80,7 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h3>發布歷史
+          <h3>社團活動詳情
           </h3>
         </div>
       </div>
@@ -100,7 +100,6 @@ while($row = mysqli_fetch_assoc($result)){
     echo "<div class='col-lg-8'>
       <div class='main-content'>
         <h2 class='mb-3'>" . ($row['title']) . "</h2>
-        <p style='white-space: pre-wrap; font-size: 16px; line-height: 1.8;'>" . nl2br(htmlspecialchars($row['title'])) . "</p>
       </div>
     </div>";
 }
@@ -118,9 +117,8 @@ $row = mysqli_fetch_assoc($result);
 
 <div class="col-lg-8">
   <div class="main-content">
-    <strong><?= $row['information'] ?></strong>
-    <br><br>
-    <?= $row['information'] ?>
+    <strong><h10>活動詳情內文：</h10></strong>
+    <p><?= $row['information'] ?></p>
   </div>
 </div>
 
@@ -128,7 +126,7 @@ $row = mysqli_fetch_assoc($result);
   <div class="info-table">
     <ul>
       <li>
-        <h4>預算範圍<br><span><?= $row['money'] ?></span></h4>
+        <h4>贊助類型<br><span><?= $row['support_type'] ?></span></h4>
       </li>
       <li>
         <h4>社團規模<br><span><?= $row['people'] ?></span></h4>
