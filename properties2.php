@@ -139,7 +139,7 @@ https://templatemo.com/tm-591-villa-agency
                 <div class='item'>
                     <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
                     <ul>
-                        <li>贊助範圍：<span>" . $row['sponsorship'] . "</span></li>
+                        <li>贊助類型：<span>" . $row['sponsorship'] . "</span></li>
                         <li>企業行業別：<span>" . $row['type'] . "</span></li>
                     </ul>
                     <div class='main-button'>
