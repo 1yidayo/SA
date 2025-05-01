@@ -57,7 +57,7 @@ https://templatemo.com/tm-591-villa-agency
             <ul class="nav">
                 <li><a href="ai.html" class="active">首頁</a></li>
                 <li><a href="properties3.php">瀏覽</a></li>
-                <li><a href="alumni contact.html">發布</a></li>
+                <li><a href="alumni contact.php">發布</a></li>
                 <li><a href="aihistory.php">發布歷史</a></li>
                 <li><a href="login.html">登出</a></li>
                 <li><a href="advanced search for ai.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
