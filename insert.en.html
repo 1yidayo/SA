@@ -33,7 +33,6 @@
     </div>
 
 
-
     <div class="contact-page section" style="margin-top: 20px;">
 
         <div class="row">
@@ -46,6 +45,28 @@
                         <input type="text" class="form-control" name="enterprise" id="enterprise" placeholder="請輸入企業全名">
                     </div>
                     <div class="mb-3">
+                        <label for="school" class="form-label"><b>企業名稱</b></label>
+                        <select class="form-select" aria-label="Default select example" name="money">
+                            <option selected="taipei">台北</option>
+                            <option value="newtaipei">新北</option>
+                            <option value="taoyuan">桃園</option>
+                            <option value="hsinchu">新竹</option>
+                            <option value="miaoli">苗栗</option>
+                            <option value="taichung">台中</option>
+                            <option value="changhua">彰化</option>
+                            <option value="yunlin">雲林</option>
+                            <option value="chiayi">嘉義</option>
+                            <option value="tainan">台南</option>
+                            <option value="kaohsiung">高雄</option>
+                            <option value="pingtung">屏東</option>
+                            <option value="taitung">台東</option>
+                            <option value="hualien">花蓮</option>
+                            <option value="yilan">宜蘭</option>
+                            <option value="nantou">南投</option>
+                            <option value="outlyingislands">離島</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="club_name" class="form-label"><b>行業別</b></label>
                         <input type="text" class="form-control" name="entype" id="entype" placeholder="請輸入行業別">
                     </div>
@@ -54,9 +75,51 @@
                         <input type="text" class="form-control" name="code" id="code" placeholder="請輸入統一編號">
                     </div>
                     <div class="mb-3">
-                        <label for="established_year" class="form-label"><b>聯絡方式</b></label>
-                        <input type="text" class="form-control" name="enins" id="enins" placeholder="請輸入聯絡方式">
+                        <label for="club_size" class="form-label"><b>負責人姓名與職稱</b></label>
+                        <input type="text" class="form-control" name="enname" id="enname" placeholder="請輸入負責人姓名與職稱">
                     </div>
+                    <div class="mb-3">
+                        <label for="established_year" class="form-label"><b>官方網站或社群連結</b></label>
+                        <input type="text" class="form-control" name="enins" id="enins" placeholder="請輸入官方網站或社群連結">
+                    </div>
+                    <div class="mb-3">
+                        <label for="established_year" class="form-label"><b>Email／聯絡電話</b></label>
+                        <input type="text" class="form-control" name="enphone" id="enphone" placeholder="請輸入Email／聯絡電話">
+                    </div>
+                    <div class="mb-3">
+                        <label for="collab_preferences" class="form-label"><b>合作偏好類型</b></label>
+                        <select class="form-select" multiple name="collab[]" aria-label="選擇合作偏好">
+                            <option value="skill">技藝性社團</option>
+                            <option value="entertainment">康樂性社團</option>
+                            <option value="academic">學術性社團</option>
+                            <option value="service">服務性社團</option>
+                            <option value="arts">文藝性社團</option>
+                            <option value="religion">宗教性社團</option>
+                            <option value="sports">體育／競技社團</option>
+                            <option value="events">學生活動／迎新／大型晚會</option>
+                            <option value="competition">公開比賽／競賽活動</option>
+                            <option value="marketing">社群經營／行銷類社團</option>
+                            <option value="no_preference">沒有特定偏好</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="sponsor_types" class="form-label"><b>可提供贊助類型</b></label>
+                        <select class="form-select" multiple name="sponsor[]" aria-label="選擇可提供的贊助類型">
+                            <option value="cash">現金贊助</option>
+                            <option value="products">產品贊助</option>
+                            <option value="coupons">折扣碼／優惠券</option>
+                            <option value="equipment">活動用品支援</option>
+                            <option value="venue">實體場地支援</option>
+                            <option value="staff">協辦人力支援</option>
+                            <option value="internship">實習機會／參訪名額</option>
+                            <option value="exposure">社群曝光／媒體報導</option>
+                            <option value="gifts">獎品／抽獎品項</option>
+                            <option value="speakers">講者／工作坊資源</option>
+                            <option value="other">其他（請填寫）</option>
+                        </select>
+                    </div>
+                    
                     <button class="btn btn-dark w-100" type="submit"><b>儲存</b></button>
                 </form>
             </div>
