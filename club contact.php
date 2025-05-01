@@ -182,6 +182,7 @@
                     <option value="$70,001以上">$70,001以上</option>
                   </select>
                 </div>
+                <br>
 
 
               
@@ -266,25 +267,7 @@
         </form>
       </div>
       <script>
-        (function () {
-          'use strict';
-
-          const form = document.querySelector('#contact-form');
-          const supportTypeSelect = document.getElementById('support_type');
-          const moneyGroup = document.getElementById('money-group');
-          const moneySelect = document.getElementById('money');
-
-          // 切換預算欄位顯示與必填狀態
-          function toggleMoneyField() {
-            if (supportTypeSelect.value === '金錢') {
-              moneyGroup.style.display = 'block';
-              moneySelect.setAttribute('required', 'required');
-            } else {
-              moneyGroup.style.display = 'none';
-              moneySelect.removeAttribute('required');
-              moneySelect.value = ""; // 清除選項
-            }
-          }
+        
 
           // 初始設定
           toggleMoneyField();

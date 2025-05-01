@@ -162,9 +162,7 @@ https://templatemo.com/tm-591-villa-agency
                         <li><span>" . $row['school'] . "</span></li>
                         <li><span>" . $row['club'] . "</span></li>
                         <br>
-                        <li>活動主題：<span>" . $row['title'] . "</span></li>
-                        <br>
-                        <li>社團規模：<span>" . $row['people'] . "</span></li>
+                        <li>預估規模：<span>" . $row['people'] . "</span></li>
                         <br>
                         <li>預算範圍：<span>" . $row['money'] . "</span></li>
                         <br>
