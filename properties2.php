@@ -131,26 +131,54 @@ https://templatemo.com/tm-591-villa-agency
 
       <div class="row properties-box">
       <?php
-      $link = mysqli_connect('localhost', 'root', '', 'SA');
-      $sql = "SELECT * FROM en_requirements";
-      $result = mysqli_query($link, $sql);
-      while($row = mysqli_fetch_assoc($result)){
-        echo "<div class='col-lg-4 col-md-6 align-self-center mb-30 properties-items sponsor-card' data-industry='" . $row['type'] . "' data-type='" . $row['sponsorship'] . "'>
-                <div class='item'>
-                    <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
-                    <ul>
-                        <li>贊助範圍：<span>" . $row['sponsorship'] . "</span></li>
-                        <li>企業行業別：<span>" . $row['type'] . "</span></li>
-                    </ul>
-                    <div class='main-button'>
-                        <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
-                    </div>
-                    <br>
-                    <li>發布時間：<span>" . $row['created_time'] . "</span></li>
-                </div>
-              </div>";
-      }
-    ?>
+
+$link = mysqli_connect('localhost', 'root', '', 'SA');
+
+$userID = $_SESSION['userID'] ?? null;
+
+$sql = "SELECT * FROM en_requirements";
+$result = mysqli_query($link, $sql);
+
+while($row = mysqli_fetch_assoc($result)){
+  $enrequirement_num = $row['enrequirement_num'];
+
+  // 判斷是否已收藏
+  $isFavorited = false;
+  if ($userID) {
+    $check_sql = "SELECT * FROM user_favorites WHERE userID='$userID' AND requirement_num='$enrequirement_num'";
+    $check_result = mysqli_query($link, $check_sql);
+    $isFavorited = mysqli_num_rows($check_result) > 0;
+  }
+
+  echo "<div class='col-lg-4 col-md-6 align-self-center mb-30 properties-items sponsor-card' data-industry='" . $row['type'] . "' data-type='" . $row['sponsorship'] . "'>
+          <div class='item'>
+              <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
+              <ul>
+                  <li>贊助範圍：<span>" . $row['sponsorship'] . "</span></li>
+                  <li>企業行業別：<span>" . $row['type'] . "</span></li>
+              </ul>
+              <div class='main-button mb-2'>
+                  <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
+              </div>
+              <li>發布時間：<span>" . $row['created_time'] . "</span></li><br>";
+
+  // 收藏按鈕（若已登入才顯示）
+  if ($userID) {
+    echo "<form action='toggle_favorite.php' method='POST'>
+            <input type='hidden' name='requirement_num' value='$enrequirement_num'>
+            <button type='submit' class='btn btn-sm " . ($isFavorited ? "btn-danger" : "btn-outline-primary") . "'>" .
+              ($isFavorited ? "取消收藏" : "加入收藏") .
+            "</button>
+          </form>";
+  } else {
+    echo "<div><small class='text-muted'>請先登入以加入收藏</small></div>";
+  }
+
+  echo "  </div>
+        </div>";
+}
+?>
+
 
 </div>
 
