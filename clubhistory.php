@@ -167,12 +167,15 @@ https://templatemo.com/tm-591-villa-agency
                         <li>預算範圍：<span>" . $row['money'] . "</span></li>
                         <br>
                         <li>活動類型：<span>" . $row['type'] . "</span></li>
+                        
                     </ul>
                     <div class='text-links'>
                         <a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "' class='btn btn-info btn-sm'>詳情</a>
                         <a href='editclubhistory.php?clrequirement_num=" . $row['clrequirement_num'] . "'>修改</a> |
                         <a href='deleteclubhistory.php?clrequirement_num=" . $row['clrequirement_num'] . "' onclick=\"return confirm('確定要刪除嗎？');\">刪除</a>
                     </div>
+                    <li>發布時間：<span>" . $row['created_time'] . "</span></li>
+
                 </div>
             </div>";
         }

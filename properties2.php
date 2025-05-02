@@ -145,6 +145,8 @@ https://templatemo.com/tm-591-villa-agency
                     <div class='main-button'>
                         <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
                     </div>
+                    <br>
+                    <li>發布時間：<span>" . $row['created_time'] . "</span></li>
                 </div>
               </div>";
       }
