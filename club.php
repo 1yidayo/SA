@@ -128,11 +128,15 @@ $row = mysqli_fetch_assoc($result);
       <li>
         <h4>贊助類型<br><span><?= $row['support_type'] ?></span></h4>
       </li>
+
+      <?php if ($row['support_type'] === '金錢'): ?>
       <li>
-        <h4>社團規模<br><span><?= $row['people'] ?></span></h4>
+        <h4>贊助範圍<br><span><?= $row['money'] ?? '未填寫' ?></span></h4>
       </li>
+      <?php endif; ?>
+
       <li>
-        <h4>社團成立年份<br><span>since <?= $row['year'] ?></span></h4>
+        <h4>活動預計規模<br><span><?= $row['people'] ?></span></h4>
       </li>
       <li>
         <h4>活動類型<br><span><?= $row['type'] ?></span></h4>
