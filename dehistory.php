@@ -1,33 +1,90 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <title>社團企業媒合平台</title>
+    <title>社團企業媒合平台</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-
-  <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
-  <link rel="stylesheet" href="assets/css/animate.css">
-  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-  <!--
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+<!--
 
 TemplateMo 591 villa agency
 
 https://templatemo.com/tm-591-villa-agency
 
 -->
-</head>
+
+    <style>
+        .properties-box {
+      display: flex;
+      flex-wrap: wrap; /* 允許換行 */
+      gap: 10px; /* 設定間距 */
+      justify-content: flex-start; /* 讓內容從左到右排列 */
+  }
+
+  .properties-items {
+      width: 30%; /* 保持與原本大小相近 */
+      min-width: 300px; /* 避免縮小過度 */
+  }
+
+  /* 讓小螢幕時調整排列 */
+  @media (max-width: 992px) {
+      .properties-items {
+          width: 45%; /* 平板改為兩欄 */
+      }
+  }
+
+  @media (max-width: 600px) {
+      .properties-items {
+          width: 100%; /* 手機版單欄 */
+      }
+  }
+
+      /* 確保每個歷史紀錄框高度一致 */
+      .uniform-box {
+          min-height: 430px; /* 根據內容調整，讓每筆高度一致 */
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+      }
+
+      /* 讓修改/刪除連結整齊排列 */
+      .text-links {
+          margin-top: 10px;
+          text-align: right;
+          font-size: 14px;
+      }
+
+      .text-links a {
+          text-decoration: none;
+          color: #333;
+          margin: 0 5px;
+      }
+
+      .text-links a:hover {
+          text-decoration: underline;
+      }
+
+
+    </style>
+
+
+  </head>
 
 <body>
 
@@ -45,31 +102,31 @@ https://templatemo.com/tm-591-villa-agency
   <!-- ***** Preloader End ***** -->
 
 
-
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
     <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li><a href="de.html" class="active">首頁</a></li>
-              <li><a href="properties4.php">瀏覽</a></li>
-              <li><a href="department society contact.html">發布</a></li>
-              <li><a href="dehistory.php">發布歷史</a></li>
-              <li><a href="login.html">登出</a></li>
-              <li><a href="advanced search for department society.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
-              </li>
-            </ul>
-            <a class='menu-trigger'>
-              <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
-          </nav>
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                            <li><a href="de.html" class="active">首頁</a></li>
+                            <li><a href="properties4.php">瀏覽</a></li>
+                            <li><a href="de_contact.php">發布</a></li>
+                            <li><a href="dehistory.php">發布歷史</a></li>
+                            <li><a href="self.de.php">個人頁面</a></li>
+                            <li><a href="login.html">登出</a></li>
+                            <li><a href="advanced search for department society.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
+                            </li>
+                        </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
         </div>
-      </div>
     </div>
   </header>
   <!-- ***** Header Area End ***** -->
@@ -78,96 +135,74 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <span class="breadcrumb"><a href="#">Home</a> / Contact Us</span>
-          <h3>發布歷史</h3>
+          <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
+          <h3>我的發布歷史</h3>
         </div>
       </div>
     </div>
   </div>
 
-  <?php
-session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-    exit();
-}
-$username = $_SESSION['username'];
-
-// 連接資料庫
-$conn = new mysqli('localhost', 'root', '', 'SA');
-$conn->set_charset("utf8");
-
-// 使用 JOIN 抓該使用者發布過的需求
-$sql = "
-    SELECT club_requirements.*
-    FROM club_requirements
-    JOIN users ON club_requirements.club = users.username
-    WHERE users.username = ?
-";
-$stmt = $conn->prepare($sql);
-if (!$stmt) {
-    die("Prepare failed: " . $conn->error);
-}
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();
-?>
-
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-  <meta charset="UTF-8">
-  <title>發布歷史紀錄</title>
-  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-</head>
-
-<body>
-  <div class="container mt-5">
-    <h2 class="mb-4">您的發布歷史</h2>
-
-    <?php if ($result->num_rows > 0): ?>
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <th>標題</th>
-            <th>學校</th>
-            <th>社團</th>
-            <th>預算</th>
-            <th>活動時間</th>
-            <th>操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php while($row = $result->fetch_assoc()): ?>
-            <tr>
-              <td><?= htmlspecialchars($row['title']) ?></td>
-              <td><?= htmlspecialchars($row['school']) ?></td>
-              <td><?= htmlspecialchars($row['club']) ?></td>
-              <td><?= htmlspecialchars($row['money']) ?></td>
-              <td><?= htmlspecialchars($row['event_time']) ?></td>
-              <td>
-                <a href="view_post.php?id=<?= $row['id'] ?>" class="btn btn-info btn-sm">查看</a>
-                <a href="delete_post.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('確定要刪除這筆資料嗎？')">刪除</a>
-              </td>
-            </tr>
-          <?php endwhile; ?>
-        </tbody>
-      </table>
-    <?php else: ?>
-      <p>您尚未發布任何需求。</p>
-    <?php endif; ?>
-  </div>
-</body>
-</html>
-
-
-  <footer>
+  <div class="section properties">;
     <div class="container">
-      <div class="col-lg-8">
-        <p style="text-align: left; font-weight: bold;">社團企業媒合平台</p>
+      <div class="row properties-box">
+        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
+    <?php
+
+
+        $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $sql = "SELECT * FROM club_requirements WHERE identityID = '{$_SESSION['identityID']}' ORDER BY created_at DESC";
+
+
+        $result = mysqli_query($link, $sql);
+        while($row = mysqli_fetch_assoc($result)){
+            echo "<div class='properties-items'>
+                <div class='item uniform-box'>
+                    <h4><a href='de.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . $row['title'] . "</a></h4>
+                    <ul>
+                        <li><span>" . $row['school'] . "</span></li>
+                        <li><span>" . $row['club'] . "</span></li>
+                        <br>
+                        <li>預估規模：<span>" . $row['people'] . "</span></li>
+                        <br>
+                        <li>預算範圍：<span>" . $row['money'] . "</span></li>
+                        <br>
+                        
+                    </ul>
+                    <div class='text-links'>
+                        <a href='de.php?clrequirement_num=" . $row['clrequirement_num'] . "' class='btn btn-info btn-sm'>詳情</a>
+                        <a href='editdehistory.php?clrequirement_num=" . $row['clrequirement_num'] . "'>修改</a> |
+                        <a href='deletedehistory.php?clrequirement_num=" . $row['clrequirement_num'] . "' onclick=\"return confirm('確定要刪除嗎？');\">刪除</a>
+                    </div>
+                    <li>發布時間：<span>" . $row['created_time'] . "</span></li>
+
+                </div>
+            </div>";
+        }
+
+    ?>
+</div>
+
+        </div>
+      <div class="row">
+        <!-- <div class="col-lg-12">
+          <ul class="pagination">
+            <li><a href="#">1</a></li>
+            <li><a class="is_active" href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">>></a></li>
+          </ul>
+        </div> -->
       </div>
     </div>
-  </footer>
+  </div>
+
+  <footer>
+        <div class="container">
+            <div class="col-lg-8">
+                <p style="text-align: left; font-weight: bold;">社團企業媒合平台</p>
+            </div>
+        </div>
+    </footer>
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
@@ -178,6 +213,5 @@ $result = $stmt->get_result();
   <script src="assets/js/counter.js"></script>
   <script src="assets/js/custom.js"></script>
 
-</body>
-
+  </body>
 </html>
