@@ -273,24 +273,44 @@
         </form>
       </div>
       <script>
-        
+  document.addEventListener('DOMContentLoaded', function () {
+    const supportTypeSelect = document.getElementById('support_type');
+    const moneyGroup = document.getElementById('money-group');
+    const form = document.getElementById('contact-form');
 
-          // 初始設定
-          toggleMoneyField();
+    function toggleMoneyField() {
+      if (supportTypeSelect.value === '金錢') {
+        moneyGroup.style.display = 'block';
+      } else {
+        moneyGroup.style.display = 'none';
+        document.getElementById('money').value = '';
+      }
+    }
 
-          // 綁定事件
-          supportTypeSelect.addEventListener('change', toggleMoneyField);
+    // 初始化
+    toggleMoneyField();
 
-          // 原本的 Bootstrap 驗證功能
-          form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          }, false);
-        })();
-      </script>
+    // 下拉變更
+    supportTypeSelect.addEventListener('change', toggleMoneyField);
+
+    // 表單送出驗證並提示錯誤欄位
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const firstInvalid = form.querySelector(':invalid');
+        if (firstInvalid) {
+          alert(firstInvalid.title || '請填寫所有必填欄位');
+          firstInvalid.focus();
+        }
+      }
+
+      form.classList.add('was-validated');
+    }, false);
+  });
+</script>
+
 
       
     </div>
