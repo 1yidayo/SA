@@ -76,10 +76,16 @@
         <div class="col-lg-8">
           <div class="main-content">
             <h2 class="mb-3"><?= $row['title'] ?></h2>
+            <div style="display: flex; align-items: center; gap: 10px;">
+  <h2 class="mb-3" style="margin: 0;"></h2>
+  <a href="author_profile.php<?= urlencode($row['author']) ?>" class="btn btn-sm btn-outline-primary">查看發布者個人檔案</a>
+</div>
+<br>
             <strong><h10>贊助需求內文：</h10></strong>
             <p><?= $row['information'] ?></p>
           </div>
         </div>
+        
         
         <!-- Right Side: Info Table -->
         <div class="col-lg-4">
