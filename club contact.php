@@ -21,6 +21,12 @@
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
   
+  <style>
+  #money-group {
+    display: none;
+  }
+</style>
+
 </head>
 
 <body>
@@ -308,6 +314,39 @@
   <script src="assets/js/owl-carousel.js"></script>
   <script src="assets/js/counter.js"></script>
   <script src="assets/js/custom.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const supportTypeSelect = document.getElementById('support_type');
+    const moneyGroup = document.getElementById('money-group');
+    const form = document.getElementById('contact-form');
+
+    function toggleMoneyField() {
+      if (supportTypeSelect.value === '金錢') {
+        moneyGroup.style.display = 'block';
+      } else {
+        moneyGroup.style.display = 'none';
+        // 如果不是金錢，清空選項避免誤送出
+        document.getElementById('money').value = '';
+      }
+    }
+
+    // 初始化
+    toggleMoneyField();
+
+    // 當下拉選單變更時，觸發判斷
+    supportTypeSelect.addEventListener('change', toggleMoneyField);
+
+    // 表單送出驗證
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+    }, false);
+  });
+</script>
+
 
 </body>
 
