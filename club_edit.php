@@ -20,11 +20,21 @@ $userID = $_SESSION['userID'];
 $link = mysqli_connect('localhost', 'root', '', 'SA');
 $sql = "UPDATE identity SET school = '$school', club = '$club', clsize = '$clsize', 
 clyear = '$clyear', cltype = '$cltype', clins = '$clins' WHERE userID = '$userID'";
+
 if (mysqli_query($link, $sql)) {
-    echo "更新成功";
+    // ✅ 成功就跳出 alert 並跳轉
+    echo "<script>
+        alert('更新成功');
+        window.location.href = 'http://localhost/SA/self.cl.php';
+    </script>";
 } else {
-    echo "更新失敗";
+    // ❌ 失敗也用 alert 顯示錯誤
+    echo "<script>
+        alert('更新失敗');
+        window.location.href = 'http://localhost/SA/self.cl.php';
+    </script>";
 }
 ?>
+
     </body>
 </html>
