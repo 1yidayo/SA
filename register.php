@@ -36,9 +36,12 @@
         mysqli_stmt_bind_param($stmt, "sss", $username, $password, $level);
 
         if (mysqli_stmt_execute($stmt)) {
-            echo "註冊成功";
+        
+            echo "<script>alert('註冊成功')</script>";
         } else {
-            echo "註冊失敗：" . mysqli_error($link);
+            
+            echo "<script>alert('註冊失敗！'); window.history.back();</script>";
+            
         }
     }
 ?>
