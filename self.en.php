@@ -108,7 +108,7 @@
               style="width: 150px; height: 150px; object-fit: cover;">
 
             <!-- 隱藏上傳表單 -->
-            <form id="uploadForm" action="cluploadimg.php" method="POST" enctype="multipart/form-data"
+            <form id="uploadForm" action="enuploadimg.php" method="POST" enctype="multipart/form-data"
               style="display: none;">
               <input type="file" id="fileInput" name="profile_img" accept="image/*"
                 onchange="document.getElementById('uploadForm').submit();">
