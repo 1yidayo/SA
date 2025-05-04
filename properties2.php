@@ -113,7 +113,7 @@ https://templatemo.com/tm-591-villa-agency
     </div>
   </div>
 
-  <div class="section properties">;
+  <div class="section properties">
     <div class="container">
     <div id="filter-buttons" class="text-center mb-4">
   <div id="industry-buttons" class="mb-2">

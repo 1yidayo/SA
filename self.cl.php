@@ -84,10 +84,11 @@ $link = mysqli_connect('localhost', 'root', '', 'SA');
         <div class='card shadow-sm p-4 mb-4'>
           <div class='mb-3'><label class='form-label text-muted'>學校名稱：</label><div class='fs-5 fw-bold'>{$row['school']}</div></div>
           <div class='mb-3'><label class='form-label text-muted'>社團名稱：</label><div class='fs-5 fw-bold'>{$row['club']}</div></div>
-          <div class='mb-3'><label class='form-label text-muted'>社團規模：</label><div class='fs-5 fw-bold'>{$row['clsize']}</div></div>
+          <div class='mb-3'><label class='form-label text-muted'>社團成員人數：</label><div class='fs-5 fw-bold'>{$row['clsize']}</div></div>
           <div class='mb-3'><label class='form-label text-muted'>社團成立年分：</label><div class='fs-5 fw-bold'>{$row['clyear']}</div></div>
           <div class='mb-3'><label class='form-label text-muted'>社團類型：</label><div class='fs-5 fw-bold'>{$row['cltype']}</div></div>
-          <div class='mb-3'><label class='form-label text-muted'>社群連結：</label><div><a class='fs-5' href='{$row['clins']}' target='_blank'>{$row['clins']}</a></div></div>
+          <div class='mb-3'><label class='form-label text-muted'>粉專或社群連結：</label><div><a class='fs-5' href='{$row['clins']}' target='_blank'>{$row['clins']}</a></div></div>
+          <div class='mb-3'><label class='form-label text-muted'>聯絡人電話：</label><div class='fs-5 fw-bold'>{$row['clphone']}</div></div>
         </div>";
         ?>
       </div>
