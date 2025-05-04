@@ -38,10 +38,10 @@
                                                                            
     $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-    $sql = "INSERT INTO club_requirements (identityID, money, people, school, club, year, type, region, event_time, support_type, upload, ins, title, information)
+    $sql = "INSERT INTO club_requirements (identityID, money, people, school, club, year, type, region, event_time, support_type, upload, ins, title, information, created_at)
 
         VALUES 
-        ('$identityID', '$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information')";
+        ('$identityID', '$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information', '$created_at')";
 
     if (mysqli_query($link, $sql)) {
         echo "<script>

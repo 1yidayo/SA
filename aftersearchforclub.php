@@ -138,13 +138,14 @@
         while($row = mysqli_fetch_assoc($result)){
             echo "<div class='properties-items'>
                 <div class='item'>
-                    <h4><a href='enterprise.php?requirement_num=" . $row['requirement_num'] . "'>" . $row['title'] . "</a></h4>
+                    <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
                     <ul>
+                        <li><span>" . $row['enterprise'] . "</span></li>
                         <li>贊助範圍：<span>" . $row['money'] . "</span></li>
                         <li>企業發展類型：<span>" . $row['type'] . "</span></li>
                     </ul>
                     <div class='main-button'>
-                        <a href='enterprise.php?requirement_num=" . $row['requirement_num'] . "'>了解活動詳情</a>
+                        <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
                     </div>
                 </div>
             </div>";

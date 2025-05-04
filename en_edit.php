@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <meta http-equiv="refresh" content="3; url=self.en.php">
+    <meta http-equiv="refresh" content="0; url=self.en.php">
 </head>
 <body>
 <?php
@@ -18,9 +18,10 @@ $userID = $_SESSION['userID'];
 $link = mysqli_connect('localhost', 'root', '', 'SAS');
 $sql = "UPDATE identity SET enterprise = '$enterprise', entype = '$entype', code = '$code', enins = '$enins' WHERE userID = '$userID'";
 if (mysqli_query($link, $sql)) {
-    echo "更新成功";
+   
+    echo "<script>alert('更新成功'); self.en.php();</script>";
 } else {
-    echo "更新失敗";
+    echo "<script>alert('更新失敗'); window.history.back();</script>";
 }
 ?>
     </body>
