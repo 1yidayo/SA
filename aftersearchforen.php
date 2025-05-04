@@ -70,27 +70,6 @@ https://templatemo.com/tm-591-villa-agency
   </div>
   <!-- ***** Preloader End ***** -->
 
-  <div class="sub-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-8">
-          <ul class="info">
-            <li><i class="fa fa-envelope"></i> info@company.com</li>
-            <li><i class="fa fa-map"></i> Sunny Isles Beach, FL 33160</li>
-          </ul>
-        </div>
-        <div class="col-lg-4 col-md-4">
-          <ul class="social-links">
-            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-            <li><a href="https://x.com/minthu" target="_blank"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
     <div class="container">
@@ -104,9 +83,11 @@ https://templatemo.com/tm-591-villa-agency
             <ul class="nav">
                             <li><a href="en.html" class="active">首頁</a></li>
                             <li><a href="properties.php">瀏覽</a></li>
-                            <li><a href="en contact.html">發布</a></li>
-                            <li><a href="advanced search for enterprise.html"><i
-                                        class="fa fa-calendar"></i>進階搜尋</a>
+                            <li><a href="en_contact.php">發布</a></li>
+                            <li><a href="enhistory.php">發布歷史</a></li>
+                            <li><a href="self.en.php">個人頁面</a></li>
+                            <li><a href="login.html">登出</a></li>
+                            <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
                         </ul>
             <a class='menu-trigger'>
