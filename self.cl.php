@@ -100,11 +100,17 @@ $link = mysqli_connect('localhost', 'root', '', 'SA');
           $imgPath = 'uploads/' . $img_filename;
           ?>
           <div class="text-center mb-4">
-            <img src="<?= $imgPath ?>" alt="Profile" class="rounded-circle shadow" style="width: 150px; height: 150px; object-fit: cover;">
+            <img src="<?= $imgPath ?>" alt="Profile" class="rounded-circle shadow"
+              style="width: 150px; height: 150px; object-fit: cover;">
             <form action="cluploadimg.php" method="POST" enctype="multipart/form-data" class="mt-2">
               <input type="file" name="profile_img" accept="image/*" class="form-control form-control-sm mb-2" required>
               <button type="submit" class="btn btn-sm btn-outline-primary">更換照片</button>
             </form>
+            <form action="cldeleteimg.php" method="POST">
+              <button type="submit" class="btn btn-sm btn-outline-danger mt-2"
+                onclick="return confirm('確定要刪除頭像嗎？');">刪除照片</button>
+            </form>
+
           </div>
 
           <h4 class="mb-3">我的收藏</h4>
@@ -150,4 +156,5 @@ $link = mysqli_connect('localhost', 'root', '', 'SA');
   <script src="assets/js/custom.js"></script>
 
 </body>
+
 </html>
