@@ -63,11 +63,13 @@ if ($row = mysqli_fetch_assoc($result)) {
         header("Location: sc.html");
         exit();
     } else {
-        echo "<h1>登入失敗（未知的身份）！</h1>";
+        echo "<script>alert('登入失敗（帳號或密碼錯誤）！'); window.history.back();</script>";
+
         exit();
     }
 } else {
-    echo "<h1>登入失敗（帳號或密碼錯誤）！</h1>";
+    echo "<script>alert('登入失敗（未知的身份）！'); window.history.back();</script>";
+
 }
 ?>
 </body>
