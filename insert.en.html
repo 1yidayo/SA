@@ -20,13 +20,50 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
     <style>
-        
-    input[type="checkbox"] {
-        width: 14px;
-        height: 14px;
-        margin-right: 4px;
-    }
-</style>
+        input[type="checkbox"] {
+            width: 14px;
+            height: 14px;
+            margin-right: 4px;
+        }
+
+        .btn-check+.btn-outline-dark {
+            border-radius: 0.5rem !important;
+            padding: 4px 10px;
+            margin: 0 !important;
+            /* 關鍵：清掉預設 margin */
+
+        }
+
+        .btn-group.flex-wrap {
+            gap: 4px 6px !important;
+            /* 垂直4px、水平6px */
+        }
+
+
+        .btn-check+.btn-outline-dark {
+            border-radius: 0.5rem !important;
+            padding: 4px 10px;
+            margin-bottom: -2px;
+        }
+
+        .btn-check+.btn-outline-dark {
+            border-radius: 0.5rem !important;
+            /* 補上圓角 */
+            padding: 6px 12px;
+            border: 1px solid #343a40;
+            /* 保持黑色邊框 */
+            color: #343a40;
+            background-color: white;
+        }
+
+        .btn-check:checked+.btn-outline-dark {
+            background-color: #eba04f;
+            /* 橘色背景 */
+            color: white;
+            border-color: #eba04f;
+            border-radius: 0.5rem !important;
+        }
+    </style>
 
     </style>
 </head>
@@ -56,7 +93,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="school" class="form-label"><b>企業所在地區</b></label>
-                        <select class="form-select" aria-label="Default select example" name="money">
+                        <select class="form-select" aria-label="Default select example" name="enplace">
                             <option selected="taipei">台北</option>
                             <option value="newtaipei">新北</option>
                             <option value="taoyuan">桃園</option>
@@ -78,7 +115,14 @@
                     </div>
                     <div class="mb-3">
                         <label for="club_name" class="form-label"><b>行業別</b></label>
-                        <input type="text" class="form-control" name="entype" id="entype" placeholder="請輸入行業別">
+                        <select class="form-select" aria-label="Default select example" name="entype">
+                            <option selected="產業與工程類">產業與工程類</option>
+                            <option value="商業與物流類">商業與物流類</option>
+                            <option value="專業與金融服務">專業與金融服務</option>
+                            <option value="教育與公共機構">教育與公共機構</option>
+                            <option value="文化與創意產業">文化與創意產業</option>
+                            <option value="其他">其他</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="club_size" class="form-label"><b>統一編號</b></label>
@@ -96,33 +140,71 @@
                         <label for="established_year" class="form-label"><b>Email／聯絡電話</b></label>
                         <input type="text" class="form-control" name="enphone" id="enphone" placeholder="請輸入Email／聯絡電話">
                     </div>
-                    <div class="mb-3" style="font-size: 0.9rem;">
-                        <label for="collab_preferences" class="form-label"><b>合作偏好類型</b></label><br>
-                        <input type="checkbox" name="collab[]" value="skill">學術性社團<br>
-                        <input type="checkbox" name="collab[]" value="leisure">休閒聯誼性社團<br>
-                        <input type="checkbox" name="collab[]" value="services">服務性社團<br>
-                        <input type="checkbox" name="collab[]" value="physical">體能性社團<br>
-                        <input type="checkbox" name="collab[]" value="arts">藝術性社團<br>
-                        <input type="checkbox" name="collab[]" value="music">音樂性社團<br>
-                        <input type="checkbox" name="collab[]" value="events"> 學生活動／迎新／大型晚會<br>
-                        <input type="checkbox" name="collab[]" value="competition"> 公開比賽／競賽活動<br>
-                        <input type="checkbox" name="collab[]" value="marketing"> 社群經營／行銷類社團<br>
-                        <input type="checkbox" name="collab[]" value="no_preference"> 沒有特定偏好<br>
-                    </div>
-                    
-                    
                     <div class="mb-3">
-                        <label for="sponsor_types" class="form-label"><b>可提供贊助類型</b></label>
-                        <select class="form-select" multiple name="sponsor[]" aria-label="選擇可提供的贊助類型">
-                            <option value="cash">金錢</option>
-                            <option value="products">物資</option>
-                            <option value="venue">場地</option>
-                            <option value="internship">實習機會</option>
-                            <option value="exposure">社群曝光／媒體報導</option>
-                            <option value="other">其他</option>
-                        </select>
+                        <label class="form-label"><b>合作偏好類型</b></label><br>
+                        <div class="btn-group flex-wrap" role="group" aria-label="Checkbox group"
+                            style="display: flex; gap: 6px;">
+                            <input type="checkbox" class="btn-check" id="skill" name="collab[]" value="skill">
+                            <label class="btn btn-outline-dark btn-sm" for="skill">學術性社團</label>
+
+                            <input type="checkbox" class="btn-check" id="leisure" name="collab[]" value="leisure">
+                            <label class="btn btn-outline-dark btn-sm" for="leisure">休閒聯誼性社團</label>
+
+                            <input type="checkbox" class="btn-check" id="services" name="collab[]" value="services">
+                            <label class="btn btn-outline-dark btn-sm" for="services">服務性社團</label>
+
+                            <input type="checkbox" class="btn-check" id="physical" name="collab[]" value="physical">
+                            <label class="btn btn-outline-dark btn-sm" for="physical">體能性社團</label>
+
+                            <input type="checkbox" class="btn-check" id="arts" name="collab[]" value="arts">
+                            <label class="btn btn-outline-dark btn-sm" for="arts">藝術性社團</label>
+
+                            <input type="checkbox" class="btn-check" id="music" name="collab[]" value="music">
+                            <label class="btn btn-outline-dark btn-sm" for="music">音樂性社團</label>
+
+                            <input type="checkbox" class="btn-check" id="events" name="collab[]" value="events">
+                            <label class="btn btn-outline-dark btn-sm" for="events">學生活動／迎新／大型晚會</label>
+
+                            <input type="checkbox" class="btn-check" id="competition" name="collab[]"
+                                value="competition">
+                            <label class="btn btn-outline-dark btn-sm" for="competition">公開比賽／競賽活動</label>
+
+                            <input type="checkbox" class="btn-check" id="marketing" name="collab[]" value="marketing">
+                            <label class="btn btn-outline-dark btn-sm" for="marketing">社群經營／行銷類社團</label>
+
+                            <input type="checkbox" class="btn-check" id="no_preference" name="collab[]"
+                                value="no_preference">
+                            <label class="btn btn-outline-dark btn-sm" for="no_preference">沒有特定偏好</label>
+                        </div>
+                    </div>
+
+
+
+                    <div class="mb-3">
+                        <label class="form-label"><b>可提供贊助類型</b></label><br>
+                        <div class="btn-group flex-wrap" role="group" aria-label="Checkbox group"
+                            style="display: flex; gap: 4px 6px;">
+                            <input type="checkbox" class="btn-check" id="sponsor_cash" name="sponsor[]" value="cash">
+                            <label class="btn btn-outline-dark btn-sm" for="sponsor_cash">金錢</label>
+                    
+                            <input type="checkbox" class="btn-check" id="sponsor_products" name="sponsor[]" value="products">
+                            <label class="btn btn-outline-dark btn-sm" for="sponsor_products">物資</label>
+                    
+                            <input type="checkbox" class="btn-check" id="sponsor_venue" name="sponsor[]" value="venue">
+                            <label class="btn btn-outline-dark btn-sm" for="sponsor_venue">場地</label>
+                    
+                            <input type="checkbox" class="btn-check" id="sponsor_internship" name="sponsor[]" value="internship">
+                            <label class="btn btn-outline-dark btn-sm" for="sponsor_internship">實習機會</label>
+                    
+                            <input type="checkbox" class="btn-check" id="sponsor_exposure" name="sponsor[]" value="exposure">
+                            <label class="btn btn-outline-dark btn-sm" for="sponsor_exposure">社群曝光／媒體報導</label>
+                    
+                            <input type="checkbox" class="btn-check" id="sponsor_other" name="sponsor[]" value="other">
+                            <label class="btn btn-outline-dark btn-sm" for="sponsor_other">其他</label>
+                        </div>
                     </div>
                     
+
                     <button class="btn btn-dark w-100" type="submit"><b>儲存</b></button>
                 </form>
             </div>
