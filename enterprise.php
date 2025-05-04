@@ -61,7 +61,7 @@
   <?php
   $enrequirement_num = $_GET['enrequirement_num'];
 
-  $link = mysqli_connect('localhost', 'root', '', 'SA');
+  $link = mysqli_connect('localhost', 'root', '', 'SAS');
   $sql = "SELECT * FROM en_requirements WHERE enrequirement_num = '$enrequirement_num'";
   $result = mysqli_query($link, $sql);
   $row = mysqli_fetch_assoc($result);
