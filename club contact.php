@@ -134,14 +134,22 @@
                      value="<?php echo $clyear; ?>" >
                   </div>
                 </div>
-
+                <div class="col-12">
+                  <div class="input-group">
+                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                      <span class="ms-1"><b>社團類型</b></span>
+                    </div>
+                    <input class="form-control" type="text" placeholder="請輸入社團類型"
+                      aria-label="請輸入社團類型" name="type" value="<?php echo $cltype; ?>" required title="必填欄位！">
+                  </div>
+                </div>
                 <div class="col-12">
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                       <span class="ms-1"><b>活動類型</b></span>
                     </div>
                     <input class="form-control" type="text" placeholder="請輸入活動類型(eg:表演型、學術型)"
-                      aria-label="Enter a City or Airport" name="type" value="<?php echo $cltype; ?>" required title="必填欄位！">
+                      aria-label="請輸入活動類型(eg:表演型、學術型)" name="type" value="" required title="必填欄位！">
                   </div>
                 </div>
             <div class="col-12">
