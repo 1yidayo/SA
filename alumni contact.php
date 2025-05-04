@@ -84,7 +84,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6" style="margin:auto">
-        <form id="contact-form" action="club_contact1.php" method="post" enctype="multipart/form-data">
+        <form id="contact-form" action="alumni_contact1.php" method="post" enctype="multipart/form-data">
 
 
         <?php
@@ -102,20 +102,8 @@
         <input type="hidden" name="identityID" value="<?php echo $_SESSION['identityID']; ?>">
 
         <div class="row g-3">
-              <div class="col-12">
-                <div class="col-12" id="money-group">
-                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>預算範圍</b></span>
-                  </div>
-                  <select class="form-select" aria-label="Default select example" name="money" id="money" title="必填欄位！">
-                    <option value="">請選擇</option>
-                    <option value="$20,000以下">$20,000以下</option>
-                    <option value="$20,001-$30,000">$20,001-$30,000</option>
-                    <option value="$30,001-$50,000">$30,001-$50,000</option>
-                    <option value="$50,001-$70,000">$50,001-$70,000</option>
-                    <option value="$70,001以上">$70,001以上</option>
-                  </select>
-                </div>
+          
+                
 
           <div class="row">
             <div class="col-12">
@@ -160,6 +148,7 @@
                     <input type="date" name="event_time" id="event_time" class="form-control" required>
                   </div>
                 </div>
+                <br>
 
                 <div class="col-12">
                 <div class="input-group">
@@ -175,6 +164,21 @@
                   </select>
                 </div>
               </div>
+              <br>
+              <div class="col-12" id="money-group">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>預算範圍</b></span>
+                  </div>
+                  <select class="form-select" aria-label="Default select example" name="money" id="money" title="必填欄位！">
+                    <option value="">請選擇</option>
+                    <option value="$20,000以下">$20,000以下</option>
+                    <option value="$20,001-$30,000">$20,001-$30,000</option>
+                    <option value="$30,001-$50,000">$30,001-$50,000</option>
+                    <option value="$50,001-$70,000">$50,001-$70,000</option>
+                    <option value="$70,001以上">$70,001以上</option>
+                  </select>
+                </div>
+                <br>
 
               <div class="col-12">
                   <div class="input-group">
@@ -188,6 +192,7 @@
                     </select>
                   </div>
                 </div>
+                <br>
 
             <div class="col-12">
               <div class="input-group">
