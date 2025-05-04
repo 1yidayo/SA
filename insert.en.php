@@ -16,7 +16,7 @@ $code = $_POST["code"];
 $enins = $_POST["enins"];
 $userID = $_SESSION['userID'];
 
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 
 $sql = "INSERT INTO identity(enterprise, entype, code, enins, userID) VALUES
  ('$enterprise', '$entype', '$code', '$enins', '$userID')";

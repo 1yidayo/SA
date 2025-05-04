@@ -88,7 +88,7 @@ https://templatemo.com/tm-591-villa-agency
                             <li><a href="aihistory.php">發布歷史</a></li>
                             <li><a href="self.ai.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
-                            <li><a href="advanced search for ai.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
+                            <li><a href="advanced search for ai.html"><i class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
                           </ul>
                     <a class='menu-trigger'>
@@ -118,7 +118,7 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row properties-box">
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
     <?php
-        $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $link = mysqli_connect('localhost', 'root', '', 'SAS');
         $sql = "SELECT * FROM club_requirements";
         $result = mysqli_query($link, $sql);
         while($row = mysqli_fetch_assoc($result)){

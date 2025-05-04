@@ -15,7 +15,7 @@
     $level = $_POST['level'] ?? '';
 
     // 連接 MySQL
-    $link = mysqli_connect('localhost', 'root', '', 'SA');
+    $link = mysqli_connect('localhost', 'root', '', 'SAS');
     if (!$link) {
         die("資料庫連接失敗：" . mysqli_connect_error());
     }

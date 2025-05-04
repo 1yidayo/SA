@@ -111,13 +111,13 @@ https://templatemo.com/tm-591-villa-agency
                     
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                            <li><a href="cl.html" class="active">首頁</a></li>
-                            <li><a href="properties2.php">瀏覽</a></li>
-                            <li><a href="club contact.php">發布</a></li>
-                            <li><a href="clubhistory.php">發布歷史</a></li>
-                            <li><a href="self.cl.php">個人頁面</a></li>
-                            <li><a href="first.html">登出</a></li>
-                            <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</a>
+                            <li><a href="de.html" class="active">首頁</a></li>
+                            <li><a href="properties4.php">瀏覽</a></li>
+                            <li><a href="de_contact.php">發布</a></li>
+                            <li><a href="dehistory.php">發布歷史</a></li>
+                            <li><a href="self.de.php">個人頁面</a></li>
+                            <li><a href="login.html">登出</a></li>
+                            <li><a href="advanced search for department society.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
                             </li>
                         </ul>
                     <a class='menu-trigger'>
@@ -138,7 +138,7 @@ if (!$link) {
     die("Connection failed: " . mysqli_connect_error());
 }
 if (!isset($_SESSION['identityID'])) {
-    header("Location: first.html");
+    header("Location: login.html");
     exit();
 }
 
@@ -150,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $old = mysqli_fetch_assoc($result_old);
 
     if (!$old) {
-        header("Location: clubhistory.php");
+        header("Location: dehistory.php");
         exit();
     }
 
@@ -181,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             WHERE clrequirement_num = $num AND identityID = '{$_SESSION['identityID']}'";
 
     mysqli_query($link, $sql);
-    header("Location: clubhistory.php");
+    header("Location: dehistory.php");
     exit();
 } else if (isset($_GET['clrequirement_num'])) {
     $num = intval($_GET['clrequirement_num']);
@@ -189,11 +189,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = mysqli_query($link, $sql);
     $row = mysqli_fetch_assoc($result);
     if (!$row) {
-        header("Location: clubhistory.php");
+        header("Location: dehistory.php");
         exit();
     }
 } else {
-    header("Location: clubhistory.php");
+    header("Location: dehistory.php");
     exit();
 }
 ?>
@@ -212,7 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="container mt-5">
     <h3 class="mb-4">編輯贊助需求</h3>
-    <form method="POST" action="editclubhistory.php">
+    <form method="POST" action="editdehistory.php">
 
         <input type="hidden" name="clrequirement_num" value="<?= $row['clrequirement_num'] ?>">
 
@@ -271,7 +271,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <button type="submit" class="btn btn-primary">更新</button>
-        <a href="clubhistory.php" class="btn btn-secondary">取消</a>
+        <a href="dehistory.php" class="btn btn-secondary">取消</a>
     </form>
 </div>
 

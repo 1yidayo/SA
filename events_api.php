@@ -1,7 +1,7 @@
 
 <?php
 session_start();
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 mysqli_set_charset($link, "utf8");
 
 $input = json_decode(file_get_contents('php://input'), true);

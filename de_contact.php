@@ -55,7 +55,7 @@
                             <li><a href="dehistory.php">發布歷史</a></li>
                             <li><a href="self.de.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
-                            <li><a href="advanced search for department society.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
+                            <li><a href="advanced search for department society.html"><i class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
                         </ul>
             <a class='menu-trigger'>
@@ -89,7 +89,7 @@
 
         <?php
         session_start();
-        $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $link = mysqli_connect('localhost', 'root', '', 'SAS');
         
         $sql = "SELECT * FROM identity WHERE identityID = '" . $_SESSION['identityID'] . "'";
         $result = mysqli_query($link, $sql);
@@ -121,7 +121,7 @@
                 <div class="col-12">
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>社團成立年份</b></span>
+                      <span class="ms-1"><b>系學會成立年份</b></span>
                     </div>
                     <input class="form-control" type="text" placeholder="請輸入年份" aria-label="請輸入年份" name="deyear"
                      value="<?php echo $deyear; ?>" >

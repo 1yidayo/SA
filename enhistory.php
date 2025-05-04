@@ -88,7 +88,7 @@ https://templatemo.com/tm-591-villa-agency
                             <li><a href="enhistory.php">發布歷史</a></li>
                             <li><a href="self.en.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
-                            <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
+                            <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
                         </ul>
                     <a class='menu-trigger'>
@@ -121,7 +121,7 @@ https://templatemo.com/tm-591-villa-agency
         session_start();
         $identityID = $_SESSION['identityID'];
 
-        $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $link = mysqli_connect('localhost', 'root', '', 'SAS');
         $sql = "SELECT * FROM en_requirements WHERE CAST(identityID AS CHAR) = '$identityID'";
 
 

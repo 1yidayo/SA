@@ -19,6 +19,16 @@
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
+    <style>
+        
+    input[type="checkbox"] {
+        width: 14px;
+        height: 14px;
+        margin-right: 4px;
+    }
+</style>
+
+    </style>
 </head>
 
 <body>
@@ -86,22 +96,20 @@
                         <label for="established_year" class="form-label"><b>Email／聯絡電話</b></label>
                         <input type="text" class="form-control" name="enphone" id="enphone" placeholder="請輸入Email／聯絡電話">
                     </div>
-                    <div class="mb-3">
-                        <label for="collab_preferences" class="form-label"><b>合作偏好類型</b></label>
-                        <select class="form-select" multiple name="collab[]" aria-label="選擇合作偏好">
-                            <option value="skill">技藝性社團</option>
-                            <option value="entertainment">康樂性社團</option>
-                            <option value="academic">學術性社團</option>
-                            <option value="service">服務性社團</option>
-                            <option value="arts">文藝性社團</option>
-                            <option value="religion">宗教性社團</option>
-                            <option value="sports">體育／競技社團</option>
-                            <option value="events">學生活動／迎新／大型晚會</option>
-                            <option value="competition">公開比賽／競賽活動</option>
-                            <option value="marketing">社群經營／行銷類社團</option>
-                            <option value="no_preference">沒有特定偏好</option>
-                        </select>
+                    <div class="mb-3" style="font-size: 0.9rem;">
+                        <label for="collab_preferences" class="form-label"><b>合作偏好類型</b></label><br>
+                        <input type="checkbox" name="collab[]" value="skill">學術性社團<br>
+                        <input type="checkbox" name="collab[]" value="leisure">休閒聯誼性社團<br>
+                        <input type="checkbox" name="collab[]" value="services">服務性社團<br>
+                        <input type="checkbox" name="collab[]" value="physical">體能性社團<br>
+                        <input type="checkbox" name="collab[]" value="arts">藝術性社團<br>
+                        <input type="checkbox" name="collab[]" value="music">音樂性社團<br>
+                        <input type="checkbox" name="collab[]" value="events"> 學生活動／迎新／大型晚會<br>
+                        <input type="checkbox" name="collab[]" value="competition"> 公開比賽／競賽活動<br>
+                        <input type="checkbox" name="collab[]" value="marketing"> 社群經營／行銷類社團<br>
+                        <input type="checkbox" name="collab[]" value="no_preference"> 沒有特定偏好<br>
                     </div>
+                    
                     
                     <div class="mb-3">
                         <label for="sponsor_types" class="form-label"><b>可提供贊助類型</b></label>

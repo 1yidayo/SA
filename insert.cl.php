@@ -16,12 +16,14 @@ $clsize = $_POST["clsize"];
 $clyear = $_POST["clyear"];
 $cltype = $_POST["cltype"];
 $clins = $_POST["clins"];
+$clphone = $_POST["clphone"];
 $userID = $_SESSION['userID'];
 
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-$sql = "INSERT INTO identity(school, club, clsize, clyear, cltype, clins, userID) VALUES
- ('$school', '$club', '$clsize', '$clyear', '$cltype', '$clins', '$userID')";
+$sql = "INSERT INTO identity (school, club, clsize, clyear, cltype, clins, clphone, userID)
+        VALUES ('$school', '$club', '$clsize', '$clyear', '$cltype', '$clins', '$clphone', '$userID')";
+
 
 if (empty($school) || empty($club) || empty($clsize) || empty($clyear) || empty($cltype) || empty($clins)) {
     echo "<script>alert('請填寫完整所有欄位！'); window.history.back();</script>";

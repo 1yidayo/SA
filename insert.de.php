@@ -17,7 +17,7 @@ $deyear = $_POST["deyear"];
 $deins = $_POST["deins"];
 $userID = $_SESSION['userID'];
 
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 
 $sql = "INSERT INTO identity(deschool, dename, desize, deyear, deins, userID) VALUES
  ('$deschool', '$dename', '$desize', '$deyear', '$deins', '$userID')";

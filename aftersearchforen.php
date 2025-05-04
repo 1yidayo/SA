@@ -106,7 +106,7 @@ https://templatemo.com/tm-591-villa-agency
                             <li><a href="properties.php">瀏覽</a></li>
                             <li><a href="en contact.html">發布</a></li>
                             <li><a href="advanced search for enterprise.html"><i
-                                        class="fa fa-calendar"></i>進階搜尋</ruby></a>
+                                        class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
                         </ul>
             <a class='menu-trigger'>
@@ -136,7 +136,7 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row properties-box">
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
         <?php
-        $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
         if (!$link) {
             die("Database connection failed: " . mysqli_connect_error());

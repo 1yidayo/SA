@@ -62,7 +62,7 @@ https://templatemo.com/tm-591-villa-agency
                             <li><a href="clubhistory.php">發布歷史</a></li>
                             <li><a href="self.cl.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
-                            <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
+                            <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
                         </ul> 
                     <a class='menu-trigger'>
@@ -109,7 +109,7 @@ while($row = mysqli_fetch_assoc($result)){
         <?php
 $requirement_num = $_GET['clrequirement_num'];
 
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 $sql = "SELECT * FROM club_requirements WHERE clrequirement_num = '$clrequirement_num'";
 $result = mysqli_query($link, $sql);
 $row = mysqli_fetch_assoc($result);  

@@ -75,7 +75,7 @@
         <?php
         session_start();
         $userID = $_SESSION['userID'];
-        $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
         $sql = "SELECT * FROM identity WHERE userID = '$userID'";
         $result = mysqli_query($link, $sql);

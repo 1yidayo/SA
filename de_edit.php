@@ -16,7 +16,7 @@ $deyear = $_POST['deyear'];
 $deins = $_POST['deins'];
 $userID = $_SESSION['userID'];
 
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 $sql = "UPDATE identity SET deschool = '$deschool', dename = '$dename', desize = '$desize', 
 deyear = '$deyear', deins = '$deins' WHERE userID = '$userID'";
 if (mysqli_query($link, $sql)) {

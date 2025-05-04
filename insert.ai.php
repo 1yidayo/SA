@@ -13,7 +13,7 @@ $name = $_POST["name"];
 $ainins = $_POST["ainins"];
 $userID = $_SESSION['userID'];
 
-$conn = mysqli_connect('localhost', 'root', '', 'SA');
+$conn = mysqli_connect('localhost', 'root', '', 'SAS');
 
 if (!$conn) {
     die("連線失敗：" . mysqli_connect_error());

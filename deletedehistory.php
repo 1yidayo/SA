@@ -117,7 +117,7 @@ https://templatemo.com/tm-591-villa-agency
                             <li><a href="dehistory.php">發布歷史</a></li>
                             <li><a href="self.de.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
-                            <li><a href="advanced search for department society.html"><i class="fa fa-calendar"></i>進階搜尋</a>
+                            <li><a href="advanced search for department society.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
                             </li>
                         </ul>
                     <a class='menu-trigger'>
@@ -130,71 +130,33 @@ https://templatemo.com/tm-591-villa-agency
     </div>
   </header>
   <!-- ***** Header Area End ***** -->
+   <?php
+session_start();
+$link = mysqli_connect("localhost", "root", "", "SAS");
 
-  <div class="page-heading header-text">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
-          <h3>我的發布歷史</h3>
-        </div>
-      </div>
-    </div>
-  </div>
+// 檢查是否有傳入 clrequirement_num
+if (isset($_GET['clrequirement_num'])) {
+    $num = intval($_GET['clrequirement_num']);
 
-  <div class="section properties">;
-    <div class="container">
-      <div class="row properties-box">
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
-    <?php
+    // 確保是自己的資料才能刪除
+    $identityID = $_SESSION['identityID'];
+    $sql = "DELETE FROM club_requirements WHERE clrequirement_num = $num AND identityID = '$identityID'";
 
-
-        $link = mysqli_connect('localhost', 'root', '', 'SAS');
-        $sql = "SELECT * FROM club_requirements WHERE identityID = '{$_SESSION['identityID']}' ORDER BY created_at DESC";
+    if (mysqli_query($link, $sql)) {
+        header("Location: dehistory.php");
+        exit;
+    } else {
+        echo "刪除失敗：" . mysqli_error($link);
+    }
+} else {
+    echo "未提供要刪除的資料編號";
+}
+?>
 
 
-        $result = mysqli_query($link, $sql);
-        while($row = mysqli_fetch_assoc($result)){
-            echo "<div class='properties-items'>
-                <div class='item uniform-box'>
-                    <h4><a href='de.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . $row['title'] . "</a></h4>
-                    <ul>
-                        <li><span>" . $row['school'] . "</span></li>
-                        <li><span>" . $row['club'] . "</span></li>
-                        <br>
-                        <li>預估規模：<span>" . $row['people'] . "</span></li>
-                        <br>
-                        <li>預算範圍：<span>" . $row['money'] . "</span></li>
-                        <br>
-                        
-                    </ul>
-                    <div class='text-links'>
-                        <a href='de.php?clrequirement_num=" . $row['clrequirement_num'] . "' class='btn btn-info btn-sm'>詳情</a>
-                        <a href='editdehistory.php?clrequirement_num=" . $row['clrequirement_num'] . "'>修改</a> |
-                        <a href='deletedehistory.php?clrequirement_num=" . $row['clrequirement_num'] . "' onclick=\"return confirm('確定要刪除嗎？');\">刪除</a>
-                    </div>
-                    <li>發布時間：<span>" . $row['created_time'] . "</span></li>
 
-                </div>
-            </div>";
-        }
 
-    ?>
-</div>
 
-        </div>
-      <div class="row">
-        <!-- <div class="col-lg-12">
-          <ul class="pagination">
-            <li><a href="#">1</a></li>
-            <li><a class="is_active" href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">>></a></li>
-          </ul>
-        </div> -->
-      </div>
-    </div>
-  </div>
 
   <footer>
         <div class="container">

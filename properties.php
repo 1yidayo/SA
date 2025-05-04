@@ -105,7 +105,7 @@ https://templatemo.com/tm-591-villa-agency
                             <li><a href="enhistory.php">發布歷史</a></li>
                             <li><a href="self.en.php">個人頁面</a></li>
                             <li><a href="first.html">登出</a></li>
-                            <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
+                            <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
                         </ul>
                     <a class='menu-trigger'>
@@ -151,7 +151,7 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row properties-box">
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
     <?php
-        $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $link = mysqli_connect('localhost', 'root', '', 'SAS');
         $filter = isset($_GET['filter']) ? $_GET['filter'] : 'all';
 
         if ($filter === 'all') {

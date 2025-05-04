@@ -48,17 +48,24 @@
                         <input type="text" class="form-control" name="club" id="club" placeholder="請輸入社團名稱">
                     </div>
                     <div class="mb-3">
-                        <label for="club_size" class="form-label"><b>社團成員人數</b></label>
+                        <label for="club_size" class="form-label" type="number"><b>社團成員人數</b></label>
                         <input type="text" class="form-control" name="clsize" id="clsize" placeholder="請輸入社團成員人數">
                     </div>
                     <div class="mb-3">
-                        <label for="established_year" class="form-label"><b>社團成立年份</b></label>
+                        <label for="established_year" class="form-label" type="number" min="1900"><b>社團成立年份</b></label>
                         <input type="text" class="form-control" name="clyear" id="clyear"
                             placeholder="請輸入社團成立年份">
                     </div>
                     <div class="mb-3">
                         <label for="club_type" class="form-label"><b>社團類型</b></label>
-                        <input type="text" class="form-control" name="cltype" id="cltype" placeholder="請輸入社團類型">
+                        <select class="form-select" aria-label="Default select example" name="cltype">
+                            <option value="academic" selected>學術性社團</option>
+                            <option value="leisure">休閒聯誼性社團</option>
+                            <option value="services">服務性社團</option>
+                            <option value="physical">體能性社團</option>
+                            <option value="arts">藝術性社團</option>
+                            <option value="music">音樂性社團</option>
+                        </select><br>
                     </div>
                     <div class="mb-3">
                         <label for="social_link" class="form-label"><b>粉專或社群連結</b></label>
@@ -66,9 +73,9 @@
                             placeholder="請輸入粉專或社群連結">
                     </div>
                     <div class="mb-3">
-                        <label for="social_link" class="form-label"><b>聯絡人資訊</b></label>
+                        <label for="social_link" class="form-label" type="tel"><b>聯絡人電話</b></label>
                         <input type="text" class="form-control" name="clphone" id="clphone"
-                            placeholder="請輸入聯絡人資訊 eg:Gmail">
+                            placeholder="請輸入聯絡人電話">
                     </div>
                     <button class="btn btn-dark w-100" type="submit"><b>新增</b></button>
             </div>
