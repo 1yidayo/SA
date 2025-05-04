@@ -117,44 +117,69 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row properties-box">
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
         <?php
-        $link = mysqli_connect('localhost', 'root', '', 'SAS');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
+if (!$link) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
 
-        if (!$link) {
-            die("Database connection failed: " . mysqli_connect_error());
-        }
+// 取得表單資料，並去除多餘空白
+$school = trim(mysqli_real_escape_string($link, $_POST['school']));
+$club = trim(mysqli_real_escape_string($link, $_POST['club']));
+$support_type = trim(mysqli_real_escape_string($link, $_POST['support_type']));
 
-        $people = mysqli_real_escape_string($link, $_POST['people']);
-    
-        $school = mysqli_real_escape_string($link, $_POST['school']);
+// 動態產生 WHERE 條件
+$conditions = array();
 
-        $sql = "select * from club_requirements where  people = '$people' and school = '$school'";
+if (!empty($school)) {
+    $conditions[] = "school LIKE '%$school%'";
+}
+if (!empty($club)) {
+    $conditions[] = "club LIKE '%$club%'";
+}
+if (!empty($support_type)) {
+    $conditions[] = "support_type = '$support_type'";
+}
 
-        $result = mysqli_query($link, $sql);
+// 建構完整 SQL
+$sql = "SELECT * FROM club_requirements";
+if (count($conditions) > 0) {
+    $sql .= " WHERE " . implode(" AND ", $conditions);
+}
 
-        if (!$result) {
-            die("Query failed: " . mysqli_error($link));
-        }
+$result = mysqli_query($link, $sql);
+if (!$result) {
+    die("Query failed: " . mysqli_error($link));
+}
 
-        if (mysqli_num_rows($result) == 0) {
-            echo "<p>未找到符合的活動</p>";
-        }
+if (mysqli_num_rows($result) == 0) {
+    echo "<p>未找到符合的活動</p>";
+}
 
-        while($row = mysqli_fetch_assoc($result)){
-            echo "<div class='properties-items'>
-                <div class='item'>
-                    <h4><a href='club.php?requirement_num=" . $row['requirement_num'] . "'>" . $row['title'] . "</a></h4>
-                    <ul>
-                        <li>社團規模：<span>" . $row['people'] . "</span></li>
-                        <li>預算範圍：<span>" . $row['money'] . "</span></li>
-                        <li>活動類型：<span>" . $row['type'] . "</span></li>
-                    </ul>
-                    <div class='main-button'>
-                        <a href='club.php?requirement_num=" . $row['requirement_num'] . "'>了解活動詳情</a>
-                    </div>
-                </div>
-            </div>";
-        }
-    ?>
+// 以下保持你的 while 迴圈不變...
+while ($row = mysqli_fetch_assoc($result)) {
+    echo "<div class='properties-items'>
+        <div class='item'>
+            <h4><a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . $row['title'] . "</a></h4>
+            <ul>
+                <li><span>" . $row['school'] . "</span></li>
+                <li><span>" . $row['club'] . "</span></li>
+                <br><br>
+                <li>社團活動規模：<span>" . $row['people'] . "</span></li>
+                <br>
+                <li>活動類型：<span>" . $row['type'] . "</span></li>
+                <br>
+                <li>需要贊助類型：<span>" . $row['support_type'] . "</span></li>
+            </ul>
+            <div class='main-button'>
+                <a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>了解活動詳情</a>
+            </div>
+            <br>
+            <li>發布時間：<span>" . $row['created_time'] . "</span></li>
+        </div>
+    </div>";
+}
+?>
+
 
         </div>
       </div>
