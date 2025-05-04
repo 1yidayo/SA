@@ -22,13 +22,13 @@ $sql = "UPDATE identity SET school = '$school', club = '$club', clsize = '$clsiz
 clyear = '$clyear', cltype = '$cltype', clins = '$clins' WHERE userID = '$userID'";
 
 if (mysqli_query($link, $sql)) {
-    // ✅ 成功就跳出 alert 並跳轉
+    // 成功就跳出 alert 並跳轉
     echo "<script>
         alert('更新成功');
         window.location.href = 'http://localhost/SA/self.cl.php';
     </script>";
 } else {
-    // ❌ 失敗也用 alert 顯示錯誤
+    // 失敗也用 alert 顯示錯誤
     echo "<script>
         alert('更新失敗');
         window.location.href = 'http://localhost/SA/self.cl.php';

@@ -96,22 +96,39 @@ $link = mysqli_connect('localhost', 'root', '', 'SA');
       <div class="col-lg-6">
         <div class="info-table">
           <?php
-          $img_filename = isset($row['profile_img']) && !empty($row['profile_img']) ? $row['profile_img'] : 'default-profile.png';
-          $imgPath = 'uploads/' . $img_filename;
+          $imgPath = (!empty($row['profile_img']) && $row['profile_img'] !== 'default-profile.png')
+            ? 'uploads/' . $row['profile_img']
+            : 'uploads/default-profile.png';
+          $isDefault = (basename($imgPath) === 'default-profile.png');
           ?>
+
           <div class="text-center mb-4">
-            <img src="<?= $imgPath ?>" alt="Profile" class="rounded-circle shadow"
+          <img src="<?= $imgPath . '?t=' . time() ?>" alt="Profile" class="rounded-circle shadow"
               style="width: 150px; height: 150px; object-fit: cover;">
-            <form action="cluploadimg.php" method="POST" enctype="multipart/form-data" class="mt-2">
-              <input type="file" name="profile_img" accept="image/*" class="form-control form-control-sm mb-2" required>
-              <button type="submit" class="btn btn-sm btn-outline-primary">更換照片</button>
-            </form>
-            <form action="cldeleteimg.php" method="POST">
-              <button type="submit" class="btn btn-sm btn-outline-danger mt-2"
-                onclick="return confirm('確定要刪除頭像嗎？');">刪除照片</button>
+
+            <!-- 隱藏上傳表單 -->
+            <form id="uploadForm" action="cluploadimg.php" method="POST" enctype="multipart/form-data"
+              style="display: none;">
+              <input type="file" id="fileInput" name="profile_img" accept="image/*"
+                onchange="document.getElementById('uploadForm').submit();">
             </form>
 
+            <!-- 按鈕區塊 -->
+            <div class="mt-2">
+              <?php if ($isDefault): ?>
+                <button class="btn btn-sm btn-outline-primary"
+                  onclick="document.getElementById('fileInput').click();">上傳照片</button>
+              <?php else: ?>
+                <button class="btn btn-sm btn-outline-primary me-2"
+                  onclick="document.getElementById('fileInput').click();">更換照片</button>
+                <form action="cldeleteimg.php" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-sm btn-outline-danger"
+                    onclick="return confirm('確定要刪除頭像嗎？');">刪除照片</button>
+                </form>
+              <?php endif; ?>
+            </div>
           </div>
+
 
           <h4 class="mb-3">我的收藏</h4>
           <ul class="list-group list-group-flush">

@@ -117,7 +117,7 @@ https://templatemo.com/tm-591-villa-agency
                             <li><a href="dehistory.php">發布歷史</a></li>
                             <li><a href="self.de.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
-                            <li><a href="advanced search for department society.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
+                            <li><a href="advanced search for department society.html"><i class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
                         </ul>
                     <a class='menu-trigger'>
