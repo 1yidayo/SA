@@ -205,7 +205,7 @@ while($row = mysqli_fetch_assoc($result)){
     </footer>
 
     <?php
-    $link = mysqli_connect('localhost', 'root', '', 'SA');
+    $link = mysqli_connect('localhost', 'root', '', 'SAS');
     $sql = "SELECT DISTINCT type FROM en_requirements WHERE type IS NOT NULL AND type != ''";
     $result = mysqli_query($link, $sql);
 
