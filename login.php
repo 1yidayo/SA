@@ -13,7 +13,7 @@ $username = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
 $level = $_POST['level'] ?? '';
 
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 
 $sql = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
 $result = mysqli_query($link, $sql);
