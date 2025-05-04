@@ -93,133 +93,68 @@
         ?>
       </div>
 
-      <!-- 右邊行事曆 -->
+      <!-- 右側圖片與收藏 -->
       <div class="col-lg-6">
-        <h2 class="mb-4">行事曆</h2>
-        <div id="calendar"></div>
-      </div>
-    </div>
-  </div>
+        <div class="info-table">
+          <?php
+          $imgPath = (!empty($row['profile_img']) && $row['profile_img'] !== 'default-profile.png')
+            ? 'uploads/' . $row['profile_img']
+            : 'uploads/default-profile.png';
+          $isDefault = (basename($imgPath) === 'default-profile.png');
+          ?>
 
-  <!-- FullCalendar Modal -->
-  <div class="modal fade" id="eventModal" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="eventModalLabel"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          <div class="text-center mb-4">
+          <img src="<?= $imgPath . '?t=' . time() ?>" alt="Profile" class="rounded-circle shadow"
+              style="width: 150px; height: 150px; object-fit: cover;">
+
+            <!-- 隱藏上傳表單 -->
+            <form id="uploadForm" action="cluploadimg.php" method="POST" enctype="multipart/form-data"
+              style="display: none;">
+              <input type="file" id="fileInput" name="profile_img" accept="image/*"
+                onchange="document.getElementById('uploadForm').submit();">
+            </form>
+
+            <!-- 按鈕區塊 -->
+            <div class="mt-2">
+              <?php if ($isDefault): ?>
+                <button class="btn btn-sm btn-outline-primary"
+                  onclick="document.getElementById('fileInput').click();">上傳照片</button>
+              <?php else: ?>
+                <button class="btn btn-sm btn-outline-primary me-2"
+                  onclick="document.getElementById('fileInput').click();">更換照片</button>
+                <form action="cldeleteimg.php" method="POST" style="display: inline;">
+                  <button type="submit" class="btn btn-sm btn-outline-danger"
+                    onclick="return confirm('確定要刪除頭像嗎？');">刪除照片</button>
+                </form>
+              <?php endif; ?>
+            </div>
+          </div>
+
+
+          <h4 class="mb-3">我的收藏</h4>
+          <ul class="list-group list-group-flush">
+            <?php
+            $fav_sql = "SELECT cr.requirement_num, cr.title, cr.information 
+                        FROM user_favorites uf
+                        JOIN club_requirements cr ON uf.requirement_num = cr.requirement_num
+                        WHERE uf.userID = '$userID'";
+            $fav_result = mysqli_query($link, $fav_sql);
+            if ($fav_result && mysqli_num_rows($fav_result) > 0) {
+              while ($fav_row = mysqli_fetch_assoc($fav_result)) {
+                echo "<li class='list-group-item'>
+                        <strong>{$fav_row['title']}</strong><br>
+                        <small class='text-muted'>{$fav_row['information']}</small>
+                      </li>";
+              }
+            } else {
+              echo "<li class='list-group-item text-muted'>目前尚無收藏</li>";
+            }
+            ?>
+          </ul>
         </div>
-        <div class="modal-body" id="modal-body-content"></div>
       </div>
     </div>
   </div>
-
-  <!-- FullCalendar JS -->
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    let calendar;
-    document.addEventListener('DOMContentLoaded', async function () {
-      const calendarEl = document.getElementById('calendar');
-      calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        headerToolbar: {
-          left: 'title',
-          center: '',
-          right: 'today prev,next'
-        },
-        selectable: true,
-        dateClick: function (info) {
-          showEventForm('add', { date: info.dateStr });
-        },
-        eventClick: function (info) {
-          showEventForm('edit', {
-            id: info.event.id,
-            title: info.event.title,
-            start: info.event.startStr,
-            end: info.event.endStr || info.event.startStr
-          });
-        },
-        events: async function (fetchInfo, successCallback, failureCallback) {
-          const res = await fetch('events_api.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ action: 'list' })
-          });
-          const data = await res.json();
-          successCallback(data);
-        }
-      });
-      calendar.render();
-    });
-
-    function showEventForm(mode, data) {
-      const modal = new bootstrap.Modal(document.getElementById('eventModal'));
-      const title = mode === 'add' ? '新增行程' : '修改行程';
-      document.getElementById('eventModalLabel').innerText = title;
-
-      const form = `
-        <form id="eventForm">
-          <input type="hidden" name="id" value="${data.id || ''}">
-          <div class="mb-3">
-            <label class="form-label">行程名稱</label>
-            <input type="text" name="title" class="form-control" value="${data.title || ''}" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">開始時間</label>
-            <input type="datetime-local" name="start" class="form-control" value="${data.start?.replace(' ', 'T') || (data.date + 'T00:00')}">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">結束時間</label>
-            <input type="datetime-local" name="end" class="form-control" value="${data.end?.replace(' ', 'T') || (data.date + 'T23:59')}">
-          </div>
-          <button type="submit" class="btn btn-primary">${mode === 'add' ? '新增' : '修改'}</button>
-          ${mode === 'edit' ? '<button type="button" class="btn btn-danger ms-2" onclick="deleteEvent(' + data.id + ')">刪除</button>' : ''}
-        </form>`;
-
-      document.getElementById('modal-body-content').innerHTML = form;
-
-      document.getElementById('eventForm').onsubmit = async function (e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        const payload = Object.fromEntries(formData.entries());
-        payload.action = mode;
-
-        const res = await fetch('events_api.php', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        const json = await res.json();
-        if (json.success) {
-          calendar.refetchEvents();
-          modal.hide();
-        } else {
-          alert(json.error || '操作失敗');
-        }
-      }
-
-      modal.show();
-    }
-
-    async function deleteEvent(id) {
-      if (!confirm('確定要刪除這個行程嗎？')) return;
-      const res = await fetch('events_api.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'delete', id })
-      });
-      const json = await res.json();
-      if (json.success) {
-        calendar.refetchEvents();
-        bootstrap.Modal.getInstance(document.getElementById('eventModal')).hide();
-      } else {
-        alert(json.error || '刪除失敗');
-      }
-    }
-  </script>
 
   <!-- Footer -->
   <footer class="mt-5">
@@ -239,4 +174,5 @@
   <script src="assets/js/custom.js"></script>
 
 </body>
+
 </html>
