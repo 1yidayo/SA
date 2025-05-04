@@ -175,7 +175,7 @@
           <input type="hidden" name="id" value="${data.id || ''}">
           <div class="mb-3">
             <label class="form-label">行程名稱</label>
-            <input type="text" name="title" class="form-control" value="${data.title || ''}" required>
+            <input type="text" name="title" class="form-control" value="ta.t${daitle || ''}" required>
           </div>
           <div class="mb-3">
             <label class="form-label">開始時間</label>
