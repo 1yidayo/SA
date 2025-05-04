@@ -22,15 +22,15 @@
                                                                            
     $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-    $sql = "INSERT INTO club_requirements (identityID, money, name, ainins, region, event_time, support_type, hope, title, information)
+    $sql = "INSERT INTO ai_requirements (identityID, money, name, ainins, region, event_time, support_type, hope, title, information)
 
         VALUES 
-        ('$identityID', '$money', '$name', '$ainins', '$region', '$event_time', '$support_type', '$hope', '$event_time', '$support_type', 'hope', '$title', '$information')";
+        ('$identityID', '$money', '$name', '$ainins', '$region', '$event_time', '$support_type', '$hope', '$title', '$information')";
 
     if (mysqli_query($link, $sql)) {
         echo "<script>
             alert('發布成功！');
-            window.location.href = 'club contact.php';
+            window.location.href = 'alumni contact.php';
         </script>";
         exit();
     } else {
