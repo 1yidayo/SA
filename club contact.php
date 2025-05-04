@@ -214,7 +214,7 @@
                     <option value="21-30人">21-30人</option>
                     <option value="31-40人">31-40人</option>
                     <option value="41-50人">41-50人</option>
-                    <option value="50人人以上">50人以上</option>
+                    <option value="50人以上">50人以上</option>
                   </select>
                 </div>
                 <br>
