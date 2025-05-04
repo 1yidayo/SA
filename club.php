@@ -143,7 +143,7 @@ $row = mysqli_fetch_assoc($result);
       <li>
         <h4>企劃書內容<br>
           <span>
-            <a href="uploads/<?= urlencode($row['upload']) ?>" download>下載企劃書</a>
+          <a href="<?= htmlspecialchars($row['upload']) ?>" download>下載企劃書</a>
           </span>
         </h4>
 
