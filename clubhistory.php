@@ -149,7 +149,7 @@ https://templatemo.com/tm-591-villa-agency
     <?php
 
 
-        $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $link = mysqli_connect('localhost', 'root', '', 'SAS');
         $sql = "SELECT * FROM club_requirements WHERE identityID = '{$_SESSION['identityID']}' ORDER BY created_at DESC";
 
 

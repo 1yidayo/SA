@@ -63,7 +63,7 @@
             <div class="row">
               <?php
               session_start();
-              $link = mysqli_connect('localhost', 'root', '', 'SA');
+              $link = mysqli_connect('localhost', 'root', '', 'SAS');
               $sql = "SELECT * FROM identity WHERE identityID = '" . $_SESSION['identityID'] . "'";
               $result = mysqli_query($link, $sql);
               if ($row = mysqli_fetch_assoc($result)) {

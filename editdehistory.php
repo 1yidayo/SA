@@ -133,7 +133,7 @@ https://templatemo.com/tm-591-villa-agency
 <?php
 
 
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 if (!$link) {
     die("Connection failed: " . mysqli_connect_error());
 }

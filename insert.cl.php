@@ -19,7 +19,7 @@ $clins = $_POST["clins"];
 $clphone = $_POST["clphone"];
 $userID = $_SESSION['userID'];
 
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 
 $sql = "INSERT INTO identity (school, club, clsize, clyear, cltype, clins, clphone, userID)
         VALUES ('$school', '$club', '$clsize', '$clyear', '$cltype', '$clins', '$clphone', '$userID')";

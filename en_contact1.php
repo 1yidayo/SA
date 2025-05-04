@@ -22,7 +22,7 @@
         $title = $_POST['title'];
         $information = $_POST['information'];
 
-        $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $link = mysqli_connect('localhost', 'root', '', 'SAS');
         $sql = "insert into en_requirements (identityID, money, enterprise, type, code, ins, region, date, sponsorship, hope, title, information)
         VALUES ('$identityID', '$money', '$enterprise', '$type', '$code', '$ins', '$region', '$date', '$sponsorship', '$hope', '$title', '$information')";
         if (mysqli_query($link, $sql)) {

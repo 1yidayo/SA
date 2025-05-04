@@ -1,7 +1,7 @@
 <?php
 session_start();
 $userID = $_SESSION['userID'];
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 ?>
 
 <!DOCTYPE html>

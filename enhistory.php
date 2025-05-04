@@ -121,7 +121,7 @@ https://templatemo.com/tm-591-villa-agency
         session_start();
         $identityID = $_SESSION['identityID'];
 
-        $link = mysqli_connect('localhost', 'root', '', 'SA');
+        $link = mysqli_connect('localhost', 'root', '', 'SAS');
         $sql = "SELECT * FROM en_requirements WHERE CAST(identityID AS CHAR) = '$identityID'";
 
 

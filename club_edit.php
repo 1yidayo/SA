@@ -17,7 +17,7 @@ $cltype = $_POST['cltype'];
 $clins = $_POST['clins'];
 $userID = $_SESSION['userID'];
 
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 $sql = "UPDATE identity SET school = '$school', club = '$club', clsize = '$clsize', 
 clyear = '$clyear', cltype = '$cltype', clins = '$clins' WHERE userID = '$userID'";
 

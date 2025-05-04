@@ -1,7 +1,7 @@
 <?php
 session_start();
 $userID = $_SESSION['userID'];
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 
 if (isset($_FILES['profile_img']) && $_FILES['profile_img']['error'] === 0) {
     $file = $_FILES['profile_img'];

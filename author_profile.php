@@ -72,7 +72,7 @@
         </h2>
         <?php
 // 連接資料庫
-$link = mysqli_connect("localhost", "root", "", "SA");
+$link = mysqli_connect("localhost", "root", "", "SAS");
 mysqli_set_charset($link, "utf8");
 
 // 確認有接到 enrequirement_num

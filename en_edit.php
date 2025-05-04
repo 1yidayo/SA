@@ -15,7 +15,7 @@ $code = $_POST['code'];
 $enins = $_POST['enins'];
 $userID = $_SESSION['userID'];
 
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 $sql = "UPDATE identity SET enterprise = '$enterprise', entype = '$entype', code = '$code', enins = '$enins' WHERE userID = '$userID'";
 if (mysqli_query($link, $sql)) {
     echo "更新成功";

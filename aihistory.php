@@ -95,7 +95,7 @@ if (!isset($_SESSION['username'])) {
 $username = $_SESSION['username'];
 
 // 連接資料庫
-$conn = new mysqli('localhost', 'root', '', 'SA');
+$conn = new mysqli('localhost', 'root', '', 'SAS');
 $conn->set_charset("utf8");
 
 // 使用 JOIN 抓該使用者發布過的需求

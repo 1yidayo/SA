@@ -20,7 +20,7 @@
     $information = $_POST['information'];
 
                                                                            
-    $link = mysqli_connect('localhost', 'root', '', 'SA');
+    $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
     $sql = "INSERT INTO club_requirements (identityID, money, name, ainins, region, event_time, support_type, hope, title, information)
 

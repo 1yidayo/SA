@@ -93,7 +93,7 @@ https://templatemo.com/tm-591-villa-agency
         <?php
 $clrequirement_num = $_GET['clrequirement_num'];
 
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 $sql = "SELECT * FROM club_requirements WHERE clrequirement_num = '$clrequirement_num'";
 $result = mysqli_query($link, $sql);
 while($row = mysqli_fetch_assoc($result)){

@@ -132,7 +132,7 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row properties-box">
       <?php
 
-$link = mysqli_connect('localhost', 'root', '', 'SA');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 
 $userID = $_SESSION['userID'] ?? null;
 
