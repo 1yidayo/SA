@@ -123,17 +123,30 @@
         $money = mysqli_real_escape_string($link, $_POST['money']);
         $enterprise = mysqli_real_escape_string($link, $_POST['enterprise']);
 
-        $sql = "select * from en_requirements where money = '$money' and enterprise = '$enterprise'";
+        // 動態產生 WHERE 條件
+$conditions = array();
 
-        $result = mysqli_query($link, $sql);
+if (!empty($money)) {
+    $conditions[] = "money LIKE '%$money%'";
+}
+if (!empty($enterprise)) {
+    $conditions[] = "enterprise LIKE '%$enterprise%'";
+}
 
-        if (!$result) {
-            die("Query failed: " . mysqli_error($link));
-        }
+// 建構完整 SQL
+$sql = "SELECT * FROM en_requirements";
+if (count($conditions) > 0) {
+    $sql .= " WHERE " . implode(" AND ", $conditions);
+}
 
-        if (mysqli_num_rows($result) == 0) {
-            echo "<p>未找到符合的贊助</p>";
-        }
+$result = mysqli_query($link, $sql);
+if (!$result) {
+    die("Query failed: " . mysqli_error($link));
+}
+
+if (mysqli_num_rows($result) == 0) {
+    echo "<p>未找到符合的活動</p>";
+}
 
         while($row = mysqli_fetch_assoc($result)){
             echo "<div class='properties-items'>
