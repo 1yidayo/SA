@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-
 </head>
 
 <body>
@@ -99,17 +98,34 @@
                         <input type='text' class='form-control' name='code' id='code' value='", $row['code'], "' required>
                     </div>
                     <div class='mb-3'>
-                        <label for='enins' class='form-label'><b>聯絡方式</b></label>
+                        <label for='enplace' class='form-label'><b>企業所在地區</b></label>
+                        <input type='text' class='form-control' name='enplace' id='enplace' value='", $row['enplace'], "' required>
+                    </div>
+                    <div class='mb-3'>
+                        <label for='enperson' class='form-label'><b>負責人姓名與職稱</b></label>
+                        <input type='text' class='form-control' name='enperson' id='enperson' value='", $row['enperson'], "' required>
+                    </div>
+                    <div class='mb-3'>
+                        <label for='enphone' class='form-label'><b>Email／聯絡電話</b></label>
+                        <input type='text' class='form-control' name='enphone' id='enphone' value='", $row['enphone'], "' required>
+                    </div>
+                    <div class='mb-3'>
+                        <label for='enins' class='form-label'><b>社群連結</b></label>
                         <input type='text' class='form-control' name='enins' id='enins' value='", $row['enins'], "' required>
+                    </div>
+                    <div class='mb-3'>
+                        <label for='enprefer' class='form-label'><b>合作偏好類型</b></label>
+                        <input type='text' class='form-control' name='enprefer' id='enprefer' value='", $row['enprefer'], "' required>
+                    </div>
+                    <div class='mb-3'>
+                        <label for='endonate' class='form-label'><b>可提供贊勵類型</b></label>
+                        <input type='text' class='form-control' name='endonate' id='endonate' value='", $row['endonate'], "' required>
                     </div>
                     <button class='btn btn-dark w-100' type='submit'><b>儲存修改</b></button>
                 </form>
             </div>";
             }
             ?>
-
-
-
 
             <!-- Footer -->
             <footer class="mt-5">
