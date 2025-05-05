@@ -109,7 +109,19 @@
                 <h4>企業統一編號<br><span><?= $row['code'] ?></span></h4>
               </li>
               <li>
-                <h4><a href="<?= $row['ins'] ?>" target="_blank">社群連結</a><br><span></span></h4>
+                <h4>企業聯絡方式<br><span><?= $row['enins'] ?></span></h4>
+              </li>
+              <li>
+                <h4>活動地區<br><span><?= $row['region'] ?></span></h4>
+              </li>
+              <li>
+                <h4>預計活動時間<br><span><?= $row['date'] ?></span></h4>
+              </li>
+              <li>
+                <h4>可提供贊助類型<br><span><?= $row['sponsorship'] ?></span></h4>
+              </li>
+              <li>
+                <h4>希望社團達到目的<br><span><?= $row['hope'] ?></span></h4>
               </li>
             </ul>
           </div>
