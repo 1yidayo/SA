@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,6 +30,45 @@ https://templatemo.com/tm-591-villa-agency
 -->
 
     <style>
+      .custom-orange-btn {
+    background-color: #ff7f50;
+    color: #000;
+    border: 1px solid #ff7f50;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-orange-btn:hover {
+    background-color: #e3643c;
+    color: #fff;
+    border-color: #e3643c;
+}
+.text-links a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 5px;
+}
+
+.text-links a:hover {
+    text-decoration: underline;
+}
+
+.text-links {
+    margin-top: 10px;
+    text-align: right;
+    font-size: 14px;
+}
+
+.publish-time {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: right;
+    color: #666;
+}
+
 .properties-box {
     display: flex;
     flex-wrap: wrap; /* 允許換行 */
@@ -118,7 +160,6 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row properties-box">
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
     <?php
-        session_start();
         $identityID = $_SESSION['identityID'];
 
         $link = mysqli_connect('localhost', 'root', '', 'SAS');
@@ -129,13 +170,11 @@ https://templatemo.com/tm-591-villa-agency
         while($row = mysqli_fetch_assoc($result)){
           
             echo "<div class='properties-items'>
-                <div class='item'>
+                <div class='item uniform-box'>
                     <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
                     <ul>
                         <li><span>" . $row['enterprise'] . "</span></li>
                         <br>
-                        <br>
-                        <li>活動主題：<span>" . $row['title'] . "</span></li>
                         <br>
                         <li>活動時間：<span>" . $row['date'] . "</span></li>
                         <br>
@@ -145,12 +184,12 @@ https://templatemo.com/tm-591-villa-agency
                     </ul>
                     
                     <div class='text-links'>
-                        <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "' class='btn btn-info btn-sm'>詳情</a>
+                        <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "' class='custom-orange-btn'>詳情</a>
                         <a href='editenhistory.php?enrequirement_num=" . $row['enrequirement_num'] . "'>修改</a> |
                         <a href='deleteenhistory.php?enrequirement_num=" . $row['enrequirement_num'] . "' onclick=\"return confirm('確定要刪除嗎？');\">刪除</a>
                     </div>
                     <br>
-                    <li>發布時間<span>" . $row['created_time'] . "</span></li>
+                    <p class='publish-time'>發布時間：<span>" . $row['created_time'] . "</span></p>
                 </div>
             </div>";
         }
