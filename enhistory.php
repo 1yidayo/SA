@@ -143,6 +143,12 @@ https://templatemo.com/tm-591-villa-agency
                         <br>
                         <li>贊助類型：<span>" . $row['sponsorship'] . "</span></li>
                     </ul>
+                    <div class='text-links'>
+                        <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "' class='btn btn-info btn-sm'>詳情</a>
+                        <a href='editenhistory.php?enrequirement_num=" . $row['enrequirement_num'] . "'>修改</a> |
+                        <a href='deleteenhistory.php?enrequirement_num=" . $row['enrequirement_num'] . "' onclick=\"return confirm('確定要刪除嗎？');\">刪除</a>
+                    </div>
+                    <li>發布時間：<span>" . $row['created_time'] . "</span></li>
                     <div class='main-button'>
                         <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
                     </div>
