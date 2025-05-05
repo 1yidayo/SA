@@ -149,12 +149,15 @@
                     <div class='item'>
                       <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
                       <ul>
+                        <li>企業名稱：<span>" . $row['enterprise'] . "</span></li>
                         <li>贊助類型：<span>" . $row['sponsorship'] . "</span></li>
                         <li>企業行業別：<span>" . $row['type'] . "</span></li>
                       </ul>
                       <div class='main-button'>
                         <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
                       </div>
+                      <br>
+                      <li>發布時間：<span>" . $row['created_time'] . "</span></li>
                     </div>
                   </div>";
           }
