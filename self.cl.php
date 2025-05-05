@@ -130,7 +130,7 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
             </div>
           </div>
 
-          <h4 class="mb-3">我的收藏</h4>
+          <!-- <h4 class="mb-3">我的收藏</h4>
           <ul class="list-group list-group-flush">
             <?php
             $fav_sql = "SELECT cr.requirement_num, cr.title, cr.information 
@@ -149,7 +149,7 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
               echo "<li class='list-group-item text-muted'>目前尚無收藏</li>";
             }
             ?>
-          </ul>
+          </ul> -->
         </div>
       </div>
     </div>
