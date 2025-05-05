@@ -68,7 +68,7 @@ if ($row = mysqli_fetch_assoc($result)) {
         exit();
     }
 } else {
-    echo "<script>alert('登入失敗（未知的身份）！'); window.history.back();</script>";
+    echo "<script>alert('登入失敗（未註冊身份）！'); window.history.back();</script>";
 
 }
 ?>

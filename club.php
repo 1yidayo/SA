@@ -56,14 +56,15 @@ https://templatemo.com/tm-591-villa-agency
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-              <li><a href="en.html" class="active">首頁</a></li>
-              <li><a href="properties.php">瀏覽</a></li>
-              <li><a href="en_contact.php">發布</a></li>
-              <li><a href="enhistory.php">發布歷史</a></li>
-              <li><a href="self.en.php">個人頁面</a></li>
-              <li><a href="login.html">登出</a></li>
-              <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</a></li>
-            </ul> 
+                            <li><a href="en.html" class="active">首頁</a></li>
+                            <li><a href="properties.php">瀏覽</a></li>
+                            <li><a href="en_contact.php">發布</a></li>
+                            <li><a href="enhistory.php">發布歷史</a></li>
+                            <li><a href="self.en.php">個人頁面</a></li>
+                            <li><a href="login.html">登出</a></li>
+                            <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</a>
+                            </li>
+                        </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
                     </a>
@@ -115,11 +116,14 @@ $row = mysqli_fetch_assoc($result);
 ?>
 
 <div class="col-lg-8">
-  <div class="main-content">
-    <strong><h10>活動詳情內文：</h10></strong>
-    <p><?= $row['information'] ?></p>
+  <div class="card shadow-sm p-4 mb-4 bg-white rounded">
+    <div class="card-body">
+      <h5 class="card-title font-weight-bold mb-3">活動詳情內文：</h5>
+      <p class="card-text"><?= nl2br(htmlspecialchars($row['information'])) ?></p>
+    </div>
   </div>
 </div>
+
 
 <div class="col-lg-4">
   <div class="info-table">

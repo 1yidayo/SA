@@ -32,14 +32,15 @@
         <div class="col-12">
           <nav class="main-nav">
             <ul class="nav">
-              <li><a href="en.html" class="active">首頁</a></li>
-              <li><a href="properties.php">瀏覽</a></li>
-              <li><a href="en_contact.php">發布</a></li>
-              <li><a href="enhistory.php">發布歷史</a></li>
-              <li><a href="self.en.php">個人頁面</a></li>
-              <li><a href="login.html">登出</a></li>
-              <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</a></li>
-            </ul> 
+                            <li><a href="cl.html" class="active">首頁</a></li>
+                            <li><a href="properties2.php">瀏覽</a></li>
+                            <li><a href="club contact.php">發布</a></li>
+                            <li><a href="clubhistory.php">發布歷史</a></li>
+                            <li><a href="self.cl.php">個人頁面</a></li>
+                            <li><a href="login.html">登出</a></li>
+                            <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</a>
+                            </li>
+                        </ul>
             <a class="menu-trigger"><span>Menu</span></a>
           </nav>
         </div>
@@ -73,27 +74,23 @@
       <div class="row">
 
         <!-- Left Side: Title & Description -->
-        <div class="col-lg-8">
-          <div class="main-content">
-            <h2 class="mb-3"><?= $row['title'] ?></h2>
-            <div style="display: flex; align-items: center; gap: 10px;">
-
+        <!-- Left Side: Title & Description -->
+<div class="col-lg-8">
+  <div class="card shadow-sm p-4 mb-4 bg-white rounded">
+    <div class="card-body">
+      <h2 class="card-title mb-3"><?= htmlspecialchars($row['title']) ?></h2>
+      <hr>
+      <h5 class="font-weight-bold mb-2">贊助需求內文：</h5>
+      <p class="card-text"><?= nl2br(htmlspecialchars($row['information'])) ?></p>
+    </div>
+  </div>
 </div>
-<br>
-            <strong><h10>贊助需求內文：</h10></strong>
-            <p><?= $row['information'] ?></p>
-          </div>
-        </div>
-        
+
         
         <!-- Right Side: Info Table -->
         <div class="col-lg-4">
           <div class="info-table">
             <ul>
-              <li>
-                <h4>贊助類型<br><span><?= $row['sponsorship'] ?></span></h4>
-              </li>
-
               <?php if ($row['sponsorship'] === '金錢'): ?>
               <li>
                 <h4>贊助範圍<br><span><?= $row['money'] ?? '未填寫' ?></span></h4>
@@ -109,7 +106,7 @@
                 <h4>企業統一編號<br><span><?= $row['code'] ?></span></h4>
               </li>
               <li>
-                <h4>企業聯絡方式<br><span><?= $row['enins'] ?></span></h4>
+                <h4>企業聯絡方式<br><span><?= $row['ins'] ?></span></h4>
               </li>
               <li>
                 <h4>活動地區<br><span><?= $row['region'] ?></span></h4>

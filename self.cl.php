@@ -130,7 +130,6 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
             </div>
           </div>
 
-
           <h4 class="mb-3">我的收藏</h4>
           <ul class="list-group list-group-flush">
             <?php

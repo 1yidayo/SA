@@ -109,6 +109,10 @@
                     <label class='form-label'><b>社群連結</b>
                     </label><input class='form-control' name='clins' value='", $row['clins'], "' required>
                 </div>
+                <div class='mb-3'>
+                    <label class='form-label'><b>聯絡人電話</b>
+                    </label><input class='form-control' name='clins' value='", $row['clphone'], "' required>
+                </div>
                     <button class='btn btn-dark w-100' type='submit'><b>儲存修改</b></button>
                 </form>
             </div>
