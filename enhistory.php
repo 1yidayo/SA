@@ -147,7 +147,7 @@ https://templatemo.com/tm-591-villa-agency
                     <div class='text-links'>
                         <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "' class='btn btn-info btn-sm'>詳情</a>
                         <a href='editenhistory.php?enrequirement_num=" . $row['enrequirement_num'] . "'>修改</a> |
-                        <a href='deleteclubhistory.php?enrequirement_num=" . $row['enrequirement_num'] . "' onclick=\"return confirm('確定要刪除嗎？');\">刪除</a>
+                        <a href='deleteenhistory.php?enrequirement_num=" . $row['enrequirement_num'] . "' onclick=\"return confirm('確定要刪除嗎？');\">刪除</a>
                     </div>
                     <br>
                     <li>發布時間<span>" . $row['created_time'] . "</span></li>
