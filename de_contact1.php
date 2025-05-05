@@ -11,10 +11,10 @@
     $identityID = $_SESSION['identityID'];
     $money = $_POST['money'];
     $people = $_POST['people'];
-    $school = $_POST['school'];
+
     $club = $_SESSION['username'];
-    $year = $_POST['year'];
-    $type = $_POST['type'];
+    
+    
     $region = $_POST['region'];
     $event_time = $_POST['event_time'];
     $support_type = $_POST['support_type'];
@@ -38,10 +38,10 @@
                                                                            
     $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-    $sql = "INSERT INTO club_requirements (identityID, money, people, school, club, year, type, region, event_time, support_type, upload, ins, title, information)
+    $sql = "INSERT INTO club_requirements (identityID, money, people,  club,   region, event_time, support_type, upload, ins, title, information)
 
         VALUES 
-        ('$identityID', '$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information')";
+        ('$identityID', '$money', '$people',  '$club',   '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information')";
 
     if (mysqli_query($link, $sql)) {
         echo "<script>

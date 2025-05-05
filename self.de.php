@@ -86,7 +86,7 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
           <div class='mb-3'><label class='form-label text-muted'>社團名稱：</label><div class='fs-5 fw-bold'>{$row['dename']}</div></div>
           <div class='mb-3'><label class='form-label text-muted'>社團成員人數：</label><div class='fs-5 fw-bold'>{$row['desize']}</div></div>
           <div class='mb-3'><label class='form-label text-muted'>社團成立年分：</label><div class='fs-5 fw-bold'>{$row['deyear']}</div></div>
-          <div class='mb-3'><label class='form-label text-muted'>粉專或社群連結：</label><div><a class='fs-5' href='{$row['deins']}' target='_blank'>{$row['clins']}</a></div></div>
+          <div class='mb-3'><label class='form-label text-muted'>粉專或社群連結：</label><div><a class='fs-5' href='{$row['deins']}' target='_blank'>{$row['deins']}</a></div></div>
           <div class='mb-3'><label class='form-label text-muted'>聯絡人電話：</label><div class='fs-5 fw-bold'>{$row['dephone']}</div></div>
         </div>";
         ?>
