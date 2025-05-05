@@ -27,6 +27,19 @@ https://templatemo.com/tm-591-villa-agency
 -->
 
     <style>
+      .text-links {
+    margin-top: 10px;
+    text-align: right;
+    font-size: 14px;
+}
+
+.publish-time {
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: right;
+    color: #666;
+}
+
     .custom-filter-btn {
       border: 2px solid #ff6600;
       background-color: white;
@@ -164,7 +177,7 @@ https://templatemo.com/tm-591-villa-agency
         $result = mysqli_query($link, $sql);
         while($row = mysqli_fetch_assoc($result)){
             echo "<div class='properties-items'>
-                <div class='item'>
+                <div class='item uniform-box'>
                     <h4><a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . $row['title'] . "</a></h4>
                     <ul>
                         <li><span>" . $row['school'] . "</span></li>
@@ -181,7 +194,7 @@ https://templatemo.com/tm-591-villa-agency
                         <a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>了解活動詳情</a>
                     </div>
                     <br>
-                    <li>發布時間：<span>" . $row['created_time'] . "</span></li>
+                    <p class='publish-time'>發布時間：<span>" . $row['created_time'] . "</span></p>
                 </div>
             </div>";
         }
