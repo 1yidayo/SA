@@ -71,6 +71,9 @@
                 $entype = $row['entype'];
                 $code = $row['code'];
                 $enins = $row['enins'];
+                $enplace = $row['enplace'];
+                $enphone = $row['enphone'];
+                $enperson = $row['enperson'];
               }
               ?>
               <input type="hidden" name="identityID" value="<?php echo $_SESSION['identityID']; ?>">
@@ -80,7 +83,8 @@
                   <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                     <span class="ms-1"><b>企業名稱</b></span>
                   </div>
-                  <input class="form-control" type="text" placeholder="請輸入企業名稱" name="enterprise" value="<?php echo $enterprise; ?>" required>
+                  <input class="form-control" type="text" placeholder="請輸入企業名稱" name="enterprise"
+                    value="<?php echo $enterprise; ?>" required>
                 </div>
               </div>
 
@@ -89,32 +93,66 @@
                   <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                     <span class="ms-1"><b>企業行業別</b></span>
                   </div>
-                  <input class="form-control" type="text" placeholder="請輸入企業行業別(eg:科技業、金融業)" name="type" value="<?php echo $entype; ?>" required>
+                  <input class="form-control" type="text" placeholder="請輸入企業行業別(eg:科技業、金融業)" name="type"
+                    value="<?php echo $entype; ?>" required>
                 </div>
               </div>
 
               <div class="col-12">
                 <div class="input-group">
                   <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>企業統一編號</b></span>
+                    <span class="ms-1"><b>企業所在地區</b></span>
                   </div>
-                  <input class="form-control" type="text" placeholder="請輸入企業統一編號" name="code" value="<?php echo $code; ?>" required>
+                  <input class="form-control" type="text" placeholder="請輸入企業所在地區" name="enplace"
+                    value="<?php echo $enplace; ?>" required>
                 </div>
               </div>
 
               <div class="col-12">
                 <div class="input-group">
                   <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>企業聯絡方式</b></span>
+                    <span class="ms-1"><b>負責人姓名與職稱</b></span>
                   </div>
-                  <input class="form-control" type="text" placeholder="請輸入企業聯絡方式" name="ins" value="<?php echo $enins; ?>" required>
+                  <input class="form-control" type="text" placeholder="請輸入負責人姓名與職稱" name="enperson"
+                    value="<?php echo $enperson; ?>" required>
                 </div>
               </div>
 
               <div class="col-12">
                 <div class="input-group">
                   <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>活動地區</b></span>
+                    <span class="ms-1"><b>企業官方網站或社群連結</b></span>
+                  </div>
+                  <input class="form-control" type="text" placeholder="請輸入企業官方網站或社群連結" name="enins"
+                    value="<?php echo $enins; ?>" required>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="input-group">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>企業Gmail/連絡電話</b></span>
+                  </div>
+                  <input class="form-control" type="text" placeholder="請輸入企業Gmail/連絡電話" name="enphone"
+                    value="<?php echo $enphone; ?>" required>
+                </div>
+              </div>
+              
+              <div class="col-12">
+                <div class="input-group">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>預計提供贊助日期</b></span>
+                  </div>
+                  <input type="date" name="date" class="form-control" required>
+                </div>
+              </div>
+
+              
+
+              <div class="col-12">
+                <div class="input-group">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>贊助地區</b></span>
                   </div>
                   <select class="form-select" name="region" required>
                     <option value="">請選擇</option>
@@ -126,14 +164,7 @@
                 </div><br>
               </div>
 
-              <div class="col-12">
-                <div class="input-group">
-                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>預計活動月份</b></span>
-                  </div>
-                  <input type="date" name="date" class="form-control" required>
-                </div>
-              </div>
+
 
               <div class="col-12">
                 <div class="input-group">
