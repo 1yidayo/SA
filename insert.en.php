@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <meta http-equiv="refresh" content="3; url=en.html">
+    <meta http-equiv="refresh" content="0; url=en.html">
 </head>
 <body>
 <?php
@@ -26,13 +26,7 @@ if (empty($enterprise) || empty($entype) || empty($code) || empty($enins)) {
     exit();
 }
 
-if (mysqli_query($link, $sql)) {
-    $identityID = mysqli_insert_id($link);
-    $_SESSION['identityID'] = $identityID;
-    echo "新增完成";
-    } else {
-        echo "新增失敗";
-    }
+
 ?>
 </body>
 </html>
