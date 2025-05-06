@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,7 +113,7 @@ https://templatemo.com/tm-591-villa-agency
                             <li><a href="club contact.php">發布</a></li>
                             <li><a href="clubhistory.php">發布歷史</a></li>
                             <li><a href="self.cl.php">個人頁面</a></li>
-                            <li><a href="first.html">登出</a></li>
+                            <li><a href="login.html">登出</a></li>
                             <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
                         </ul>
@@ -131,7 +128,7 @@ https://templatemo.com/tm-591-villa-agency
   </header>
   <!-- ***** Header Area End ***** -->
 <?php
-
+session_start();
 
 $link = mysqli_connect('localhost', 'root', '', 'SAS');
 if (!$link) {
@@ -202,46 +199,87 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>編輯贊助需求</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
+    <style>
+        .edit-form-container {
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .edit-form-container h3 {
+            color: #f39c12;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .edit-form-container label {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .edit-form-container input,
+        .edit-form-container select,
+        .edit-form-container textarea {
+            font-size: 15px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s;
+        }
+
+        .edit-form-container input:focus,
+        .edit-form-container select:focus,
+        .edit-form-container textarea:focus {
+            border-color: #f39c12;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(243, 156, 18, 0.2);
+        }
+
+        .edit-form-container button {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<div class="container mt-5">
-    <h3 class="mb-4">編輯贊助需求</h3>
+<div class="container edit-form-container">
+    <h3>編輯贊助需求</h3>
     <form method="POST" action="editclubhistory.php">
-
         <input type="hidden" name="clrequirement_num" value="<?= $row['clrequirement_num'] ?>">
 
         <div class="mb-3">
-            <label class="form-label"><b>標題</b></label>
+            <label class="form-label">標題</label>
             <input type="text" class="form-control" name="title" value="<?= htmlspecialchars($row['title']) ?>" required>
         </div>
 
         <div class="mb-3" id="money-group" style="<?= $row['type'] === '金錢' ? '' : 'display: none;' ?>">
-            <label class="form-label"><b>贊助金額</b></label>
+            <label class="form-label">贊助金額</label>
             <input type="number" class="form-control" name="money" value="<?= htmlspecialchars($row['money']) ?>">
         </div>
 
         <div class="mb-3">
-    <label class="form-label"><b>預估規模</b></label>
-    <select class="form-control" name="people" >
-        <option value="">請選擇</option>
-        <option value="0-10人" <?= $row['people'] == '0-10人' ? 'selected' : '' ?>>0-10人</option>
-        <option value="11-20人" <?= $row['people'] == '11-20人' ? 'selected' : '' ?>>11-20人</option>
-        <option value="21-30人" <?= $row['people'] == '21-30人' ? 'selected' : '' ?>>21-30人</option>
-        <option value="31-40人" <?= $row['people'] == '31-40人' ? 'selected' : '' ?>>31-40人</option>
-        <option value="41-50人" <?= $row['people'] == '41-50人' ? 'selected' : '' ?>>41-50人</option>
-        <option value="50人以上" <?= $row['people'] == '50人以上' ? 'selected' : '' ?>>50人以上</option>
-    </select>
-</div>
-
+            <label class="form-label">預估規模</label>
+            <select class="form-control" name="people">
+                <option value="">請選擇</option>
+                <option value="0-10人" <?= $row['people'] == '0-10人' ? 'selected' : '' ?>>0-10人</option>
+                <option value="11-20人" <?= $row['people'] == '11-20人' ? 'selected' : '' ?>>11-20人</option>
+                <option value="21-30人" <?= $row['people'] == '21-30人' ? 'selected' : '' ?>>21-30人</option>
+                <option value="31-40人" <?= $row['people'] == '31-40人' ? 'selected' : '' ?>>31-40人</option>
+                <option value="41-50人" <?= $row['people'] == '41-50人' ? 'selected' : '' ?>>41-50人</option>
+                <option value="50人以上" <?= $row['people'] == '50人以上' ? 'selected' : '' ?>>50人以上</option>
+            </select>
+        </div>
 
         <div class="mb-3">
-            <label class="form-label"><b>贊助類型</b></label>
+            <label class="form-label">贊助類型</label>
             <select class="form-select" name="type" id="type" required>
                 <option value="金錢" <?= $row['type'] == '金錢' ? 'selected' : '' ?>>金錢</option>
                 <option value="人力" <?= $row['type'] == '人力' ? 'selected' : '' ?>>人力</option>
@@ -250,17 +288,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="mb-3">
-            <label class="form-label"><b>內文(必填)</b></label>
+            <label class="form-label">內文 (必填)</label>
             <textarea class="form-control" name="information" required><?= htmlspecialchars($row['information']) ?></textarea>
         </div>
 
         <div class="mb-3">
-            <label class="form-label"><b>預計活動月份</b></label>
+            <label class="form-label">預計活動月份</label>
             <input type="date" name="event_time" class="form-control" value="<?= htmlspecialchars($row['event_time']) ?>" required>
         </div>
 
         <div class="mb-4">
-            <label class="form-label"><b>活動地區</b></label>
+            <label class="form-label">活動地區</label>
             <select class="form-select" name="region" required>
                 <option value="">請選擇</option>
                 <option value="北部" <?= $row['region'] == '北部' ? 'selected' : '' ?>>北部</option>
@@ -284,6 +322,7 @@ document.getElementById('type').addEventListener('change', function () {
 
 </body>
 </html>
+
 
 
 
