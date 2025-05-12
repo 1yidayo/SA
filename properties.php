@@ -159,47 +159,57 @@ https://templatemo.com/tm-591-villa-agency
   <?php foreach ($types as $type): ?>
     <a href="<?= buildFilterUrl($type) ?>" class="btn custom-filter-btn mx-1 <?= $filter === $type ? 'active' : '' ?>"><?= $type ?></a>
   <?php endforeach; ?>
-    </div>
-
-      <div class="row properties-box">
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
-    <?php
-        $link = mysqli_connect('localhost', 'root', '', 'SAS');
-        $filter = isset($_GET['filter']) ? $_GET['filter'] : 'all';
-
-        if ($filter === 'all') {
-            $sql = "SELECT * FROM club_requirements";
-        } else {
-            $filter_escaped = mysqli_real_escape_string($link, $filter);
-            $sql = "SELECT * FROM club_requirements WHERE support_type LIKE '%$filter_escaped%'";
-        }
-
-        $result = mysqli_query($link, $sql);
-        while($row = mysqli_fetch_assoc($result)){
-            echo "<div class='properties-items'>
-                <div class='item uniform-box'>
-                    <h4><a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . $row['title'] . "</a></h4>
-                    <ul>
-                        <li><span>" . $row['school'] . "</span></li>
-                        <li><span>" . $row['club'] . "</span></li>
-                        <br>
-                        <br>
-                        <li>社團活動規模：<span>" . $row['people'] . "</span></li>
-                        <br>
-                        <li>活動類型：<span>" . $row['type'] . "</span></li>
-                        <br>
-                        <li>需要贊助類型：<span>" . $row['support_type'] . "</span></li>
-                    </ul>
-                    <div class='main-button'>
-                        <a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>了解活動詳情</a>
-                    </div>
-                    <br>
-                    <p class='publish-time'>發布時間：<span>" . $row['created_time'] . "</span></p>
-                </div>
-            </div>";
-        }
-    ?>
 </div>
+
+<div class="row properties-box">
+<?php
+  $link = mysqli_connect('localhost', 'root', '', 'SAS');
+  $filter_escaped = mysqli_real_escape_string($link, $filter);
+
+  // 社團活動
+  $sql_club = "SELECT clrequirement_num AS requirement_num, title, school, club, people, type, support_type, created_time, 'club' AS source FROM club_requirements";
+  if ($filter !== 'all') {
+    $sql_club .= " WHERE support_type LIKE '%$filter_escaped%'";
+  }
+
+  // 系學會活動
+  $sql_de = "SELECT derequirement_num AS requirement_num, title, school, club, people, NULL AS type, support_type, created_time, 'department' AS source FROM de_requirements";
+  if ($filter !== 'all') {
+    $sql_de .= " WHERE support_type LIKE '%$filter_escaped%'";
+  }
+
+  // 合併查詢
+  $sql = "$sql_club UNION $sql_de ORDER BY created_time DESC";
+  $result = mysqli_query($link, $sql);
+
+  while ($row = mysqli_fetch_assoc($result)) {
+    $link_href = $row['source'] === 'club'
+    ? "club.php?clrequirement_num=" . $row['requirement_num']
+    : "de.php?derequirement_num=" . $row['requirement_num'];
+
+
+    $activity_type = $row['source'] === 'club' ? "活動類型：<span>" . $row['type'] . "</span><br>" : "";
+
+    echo "<div class='col-lg-4 col-md-6 align-self-center mb-30 properties-items'>
+      <div class='item uniform-box'>
+        <h4><a href='$link_href'>" . $row['title'] . "</a></h4>
+        <ul>
+          <li><span>" . $row['school'] . "</span></li>
+          <li><span>" . $row['club'] . "</span></li><br><br>
+          <li>活動規模：<span>" . $row['people'] . "</span></li><br>
+          $activity_type
+          <li>需要贊助類型：<span>" . $row['support_type'] . "</span></li>
+        </ul>
+        <div class='main-button'>
+          <a href='$link_href'>了解活動詳情</a>
+        </div><br>
+        <p class='publish-time'>發布時間：<span>" . $row['created_time'] . "</span></p>
+      </div>
+    </div>";
+  }
+?>
+</div>
+
 
         </div>
       <div class="row">

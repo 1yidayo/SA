@@ -91,10 +91,10 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row">
         <?php
-$clrequirement_num = $_GET['clrequirement_num'];
+$derequirement_num = $_GET['derequirement_num'];
 
 $link = mysqli_connect('localhost', 'root', '', 'SAS');
-$sql = "SELECT * FROM club_requirements WHERE clrequirement_num = '$clrequirement_num'";
+$sql = "SELECT * FROM de_requirements WHERE derequirement_num = '$derequirement_num'";
 $result = mysqli_query($link, $sql);
 while($row = mysqli_fetch_assoc($result)){
     echo "<div class='col-lg-8'>
@@ -107,10 +107,10 @@ while($row = mysqli_fetch_assoc($result)){
 
 
         <?php
-$requirement_num = $_GET['clrequirement_num'];
+$requirement_num = $_GET['derequirement_num'];
 
 $link = mysqli_connect('localhost', 'root', '', 'SAS');
-$sql = "SELECT * FROM club_requirements WHERE clrequirement_num = '$clrequirement_num'";
+$sql = "SELECT * FROM de_requirements WHERE derequirement_num = '$derequirement_num'";
 $result = mysqli_query($link, $sql);
 $row = mysqli_fetch_assoc($result);  
 ?>
@@ -141,7 +141,7 @@ $row = mysqli_fetch_assoc($result);
       <li>
         <h4>企劃書內容<br>
           <span>
-            <a href="uploads/<?= urlencode($row['upload']) ?>" download>下載企劃書</a>
+          <a href="<?= htmlspecialchars($row['upload']) ?>" download>下載企劃書</a>
           </span>
         </h4>
 

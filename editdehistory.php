@@ -143,9 +143,9 @@ if (!isset($_SESSION['identityID'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $num = intval($_POST['clrequirement_num']);
+    $num = intval($_POST['derequirement_num']);
 
-    $sql_old = "SELECT * FROM club_requirements WHERE clrequirement_num = $num AND identityID = '{$_SESSION['identityID']}'";
+    $sql_old = "SELECT * FROM de_requirements WHERE derequirement_num = $num AND identityID = '{$_SESSION['identityID']}'";
     $result_old = mysqli_query($link, $sql_old);
     $old = mysqli_fetch_assoc($result_old);
 
@@ -178,14 +178,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 region = '$region',
                 event_time = '$event_time',
                 information = '$information'
-            WHERE clrequirement_num = $num AND identityID = '{$_SESSION['identityID']}'";
+            WHERE derequirement_num = $num AND identityID = '{$_SESSION['identityID']}'";
 
     mysqli_query($link, $sql);
     header("Location: dehistory.php");
     exit();
-} else if (isset($_GET['clrequirement_num'])) {
-    $num = intval($_GET['clrequirement_num']);
-    $sql = "SELECT * FROM club_requirements WHERE clrequirement_num = $num AND identityID = '{$_SESSION['identityID']}'";
+} else if (isset($_GET['derequirement_num'])) {
+    $num = intval($_GET['derequirement_num']);
+    $sql = "SELECT * FROM de_requirements WHERE derequirement_num = $num AND identityID = '{$_SESSION['identityID']}'";
     $result = mysqli_query($link, $sql);
     $row = mysqli_fetch_assoc($result);
     if (!$row) {
@@ -214,7 +214,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h3 class="mb-4">編輯贊助需求</h3>
     <form method="POST" action="editdehistory.php">
 
-        <input type="hidden" name="clrequirement_num" value="<?= $row['clrequirement_num'] ?>">
+        <input type="hidden" name="derequirement_num" value="<?= $row['derequirement_num'] ?>">
 
         <div class="mb-3">
             <label class="form-label"><b>標題</b></label>

@@ -38,7 +38,7 @@
                                                                            
     $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-    $sql = "INSERT INTO club_requirements (identityID, money, people,  club,   region, event_time, support_type, upload, ins, title, information)
+    $sql = "INSERT INTO de_requirements (identityID, money, people,  club,   region, event_time, support_type, upload, ins, title, information)
 
         VALUES 
         ('$identityID', '$money', '$people',  '$club',   '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information')";
