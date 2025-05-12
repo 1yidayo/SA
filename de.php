@@ -80,7 +80,7 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h3>社團活動詳情
+          <h3>系學會活動詳情
           </h3>
         </div>
       </div>

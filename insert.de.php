@@ -15,23 +15,26 @@ $dename = $_POST["dename"];
 $desize = $_POST["desize"];
 $deyear = $_POST["deyear"];
 $deins = $_POST["deins"];
+$dephone = $_POST["dephone"];
 $userID = $_SESSION['userID'];
 
 $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-$sql = "INSERT INTO identity(deschool, dename, desize, deyear, deins, userID) VALUES
- ('$deschool', '$dename', '$desize', '$deyear', '$deins', '$userID')";
+$sql = "INSERT INTO identity(deschool, dename, desize, deyear, deins, dephone, userID) VALUES
+ ('$deschool', '$dename', '$desize', '$deyear', '$deins', '$dephone', '$userID')";
 
 if (
     !isset($deschool) || $deschool === '' ||
     !isset($dename) || $dename === '' ||
     !isset($desize) || $desize === '' ||
     !isset($deyear) || $deyear === '' ||
-    !isset($deins) || $deins === ''
+    !isset($deins) || $deins === '' ||
+    !isset($dephone) || $dephone === '' 
 ) {
     echo "<script>alert('請填寫完整所有欄位！'); window.history.back();</script>";
     exit();
 }
+
 
 if (mysqli_query($link, $sql)) {
     $identityID = mysqli_insert_id($link);

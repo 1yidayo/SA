@@ -29,7 +29,7 @@ https://templatemo.com/tm-591-villa-agency
 
 -->
 
-    <style>
+     <style>
         .properties-box {
       display: flex;
       flex-wrap: wrap; /* 允許換行 */
@@ -82,7 +82,6 @@ https://templatemo.com/tm-591-villa-agency
 
 
     </style>
-
 
   </head>
 
@@ -170,7 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $event_time = mysqli_real_escape_string($link, $event_time);
     $information = mysqli_real_escape_string($link, $information);
 
-    $sql = "UPDATE club_requirements SET 
+    $sql = "UPDATE de_requirements SET 
                 title = '$title',
                 money = '$money',
                 people = '$people',
@@ -207,6 +206,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
+    <style>
+        .edit-form-container {
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .edit-form-container h3 {
+            color: #f39c12;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .edit-form-container label {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .edit-form-container input,
+        .edit-form-container select,
+        .edit-form-container textarea {
+            font-size: 15px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s;
+        }
+
+        .edit-form-container input:focus,
+        .edit-form-container select:focus,
+        .edit-form-container textarea:focus {
+            border-color: #f39c12;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(243, 156, 18, 0.2);
+        }
+
+        .edit-form-container button {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
 

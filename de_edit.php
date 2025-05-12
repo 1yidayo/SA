@@ -14,11 +14,19 @@ $dename = $_POST['dename'];
 $desize = $_POST['desize'];
 $deyear = $_POST['deyear'];
 $deins = $_POST['deins'];
+$dephone = $_POST['dephone'];
 $userID = $_SESSION['userID'];
 
 $link = mysqli_connect('localhost', 'root', '', 'SAS');
-$sql = "UPDATE identity SET deschool = '$deschool', dename = '$dename', desize = '$desize', 
-deyear = '$deyear', deins = '$deins' WHERE userID = '$userID'";
+$sql = "UPDATE identity 
+        SET deschool = '$deschool', 
+            dename = '$dename', 
+            desize = '$desize', 
+            deyear = '$deyear', 
+            deins = '$deins', 
+            dephone = '$dephone' 
+        WHERE userID = '$userID'";
+
 if (mysqli_query($link, $sql)) {
     // 成功就跳出 alert 並跳轉
     echo "<script>
