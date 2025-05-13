@@ -79,13 +79,13 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li><a href="de.html" class="active">首頁</a></li>
+              <li><a href="de.html">首頁</a></li>
               <li><a href="properties4.php">瀏覽</a></li>
               <li><a href="de_contact.php">發布</a></li>
               <li><a href="dehistory.php">發布歷史</a></li>
               <li><a href="self.de.php">個人頁面</a></li>
               <li><a href="login.html">登出</a></li>
-              <li><a href="advanced search for department society.html"><i class="fa fa-calendar"></i>進階搜尋</a></li>
+              <li><a href="aftersearchforde.php"  class="active">進階搜尋</a></li>
             </ul>
             <a class='menu-trigger'>
               <span>Menu</span>

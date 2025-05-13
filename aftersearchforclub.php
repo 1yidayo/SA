@@ -45,6 +45,35 @@
         width: 100%; /* 手機版單欄 */
     }
 }
+<style>
+.search-box {
+    margin: 10px 0;
+}
+.search-box input[type="text"], .search-box select {
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    padding: 0 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+.search-box input[type="text"]:focus, .search-box select:focus {
+    border-color: #007bff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.search-box button {
+    height: 40px;
+    border-radius: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.search-box button:hover {
+    background-color: #0056b3;
+}
+</style>
+
 
     </style>
 </head>
@@ -68,34 +97,32 @@
 
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              <h1></h1>
-            </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li><a href="cl.html" class="active">首頁</a></li>
-              <li><a href="properties2.php">瀏覽</a></li>
-              <li><a href="club contact.php">發布</a></li>
-              <li><a href="clubhistory.php">發布歷史</a></li>
-              <li><a href="self.cl.php">個人頁面</a></li>
-              <li><a href="login.html">登出</a></li>
-              <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</a></li>
-            </ul>
-            <a class='menu-trigger'>
-              <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
-          </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo
+                          End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="cl.html" class="active">首頁</a></li>
+                            <li><a href="properties2.php">瀏覽</a></li>
+                            <li><a href="club contact.php">發布</a></li>
+                            <li><a href="clubhistory.php">發布歷史</a></li>
+                            <li><a href="self.cl.php">個人頁面</a></li>
+                            <li><a href="login.html">登出</a></li>
+                            <li><a href="aftersearchforclub.php"><i class="fa fa-calendar"></i>進階搜尋</a>
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </header>
+    </header>
   <!-- ***** Header Area End ***** -->
 
   <div class="page-heading header-text">
@@ -103,11 +130,50 @@
       <div class="row">
         <div class="col-lg-12">
           <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
-          <h3>以下是您的搜尋結果</h3>
+          <h3>進階搜尋</h3>
         </div>
       </div>
     </div>
   </div>
+  <div class="contact-page section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12" style="margin:auto">
+                    <form id="contact-form" action="aftersearchforclub.php" method="post">
+                        <div class="row">
+                            <form>
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                            <span class="ms-1"><b>贊助範圍</b></span>
+                                        </div>
+                                        <input type="number" class="form-control" name="money" placeholder="請輸入金額" aria-label="金額輸入">
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="input-group">
+                                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                                <span class="ms-1"><b>企業名稱</b></span>
+                                            </div>
+                                            <input class="form-control" type="text" placeholder="請輸入企業名稱"
+                                                aria-label="Enter a City or Airport" name="enterprise">
+                                    </div>
+                                    <div class="col-12">
+                                            <div class="col-18">
+                                                <button class="btn btn-light w-100 py-2"
+                                                    type="submit"><b>搜尋</b></button>
+                                            </div>
+                                        </div>
+
+                                        
+                            </form>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
   <div class="section properties">
     <div class="container">
@@ -120,8 +186,8 @@
             die("Database connection failed: " . mysqli_connect_error());
         }
 
-        $money = mysqli_real_escape_string($link, $_POST['money']);
-        $enterprise = mysqli_real_escape_string($link, $_POST['enterprise']);
+        //$money = mysqli_real_escape_string($link, $_POST['money']);
+        //$enterprise = mysqli_real_escape_string($link, $_POST['enterprise']);
 
         // 動態產生 WHERE 條件
 $conditions = array();

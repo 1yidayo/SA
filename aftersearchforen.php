@@ -81,13 +81,14 @@ https://templatemo.com/tm-591-villa-agency
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-                            <li><a href="en.html" class="active">首頁</a></li>
+                            <li><a href="en.html">首頁</a></li>
                             <li><a href="properties.php">瀏覽</a></li>
                             <li><a href="en_contact.php">發布</a></li>
                             <li><a href="enhistory.php">發布歷史</a></li>
                             <li><a href="self.en.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
-                            <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</a>
+                            <li><a href="aftersearchforen.php"><i
+                                        class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
                         </ul>
             <a class='menu-trigger'>
@@ -106,8 +107,45 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row">
         <div class="col-lg-12">
           <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
-          <h3>以下是您的搜尋結果</h3>
+          <h3>企業進階搜尋</h3>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-page section">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-10" style="margin:auto">
+          <form id="contact-form" action="aftersearchforen.php" method="post">
+            <div class="row g-5">
+              <div class="col-4">
+                <label for="school">學校</label>
+                <input class="form-control" type="text" placeholder="請輸入學校名稱" name="school">
+              </div>
+              <div class="col-4">
+                <label for="school">社團</label>
+                <input class="form-control" type="text" placeholder="請輸入社團名稱" name="club">
+              </div>
+              <div class="col-4">
+                <label for="support_type">贊助類型</label>
+                <select name="support_type" id="support_type" class="form-control">
+                  <option value="">請選擇</option>
+                  <option value="金錢">金錢</option>
+                  <option value="物資">物資</option>
+                  <option value="場地">場地</option>
+                  <option value="提供實習">提供實習</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <button class="btn btn-light w-100 py-1" type="submit"><b>搜尋</b></button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
       </div>
     </div>
   </div>
@@ -117,31 +155,27 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row properties-box">
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
         <?php
-$link = mysqli_connect('localhost', 'root', '', 'SAS');
-if (!$link) {
-    die("Database connection failed: " . mysqli_connect_error());
-}
+        $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-// 取得表單資料，並去除多餘空白
-$school = trim(mysqli_real_escape_string($link, $_POST['school']));
-$club = trim(mysqli_real_escape_string($link, $_POST['club']));
-$support_type = trim(mysqli_real_escape_string($link, $_POST['support_type']));
+        if (!$link) {
+            die("Database connection failed: " . mysqli_connect_error());
+        }
 
-// 動態產生 WHERE 條件
+        //$money = mysqli_real_escape_string($link, $_POST['money']);
+        //$enterprise = mysqli_real_escape_string($link, $_POST['enterprise']);
+
+        // 動態產生 WHERE 條件
 $conditions = array();
 
-if (!empty($school)) {
-    $conditions[] = "school LIKE '%$school%'";
+if (!empty($money)) {
+    $conditions[] = "money LIKE '%$money%'";
 }
-if (!empty($club)) {
-    $conditions[] = "club LIKE '%$club%'";
-}
-if (!empty($support_type)) {
-    $conditions[] = "support_type = '$support_type'";
+if (!empty($enterprise)) {
+    $conditions[] = "enterprise LIKE '%$enterprise%'";
 }
 
 // 建構完整 SQL
-$sql = "SELECT * FROM club_requirements";
+$sql = "SELECT * FROM en_requirements";
 if (count($conditions) > 0) {
     $sql .= " WHERE " . implode(" AND ", $conditions);
 }
@@ -155,39 +189,29 @@ if (mysqli_num_rows($result) == 0) {
     echo "<p>未找到符合的活動</p>";
 }
 
-// 以下保持你的 while 迴圈不變...
-while ($row = mysqli_fetch_assoc($result)) {
-    echo "<div class='properties-items'>
-        <div class='item'>
-            <h4><a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . $row['title'] . "</a></h4>
-            <ul>
-                <li><span>" . $row['school'] . "</span></li>
-                <li><span>" . $row['club'] . "</span></li>
-                <br><br>
-                <li>社團活動規模：<span>" . $row['people'] . "</span></li>
-                <br>
-                <li>活動類型：<span>" . $row['type'] . "</span></li>
-                <br>
-                <li>需要贊助類型：<span>" . $row['support_type'] . "</span></li>
-            </ul>
-            <div class='main-button'>
-                <a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>了解活動詳情</a>
-            </div>
-            <br>
-            <li>發布時間：<span>" . $row['created_time'] . "</span></li>
-        </div>
-    </div>";
-}
-?>
-
-
+        while($row = mysqli_fetch_assoc($result)){
+            echo "<div class='properties-items'>
+                <div class='item'>
+                    <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
+                    <ul>
+                        <li><span>" . $row['enterprise'] . "</span></li>
+                        <li>贊助範圍：<span>" . $row['money'] . "</span></li>
+                        <li>企業發展類型：<span>" . $row['type'] . "</span></li>
+                    </ul>
+                    <div class='main-button'>
+                        <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
+                    </div>
+                </div>
+            </div>";
+        }
+    ?>
         </div>
       </div>
       <div class="row">
       </div>
     </div>
   </div>
-  
+
   <footer>
     <div class="container">
       <div class="col-lg-12">
