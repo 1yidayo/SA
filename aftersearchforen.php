@@ -87,7 +87,8 @@ https://templatemo.com/tm-591-villa-agency
                             <li><a href="enhistory.php">發布歷史</a></li>
                             <li><a href="self.en.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
-                            <li><a href="aftersearchforen.php">進階搜尋</a></li>
+                            <li><a href="aftersearchforen.php"><i
+                                        class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
                         </ul>
             <a class='menu-trigger'>
@@ -106,7 +107,7 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row">
         <div class="col-lg-12">
           <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
-          <h3>進階搜尋</h3>
+          <h3>企業進階搜尋</h3>
         </div>
       </div>
     </div>

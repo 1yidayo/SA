@@ -136,42 +136,44 @@
     </div>
   </div>
   <div class="contact-page section">
-    <div class="container">
-      <div class="row">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12" style="margin:auto">
+                    <form id="contact-form" action="aftersearchforclub.php" method="post">
+                        <div class="row">
+                            <form>
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                            <span class="ms-1"><b>贊助範圍</b></span>
+                                        </div>
+                                        <input type="number" class="form-control" name="money" placeholder="請輸入金額" aria-label="金額輸入">
+                                    </div>
 
-        <div class="col-lg-10" style="margin:auto">
-          <form id="contact-form" action="aftersearchforen.php" method="post">
-            <div class="row g-5">
-              <div class="col-4">
-                <label for="school">學校</label>
-                <input class="form-control" type="text" placeholder="請輸入學校名稱" name="school">
-              </div>
-              <div class="col-4">
-                <label for="school">社團</label>
-                <input class="form-control" type="text" placeholder="請輸入社團名稱" name="club">
-              </div>
-              <div class="col-4">
-                <label for="support_type">贊助類型</label>
-                <select name="support_type" id="support_type" class="form-control">
-                  <option value="">請選擇</option>
-                  <option value="金錢">金錢</option>
-                  <option value="物資">物資</option>
-                  <option value="場地">場地</option>
-                  <option value="提供實習">提供實習</option>
-                </select>
-              </div>
+                                    <div class="col-6">
+                                        <div class="input-group">
+                                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                                <span class="ms-1"><b>企業名稱</b></span>
+                                            </div>
+                                            <input class="form-control" type="text" placeholder="請輸入企業名稱"
+                                                aria-label="Enter a City or Airport" name="enterprise">
+                                    </div>
+                                    <div class="col-12">
+                                            <div class="col-18">
+                                                <button class="btn btn-light w-100 py-2"
+                                                    type="submit"><b>搜尋</b></button>
+                                            </div>
+                                        </div>
 
-              <div class="col-12">
-                <button class="btn btn-light w-100 py-1" type="submit"><b>搜尋</b></button>
-              </div>
+                                        
+                            </form>
+                        </div>
+                    </form>
+                </div>
+
             </div>
-          </form>
-
         </div>
-
-      </div>
     </div>
-  </div>
 
   <div class="section properties">
     <div class="container">
