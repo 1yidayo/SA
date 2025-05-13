@@ -11,19 +11,44 @@ if (!isset($_SESSION['identityID']) || !isset($_SESSION['level'])) {
 $identityID = $_SESSION['identityID'];
 $level = $_SESSION['level'];
 
-// 根據 level 抓取使用者的「真實名稱」
-if ($level === 'cl') {
-    $sql = "SELECT club FROM identity WHERE identityID = '$identityID'";
-} elseif ($level === 'en') {
-    $sql = "SELECT enterprise FROM identity WHERE identityID = '$identityID'";
-} else {
-    $username = '匿名用戶';
-}
+// 預設名稱
+$username = '匿名用戶';
 
-if (isset($sql)) {
+// 定義 level 與對應欄位名稱
+$levelFieldMap = [
+    'cl' => 'club',
+    'en' => 'enterprise',
+    // 這裡可以擴充更多身份 → 'st' => 'student_name', 等
+];
+
+if (array_key_exists($level, $levelFieldMap)) {
+    $fieldName = $levelFieldMap[$level];
+
+    // 防止 SQL injection
+    $safeIdentityID = mysqli_real_escape_string($link, $identityID);
+
+    // 查詢語句
+    if ($level == 'cl') {
+        // 若是社團，查詢 school 和 club
+        $sql = "SELECT `school`, `$fieldName` FROM identity WHERE identityID = '$safeIdentityID'";
+    } else {
+        // 若是企業，僅查詢 school 和 enterprise
+        $sql = "SELECT `$fieldName` FROM identity WHERE identityID = '$safeIdentityID'";
+    }
+
+    // 執行查詢並取得結果
     $result = mysqli_query($link, $sql);
-    if ($row = mysqli_fetch_assoc($result)) {
-        $username = ($level === 'cl') ? $row['club_name'] : $row['enterprise_name'];
+
+    if ($result && $row = mysqli_fetch_assoc($result)) {
+        if ($level == 'cl') {
+            // 若是社團，將大學名稱和社團名稱合併
+            $school = $row['school'] ?: '未提供大學名稱';
+            $club = $row[$fieldName] ?: '未提供社團名稱';
+            $username = $school . $club;  // 顯示 大學名稱 + 社團名稱
+        } else {
+            // 若是企業，僅顯示企業名稱
+            $username = $row[$fieldName] ?: '名稱查詢失敗';
+        }
     } else {
         $username = '名稱查詢失敗';
     }
