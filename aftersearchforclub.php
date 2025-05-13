@@ -103,8 +103,48 @@
       <div class="row">
         <div class="col-lg-12">
           <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
-          <h3>以下是您的搜尋結果</h3>
+          <h3>進階搜尋</h3>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-page section">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-6" style="margin:auto">
+          <form id="contact-form" action="aftersearchforen.php" method="post">
+            <div class="row g-5">
+
+              <div class="col-12">
+                <label for="school">學校</label>
+                <input class="form-control" type="text" placeholder="請輸入學校名稱" name="school">
+              </div>
+
+              <div class="col-12">
+                <label for="school">社團</label>
+                <input class="form-control" type="text" placeholder="請輸入社團名稱" name="club">
+              </div>
+
+              <div class="col-12">
+                <label for="support_type">贊助類型</label>
+                <select name="support_type" id="support_type" class="form-control">
+                  <option value="">請選擇</option>
+                  <option value="金錢">金錢</option>
+                  <option value="物資">物資</option>
+                  <option value="場地">場地</option>
+                  <option value="提供實習">提供實習</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <button class="btn btn-light w-100 py-2" type="submit"><b>搜尋</b></button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+
       </div>
     </div>
   </div>
