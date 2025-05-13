@@ -82,8 +82,8 @@ https://templatemo.com/tm-591-villa-agency
                     
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                            <li><a href="ai.html" class="active">首頁</a></li>
-                            <li><a href="properties3.php">瀏覽</a></li>
+                            <li><a href="ai.html">首頁</a></li>
+                            <li><a href="properties3.php"  class="active">瀏覽</a></li>
                             <li><a href="alumni contact.php">發布</a></li>
                             <li><a href="aihistory.php">發布歷史</a></li>
                             <li><a href="self.ai.php">個人頁面</a></li>

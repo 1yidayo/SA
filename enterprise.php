@@ -84,8 +84,22 @@
       <p class="card-text"><?= nl2br(htmlspecialchars($row['information'])) ?></p>
     </div>
   </div>
-</div>
+  <!-- 留言區 -->
+          <div class="card shadow-sm p-4 mb-4 bg-white rounded" id="comment-section">
+            <h5 class="mb-3">留言區</h5>
 
+            <!-- 留言輸入框 -->
+            <div class="d-flex mb-4">
+              <div class="flex-grow-1">
+                <textarea id="comment-text" class="form-control mb-2" rows="2" placeholder="留下你的留言..." style="resize: none;"></textarea>
+                <button class="btn btn-primary btn-sm" id="submit-comment">送出</button>
+              </div>
+            </div>
+
+            <!-- 顯示留言列表 -->
+            <div id="comments-list"></div>
+          </div>
+</div>
         
         <!-- Right Side: Info Table -->
         <div class="col-lg-4">
@@ -137,6 +151,39 @@
   </footer>
 
   <!-- Scripts -->
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const submitBtn = document.getElementById('submit-comment');
+      const commentText = document.getElementById('comment-text');
+      const commentsList = document.getElementById('comments-list');
+      const enrequirement_num = <?= json_encode($enrequirement_num) ?>;
+
+      function loadComments() {
+        fetch('fetch_comments.php?enrequirement_num=' + enrequirement_num)
+          .then(res => res.text())
+          .then(data => {
+            commentsList.innerHTML = data;
+          });
+      }
+
+      submitBtn.addEventListener('click', () => {
+        const content = commentText.value.trim();
+        if (!content) return;
+
+        fetch('submit_comment.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: 'enrequirement_num=' + encodeURIComponent(enrequirement_num) + '&content=' + encodeURIComponent(content)
+        }).then(res => res.text())
+          .then(() => {
+            commentText.value = '';
+            loadComments();
+          });
+      });
+
+      loadComments();
+    });
+  </script>
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
   <script src="assets/js/isotope.min.js"></script>
