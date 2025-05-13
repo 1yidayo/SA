@@ -82,36 +82,41 @@
 
     while ($row = mysqli_fetch_assoc($result)) {
         echo "<div class='contact-page section' style='margin-top: 20px;'>
-            <div class='row'>
-            <div class='col-lg-6' style='margin:auto'>
-                <form id='contact-form' action='de_edit.php' method='post' enctype='multipart/form-data'>
+    <div class='row'>
+        <div class='col-lg-6' style='margin:auto'>
+            <form id='contact-form' action='de_edit.php' method='post' enctype='multipart/form-data'>
                 <div class='mb-3'>
-                    <label class='form-label'><b>學校名稱</b>
-                    </label><input class='form-control' name='deschool' value='", $row['deschool'], "' required>
+                    <label class='form-label'><b>學校名稱</b></label>
+                    <input class='form-control' name='deschool' value='" . $row['deschool'] . "' required>
                 </div>
                 <div class='mb-3'>
-                    <label class='form-label'><b>系學會名稱</b>
-                    </label><input class='form-control' name='dename' value='", $row['dename'], "' required>
+                    <label class='form-label'><b>系學會名稱</b></label>
+                    <input class='form-control' name='dename' value='" . $row['dename'] . "' required>
                 </div>
                 <div class='mb-3'>
-                    <label class='form-label'><b>系學會規模</b>
-                    </label><input class='form-control' name='desize' value='", $row['desize'], "' required>
+                    <label class='form-label'><b>系學會規模</b></label>
+                    <input class='form-control' name='desize' value='" . $row['desize'] . "' required>
                 </div>
                 <div class='mb-3'>
-                    <label class='form-label'><b>系學會成立年份</b>
-                    </label><input class='form-control' name='deyear' value='", $row['deyear'], "' required>
+                    <label class='form-label'><b>系學會成立年份</b></label>
+                    <input class='form-control' name='deyear' value='" . $row['deyear'] . "' required>
                 </div>
                 <div class='mb-3'>
-                    <label class='form-label'><b>社群連結</b>
-                    </label><input class='form-control' name='deins' value='", $row['deins'], "' required>
+                    <label class='form-label'><b>社群連結</b></label>
+                    <input class='form-control' name='deins' value='" . $row['deins'] . "' required>
                 </div>
-                    <button class='btn btn-dark w-100' type='submit'><b>儲存修改</b></button>
-                </form>
-            </div>
+                <div class='mb-3'>
+                    <label class='form-label'><b>聯絡人電話</b></label>
+                    <input class='form-control' name='dephone' value='" . $row['dephone'] . "' required>
+                </div>
+                <button class='btn btn-dark w-100' type='submit'><b>儲存修改</b></button>
+            </form>
         </div>
-    </div>";
+    </div>
+</div>";
     }
-    ?>
+?>
+
 
     <!-- Footer -->
     <footer class="mt-5">
