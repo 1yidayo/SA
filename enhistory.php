@@ -15,6 +15,7 @@ session_start();
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
@@ -93,6 +94,17 @@ https://templatemo.com/tm-591-villa-agency
         width: 100%; /* 手機版單欄 */
     }
 }
+button, input[type="submit"] {
+    background-color: #ff7f50;
+    color: #000;
+    border: 1px solid #ff7f50;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #e3643c;
+    color: #fff;
+}
+
 
     </style>
 
@@ -124,28 +136,17 @@ https://templatemo.com/tm-591-villa-agency
                     
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                            <li><a href="en.html" class="active">首頁</a></li>
-<<<<<<< Updated upstream
+                            <li><a href="en.html">首頁</a></li>
                             <li><a href="properties.php">瀏覽</a></li>
                             <li><a href="en_contact.php">發布</a></li>
-                            <li><a href="enhistory.php">發布歷史</a></li>
+                            <li><a href="enhistory.php"  class="active">發布歷史</a></li>
                             <li><a href="self.en.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
-                            <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</a>
-=======
-                            <li><a href="properties2.php">瀏覽</a></li>
-                            <li><a href="club contact.php">發布</a></li>
-                            <li><a href="enhistory.php">發布歷史</a></li>
-                            <li><a href="self.en.php">個人頁面</a></li>
-                            <li><a href="first.html">登出</a></li>
-                            <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
->>>>>>> Stashed changes
+                            <li><a href="advanced search for enterprise.html"><i
+                                        class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
                         </ul>
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
+                    
                 </nav>
             </div>
         </div>
@@ -206,16 +207,7 @@ https://templatemo.com/tm-591-villa-agency
 </div>
 
         </div>
-      <div class="row">
-        <!-- <div class="col-lg-12">
-          <ul class="pagination">
-            <li><a href="#">1</a></li>
-            <li><a class="is_active" href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">>></a></li>
-          </ul>
-        </div> -->
-      </div>
+      
     </div>
   </div>
 
