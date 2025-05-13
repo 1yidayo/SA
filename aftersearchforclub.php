@@ -79,13 +79,13 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li><a href="cl.html" class="active">首頁</a></li>
+              <li><a href="cl.html">首頁</a></li>
               <li><a href="properties2.php">瀏覽</a></li>
               <li><a href="club contact.php">發布</a></li>
               <li><a href="clubhistory.php">發布歷史</a></li>
               <li><a href="self.cl.php">個人頁面</a></li>
               <li><a href="login.html">登出</a></li>
-              <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</a></li>
+              <li><a href="aftersearchforclub.php"  class="active">進階搜尋</a></li>
             </ul>
             <a class='menu-trigger'>
               <span>Menu</span>
