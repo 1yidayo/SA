@@ -103,9 +103,6 @@
                 <h4>企業行業別<br><span><?= $row['type'] ?></span></h4>
               </li>
               <li>
-                <h4>企業統一編號<br><span><?= $row['code'] ?></span></h4>
-              </li>
-              <li>
                 <h4>企業聯絡方式<br><span><?= $row['ins'] ?></span></h4>
               </li>
               <li>
