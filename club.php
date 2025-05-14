@@ -182,7 +182,7 @@
 
             </div>
             <div>
-              <div class='mb-3' style='font-size: 18px;' style='font-size: 18px;'><label class='form-label text-muted'><br>學校名稱：</label><b>{$row['school']}</b></div>
+              <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>學校名稱：</label><b>{$row['school']}</b></div>
           <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>社團名稱：</label><b>{$row['club']}</b></div>
           <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>社團成員人數：</label><b>{$row['clsize']}</b></div>
           <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>社團成立年分：</label><b>{$row['clyear']}</b></div>
