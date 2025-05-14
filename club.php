@@ -178,7 +178,8 @@
             
             <div class='card shadow-sm p-3 mb-4 bg-white rounded'>
             <div class='text-center' style='align-items:center;'>
-              <br><img src='uploads/{$avatar}' alt='發文者頭像' class='img-fluid rounded-circle mb-3' style='width: 100px; height: 100px;'>
+              <br><img src='uploads/{$avatar}' alt='發文者頭像' class='rounded-circle mb-3' style='width: 100px; height: 100px; object-fit: cover;'>
+
             </div>
             <div>
               <div class='mb-3' style='font-size: 18px;' style='font-size: 18px;'><label class='form-label text-muted'><br>學校名稱：</label><b>{$row['school']}</b></div>
