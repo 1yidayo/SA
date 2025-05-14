@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <title>社團企業媒合平台</title>
 
   <!-- Bootstrap core CSS -->
@@ -15,7 +16,7 @@
   <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
   <link rel="stylesheet" href="assets/css/owl.css">
   <link rel="stylesheet" href="assets/css/animate.css">
-  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -68,90 +69,138 @@
     </div>
   </div>
 
-  <div class="single-property section">
+  <div class="section">
     <div class="container">
       <div class="row">
         <?php
-$clrequirement_num = $_GET['clrequirement_num'];
-$link = mysqli_connect('localhost', 'root', '', 'SAS');
-$sql = "SELECT * FROM club_requirements WHERE clrequirement_num = '$clrequirement_num'";
-$result = mysqli_query($link, $sql);
-$row = mysqli_fetch_assoc($result); // 只取出一筆結果，直接存入 $row 變數
-
-if ($row) {
-  echo "<div class='col-lg-8'>
-          <div class='main-content'>
-            <h2 class='mb-3'>" . htmlspecialchars($row['title']) . "</h2>
-          </div>
-        </div>";
-} else {
-  echo "<div class='col-lg-8'>
+        $clrequirement_num = $_GET['clrequirement_num'];
+        $link = mysqli_connect('localhost', 'root', '', 'SAS');
+        $sql = "SELECT * FROM club_requirements WHERE clrequirement_num = '$clrequirement_num'";
+        $result = mysqli_query($link, $sql);
+        $row = mysqli_fetch_assoc($result); // 只取出一筆結果，直接存入 $row 變數
+        
+        if ($row) {
+          echo "<div class='col-lg-8'>
+  <div class='main-content mb-4'>
+    <div class='d-flex justify-content-between align-items-center mb-2'>
+      <h2 class='mb-0' style='font-size: 40px;'>" . htmlspecialchars(string: $row['title']) . "&nbsp;<button class='btn btn-outline-secondary mb-2'>Edit Post</button></h2>
+      
+    </div>
+  </div>
+</div>";
+        } else {
+          echo "<div class='col-lg-8'>
           <div class='main-content'>
             <h2 class='mb-3'>找不到資料</h2>
           </div>
         </div>";
-}
-?>
+        }
+        ?>
 
 
-        <div class="col-lg-8">
-          <div class="card shadow-sm p-4 mb-4 bg-white rounded">
-            <div class="card-body">
-              <h5 class="card-title font-weight-bold mb-3">活動詳情內文：</h5>
-              <p class="card-text"><?= nl2br(htmlspecialchars($row['information'])) ?></p>
+        <div class="row">
+          <!-- 左側：活動資訊 -->
+          <div class="col-lg-3">
+            <div class="card shadow-sm p-3 mb-4 bg-white rounded">
+              <h5 class="mb-3" style="font-size: 25px;">活動資訊</h5>
+              <ul class="list-unstyled">
+                <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>贊助類型：</label><b><?= $row['support_type'] ?></b>
+                </div>
+                <?php if ($row['support_type'] === '金錢'): ?>
+                  <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>贊助範圍：</label><b><?= $row['money'] ?? '未填寫' ?></b>
+                  </div>
+                <?php endif; ?>
+                <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>活動預計規模：</label><b><?= $row['people'] ?></b></div>
+                <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>活動類型：</label><b><?= $row['type'] ?></b></div>
+                <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>企劃書：</label><b><a
+                      href="<?= htmlspecialchars($row['upload']) ?>" download>下載</a></b></div>
+                <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>社群連結：</label><b><a href="<?= $row['ins'] ?>"
+                      target="_blank">點此前往</a></b></div>
+              </ul>
             </div>
           </div>
 
-          <!-- 留言區 -->
-          <div class="card shadow-sm p-4 mb-4 bg-white rounded" id="comment-section">
-            <h5 class="mb-3">留言區</h5>
+          <!-- 中間：貼文標題與活動詳情 -->
+          <div class="col-lg-6">
+            <div class="main-content">
+              <div class="card shadow-sm p-3 mb-4 bg-white rounded">
+                <div>
+                  <h5 class="mb-3" style="font-size: 25px;">活動詳情內文：</h5>
+                  <p class="card-text" style="font-size: 18px;"><?= nl2br(htmlspecialchars($row['information'])) ?></p>
+                </div>
+              </div>
 
-            <!-- 留言輸入框 -->
-            <div class="d-flex mb-4">
-              <div class="flex-grow-1">
-                <textarea id="comment-text" class="form-control mb-2" rows="2" placeholder="留下你的留言..." style="resize: none;"></textarea>
-                <button class="btn btn-primary btn-sm" id="submit-comment">送出</button>
+              <!-- 留言區 -->
+              <div class="card shadow-sm mb-4 bg-white rounded" id="comment-section" style="padding: 16px;">
+                <h5 class="mb-3" style="font-size: 25px;">留言區</h5>
+                <!-- <div class="d-flex mb-4"> -->
+                <div class="flex-grow-1 text-end">
+                  <textarea id="comment-text" class="form-control mb-2" rows="2" placeholder="留下你的留言..."
+                    style="resize: none;"></textarea>
+                  <button class="btn btn-primary btn-sm" id="submit-comment"
+                    style="background-color: black; border: black; ">送出</button>
+                </div>
+                <!-- </div> -->
+                <div id="comments-list"></div>
               </div>
             </div>
-
-            <!-- 顯示留言列表 -->
-            <div id="comments-list"></div>
           </div>
+
+          <!-- 右側：發文者資訊與編輯按鈕 -->
+          <?php
+          $clrequirement_num = $_GET['clrequirement_num'];
+          $link = mysqli_connect('localhost', 'root', '', 'SAS');
+
+          // 使用 LEFT JOIN 來聯結資料表，確保 profile_img 被選取
+          $sql = "SELECT club_requirements.*, identity.profile_img 
+        FROM club_requirements 
+        LEFT JOIN identity ON club_requirements.identityID = identity.identityID 
+        WHERE clrequirement_num = '$clrequirement_num'";
+
+          $result = mysqli_query($link, $sql);
+          $row = mysqli_fetch_assoc($result);
+          $userID = $row['identityID'] ?? null;
+
+          if ($userID) {
+            $sql_identity = "SELECT * FROM identity WHERE identityID = '$userID'";
+            $result_identity = mysqli_query($link, $sql_identity);
+            $identity_row = mysqli_fetch_assoc($result_identity);
+          }
+
+          if ($row) {
+            // 確認是否有 profile_img，若無則使用預設圖片
+            $avatar = isset($row['profile_img']) && $row['profile_img'] ? $row['profile_img'] : 'default-profile.png';
+            $sql = "SELECT * FROM identity WHERE userID = '$userID'";
+            $result = mysqli_query($link, $sql);
+            $row = mysqli_fetch_assoc($result);
+            // 顯示發文者頭像
+            echo "<div class='col-lg-3'>
+            
+            <div class='card shadow-sm p-3 mb-4 bg-white rounded'>
+            <div class='text-center' style='align-items:center;'>
+              <br><img src='uploads/{$avatar}' alt='發文者頭像' class='img-fluid rounded-circle mb-3' style='width: 100px; height: 100px;'>
+            </div>
+            <div>
+              <div class='mb-3' style='font-size: 18px;' style='font-size: 18px;'><label class='form-label text-muted'><br>學校名稱：</label><b>{$row['school']}</b></div>
+          <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>社團名稱：</label><b>{$row['club']}</b></div>
+          <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>社團成員人數：</label><b>{$row['clsize']}</b></div>
+          <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>社團成立年分：</label><b>{$row['clyear']}</b></div>
+          <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>社團類型：</label><b>{$row['cltype']}</b></div>
+          <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>粉專或社群連結：</label><b><a class='fs-5' style='font-size:18px;' href='{$row['clins']}' target='_blank'>{$row['clins']}</a></b></div>
+          <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>聯絡人電話：</label><b>{$row['clphone']}</b></div>
+            </div>
+          </div>";
+          } else {
+            echo "<div class='col-lg-8'>
+            <div class='main-content'>
+              <h2 class='mb-3'>找不到資料</h2>
+            </div>
+          </div>";
+          }
+          ?>
+
         </div>
 
-        <div class="col-lg-4">
-          <div class="info-table">
-            <ul>
-              <li>
-                <h4>贊助類型<br><span><?= $row['support_type'] ?></span></h4>
-              </li>
-
-              <?php if ($row['support_type'] === '金錢'): ?>
-              <li>
-                <h4>贊助範圍<br><span><?= $row['money'] ?? '未填寫' ?></span></h4>
-              </li>
-              <?php endif; ?>
-
-              <li>
-                <h4>活動預計規模<br><span><?= $row['people'] ?></span></h4>
-              </li>
-              <li>
-                <h4>活動類型<br><span><?= $row['type'] ?></span></h4>
-              </li>
-              <li>
-                <h4>企劃書內容<br>
-                  <span>
-                  <a href="<?= htmlspecialchars($row['upload']) ?>" download>下載企劃書</a>
-                  </span>
-                </h4>
-              </li>
-
-              <li>
-                <h4><a href="<?= $row['ins'] ?>" target="_blank">社群連結</a><br><span></span></h4>
-              </li>
-            </ul>
-          </div>
-        </div>
 
       </div>
     </div>
