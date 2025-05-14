@@ -91,13 +91,7 @@
           <!-- Left Side: Title & Description -->
           <div class="col-lg-3">
             <div class="card shadow-sm p-3 mb-4 bg-white rounded">
-              <!-- <div class="card-body">
-                <h2 class="card-title mb-3"><?= htmlspecialchars($row['title']) ?></h2>
-                <hr>
-                <h5 class="font-weight-bold mb-2">贊助需求內文：</h5>
-                <p class="card-text"><?= nl2br(htmlspecialchars($row['information'])) ?></p>
-              </div>
-            </div> -->
+
 
               <h5 class="mb-3" style="font-size: 25px;">活動資訊</h5>
               <ul class="list-unstyled">
