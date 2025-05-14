@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
 
-  <title>社團企業媒合平台</title>
+  <title>Villa Agency - Property Listing by TemplateMo</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -19,7 +19,13 @@
   <link rel="stylesheet" href="assets/css/owl.css">
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
- 
+  <!--
+
+TemplateMo 591 villa agency
+
+https://templatemo.com/tm-591-villa-agency
+
+-->
 <style>
 .properties-box {
     display: flex;
@@ -33,6 +39,28 @@
     min-width: 300px; /* 避免縮小過度 */
 }
 
+.properties-items .item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.properties-items {
+    width: 30%;
+    min-width: 300px;
+    margin-bottom: 20px; /* 每張卡底部加間距 */
+}
+
+.properties-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* 控制卡片間的左右間距 */
+    justify-content: flex-start;
+}
+
+
+
 /* 讓小螢幕時調整排列 */
 @media (max-width: 992px) {
     .properties-items {
@@ -45,35 +73,6 @@
         width: 100%; /* 手機版單欄 */
     }
 }
-<style>
-.search-box {
-    margin: 10px 0;
-}
-.search-box input[type="text"], .search-box select {
-    height: 40px;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    padding: 0 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
-.search-box input[type="text"]:focus, .search-box select:focus {
-    border-color: #007bff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-.search-box button {
-    height: 40px;
-    border-radius: 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    transition: background-color 0.3s ease;
-}
-.search-box button:hover {
-    background-color: #0056b3;
-}
-</style>
-
 
     </style>
 </head>
@@ -93,36 +92,36 @@
   </div>
   <!-- ***** Preloader End ***** -->
 
-
-
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo
-                          End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li><a href="cl.html" class="active">首頁</a></li>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+                            <li><a href="cl.html">首頁</a></li>
                             <li><a href="properties2.php">瀏覽</a></li>
-                            <li><a href="club contact.php">發布</a></li>
+                            <li><a href="club_contact.php">發布</a></li>
                             <li><a href="clubhistory.php">發布歷史</a></li>
                             <li><a href="self.cl.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
-                            <li><a href="aftersearchforclub.php"><i class="fa fa-calendar"></i>進階搜尋</a>
+                            <li><a href="aftersearchforclub.php"><i
+                                        class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
                         </ul>
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
-                </div>
-            </div>
+            <a class='menu-trigger'>
+              <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
   <!-- ***** Header Area End ***** -->
 
   <div class="page-heading header-text">
@@ -130,7 +129,7 @@
       <div class="row">
         <div class="col-lg-12">
           <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
-          <h3>進階搜尋</h3>
+          <h3>社團進階搜尋相關企業</h3>
         </div>
       </div>
     </div>
@@ -171,25 +170,21 @@
                     </form>
                 </div>
 
-            </div>
-        </div>
-    </div>
-
   <div class="section properties">
     <div class="container">
       <div class="row properties-box">
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
         <?php
-        $link = mysqli_connect('localhost', 'root', '', 'SAS');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-        if (!$link) {
-            die("Database connection failed: " . mysqli_connect_error());
-        }
+if (!$link) {
+    die("Database connection failed: " . mysqli_connect_error());
+}
 
-        //$money = mysqli_real_escape_string($link, $_POST['money']);
-        //$enterprise = mysqli_real_escape_string($link, $_POST['enterprise']);
+// 正確取得 POST 變數
+$money = isset($_POST['money']) ? mysqli_real_escape_string($link, $_POST['money']) : '';
+$enterprise = isset($_POST['enterprise']) ? mysqli_real_escape_string($link, $_POST['enterprise']) : '';
 
-        // 動態產生 WHERE 條件
+// 動態產生 WHERE 條件
 $conditions = array();
 
 if (!empty($money)) {
@@ -214,22 +209,24 @@ if (mysqli_num_rows($result) == 0) {
     echo "<p>未找到符合的活動</p>";
 }
 
-        while($row = mysqli_fetch_assoc($result)){
-            echo "<div class='properties-items'>
-                <div class='item'>
-                    <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
-                    <ul>
-                        <li><span>" . $row['enterprise'] . "</span></li>
-                        <li>贊助範圍：<span>" . $row['money'] . "</span></li>
-                        <li>企業發展類型：<span>" . $row['type'] . "</span></li>
-                    </ul>
-                    <div class='main-button'>
-                        <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
-                    </div>
-                </div>
-            </div>";
-        }
-    ?>
+while($row = mysqli_fetch_assoc($result)){
+  echo "<div class='properties-items'>
+  <div class='item'>
+      <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
+      <ul>
+          <li><span>" . $row['enterprise'] . "</span></li>
+          <li>贊助範圍：<span>" . $row['money'] . "</span></li>
+          <li>企業發展類型：<span>" . $row['type'] . "</span></li>
+      </ul>
+      <div class='main-button'>
+          <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
+      </div>
+  </div>
+</div>";
+
+}
+?>
+
         </div>
       </div>
       <div class="row">

@@ -107,7 +107,7 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row">
         <div class="col-lg-12">
           <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
-          <h3>企業進階搜尋</h3>
+          <h3>企業進階搜尋相關社團</h3>
         </div>
       </div>
     </div>
@@ -161,45 +161,50 @@ https://templatemo.com/tm-591-villa-agency
             die("Database connection failed: " . mysqli_connect_error());
         }
 
-        //$money = mysqli_real_escape_string($link, $_POST['money']);
-        //$enterprise = mysqli_real_escape_string($link, $_POST['enterprise']);
+        // 取得搜尋表單的輸入
+        $school = isset($_POST['school']) ? mysqli_real_escape_string($link, $_POST['school']) : '';
+        $club = isset($_POST['club']) ? mysqli_real_escape_string($link, $_POST['club']) : '';
+        $support_type = isset($_POST['support_type']) ? mysqli_real_escape_string($link, $_POST['support_type']) : '';
 
         // 動態產生 WHERE 條件
-$conditions = array();
+        $conditions = array();
 
-if (!empty($money)) {
-    $conditions[] = "money LIKE '%$money%'";
-}
-if (!empty($enterprise)) {
-    $conditions[] = "enterprise LIKE '%$enterprise%'";
-}
+        if (!empty($school)) {
+            $conditions[] = "school LIKE '%$school%'";
+        }
+        if (!empty($club)) {
+            $conditions[] = "club LIKE '%$club%'";
+        }
+        if (!empty($support_type)) {
+            $conditions[] = "support_type LIKE '%$support_type%'";
+        }
 
-// 建構完整 SQL
-$sql = "SELECT * FROM en_requirements";
-if (count($conditions) > 0) {
-    $sql .= " WHERE " . implode(" AND ", $conditions);
-}
+        // 建構完整 SQL
+        $sql = "SELECT * FROM club_requirements";
+        if (count($conditions) > 0) {
+            $sql .= " WHERE " . implode(" AND ", $conditions);
+        }
 
-$result = mysqli_query($link, $sql);
-if (!$result) {
-    die("Query failed: " . mysqli_error($link));
-}
+        $result = mysqli_query($link, $sql);
+        if (!$result) {
+            die("Query failed: " . mysqli_error($link));
+        }
 
-if (mysqli_num_rows($result) == 0) {
-    echo "<p>未找到符合的活動</p>";
-}
+        if (mysqli_num_rows($result) == 0) {
+            echo "<p>未找到符合的活動</p>";
+        }
 
         while($row = mysqli_fetch_assoc($result)){
             echo "<div class='properties-items'>
                 <div class='item'>
-                    <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
+                    <h4><a href='enterprise.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . $row['title'] . "</a></h4>
                     <ul>
-                        <li><span>" . $row['enterprise'] . "</span></li>
-                        <li>贊助範圍：<span>" . $row['money'] . "</span></li>
-                        <li>企業發展類型：<span>" . $row['type'] . "</span></li>
+                        <li><span>" . $row['club'] . "</span></li>
+                        <li>學校：<span>" . $row['school'] . "</span></li>
+                        <li>需要贊助類型：<span>" . $row['support_type'] . "</span></li>
                     </ul>
                     <div class='main-button'>
-                        <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
+                        <a href='enterprise.php?enrequirement_num=" . $row['clrequirement_num'] . "'>了解活動詳情</a>
                     </div>
                 </div>
             </div>";
