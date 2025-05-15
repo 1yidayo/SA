@@ -189,14 +189,9 @@
                   <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                     <span class="ms-1"><b>預算範圍</b></span>
                   </div>
-                  <select class="form-select" aria-label="Default select example" name="money" id="money" title="必填欄位！">
-                    <option value="">請選擇</option>
-                    <option value="$20,000以下">$20,000以下</option>
-                    <option value="$20,001-$30,000">$20,001-$30,000</option>
-                    <option value="$30,001-$50,000">$30,001-$50,000</option>
-                    <option value="$50,001-$70,000">$50,001-$70,000</option>
-                    <option value="$70,001以上">$70,001以上</option>
-                  </select>
+                  <input type="number" class="form-control" name="money" id="money" placeholder="請輸入金額" title="必填欄位！" min="0">
+
+                    
                 </div>
                 <br>
 
