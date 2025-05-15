@@ -39,7 +39,7 @@
                 <div class="col-12">
                     <nav class="main-nav">
                         <ul class="nav">
-                            <li><a href="cl.html">首頁</a></li>
+                            <li><a href="cl.php">首頁</a></li>
                             <li><a href="properties2.php">瀏覽</a></li>
                             <li><a href="club contact.html">發布</a></li>
                             <li><a href="clubhistory.php">發布歷史</a></li>

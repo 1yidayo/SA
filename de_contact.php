@@ -55,7 +55,7 @@
                             <li><a href="dehistory.php">發布歷史</a></li>
                             <li><a href="self.de.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
-                            <li><a href="advanced search for department society.html"><i class="fa fa-calendar"></i>進階搜尋</a>
+                            <li><a href="aftersearchforde.php"><i class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
                         </ul>
             <a class='menu-trigger'>
@@ -210,7 +210,7 @@
                 </div>
 
                 <br>
-                <div class="col-12">
+                <div class="col-12" id="event_time_group">
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                       <span class="ms-1"><b>預計活動月份(必填)</b></span>
@@ -317,6 +317,34 @@
   <script src="assets/js/owl-carousel.js"></script>
   <script src="assets/js/counter.js"></script>
   <script src="assets/js/custom.js"></script>
+
+  <script>
+  const supportTypeSelect = document.getElementById('support_type');
+  const eventTimeGroup = document.getElementById('event_time_group');
+  const eventTimeInput = document.getElementById('event_time');
+
+  supportTypeSelect.addEventListener('change', function() {
+    if (this.value === '提供實習') {
+      // 隱藏預計活動月份欄位
+      eventTimeGroup.style.display = 'none';
+      // 移除 required 屬性，避免驗證錯誤
+      eventTimeInput.required = false;
+      // 清空欄位值（可選）
+      eventTimeInput.value = '';
+    } else {
+      // 顯示預計活動月份欄位
+      eventTimeGroup.style.display = 'block';
+      // 加上 required 屬性
+      eventTimeInput.required = true;
+    }
+  });
+
+  // 頁面載入時觸發一次檢查（如果預設有值）
+  window.addEventListener('DOMContentLoaded', () => {
+    supportTypeSelect.dispatchEvent(new Event('change'));
+  });
+</script>
+
 
 </body>
 
