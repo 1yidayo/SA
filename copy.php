@@ -39,6 +39,28 @@ https://templatemo.com/tm-591-villa-agency
     min-width: 300px; /* 避免縮小過度 */
 }
 
+.properties-items .item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.properties-items {
+    width: 30%;
+    min-width: 300px;
+    margin-bottom: 20px; /* 每張卡底部加間距 */
+}
+
+.properties-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* 控制卡片間的左右間距 */
+    justify-content: flex-start;
+}
+
+
+
 /* 讓小螢幕時調整排列 */
 @media (max-width: 992px) {
     .properties-items {
@@ -105,7 +127,7 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row">
         <div class="col-lg-12">
           <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
-          <h3>企業進階搜尋相關社團</h3>
+          <h3>社團進階搜尋相關企業</h3>
         </div>
       </div>
     </div>
@@ -115,11 +137,18 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row">
 
         <div class="col-lg-10" style="margin:auto">
-          <form id="contact-form" action="copy.php" method="post">
+          <form id="contact-form" action="aftersearchforclub.php" method="post">
             <div class="row g-5">
               <div class="col-4">
                 <label for="school">贊助範圍</label>
-                <input type="number" class="form-control" name="money" placeholder="請輸入金額" aria-label="金額輸入">
+                  <select name="money" id="money" class="form-control">
+                    <option value="">請選擇</option>
+                    <option value="$20,000以下">$20,000以下</option>
+                    <option value="$20,001-$30,000">$20,001-$30,000</option>
+                    <option value="$30,001-$50,000">$30,001-$50,000</option>
+                    <option value="$50,001-$70,000">$50,001-$70,000</option>
+                    <option value="$70,001以上">$70,001以上</option>
+                  </select>
               </div>
               <div class="col-4">
                 <label for="school">企業名稱</label>
@@ -127,7 +156,7 @@ https://templatemo.com/tm-591-villa-agency
                  aria-label="Enter a City or Airport" name="enterprise">
               </div>
               <div class="col-4">
-                <label for="support_type">贊助類型</label>
+                <label for="support_type">企業發展類型</label>
                 <select name="support_type" id="support_type" class="form-control">
                   <option value="">請選擇</option>
                   <option value="金錢">金錢</option>
