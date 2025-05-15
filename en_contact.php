@@ -35,7 +35,8 @@
               <li><a href="enhistory.php">發布歷史</a></li>
               <li><a href="self.en.php">個人頁面</a></li>
               <li><a href="login.html">登出</a></li>
-              <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</a></li>
+              <li><a href="aftersearchforen.php"><i
+                                        class="fa fa-calendar"></i>進階搜尋</a>
             </ul>
             <a class='menu-trigger'><span>Menu</span></a>
           </nav>
