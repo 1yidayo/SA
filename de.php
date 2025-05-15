@@ -154,56 +154,90 @@
 
           <!-- 右側：發文者資訊與編輯按鈕 -->
           <?php
-          $derequirement_num = $_GET['derequirement_num'];
-          $link = mysqli_connect('localhost', 'root', '', 'SAS');
+$derequirement_num = $_GET['derequirement_num'];
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-          // 使用 LEFT JOIN 來聯結資料表，確保 profile_img 被選取
-          $sql = "SELECT de_requirements.*, identity.profile_img 
+// 使用 LEFT JOIN 來聯結資料表，確保 profile_img 被選取
+$sql = "SELECT 
+            de_requirements.*, 
+            identity.profile_img, 
+            identity.identityID,
+            identity.deschool,
+            identity.dename,
+            identity.desize,
+            identity.deyear,
+            identity.deins,
+            identity.dephone
         FROM de_requirements 
         LEFT JOIN identity ON de_requirements.identityID = identity.identityID 
         WHERE derequirement_num = '$derequirement_num'";
 
-          $result = mysqli_query($link, $sql);
-          $row = mysqli_fetch_assoc($result);
-          $userID = $row['identityID'] ?? null;
+$result = mysqli_query($link, $sql);
+$row = mysqli_fetch_assoc($result);
 
-          if ($userID) {
-            $sql_identity = "SELECT * FROM identity WHERE identityID = '$userID'";
-            $result_identity = mysqli_query($link, $sql_identity);
-            $identity_row = mysqli_fetch_assoc($result_identity);
-          }
+if ($row) {
+    $userID = $row['identityID'] ?? null;
+    $avatar = isset($row['profile_img']) && $row['profile_img'] ? $row['profile_img'] : 'default-profile.png';
+    ?>
 
-          if ($row) {
-            // 確認是否有 profile_img，若無則使用預設圖片
-            $avatar = isset($row['profile_img']) && $row['profile_img'] ? $row['profile_img'] : 'default-profile.png';
-            $sql = "SELECT * FROM identity WHERE userID = '$userID'";
-            $result = mysqli_query($link, $sql);
-            $row = mysqli_fetch_assoc($result);
-            // 顯示發文者頭像
-            echo "<div class='col-lg-3'>
-            
-            <div class='card shadow-sm p-3 mb-4 bg-white rounded'>
-            <div class='text-center' style='align-items:center;'>
-              <br><img src='uploads/{$avatar}' alt='發文者頭像' class='rounded-circle mb-3' style='width: 100px; height: 100px; object-fit: cover;'>
+    <div class='col-lg-3'>
+      <div class='card shadow-sm p-3 mb-4 bg-white rounded'>
+        <div class='text-center' style='align-items:center;'>
+          <br>
+          <img src='uploads/<?php echo $avatar; ?>' alt='發文者頭像' class='rounded-circle mb-3' style='width: 100px; height: 100px; object-fit: cover;'>
+        </div>
 
-            </div>
-            <div>
-              <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>學校名稱：</label><b>{$row['deschool']}</b></div>
-              <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>系學名稱：</label><b>{$row['dename']}</b></div>
-              <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>系學成員人數：</label><b>{$row['desize']}</b></div>
-              <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>系學成立年分：</label><b>{$row['deyear']}</b></div>
-              <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>粉專或社群連結：</label><b><a class='fs-5' href='{$row['deins']}' target='_blank'>{$row['deins']}</a></b></div>
-              <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>聯絡人電話：</label><b>{$row['dephone']}</b></div>
-            </div>
-          </div>";
-          } else {
-            echo "<div class='col-lg-8'>
-            <div class='main-content'>
-              <h2 class='mb-3'>找不到資料</h2>
-            </div>
-          </div>";
-          }
-          ?>
+        <div>
+          <div class='mb-3' style='font-size: 18px;'>
+            <label class='form-label text-muted'>學校名稱：</label>
+            <b><?php echo isset($row['deschool']) ? $row['deschool'] : '未提供'; ?></b>
+          </div>
+
+          <div class='mb-3' style='font-size: 18px;'>
+            <label class='form-label text-muted'>系學名稱：</label>
+            <b><?php echo isset($row['dename']) ? $row['dename'] : '未提供'; ?></b>
+          </div>
+
+          <div class='mb-3' style='font-size: 18px;'>
+            <label class='form-label text-muted'>系學成員人數：</label>
+            <b><?php echo isset($row['desize']) ? $row['desize'] : '未提供'; ?></b>
+          </div>
+
+          <div class='mb-3' style='font-size: 18px;'>
+            <label class='form-label text-muted'>系學成立年分：</label>
+            <b><?php echo isset($row['deyear']) ? $row['deyear'] : '未提供'; ?></b>
+          </div>
+
+          <div class='mb-3' style='font-size: 18px;'>
+            <label class='form-label text-muted'>粉專或社群連結：</label>
+            <b>
+              <?php if (!empty($row['deins'])): ?>
+                <a class='fs-5' href='<?php echo $row['deins']; ?>' target='_blank'><?php echo $row['deins']; ?></a>
+              <?php else: ?>
+                未提供
+              <?php endif; ?>
+            </b>
+          </div>
+
+          <div class='mb-3' style='font-size: 18px;'>
+            <label class='form-label text-muted'>聯絡人電話：</label>
+            <b><?php echo isset($row['dephone']) ? $row['dephone'] : '未提供'; ?></b>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<?php
+} else {
+    echo "
+    <div class='col-lg-8'>
+      <div class='main-content'>
+        <h2 class='mb-3'>找不到資料</h2>
+      </div>
+    </div>";
+}
+?>
+
 
         </div>
 
