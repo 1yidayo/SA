@@ -31,7 +31,7 @@ if ($row = mysqli_fetch_assoc($result)) {
         if ($identity_row = mysqli_fetch_assoc($check_result)) {
             $_SESSION['identityID'] = $identity_row['identityID'];
             if ($row['level'] === 'cl') {
-                header("Location: cl.html");
+                header("Location: cl.php");
                 exit();
             } elseif ($row['level'] === 'en') {
                 header("Location: en.html");
@@ -45,7 +45,7 @@ if ($row = mysqli_fetch_assoc($result)) {
             }
         } else {
             if ($row['level'] === 'cl') {
-                header("Location: insert.cl.html");
+                header("Location: insert.cl.php");
                 exit();
             } elseif ($row['level'] === 'en') {
                 header("Location: insert.en.html");

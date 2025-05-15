@@ -111,7 +111,7 @@ https://templatemo.com/tm-591-villa-agency
                     
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                            <li><a href="cl.html" class="active">首頁</a></li>
+                            <li><a href="cl.php" class="active">首頁</a></li>
                             <li><a href="properties2.php">瀏覽</a></li>
                             <li><a href="club contact.php">發布</a></li>
                             <li><a href="clubhistory.php">發布歷史</a></li>

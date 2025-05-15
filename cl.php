@@ -56,15 +56,34 @@ https://templatemo.com/tm-591-villa-agency
                           End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li><a href="cl.html" class="active">首頁</a></li>
+                            <li><a href="cl.php" class="active">首頁</a></li>
                             <li><a href="properties2.php">瀏覽</a></li>
                             <li><a href="club contact.php">發布</a></li>
                             <li><a href="clubhistory.php">發布歷史</a></li>
                             <li><a href="self.cl.php">個人頁面</a></li>
+                            <li><a href="aftersearchforclub.php">進階搜尋</a></li>
                             <li><a href="login.html">登出</a></li>
+<<<<<<< Updated upstream:cl.html
                             <li><a href="copy.php"><i class="fa fa-calendar"></i>進階搜尋</a>
+=======
+                            
+
+                            <!-- 顯示頭像 -->
+                            <?php
+                            session_start();
+                            $pic = isset($_SESSION['clpicture']) && $_SESSION['clpicture'] !== ''
+                                ? 'uploads/' . $_SESSION['clpicture']
+                                : 'uploads/default-profile.png';
+                            ?>
+                            <li>
+                                <a href="self.cl.php">
+                                    <img src="<?= $pic ?>" alt="頭像"
+                                        style="width: 40px; height: 40px; border-radius: 50%;">
+                                </a>
+>>>>>>> Stashed changes:cl.php
                             </li>
                         </ul>
+
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
