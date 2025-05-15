@@ -70,11 +70,11 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
             <form id='contact-form' action='club_edit.php' method='post' enctype='multipart/form-data'>
               <div class='mb-3'>
                 <label class='form-label'><b>學校名稱</b></label>
-                <input class='form-control' name='school' value="<?= $row['school'] ?>" required>
+                <p class='form-control-plaintext'><?= $row['school'] ?></p>
               </div>
               <div class='mb-3'>
                 <label class='form-label'><b>社團名稱</b></label>
-                <input class='form-control' name='club' value="<?= $row['club'] ?>" required>
+                <p class='form-control-plaintext'><?= $row['club'] ?></p>
               </div>
               <div class='mb-3'>
                 <label class='form-label'><b>社團規模</b></label>
