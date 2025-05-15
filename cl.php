@@ -63,7 +63,20 @@ https://templatemo.com/tm-591-villa-agency
                             <li><a href="self.cl.php">個人頁面</a></li>
                             <li><a href="aftersearchforclub.php">進階搜尋</a></li>
                             <li><a href="login.html">登出</a></li>
-                            <li><a href="aftersearchforclub.php"><i class="fa fa-calendar"></i>進階搜尋</a>
+                            
+
+                            <!-- 顯示頭像 -->
+                            <?php
+                            session_start();
+                            $pic = isset($_SESSION['clpicture']) && $_SESSION['clpicture'] !== ''
+                                ? 'uploads/' . $_SESSION['clpicture']
+                                : 'uploads/default-profile.png';
+                            ?>
+                            <li>
+                                <a href="self.cl.php">
+                                    <img src="<?= $pic ?>" alt="頭像"
+                                        style="width: 40px; height: 40px; border-radius: 50%;">
+                                </a>
                             </li>
                         </ul>
 
