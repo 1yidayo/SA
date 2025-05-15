@@ -4,7 +4,7 @@ if (!isset($_SESSION['identityID']) || empty($_SESSION['identityID'])) {
     echo "錯誤：尚未登入";
     exit;
 }
-echo "登入身份ID: " . $_SESSION['identityID'];
+// echo "登入身份ID: " . $_SESSION['identityID'];
 
 ?>
 
