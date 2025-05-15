@@ -83,7 +83,7 @@
           echo "<div class='col-lg-8'>
   <div class='main-content mb-4'>
     <div class='d-flex justify-content-between align-items-center mb-2'>
-      <h2 class='mb-0' style='font-size: 40px;'>" . htmlspecialchars(string: $row['title']) . "&nbsp;<button class='btn btn-outline-secondary mb-2'>Edit Post</button></h2>
+      <h2 class='mb-0' style='font-size: 40px;'>" . htmlspecialchars(string: $row['title']) . "&nbsp;</h2>
       
     </div>
   </div>
