@@ -100,6 +100,7 @@ session_start();
       </div>
     </div>
   </div>
+  
 
   <div class="section properties">
     <div class="container">
