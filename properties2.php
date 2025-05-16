@@ -82,7 +82,7 @@ session_start();
 
               <li><a href="self.cl.php">個人頁面</a></li>
               <li><a href="login.html">登出</a></li>
-              <li><a href="aftersearchforclub.php"><i class="fa fa-calendar"></i>進階搜尋</a></li>
+              <li><a href="aftersearchforclub.php">進階搜尋</a></li>
             </ul>
             <a class="menu-trigger"><span>Menu</span></a>
           </nav>

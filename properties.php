@@ -133,7 +133,7 @@ https://templatemo.com/tm-591-villa-agency
               <?php endif; ?>
               <li><a href="self.en.php">個人頁面</a></li>
               <li><a href="login.html">登出</a></li>
-              <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</a>
+              <li><a href="advanced search for enterprise.html">進階搜尋</a>
               </li>
             </ul>
             <a class='menu-trigger'>
