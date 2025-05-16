@@ -146,6 +146,11 @@ https://templatemo.com/tm-591-villa-agency
                             <li><a href="properties2.php">瀏覽</a></li>
                             <li><a href="club contact.php">發布</a></li>
                             <li><a href="clubhistory.php"class="active">發布歷史</a></li>
+                            <?php if ($_SESSION['level'] === 'cl'): ?>
+                              <li><a href="club_cooperations.php">我的合作</a></li>
+                            <?php elseif ($_SESSION['level'] === 'en'): ?>
+                              <li><a href="enterprise_cooperations.php">合作請求</a></li>
+                            <?php endif; ?>
                             <li><a href="self.cl.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
                             <li><a href="aftersearchforclub.php"><i class="fa fa-calendar"></i>進階搜尋</a></li>
