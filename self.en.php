@@ -40,15 +40,18 @@
       <div class="row">
         <div class="col-12">
           <nav class="main-nav">
-            <ul class="nav">
-              <li><a href="en.html">首頁</a></li>
-              <li><a href="properties.php">瀏覽</a></li>
-              <li><a href="en_contact.php">發布</a></li>
-              <li><a href="enhistory.php">發布歷史</a></li>
-              <li><a href="self.en.php"  class="active">個人頁面</a></li>
-              <li><a href="login.html">登出</a></li>
-              <li><a href="aftersearchforen.php"><i class="fa fa-calendar"></i>進階搜尋</a></li>
-            </ul>
+          <ul class="nav">
+                            <li><a href="en.html">首頁</a></li>
+                            <li><a href="properties.php">瀏覽</a></li>
+                            <li><a href="en_contact.php">發布</a></li>
+                            <li><a href="enhistory.php">發布歷史</a></li>
+                            <li><a href="enterprise_cooperations.php">我的合作</a></li>
+                            <li><a href="self.en.php"  class="active">個人頁面</a></li>
+                            <li><a href="aftersearchforen.php">進階搜尋</a></li>
+                            <li><a href="login.html"><i
+                                        class="fa fa-calendar"></i>登出</a>
+                            </li>
+                        </ul>
             <a class='menu-trigger'><span>Menu</span></a>
           </nav>
         </div>
