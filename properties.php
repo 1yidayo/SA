@@ -122,22 +122,21 @@ https://templatemo.com/tm-591-villa-agency
 
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li><a href="en.html">首頁</a></li>
-              <li><a href="properties.php" class="active">瀏覽</a></li>
-              <li><a href="en_contact.php">發布</a></li>
-              <li><a href="enhistory.php">發布歷史</a></li>
-              <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="club_cooperations.php">我的合作</a></li>
-              <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="enterprise_cooperations.php">我的合作</a></li>
-              <?php endif; ?>
-              <li><a href="self.en.php">個人頁面</a></li>
-              <li><a href="aftersearchforen.php">進階搜尋</a></li>
-              <li><a href="login.html">登出</a>
-              </li>
-            </ul>
-            <a class='menu-trigger'>
-              <span>Menu</span>
+                            <li><a href="en.html">首頁</a></li>
+                            <li><a href="properties.php"  class="active">瀏覽</a></li>
+                            <li><a href="en_contact.php">發布</a></li>
+                            <li><a href="enhistory.php">發布歷史</a></li>
+                            <li><a href="enterprise_cooperations.php">我的合作</a></li>
+                            <li><a href="self.en.php">個人頁面</a></li>
+                            <li><a href="aftersearchforen.php">進階搜尋</a></li>
+                            <li><a href="login.html"><i
+                                        class="fa fa-calendar"></i>登出</a>
+                            </li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span></span>
+                        </a>
+              <span></span>
             </a>
             <!-- ***** Menu End ***** -->
           </nav>
