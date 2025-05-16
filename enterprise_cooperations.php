@@ -80,7 +80,7 @@ $result = mysqli_query($link, $sql);
               <li><a href="properties.php">瀏覽</a></li>
               <li><a href="en_contact.php">發布</a></li>
               <li><a href="enhistory.php">發布歷史</a></li>
-              <li><a href="enterprise_cooperations.php?mode=receive&status=待處理" class="active">合作請求</a></li>
+              <li><a href="enterprise_cooperations.php?mode=receive&status=待處理" class="active">我的合作</a></li>
               <li><a href="self.en.php">個人頁面</a></li>
               <li><a href="login.html">登出</a></li>
               <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</a></li>

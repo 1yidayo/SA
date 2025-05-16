@@ -122,6 +122,7 @@ if (!isset($_SESSION['identityID']) || empty($_SESSION['identityID'])) {
               <li><a href="properties.php">瀏覽</a></li>
               <li><a href="en_contact.php">發布</a></li>
               <li><a href="enhistory.php" class="active">發布歷史</a></li>
+              <li><a href="enterprise_cooperations.php">我的合作</a></li>
               <li><a href="self.en.php">個人頁面</a></li>
               <li><a href="login.html">登出</a></li>
               <li><a href="advanced search for enterprise.html"><i class="fa fa-calendar"></i>進階搜尋</a></li>

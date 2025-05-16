@@ -114,6 +114,7 @@ https://templatemo.com/tm-591-villa-agency
                             <li><a href="properties4.php">瀏覽</a></li>
                             <li><a href="de_contact.php">發布</a></li>
                             <li><a href="dehistory.php">發布歷史</a></li>
+                            <li><a href="enterprise_cooperations.php">我的合作</a></li>
                             <li><a href="self.de.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
                             <li><a href="aftersearchforde.php"><i class="fa fa-calendar"></i>進階搜尋</ruby></a>
