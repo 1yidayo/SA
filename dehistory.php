@@ -200,6 +200,8 @@ https://templatemo.com/tm-591-villa-agency
                         <br>
                         <li>預算範圍：<span>" . $row['money'] . "</span></li>
                         <br>
+                        <li>需要贊助的類型：<span>" . $row['support_type'] . "</span></li>
+                        <br>
                         
                     </ul>
                     <div class='text-links'>

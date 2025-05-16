@@ -69,7 +69,7 @@
       <!-- 左邊表單 -->
       <div class="col-lg-6">
         <h2 class="mb-4">您的個人檔案
-          <button class="btn btn-secondary" onclick="location.href='de_self.change.php'" type="button">
+          <button class="btn btn-secondary" onclick="location.href='ai_self.change.php'" type="button">
             <b>修改個人資料</b>
           </button>
         </h2>
@@ -83,7 +83,7 @@
         while ($row = mysqli_fetch_assoc($result)) {
           echo "<form id='contact-form' action='' method='' enctype='multipart/form-data'>
           <div class='mb-3'>
-            <label class='form-label'><b>姓名：</b></label><br><b>" . $row['name'] . "</b>
+            <label class='form-label'><b>姓名：</b></label><br><b>" . $row['ainame'] . "</b>
           </div>
           <div class='mb-3'>
             <label class='form-label'><b>聯絡資訊：</b></label><br><b>" . $row['ainins'] . "</b>
@@ -108,7 +108,7 @@
               style="width: 150px; height: 150px; object-fit: cover;">
 
             <!-- 隱藏上傳表單 -->
-            <form id="uploadForm" action="cluploadimg.php" method="POST" enctype="multipart/form-data"
+            <form id="uploadForm" action="aiuploadimg.php" method="POST" enctype="multipart/form-data"
               style="display: none;">
               <input type="file" id="fileInput" name="profile_img" accept="image/*"
                 onchange="document.getElementById('uploadForm').submit();">
@@ -122,7 +122,7 @@
               <?php else: ?>
                 <button class="btn btn-sm btn-outline-primary me-2"
                   onclick="document.getElementById('fileInput').click();">更換照片</button>
-                <form action="cldeleteimg.php" method="POST" style="display: inline;">
+                <form action="aideleteimg.php" method="POST" style="display: inline;">
                   <button type="submit" class="btn btn-sm btn-outline-danger"
                     onclick="return confirm('確定要刪除頭像嗎？');">刪除照片</button>
                 </form>
@@ -131,25 +131,6 @@
           </div>
 
 
-          <h4 class="mb-3">我的收藏</h4>
-          <ul class="list-group list-group-flush">
-            <?php
-            $fav_sql = "SELECT cr.requirement_num, cr.title, cr.information 
-                        FROM user_favorites uf
-                        JOIN club_requirements cr ON uf.requirement_num = cr.requirement_num
-                        WHERE uf.userID = '$userID'";
-            $fav_result = mysqli_query($link, $fav_sql);
-            if ($fav_result && mysqli_num_rows($fav_result) > 0) {
-              while ($fav_row = mysqli_fetch_assoc($fav_result)) {
-                echo "<li class='list-group-item'>
-                        <strong>{$fav_row['title']}</strong><br>
-                        <small class='text-muted'>{$fav_row['information']}</small>
-                      </li>";
-              }
-            } else {
-              echo "<li class='list-group-item text-muted'>目前尚無收藏</li>";
-            }
-            ?>
           </ul>
         </div>
       </div>

@@ -9,23 +9,17 @@
     <?php
     session_start();
     $identityID = $_SESSION['identityID'];
-    $money = $_POST['money'];
-    $name = $_POST['name'];
-    $ainins = $_POST['ainins'];
-    $region = $_POST['region'];
-    $event_time = $_POST['event_time'];
-    $support_type = $_POST['support_type'];
-    $hope = $_POST['hope'];
+    
     $title = $_POST['title'];
     $information = $_POST['information'];
 
                                                                            
     $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-    $sql = "INSERT INTO ai_requirements (identityID, money, name, ainins, region, event_time, support_type, hope, title, information)
+    $sql = "INSERT INTO ai_requirements (identityID,  title, information)
 
         VALUES 
-        ('$identityID', '$money', '$name', '$ainins', '$region', '$event_time', '$support_type', '$hope', '$title', '$information')";
+        ('$identityID', '$title', '$information')";
 
     if (mysqli_query($link, $sql)) {
         echo "<script>

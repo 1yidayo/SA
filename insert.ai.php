@@ -3,42 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Document</title>
+   
 </head>
 <body>
 <?php
 session_start();
 
-$name = $_POST["name"];
+
+$ainame = $_POST["ainame"];
+
 $ainins = $_POST["ainins"];
+
 $userID = $_SESSION['userID'];
 
-$conn = mysqli_connect('localhost', 'root', '', 'SAS');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-if (!$conn) {
-    die("連線失敗：" . mysqli_connect_error());
+$sql = "INSERT INTO identity( ainame,  ainins,  userID) VALUES
+ ('$ainame',  '$ainins',  '$userID')";
+
+if (
+    !isset($ainame) || $ainame === '' ||
+    !isset($ainins) || $ainins === '' 
+) {
+    echo "<script>alert('請填寫完整所有欄位！'); window.history.back();</script>";
+    exit();
 }
 
-$sql = "INSERT INTO identity (
-    userID, enterprise, entype, code, enins, school, club, clsize,
-    clyear, cltype, clins, name, ainins
-) VALUES (
-    $userID, '', '', '', '', '', '', '', '', '', '', '$name', '$ainins'
-)";
 
-
-if (mysqli_query($conn, $sql)) {
-    echo "新增成功";
-    echo '<script>
-            setTimeout(function(){
-                window.location.href = "ai.html";
-            }, 2000);
-          </script>';
+if (mysqli_query($link, $sql)) {
+    $identityID = mysqli_insert_id($link);
+    $_SESSION['identityID'] = $identityID;
+    echo "<script>alert('新增完成！'); window.location.href='ai.html';</script>";
 } else {
-    echo "新增失敗：" . mysqli_error($conn);
+    echo "<script>alert('新增失敗，請重新填寫！'); window.history.back();</script>";
 }
-
-mysqli_close($conn);
 ?>
 </body>
 </html>

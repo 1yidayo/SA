@@ -74,7 +74,7 @@
       <div class="row">
         <div class="col-lg-12">
           <span class="breadcrumb"><a href="#">Home</a> / Contact Us</span>
-          <h3>校友發布贊助內容</h3>
+          <h3>校友發布</h3>
         </div>
       </div>
     </div>
@@ -95,7 +95,7 @@
         $result = mysqli_query($link, $sql);
 
         if ($row = mysqli_fetch_assoc($result)) {
-          $name = $row['name'];
+          $ainame = $row['ainame'];
           $ainins = $row['ainins'];
         }
         ?>
@@ -111,97 +111,26 @@
                   <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                     <span class="ms-1"><b>校友姓名</b></span>
                   </div>
-                  <input class="form-control" type="text" placeholder="請輸入全名" aria-label="請輸入全名"
-                    name="name" required value="<?php echo $name; ?>" >
+                  <input class="form-control-plaintext" type="text" name="ainame" readonly value="<?php echo $ainame; ?>">
+
                 </div>
 
-            <div class="input-group">
-                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>聯絡方式
-                    </b></span>
-                  </div>
-                  <input class="form-control" type="text" placeholder="請輸入聯絡方式" aria-label="請輸入聯絡方式" name="ainins"
-                  required value="<?php echo $ainins; ?>" >
-                </div>
-
-                <div class="col-12">
-                  <div class="input-group">
-                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>活動地區(必填)</b></span>
-                    </div>
-                    <select class="form-select" name="region" id="region" required title="必填欄位！">
-                      <option value="">請選擇</option>
-                      <option value="北部">北部</option>
-                      <option value="中部">中部</option>
-                      <option value="南部">南部</option>
-                      <option value="東部">東部</option>
-                    </select>
-                  </div>
-                </div>
-
-                <br>
-                <div class="col-12">
-                  <div class="input-group">
-                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>預計活動月份(必填)</b></span>
-                    </div>
-                    <input type="date" name="event_time" id="event_time" class="form-control" required>
-                  </div>
-                </div>
-                <br>
-
-                <div class="col-12">
+            <div class="col-12">
                 <div class="input-group">
                   <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>需要的贊助類型(必填)</b></span>
+                    <span class="ms-1"><b>聯絡方式</b></span>
                   </div>
-                  <select class="form-select" name="support_type" id="support_type" required>
-                    <option value="">請選擇</option>
-                    <option value="金錢">金錢</option>
-                    <option value="物資">物資</option>
-                    <option value="場地">場地</option>
-                    <option value="提供實習">提供實習</option>
-                  </select>
+                  <input class="form-control-plaintext" type="text" name="ainins" readonly value="<?php echo $ainins; ?>">
                 </div>
-              </div>
-              <br>
-              <div class="col-12" id="money-group">
-                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>預算範圍</b></span>
-                  </div>
-                  <select class="form-select" aria-label="Default select example" name="money" id="money" title="必填欄位！">
-                    <option value="">請選擇</option>
-                    <option value="$20,000以下">$20,000以下</option>
-                    <option value="$20,001-$30,000">$20,001-$30,000</option>
-                    <option value="$30,001-$50,000">$30,001-$50,000</option>
-                    <option value="$50,001-$70,000">$50,001-$70,000</option>
-                    <option value="$70,001以上">$70,001以上</option>
-                  </select>
-                </div>
-                <br>
-
-              <div class="col-12">
-                  <div class="input-group">
-                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>期望社團達到目的</b></span>
-                    </div>
-                    <select class="form-select" name="hope" id="hope" required title="必填欄位！">
-                      <option value="">請選擇</option>
-                      <option value="宣傳">宣傳</option>
-                      <option value="表演">表演</option>
-                    </select>
-                  </div>
-                </div>
-                <br>
 
             <div class="col-12">
               <div class="input-group">
                 <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                  <span class="ms-1"><b>內文標題(必填)</b></span>
+                  <span class="ms-1"><b>公司名稱</b></span>
                 </div>
-                <input class="form-control" type="text" placeholder="請輸入內文標題" aria-label="Enter a City or Airport"
+                <input class="form-control" type="text" placeholder="請輸入" aria-label="Enter a City or Airport"
                   name="title" value="" required title="必填欄位！">
-                <div class="invalid-feedback">請填寫內文標題</div>
+                <div class="invalid-feedback">請輸入</div>
               </div>
             </div>
             
@@ -213,9 +142,9 @@
             <div class="col-lg-12">
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>內文(必填)</b></span>
+                      <span class="ms-1"><b>公司簡介及實習職位說明</b></span>
                     </div>
-                    <textarea class="form-control" name="information" id="information" placeholder="請輸入內文內容" required></textarea>
+                    <textarea class="form-control" name="information" id="information" placeholder="請輸入" required></textarea>
                   </div>
                 </div>
 

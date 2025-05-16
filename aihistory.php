@@ -1,73 +1,132 @@
+<?php
+session_start();
+if (!isset($_SESSION['identityID']) || empty($_SESSION['identityID'])) {
+    echo "錯誤：尚未登入";
+    exit;
+}
+// echo "登入身份ID: " . $_SESSION['identityID'];
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <title>社團企業媒合平台</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
   <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
-  <link rel="stylesheet" href="assets/css/animate.css">
+  <link rel="stylesheet" href="assets/css/fontawesome.css" />
+  <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css" />
+  <link rel="stylesheet" href="assets/css/owl.css" />
+  <link rel="stylesheet" href="assets/css/animate.css" />
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-  <!--
 
-TemplateMo 591 villa agency
+  <style>
+    .custom-orange-btn {
+      background-color: #ff7f50;
+      color: #000;
+      border: 1px solid #ff7f50;
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-https://templatemo.com/tm-591-villa-agency
+    .custom-orange-btn:hover {
+      background-color: #e3643c;
+      color: #fff;
+      border-color: #e3643c;
+    }
 
--->
+    .text-links a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 5px;
+    }
+
+    .text-links a:hover {
+      text-decoration: underline;
+    }
+
+    .text-links {
+      margin-top: 10px;
+      text-align: right;
+      font-size: 14px;
+    }
+
+    .publish-time {
+      margin-top: 10px;
+      font-size: 14px;
+      text-align: right;
+      color: #666;
+    }
+
+    .properties-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-start;
+    }
+
+    .properties-items {
+      width: 30%;
+      min-width: 300px;
+    }
+
+    @media (max-width: 992px) {
+      .properties-items {
+        width: 45%;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .properties-items {
+        width: 100%;
+      }
+    }
+
+    button,
+    input[type="submit"] {
+      background-color: #ff7f50;
+      color: #000;
+      border: 1px solid #ff7f50;
+    }
+
+    button:hover,
+    input[type="submit"]:hover {
+      background-color: #e3643c;
+      color: #fff;
+    }
+  </style>
 </head>
 
 <body>
-
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-
-
   <!-- ***** Header Area Start ***** -->
   <header class="header-area header-sticky">
     <div class="container">
       <div class="row">
         <div class="col-12">
           <nav class="main-nav">
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
             <ul class="nav">
-                            <li><a href="ai.html">首頁</a></li>
+              <li><a href="ai.html">首頁</a></li>
                             <li><a href="properties3.php">瀏覽</a></li>
-                            <li><a href="alumni contact.php">發布</a></li>
-                            <li><a href="aihistory.php"  class="active">發布歷史</a></li>
+                            <li><a href="alumni contact.php"  class="active">發布</a></li>
+                            <li><a href="aihistory.php">發布歷史</a></li>
                             <li><a href="self.ai.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
                             <li><a href="advanced search for ai.html"><i class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
-                          </ul>
-            <a class='menu-trigger'>
-              <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
+            </ul>
           </nav>
         </div>
       </div>
@@ -79,66 +138,84 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <span class="breadcrumb"><a href="#">Home</a> / Contact Us</span>
-          <h3>發布歷史</h3>
+          <h3>我的發布歷史</h3>
         </div>
       </div>
     </div>
   </div>
 
-  <?php
-session_start();
-$link = mysqli_connect("localhost", "root", "", "SAS");
-mysqli_set_charset($link, "utf8");
+  <div class="section properties">
+    <div class="container">
+      <div class="row properties-box">
+        <?php
+        $identityID = $_SESSION['identityID'];
 
-// 取得當前登入者的 identityID
-$identityID = $_SESSION['identityID'];
+        // 連線資料庫
+        $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-$sql = "SELECT * FROM alumni_requirements WHERE identityID = '$identityID' ORDER BY event_time DESC";
+        if (!$link) {
+          echo "<p>資料庫連線失敗！</p>";
+          exit;
+        }
+
+        // 只查詢登入者自己發的歷史
+        $sql = "SELECT ar.*, i.ainame, i.ainins
+        FROM ai_requirements ar
+        JOIN identity i ON ar.identityID = i.identityID
+        WHERE ar.identityID = '$identityID'
+        ORDER BY ar.created_time DESC";
+
 $result = mysqli_query($link, $sql);
-?>
 
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-  <meta charset="UTF-8">
-  <title>發布歷史紀錄</title>
-  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-</head>
+if ($result && mysqli_num_rows($result) > 0) {
+  while ($row = mysqli_fetch_assoc($result)) {
+    echo "<div class='col-lg-4 col-md-6 align-self-center mb-30 properties-items adv'>
+            <div class='item uniform-box'>
+              <h4><a href='ai.php?airequirement_num=" . htmlspecialchars($row['airequirement_num']) . "'>" . htmlspecialchars($row['title']) . "</a></h4>
+              <ul>
+                <li><span>" . htmlspecialchars($row['text']) . "</span></li>
+                <br><br>
+                <li>校友名稱：<span>" . htmlspecialchars($row['ainame']) . "</span></li>
+                <br>
+                <li>校友聯絡方式：<span>" . htmlspecialchars($row['ainins']) . "</span></li>
+                <br>
+              </ul>
+              <div class='text-links'>
+                <a href='ai.php?airequirement_num=" . htmlspecialchars($row['airequirement_num']) . "' class='custom-orange-btn'>詳情</a>
+                <a href='editaihistory.php?airequirement_num=" . htmlspecialchars($row['airequirement_num']) . "'>修改</a> |
+                <a href='deleteaihistory.php?airequirement_num=" . htmlspecialchars($row['airequirement_num']) . "' onclick=\"return confirm('確定要刪除嗎？');\">刪除</a>
+              </div>
+              <br>
+              <p class='publish-time'>發布時間：<span>" . htmlspecialchars($row['created_time']) . "</span></p>
+            </div>
+          </div>";
+  }
+}
+ else {
+          echo "<p>目前沒有發布的歷史資料。</p>";
+        }
 
-<body>
-  <div class="container mt-5">
-    <h2 class="mb-4">您的發布歷史</h2>
-
-    <?php if ($result->num_rows > 0): ?>
-      <table class="table table-bordered table-hover">
-        <thead>
-          <tr>
-            <th>標題</th>
-            <th>活動地區</th>
-            <th>活動月份</th>
-            <th>內文</th>
-            <th>活動時間</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php while($row = $result->fetch_assoc()): ?>
-            <tr>
-              <td><?= htmlspecialchars($row['title']) ?></td>
-              <td><?= htmlspecialchars($row['region']) ?></td>
-              <td><?= htmlspecialchars($row['event_time']) ?></td>
-              <td><?= htmlspecialchars($row['information']) ?></td>
-              <td>
-                <a href="view_post.php?id=<?= $row['airequirement_num'] ?>" class="btn btn-info btn-sm">查看</a>
-                <a href="delete_post.php?id=<?= $row['airequirement_num'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('確定要刪除這筆資料嗎？')">刪除</a>
-              </td>
-            </tr>
-          <?php endwhile; ?>
-        </tbody>
-      </table>
-    <?php else: ?>
-      <p>您尚未發布任何需求。</p>
-    <?php endif; ?>
+        mysqli_close($link);
+        ?>
+      </div>
+    </div>
   </div>
+
+  <footer>
+    <div class="container">
+      <div class="col-lg-8">
+        <p style="text-align: left; font-weight: bold;">社團企業媒合平台</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/isotope.min.js"></script>
+  <script src="assets/js/owl-carousel.js"></script>
+  <script src="assets/js/counter.js"></script>
+  <script src="assets/js/custom.js"></script>
 </body>
+
 </html>
