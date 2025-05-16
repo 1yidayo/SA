@@ -29,7 +29,7 @@
         <div class="col-12">
           <nav class="main-nav">
           <ul class="nav">
-                            <li><a href="en.html" >首頁</a></li>
+                            <li><a href="en.html">首頁</a></li>
                             <li><a href="properties.php">瀏覽</a></li>
                             <li><a href="en_contact.php"  class="active">發布</a></li>
                             <li><a href="enhistory.php">發布歷史</a></li>

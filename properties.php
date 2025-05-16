@@ -129,7 +129,7 @@ https://templatemo.com/tm-591-villa-agency
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="club_cooperations.php">我的合作</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="enterprise_cooperations.php">合作請求</a></li>
+                <li><a href="enterprise_cooperations.php">我的合作</a></li>
               <?php endif; ?>
               <li><a href="self.en.php">個人頁面</a></li>
               <li><a href="aftersearchforen.php">進階搜尋</a></li>
