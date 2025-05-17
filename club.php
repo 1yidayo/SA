@@ -113,6 +113,7 @@
                 <?php endif; ?>
                 <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>活動預計規模：</label><b><?= $row['people'] ?></b></div>
                 <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>活動類型：</label><b><?= $row['type'] ?></b></div>
+                <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>活動地區：</label><b><?= $row['region'] ?></b></div>
                 <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>企劃書：</label><b><a
                       href="<?= htmlspecialchars($row['upload']) ?>" download>下載</a></b></div>
                 <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>社群連結：</label><b><a href="<?= $row['ins'] ?>"
