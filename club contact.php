@@ -111,20 +111,23 @@
         <input type="hidden" name="identityID" value="<?php echo $_SESSION['identityID']; ?>">
           <div class="row">
             <div class="col-12">
-                <div class="input-group">
-                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>學校名稱</b></span>
-                  </div>
-                  <input class="form-control" type="text" placeholder="請輸入學校名稱(請輸入學校全名eg:輔仁大學)" aria-label="請輸入學校全名"
-                    name="school" required value="<?php echo $school; ?>" >
-                </div>
-            <div class="input-group">
-                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>社團名稱</b></span>
-                  </div>
-                  <input class="form-control" type="text" placeholder="請輸入社團名稱" aria-label="請輸社團名稱" name="club"
-                  required value="<?php echo $club; ?>" >
-                </div>
+  <div class="input-group mb-3">
+    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+      <span class="ms-1"><b>學校名稱</b></span>
+    </div>
+    <input class="form-control-plaintext" type="text" placeholder="請輸入學校名稱(請輸入學校全名eg:輔仁大學)" 
+      aria-label="請輸入學校全名" name="school" required value="<?php echo $school; ?>" readonly>
+  </div>
+
+  <div class="input-group">
+    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+      <span class="ms-1"><b>社團名稱</b></span>
+    </div>
+    <input class="form-control-plaintext" type="text" placeholder="請輸入社團名稱" 
+      aria-label="請輸社團名稱" name="club" required value="<?php echo $club; ?>" readonly>
+  </div>
+</div>
+
                 <div class="col-12">
                   <div class="input-group">
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
@@ -194,50 +197,58 @@
                     
                 </div>
                 <br>
+             <div class="col-12" id="intern-group" style="display:none;">
+              <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                <span class="ms-1"><b>預估需要的實習人數(必填)</b></span>
+              </div>
+              <input type="number" class="form-control" name="intern_number" id="intern_number" placeholder="請輸入實習人數" min="1" title="必填欄位！">
+              </div>
 
 
               
-                <div class="input-group">
-                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>預估規模(必填)</b></span>
-                  </div>
-                  <select class="form-control" type="text" placeholder="選擇預估規模人數" aria-label="請輸入學校全名" name="people"
-                    required>
-                    <option value="">請選擇</option>
-                    <option value="0-10人">0-10人</option>
-                    <option value="11-20人">11-20人</option>
-                    <option value="21-30人">21-30人</option>
-                    <option value="31-40人">31-40人</option>
-                    <option value="41-50人">41-50人</option>
-                    <option value="50人以上">50人以上</option>
-                  </select>
-                </div>
-                <br>
-                
-                <div class="col-12">
-                  <div class="input-group">
-                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>活動地區(必填)</b></span>
-                    </div>
-                    <select class="form-select" name="region" id="region" required title="必填欄位！">
-                      <option value="">請選擇</option>
-                      <option value="北部">北部</option>
-                      <option value="中部">中部</option>
-                      <option value="南部">南部</option>
-                      <option value="東部">東部</option>
-                    </select>
-                  </div>
-                </div>
+                <div id="people-group">
+  <div class="input-group">
+    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+      <span class="ms-1"><b>預估規模(必填)</b></span>
+    </div>
+    <select class="form-control" name="people" required>
+      <option value="">請選擇</option>
+      <option value="0-10人">0-10人</option>
+      <option value="11-20人">11-20人</option>
+      <option value="21-30人">21-30人</option>
+      <option value="31-40人">31-40人</option>
+      <option value="41-50人">41-50人</option>
+      <option value="50人以上">50人以上</option>
+    </select>
+  </div>
+</div>
+<br>
 
-                <br>
-                <div class="col-12">
-                  <div class="input-group">
-                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>預計活動月份(必填)</b></span>
-                    </div>
-                    <input type="date" name="event_time" id="event_time" class="form-control" required>
-                  </div>
-                </div>
+<div id="region-group">
+  <div class="input-group">
+    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+      <span class="ms-1"><b>活動地區(必填)</b></span>
+    </div>
+    <select class="form-select" name="region" id="region" required title="必填欄位！">
+      <option value="">請選擇</option>
+      <option value="北部">北部</option>
+      <option value="中部">中部</option>
+      <option value="南部">南部</option>
+      <option value="東部">東部</option>
+    </select>
+  </div>
+</div>
+<br>
+
+<div id="event_time-group">
+  <div class="input-group">
+    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+      <span class="ms-1"><b>預計活動月份(必填)</b></span>
+    </div>
+    <input type="date" name="event_time" id="event_time" class="form-control" required>
+  </div>
+</div>
+
 
                 
 
@@ -278,43 +289,105 @@
         </form>
       </div>
       <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const supportTypeSelect = document.getElementById('support_type');
-    const moneyGroup = document.getElementById('money-group');
-    const form = document.getElementById('contact-form');
+document.addEventListener('DOMContentLoaded', function () {
+  const supportTypeSelect = document.getElementById('support_type');
 
-    function toggleMoneyField() {
-      if (supportTypeSelect.value === '金錢') {
-        moneyGroup.style.display = 'block';
-      } else {
-        moneyGroup.style.display = 'none';
-        document.getElementById('money').value = '';
+  const moneyGroup = document.getElementById('money-group');
+  const moneyInput = document.getElementById('money');
+
+  const internGroup = document.getElementById('intern-group');
+  const internInput = document.getElementById('intern_number');
+
+  const peopleGroup = document.getElementById('people-group');
+  const peopleInput = peopleGroup.querySelector('select');
+
+  const regionGroup = document.getElementById('region-group');
+  const regionInput = regionGroup.querySelector('select');
+
+  const eventTimeGroup = document.getElementById('event_time-group');
+  const eventTimeInput = eventTimeGroup.querySelector('input');
+
+  function toggleMoneyField() {
+    if (supportTypeSelect.value === '金錢') {
+      moneyGroup.style.display = 'block';
+      moneyInput.setAttribute('required', 'required');
+    } else {
+      moneyGroup.style.display = 'none';
+      moneyInput.removeAttribute('required');
+      moneyInput.value = '';
+    }
+  }
+
+  function toggleFieldsBySupportType() {
+    const val = supportTypeSelect.value;
+
+    if (val === '提供實習') {
+      internGroup.style.display = 'block';
+      internInput.setAttribute('required', 'required');
+
+      peopleGroup.style.display = 'none';
+      regionGroup.style.display = 'none';
+      eventTimeGroup.style.display = 'none';
+
+      peopleInput.removeAttribute('required');
+      regionInput.removeAttribute('required');
+      eventTimeInput.removeAttribute('required');
+
+    } else if (val === 'exposure') {  // 這裡要用 option 的 value "exposure"
+      internGroup.style.display = 'none';
+      internInput.removeAttribute('required');
+      internInput.value = '';
+
+      peopleGroup.style.display = 'none';
+      regionGroup.style.display = 'none';
+      eventTimeGroup.style.display = 'none';
+
+      peopleInput.removeAttribute('required');
+      regionInput.removeAttribute('required');
+      eventTimeInput.removeAttribute('required');
+
+    } else {
+      internGroup.style.display = 'none';
+      internInput.removeAttribute('required');
+      internInput.value = '';
+
+      peopleGroup.style.display = 'block';
+      regionGroup.style.display = 'block';
+      eventTimeGroup.style.display = 'block';
+
+      peopleInput.setAttribute('required', 'required');
+      regionInput.setAttribute('required', 'required');
+      eventTimeInput.setAttribute('required', 'required');
+    }
+  }
+
+  toggleMoneyField();
+  toggleFieldsBySupportType();
+
+  supportTypeSelect.addEventListener('change', function () {
+    toggleMoneyField();
+    toggleFieldsBySupportType();
+  });
+
+  const form = document.getElementById('contact-form');
+  form.addEventListener('submit', function (event) {
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const firstInvalid = form.querySelector(':invalid');
+      if (firstInvalid) {
+        alert(firstInvalid.title || '請填寫所有必填欄位');
+        firstInvalid.focus();
       }
     }
-
-    // 初始化
-    toggleMoneyField();
-
-    // 下拉變更
-    supportTypeSelect.addEventListener('change', toggleMoneyField);
-
-    // 表單送出驗證並提示錯誤欄位
-    form.addEventListener('submit', function (event) {
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
-
-        const firstInvalid = form.querySelector(':invalid');
-        if (firstInvalid) {
-          alert(firstInvalid.title || '請填寫所有必填欄位');
-          firstInvalid.focus();
-        }
-      }
-
-      form.classList.add('was-validated');
-    }, false);
-  });
+    form.classList.add('was-validated');
+  }, false);
+});
 </script>
+
+
+
 
 
       
