@@ -94,111 +94,120 @@ session_start();
     </div>
   </div>
 
+  <!-- 搜尋表單 -->
+  
+  <div class="contact-page section">
+    <div class="container" style="margin-top: -50px; margin-right: 100px;">
+      <form id="search-form" action="properties2.php" method="post" style="align-item:right;">
+        <div class="row">
+          <div class="col-md-2">
+          </div>
+          <div class="col-md-2">
+            <label for="enterprise">企業名稱</label>
+            <input class="form-control" type="text" placeholder="請輸入企業名稱" name="enterprise">
+          </div>
+          <div class="col-md-2">
+            <label for="type">行業別</label>
+            <select class="form-select" name="type">
+              <option value="">請選擇</option>
+              <option value="產業與工程類">產業與工程類</option>
+              <option value="商業與物流類">商業與物流類</option>
+              <option value="專業與金融服務">專業與金融服務</option>
+              <option value="教育與公共機構">教育與公共機構</option>
+              <option value="文化與創意產業">文化與創意產業</option>
+              <option value="其他">其他</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label for="money">贊助範圍</label>
+            <select name="money" class="form-select">
+              <option value="">請選擇</option>
+              <option value="$20,000以下">$20,000以下</option>
+              <option value="$20,001-$30,000">$20,001-$30,000</option>
+              <option value="$30,001-$50,000">$30,001-$50,000</option>
+              <option value="$50,001-$70,000">$50,001-$70,000</option>
+              <option value="$70,001以上">$70,001以上</option>
+            </select>
+          </div>
+          <div class="col-md-2">
+            <label for="support_type">企業贊助類型</label>
+            <select name="support_type" class="form-select">
+              <option value="">請選擇</option>
+              <option value="金錢">金錢</option>
+              <option value="物資">物資</option>
+              <option value="場地">場地</option>
+              <option value="提供實習">提供實習</option>
+            </select>
+          </div>
+          
+          <div class="col-md-2" style="margin-top: 24px;">
+            <button class="btn btn-primary" type="submit" style="background-color:black; border: black;"><b>搜尋</b></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  <!-- </div> -->
+
+  <?php
+  $link = mysqli_connect('localhost', 'root', '', 'SAS');
+  if (!$link) {
+    die("資料庫連線失敗: " . mysqli_connect_error());
+  }
+
+  $money = isset($_POST['money']) ? mysqli_real_escape_string($link, $_POST['money']) : '';
+  $enterprise = isset($_POST['enterprise']) ? mysqli_real_escape_string($link, $_POST['enterprise']) : '';
+  $support_type = isset($_POST['support_type']) ? mysqli_real_escape_string($link, $_POST['support_type']) : '';
+  $type = isset($_POST['type']) ? mysqli_real_escape_string($link, $_POST['type']) : '';
+
+  $conditions = [];
+  if (!empty($money)) {
+    $conditions[] = "money LIKE '%$money%'";
+  }
+  if (!empty($enterprise)) {
+    $conditions[] = "enterprise LIKE '%$enterprise%'";
+  }
+  if (!empty($support_type)) {
+    $conditions[] = "type LIKE '%$support_type%'";
+  }
+  if (!empty($type)) {
+    $conditions[] = "type LIKE '%$type%'";
+  }
+
+  $sql = "SELECT * FROM en_requirements";
+  if (count($conditions) > 0) {
+    $sql .= " WHERE " . implode(" AND ", $conditions);
+  }
+
+  $result = mysqli_query($link, $sql);
+  ?>
+
   <div class="section properties">
     <div class="container">
-      <?php
-      $link = mysqli_connect('localhost', 'root', '', 'SAS');
-      $industryType = $_GET['industry'] ?? 'all';
-      $sponsorType = $_GET['type'] ?? 'all';
-
-      function buildUrl($industry, $type) {
-        return "properties2.php?industry=" . urlencode($industry) . "&type=" . urlencode($type);
-      }
-      ?>
-
-      <div class="text-center mb-4">
-        <strong>行業別：</strong>
-        <?php
-        $industries = ['產業與工程類', '商業與物流類', '專業與金融服務', '教育與公共機構','文化與創意產業','其他'];
-        echo "<a href='" . buildUrl('all', $sponsorType) . "' class='btn custom-filter-btn mx-1 " . ($industryType === 'all' ? 'active' : '') . "'>全部</a>";
-        foreach ($industries as $ind) {
-          echo "<a href='" . buildUrl($ind, $sponsorType) . "' class='btn custom-filter-btn mx-1 " . ($industryType === $ind ? 'active' : '') . "'>$ind</a>";
-        }
-        ?>
-      </div>
-
-      <div class="text-center mb-4">
-        <strong>贊助類型：</strong>
-        <?php
-        $sponsorships = ['金錢', '物資', '場地', '提供實習'];
-        echo "<a href='" . buildUrl($industryType, 'all') . "' class='btn custom-filter-btn mx-1 " . ($sponsorType === 'all' ? 'active' : '') . "'>全部</a>";
-        foreach ($sponsorships as $s) {
-          echo "<a href='" . buildUrl($industryType, $s) . "' class='btn custom-filter-btn mx-1 " . ($sponsorType === $s ? 'active' : '') . "'>$s</a>";
-        }
-        ?>
-      </div>
-
       <div class="row properties-box">
         <?php
-        $sql = "SELECT en.*, id.identityID 
-                FROM en_requirements en 
-                JOIN identity id ON en.identityID = id.identityID 
-                WHERE 1";
-
-        if ($industryType !== 'all') {
-          $safeIndustry = mysqli_real_escape_string($link, $industryType);
-          $sql .= " AND en.type = '$safeIndustry'";
-        }
-        if ($sponsorType !== 'all') {
-          $safeType = mysqli_real_escape_string($link, $sponsorType);
-          $sql .= " AND en.sponsorship LIKE '%$safeType%'";
-        }
-
-        $result = mysqli_query($link, $sql);
-
-        while ($row = mysqli_fetch_assoc($result)):
-          $isApplied = false;
-          if (isset($_SESSION['level']) && $_SESSION['level'] === 'cl') {
-            $club_identityID = $_SESSION['identityID'];
-            $en_num = $row['enrequirement_num'];
-            $check_sql = "SELECT * FROM cooperation_requests 
-                          WHERE club_identityID = '$club_identityID' 
-                          AND enrequirement_num = '$en_num'";
-            $check_result = mysqli_query($link, $check_sql);
-            $isApplied = mysqli_num_rows($check_result) > 0;
+        if (mysqli_num_rows($result) == 0) {
+          echo "<p>未找到符合的活動</p>";
+        } else {
+          while ($row = mysqli_fetch_assoc($result)) {
+            echo "<div class='properties-items'>
+                  <div class='item'>
+                      <h4><a href='enterprise.php?enrequirement_num={$row['enrequirement_num']}'>" . htmlspecialchars($row['title']) . "</a></h4>
+                      <ul>
+                        <li>企業名稱：<span>" . htmlspecialchars($row['enterprise']) . "</span></li>
+                        <li>行業別：<span>" . htmlspecialchars($row['type']) . "</span></li>
+                        <li>贊助範圍：<span>" . htmlspecialchars($row['money']) . "</span></li>
+                        <li>企業贊助類型：<span>" . htmlspecialchars($row['type']) . "</span></li>
+                      </ul>
+                      <div class='main-button'>
+                          <a href='enterprise.php?enrequirement_num={$row['enrequirement_num']}'>了解活動詳情</a>
+                      </div>
+                  </div>
+                </div>";
           }
+        }
         ?>
-          <div class='properties-items'>
-            <div class='item'>
-              <h4><a href='enterprise.php?enrequirement_num=<?= $row['enrequirement_num'] ?>'><?= $row['title'] ?></a></h4>
-              <ul>
-                <li>企業名稱：<span><?= $row['enterprise'] ?></span></li>
-                <li>贊助類型：<span><?= $row['sponsorship'] ?></span></li>
-                <li>企業行業別：<span><?= $row['type'] ?></span></li>
-              </ul>
-              <div class='main-button'>
-                <a href='enterprise.php?enrequirement_num=<?= $row['enrequirement_num'] ?>'>了解活動詳情</a>
-              </div>
-              <br>
-              <li>發布時間：<span><?= $row['created_time'] ?></span></li>
-
-              <?php if ($_SESSION['level'] === 'cl'): ?>
-                <?php if ($isApplied): ?>
-                  <button class="btn btn-secondary mt-2" disabled>已申請</button>
-                <?php else: ?>
-                  <form method="POST" action="send_cooperation.php" class="mt-2">
-                    <input type="hidden" name="enrequirement_num" value="<?= $row['enrequirement_num'] ?>">
-                    <input type="hidden" name="enterprise_identityID" value="<?= $row['identityID'] ?>">
-                    <button type="submit" class="btn btn-warning">我要合作</button>
-                  </form>
-                <?php endif; ?>
-              <?php endif; ?>
-            </div>
-          </div>
-        <?php endwhile; ?>
       </div>
     </div>
   </div>
-
-  <footer>
-    <div class="container">
-      <div class="col-lg-8">
-        <p style="text-align: left; font-weight: bold;">社團企業媒合平台</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

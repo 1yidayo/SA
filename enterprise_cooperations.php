@@ -83,8 +83,7 @@ $result = mysqli_query($link, $sql);
                             <li><a href="enterprise_cooperations.php"  class="active">我的合作</a></li>
                             <li><a href="self.en.php">個人頁面</a></li>
                             <li><a href="aftersearchforen.php">進階搜尋</a></li>
-                            <li><a href="login.html"><i
-                                        class="fa fa-calendar"></i>登出</a>
+                            <li><a href="login.html"><i class="fa fa-calendar"></i>登出</a>
                             </li>
                         </ul>
             <a class="menu-trigger"><span>Menu</span></a>
