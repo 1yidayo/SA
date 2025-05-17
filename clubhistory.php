@@ -177,40 +177,42 @@ https://templatemo.com/tm-591-villa-agency
     <div class="container">
       <div class="row properties-box">
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
-    <?php
+<?php
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
+$sql = "SELECT * FROM club_requirements WHERE identityID = '{$_SESSION['identityID']}' ORDER BY created_at DESC";
+$result = mysqli_query($link, $sql);
+
+while($row = mysqli_fetch_assoc($result)) {
+    // 判斷顯示用的欄位
+    $people_display = ($row['support_type'] === '提供實習') ? $row['intern_number'] : $row['people'];
+
+    echo "<div class='properties-items'>
+        <div class='item uniform-box'>
+            <h4><a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . $row['title'] . "</a></h4>
+            <ul>
+                <li><span>" . $row['school'] . "</span></li>
+                <li><span>" . $row['club'] . "</span></li>
+                <br>
+                <li>" . (($row['support_type'] === '提供實習') ? '預估需要的實習人數' : '預估規模：') . "<span>" . htmlspecialchars($people_display) . "</span></li>
+                <br>
+                <li>預算範圍：<span>" . htmlspecialchars($row['money']) . "</span></li>
+                <br>
+                <li>活動類型：<span>" . htmlspecialchars($row['support_type']) . "</span></li>
+            </ul>
+            <div class='text-links'>
+                <a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "' class='custom-orange-btn'>詳情</a>
+                <a href='editclubhistory.php?clrequirement_num=" . $row['clrequirement_num'] . "'>修改</a> |
+                <a href='deleteclubhistory.php?clrequirement_num=" . $row['clrequirement_num'] . "' onclick=\"return confirm('確定要刪除嗎？');\">刪除</a>
+            </div>
+            <p class='publish-time'>發布時間：<span>" . $row['created_time'] . "</span></p>
+        </div>
+    </div>";
+}
 
 
-        $link = mysqli_connect('localhost', 'root', '', 'SAS');
-        $sql = "SELECT * FROM club_requirements WHERE identityID = '{$_SESSION['identityID']}' ORDER BY created_at DESC";
 
+?>
 
-        $result = mysqli_query($link, $sql);
-        while($row = mysqli_fetch_assoc($result)){
-          echo "<div class='properties-items'>
-              <div class='item uniform-box'>
-                  <h4><a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . $row['title'] . "</a></h4>
-                  <ul>
-                      <li><span>" . $row['school'] . "</span></li>
-                      <li><span>" . $row['club'] . "</span></li>
-                      <br>
-                      <li>預估規模：<span>" . $row['people'] . "</span></li>
-                      <br>
-                      <li>預算範圍：<span>" . $row['money'] . "</span></li>
-                      <br>
-                      <li>活動類型：<span>" . $row['type'] . "</span></li>
-                  </ul>
-                  <div class='text-links'>
-                      <a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "' class='custom-orange-btn'>詳情</a>
-                      <a href='editclubhistory.php?clrequirement_num=" . $row['clrequirement_num'] . "'>修改</a> |
-                      <a href='deleteclubhistory.php?clrequirement_num=" . $row['clrequirement_num'] . "' onclick=\"return confirm('確定要刪除嗎？');\">刪除</a>
-                  </div>
-                  <p class='publish-time'>發布時間：<span>" . $row['created_time'] . "</span></p>
-              </div>
-          </div>";
-      }
-      
-
-    ?>
 </div>
 
         </div>
