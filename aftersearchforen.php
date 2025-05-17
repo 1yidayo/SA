@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,33 +29,39 @@ TemplateMo 591 villa agency
 https://templatemo.com/tm-591-villa-agency
 
 -->
-<style>
-.properties-box {
-    display: flex;
-    flex-wrap: wrap; /* 允許換行 */
-    gap: 20px; /* 設定間距 */
-    justify-content: flex-start; /* 讓內容從左到右排列 */
-}
-
-.properties-items {
-    width: 30%; /* 保持與原本大小相近 */
-    min-width: 300px; /* 避免縮小過度 */
-}
-
-/* 讓小螢幕時調整排列 */
-@media (max-width: 992px) {
-    .properties-items {
-        width: 45%; /* 平板改為兩欄 */
+  <style>
+    .properties-box {
+      display: flex;
+      flex-wrap: wrap;
+      /* 允許換行 */
+      gap: 20px;
+      /* 設定間距 */
+      justify-content: flex-start;
+      /* 讓內容從左到右排列 */
     }
-}
 
-@media (max-width: 600px) {
     .properties-items {
-        width: 100%; /* 手機版單欄 */
+      width: 30%;
+      /* 保持與原本大小相近 */
+      min-width: 300px;
+      /* 避免縮小過度 */
     }
-}
 
-    </style>
+    /* 讓小螢幕時調整排列 */
+    @media (max-width: 992px) {
+      .properties-items {
+        width: 45%;
+        /* 平板改為兩欄 */
+      }
+    }
+
+    @media (max-width: 600px) {
+      .properties-items {
+        width: 100%;
+        /* 手機版單欄 */
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -77,21 +86,24 @@ https://templatemo.com/tm-591-villa-agency
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            
+
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-                            <li><a href="en.html">首頁</a></li>
-                            <li><a href="properties.php">瀏覽</a></li>
-                            <li><a href="en_contact.php">發布</a></li>
-                            <li><a href="enhistory.php">發布歷史</a></li>
-                            <li><a href="enterprise_cooperations.php">我的合作</a></li>
-                            <li><a href="self.en.php">個人頁面</a></li>
-                            <li><a href="aftersearchforen.php"  class="active">進階搜尋</a></li>
-                            <li><a href="login.html"><i
-                                        class="fa fa-calendar"></i>登出</a>
-                            </li>
-                        </ul>
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="cl.php" class="active">首頁</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="en_html" class="active">首頁</a></li>
+              <?php endif; ?>
+              <li><a href="properties.php">瀏覽</a></li>
+              <li><a href="en_contact.php">發布</a></li>
+              <li><a href="enhistory.php">發布歷史</a></li>
+              <li><a href="enterprise_cooperations.php">我的合作</a></li>
+              <li><a href="self.en.php">個人頁面</a></li>
+              <li><a href="aftersearchforen.php" class="active">進階搜尋</a></li>
+              <li><a href="login.html"><i class="fa fa-calendar"></i>登出</a>
+              </li>
+            </ul>
             <a class='menu-trigger'>
               <span>Menu</span>
             </a>
@@ -114,84 +126,85 @@ https://templatemo.com/tm-591-villa-agency
     </div>
   </div>
 
-  <div class="contact-page section"  style="align-item:center">
+  <div class="contact-page section" style="align-item:center">
     <div class="container" style="margin-top: -50px; margin-right: 100px;">
       <form id="search-form" action="properties.php" method="post" style="align-item:right;">
         <div class="row">
           <div class="col-md-2">
           </div>
           <div class="col-2">
-                <label for="school">學校</label>
-                <input class="form-control" type="text" placeholder="請輸入學校名稱" name="school">
-              </div>
-              <div class="col-2">
-                <label for="school">社團</label>
-                <input class="form-control" type="text" placeholder="請輸入社團名稱" name="club">
-              </div>
-              <div class="col-2">
-                <label for="support_type">贊助類型</label>
-                <select name="support_type" id="support_type" class="form-control">
-                  <option value="">請選擇</option>
-                  <option value="金錢">金錢</option>
-                  <option value="物資">物資</option>
-                  <option value="場地">場地</option>
-                  <option value="提供實習">提供實習</option>
-                </select>
-              </div>
-          
+            <label for="school">學校</label>
+            <input class="form-control" type="text" placeholder="請輸入學校名稱" name="school">
+          </div>
+          <div class="col-2">
+            <label for="school">社團</label>
+            <input class="form-control" type="text" placeholder="請輸入社團名稱" name="club">
+          </div>
+          <div class="col-2">
+            <label for="support_type">贊助類型</label>
+            <select name="support_type" id="support_type" class="form-control">
+              <option value="">請選擇</option>
+              <option value="金錢">金錢</option>
+              <option value="物資">物資</option>
+              <option value="場地">場地</option>
+              <option value="提供實習">提供實習</option>
+            </select>
+          </div>
+
           <div class="col-md-2" style="margin-top: 24px;">
-            <button class="btn btn-primary" type="submit" style="background-color:black; border: black;"><b>搜尋</b></button>
+            <button class="btn btn-primary" type="submit"
+              style="background-color:black; border: black;"><b>搜尋</b></button>
           </div>
         </div>
       </form>
     </div>
 
-  <div class="section properties">
-    <div class="container">
-      <div class="row properties-box">
-        <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
-        <?php
-        $link = mysqli_connect('localhost', 'root', '', 'SAS');
+    <div class="section properties">
+      <div class="container">
+        <div class="row properties-box">
+          <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
+            <?php
+            $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-        if (!$link) {
-            die("Database connection failed: " . mysqli_connect_error());
-        }
+            if (!$link) {
+              die("Database connection failed: " . mysqli_connect_error());
+            }
 
-        // 取得搜尋表單的輸入
-        $school = isset($_POST['school']) ? mysqli_real_escape_string($link, $_POST['school']) : '';
-        $club = isset($_POST['club']) ? mysqli_real_escape_string($link, $_POST['club']) : '';
-        $support_type = isset($_POST['support_type']) ? mysqli_real_escape_string($link, $_POST['support_type']) : '';
+            // 取得搜尋表單的輸入
+            $school = isset($_POST['school']) ? mysqli_real_escape_string($link, $_POST['school']) : '';
+            $club = isset($_POST['club']) ? mysqli_real_escape_string($link, $_POST['club']) : '';
+            $support_type = isset($_POST['support_type']) ? mysqli_real_escape_string($link, $_POST['support_type']) : '';
 
-        // 動態產生 WHERE 條件
-        $conditions = array();
+            // 動態產生 WHERE 條件
+            $conditions = array();
 
-        if (!empty($school)) {
-            $conditions[] = "school LIKE '%$school%'";
-        }
-        if (!empty($club)) {
-            $conditions[] = "club LIKE '%$club%'";
-        }
-        if (!empty($support_type)) {
-            $conditions[] = "support_type LIKE '%$support_type%'";
-        }
+            if (!empty($school)) {
+              $conditions[] = "school LIKE '%$school%'";
+            }
+            if (!empty($club)) {
+              $conditions[] = "club LIKE '%$club%'";
+            }
+            if (!empty($support_type)) {
+              $conditions[] = "support_type LIKE '%$support_type%'";
+            }
 
-        // 建構完整 SQL
-        $sql = "SELECT * FROM club_requirements";
-        if (count($conditions) > 0) {
-            $sql .= " WHERE " . implode(" AND ", $conditions);
-        }
+            // 建構完整 SQL
+            $sql = "SELECT * FROM club_requirements";
+            if (count($conditions) > 0) {
+              $sql .= " WHERE " . implode(" AND ", $conditions);
+            }
 
-        $result = mysqli_query($link, $sql);
-        if (!$result) {
-            die("Query failed: " . mysqli_error($link));
-        }
+            $result = mysqli_query($link, $sql);
+            if (!$result) {
+              die("Query failed: " . mysqli_error($link));
+            }
 
-        if (mysqli_num_rows($result) == 0) {
-            echo "<p>未找到符合的活動</p>";
-        }
+            if (mysqli_num_rows($result) == 0) {
+              echo "<p>未找到符合的活動</p>";
+            }
 
-        while($row = mysqli_fetch_assoc($result)){
-            echo "<div class='properties-items'>
+            while ($row = mysqli_fetch_assoc($result)) {
+              echo "<div class='properties-items'>
                 <div class='item'>
                     <h4><a href='enterprise.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . $row['title'] . "</a></h4>
                     <ul>
@@ -204,34 +217,34 @@ https://templatemo.com/tm-591-villa-agency
                     </div>
                 </div>
             </div>";
-        }
-    ?>
+            }
+            ?>
+          </div>
+        </div>
+        <div class="row">
         </div>
       </div>
-      <div class="row">
-      </div>
     </div>
-  </div>
 
-  <footer>
-    <div class="container">
-      <div class="col-lg-12">
-        <p>Copyright © 2048 Villa Agency Co., Ltd. All rights reserved.
+    <footer>
+      <div class="container">
+        <div class="col-lg-12">
+          <p>Copyright © 2048 Villa Agency Co., Ltd. All rights reserved.
 
-          Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a> Distribution: <a
-            href="https://themewagon.com">ThemeWagon</a></p>
+            Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a> Distribution: <a
+              href="https://themewagon.com">ThemeWagon</a></p>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/counter.js"></script>
-  <script src="assets/js/custom.js"></script>
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/counter.js"></script>
+    <script src="assets/js/custom.js"></script>
 
 </body>
 

@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start();
+?>
+
 
 <head>
   <meta charset="utf-8">
@@ -35,7 +37,12 @@
         <div class="col-12">
           <nav class="main-nav">
             <ul class="nav">
-              <li><a href="cl.php" class="active">首頁</a></li>
+              
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="cl.php" class="active">首頁</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="en_html" class="active">首頁</a></li>
+              <?php endif; ?>
               <li><a href="properties2.php">瀏覽</a></li>
               <li><a href="club_contact.php">發布</a></li>
               <li><a href="clubhistory.php">發布歷史</a></li>
@@ -73,7 +80,7 @@
           </button>
         </h2>
         <?php
-        session_start();
+        
         $userID = $_SESSION['userID'];
         $link = mysqli_connect('localhost', 'root', '', 'SAS');
 

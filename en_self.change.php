@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,16 +41,19 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
-                    <ul class="nav">
-                            <li><a href="en.html" class="active">首頁</a></li>
+                        <ul class="nav">
+                            <?php if ($_SESSION['level'] === 'cl'): ?>
+                                <li><a href="cl.php" class="active">首頁</a></li>
+                            <?php elseif ($_SESSION['level'] === 'en'): ?>
+                                <li><a href="en_html" class="active">首頁</a></li>
+                            <?php endif; ?>
                             <li><a href="properties.php">瀏覽</a></li>
                             <li><a href="en_contact.php">發布</a></li>
                             <li><a href="enhistory.php">發布歷史</a></li>
                             <li><a href="enterprise_cooperations.php">我的合作</a></li>
                             <li><a href="self.en.php">個人頁面</a></li>
                             <li><a href="aftersearchforen.php">進階搜尋</a></li>
-                            <li><a href="login.html"><i
-                                        class="fa fa-calendar"></i>登出</a>
+                            <li><a href="login.html"><i class="fa fa-calendar"></i>登出</a>
                             </li>
                         </ul>
                         <a class='menu-trigger'>
@@ -76,7 +82,7 @@
         <h2 class="mb-4">修改您的個人檔案</h2>
     </div>
     <?php
-    session_start();
+    
 
     $userID = $_SESSION['userID'];
     $link = mysqli_connect('localhost', 'root', '', 'SAS');
@@ -84,7 +90,7 @@
     $result = mysqli_query($link, $sql);
 
     while ($row = mysqli_fetch_assoc($result)) {
-    echo "<div class='contact-page section style='margin-top: 20px;'>
+        echo "<div class='contact-page section style='margin-top: 20px;'>
         <div class='row'>
             <div class='col-lg-6' style='margin:auto'>
                 <form id='contact-form' action='en_edit.php' method='post' enctype='multipart/form-data'>
@@ -129,25 +135,25 @@
                     <button class='btn btn-dark w-100' type='submit'><b>儲存修改</b></button>
                 </form>
             </div>";
-            }
-            ?>
+    }
+    ?>
 
-            <!-- Footer -->
-            <footer class="mt-5">
-                <div class="container">
-                    <div class="col-lg-8">
-                        <p style="text-align: left; font-weight: bold;">社團企業媒合平台</p>
-                    </div>
-                </div>
-            </footer>
+    <!-- Footer -->
+    <footer class="mt-5">
+        <div class="container">
+            <div class="col-lg-8">
+                <p style="text-align: left; font-weight: bold;">社團企業媒合平台</p>
+            </div>
+        </div>
+    </footer>
 
-            <!-- Scripts -->
-            <script src="vendor/jquery/jquery.min.js"></script>
-            <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-            <script src="assets/js/isotope.min.js"></script>
-            <script src="assets/js/owl-carousel.js"></script>
-            <script src="assets/js/counter.js"></script>
-            <script src="assets/js/custom.js"></script>
+    <!-- Scripts -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/counter.js"></script>
+    <script src="assets/js/custom.js"></script>
 </body>
 
 </html>

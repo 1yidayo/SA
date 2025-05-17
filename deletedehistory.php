@@ -131,7 +131,7 @@ https://templatemo.com/tm-591-villa-agency
   </header>
   <!-- ***** Header Area End ***** -->
    <?php
-session_start();
+
 $link = mysqli_connect("localhost", "root", "", "SAS");
 
 // 檢查是否有傳入 clrequirement_num

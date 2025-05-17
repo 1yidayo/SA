@@ -68,7 +68,11 @@ session_start();
         <div class="col-12">
           <nav class="main-nav">
             <ul class="nav">
-              <li><a href="cl.php">首頁</a></li>
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="cl.php" class="active">首頁</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="en_html" class="active">首頁</a></li>
+              <?php endif; ?>
               <li><a href="properties2.php" class="active">瀏覽</a></li>
               <li><a href="club_contact.php">發布</a></li>
               <li><a href="clubhistory.php">發布歷史</a></li>
@@ -88,7 +92,7 @@ session_start();
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <h3>企業贊助</h3>
+          <h3>社團瀏覽</h3>
         </div>
       </div>
     </div>

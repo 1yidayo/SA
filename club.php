@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="zh-TW">
 
@@ -40,16 +43,20 @@
       <div class="row">
         <div class="col-12">
           <nav class="main-nav">
-          <ul class="nav">
-                            <li><a href="cl.html" class="active">首頁</a></li>
-                            <li><a href="properties2.php">瀏覽</a></li>
-                            <li><a href="club_contact.php">發布</a></li>
-                            <li><a href="clubhistory.php">發布歷史</a></li>
-                            <li><a href="self.cl.php">個人頁面</a></li>
-                            <li><a href="login.html">登出</a></li>
-                            <li><a href="aftersearchforclub.php"><i class="fa fa-calendar"></i>進階搜尋</a>
-                            </li>
-                        </ul>
+            <ul class="nav">
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="cl.php" class="active">首頁</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="en_html" class="active">首頁</a></li>
+              <?php endif; ?>
+              <li><a href="properties2.php">瀏覽</a></li>
+              <li><a href="club_contact.php">發布</a></li>
+              <li><a href="clubhistory.php">發布歷史</a></li>
+              <li><a href="self.cl.php">個人頁面</a></li>
+              <li><a href="login.html">登出</a></li>
+              <li><a href="aftersearchforclub.php"><i class="fa fa-calendar"></i>進階搜尋</a>
+              </li>
+            </ul>
             <a class='menu-trigger'>
               <span>Menu</span>
             </a>
@@ -105,19 +112,24 @@
             <div class="card shadow-sm p-3 mb-4 bg-white rounded">
               <h5 class="mb-3" style="font-size: 25px;">活動資訊</h5>
               <ul class="list-unstyled">
-                <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>贊助類型：</label><b><?= $row['support_type'] ?></b>
+                <div class='mb-3' style="font-size: 18px;"><label
+                    class='form-label text-muted'>贊助類型：</label><b><?= $row['support_type'] ?></b>
                 </div>
                 <?php if ($row['support_type'] === '金錢'): ?>
-                  <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>贊助範圍：</label><b><?= $row['money'] ?? '未填寫' ?></b>
+                  <div class='mb-3' style="font-size: 18px;"><label
+                      class='form-label text-muted'>贊助範圍：</label><b><?= $row['money'] ?? '未填寫' ?></b>
                   </div>
                 <?php endif; ?>
-                <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>活動預計規模：</label><b><?= $row['people'] ?></b></div>
-                <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>活動類型：</label><b><?= $row['type'] ?></b></div>
-                <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>活動地區：</label><b><?= $row['region'] ?></b></div>
+                <div class='mb-3' style="font-size: 18px;"><label
+                    class='form-label text-muted'>活動預計規模：</label><b><?= $row['people'] ?></b></div>
+                <div class='mb-3' style="font-size: 18px;"><label
+                    class='form-label text-muted'>活動類型：</label><b><?= $row['type'] ?></b></div>
+                <div class='mb-3' style="font-size: 18px;"><label
+                    class='form-label text-muted'>活動地區：</label><b><?= $row['region'] ?></b></div>
                 <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>企劃書：</label><b><a
                       href="<?= htmlspecialchars($row['upload']) ?>" download>下載</a></b></div>
-                <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>社群連結：</label><b><a href="<?= $row['ins'] ?>"
-                      target="_blank">點此前往</a></b></div>
+                <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>社群連結：</label><b><a
+                      href="<?= $row['ins'] ?>" target="_blank">點此前往</a></b></div>
               </ul>
             </div>
           </div>

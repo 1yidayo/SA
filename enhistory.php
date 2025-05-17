@@ -1,8 +1,8 @@
 <?php
 session_start();
 if (!isset($_SESSION['identityID']) || empty($_SESSION['identityID'])) {
-    echo "錯誤：尚未登入";
-    exit;
+  echo "錯誤：尚未登入";
+  exit;
 }
 // echo "登入身份ID: " . $_SESSION['identityID'];
 
@@ -18,7 +18,8 @@ if (!isset($_SESSION['identityID']) || empty($_SESSION['identityID'])) {
   <title>社團企業媒合平台</title>
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -117,18 +118,21 @@ if (!isset($_SESSION['identityID']) || empty($_SESSION['identityID'])) {
       <div class="row">
         <div class="col-12">
           <nav class="main-nav">
-          <ul class="nav">
-                            <li><a href="en.html">首頁</a></li>
-                            <li><a href="properties.php">瀏覽</a></li>
-                            <li><a href="en_contact.php">發布</a></li>
-                            <li><a href="enhistory.php"  class="active">發布歷史</a></li>
-                            <li><a href="enterprise_cooperations.php">我的合作</a></li>
-                            <li><a href="self.en.php">個人頁面</a></li>
-                            <li><a href="aftersearchforen.php">進階搜尋</a></li>
-                            <li><a href="login.html"><i
-                                        class="fa fa-calendar"></i>登出</a>
-                            </li>
-                        </ul>
+            <ul class="nav">
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="cl.php" class="active">首頁</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="en_html" class="active">首頁</a></li>
+              <?php endif; ?>
+              <li><a href="properties.php">瀏覽</a></li>
+              <li><a href="en_contact.php">發布</a></li>
+              <li><a href="enhistory.php" class="active">發布歷史</a></li>
+              <li><a href="enterprise_cooperations.php">我的合作</a></li>
+              <li><a href="self.en.php">個人頁面</a></li>
+              <li><a href="aftersearchforen.php">進階搜尋</a></li>
+              <li><a href="login.html"><i class="fa fa-calendar"></i>登出</a>
+              </li>
+            </ul>
           </nav>
         </div>
       </div>

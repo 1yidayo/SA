@@ -35,7 +35,7 @@
         <div class="col-12">
           <nav class="main-nav">
             <ul class="nav">
-              <li><a href="en.html" class="active">首頁</a></li>
+              <li><a href="en.php" class="active">首頁</a></li>
               <li><a href="properties2.php">瀏覽</a></li>
               <li><a href="cl_contact.php">發布</a></li>
               <li><a href="clhistory.php">發布歷史</a></li>

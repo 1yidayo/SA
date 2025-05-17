@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,12 +23,12 @@
   <link rel="stylesheet" href="assets/css/owl.css">
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-  
+
   <style>
-  #money-group {
-    display: none;
-  }
-</style>
+    #money-group {
+      display: none;
+    }
+  </style>
 
 </head>
 
@@ -55,15 +58,19 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-                            <li><a href="cl.php">首頁</a></li>
-                            <li><a href="properties2.php">瀏覽</a></li>
-                            <li><a href="club_contact.php" class="active">發布</a></li>
-                            <li><a href="clubhistory.php">發布歷史</a></li>
-                            <li><a href="club_cooperations.php">我的合作</a></li>
-                            <li><a href="self.cl.php">個人頁面</a></li>
-                            <li><a href="aftersearchforclub.php">進階搜尋</a></li>
-                            <li><a href="login.html"><i class="fa fa-calendar"></i>登出</a></li>
-                        </ul>
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="cl.php" class="active">首頁</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="en_html" class="active">首頁</a></li>
+              <?php endif; ?>
+              <li><a href="properties2.php">瀏覽</a></li>
+              <li><a href="club_contact.php" class="active">發布</a></li>
+              <li><a href="clubhistory.php">發布歷史</a></li>
+              <li><a href="club_cooperations.php">我的合作</a></li>
+              <li><a href="self.cl.php">個人頁面</a></li>
+              <li><a href="aftersearchforclub.php">進階搜尋</a></li>
+              <li><a href="login.html"><i class="fa fa-calendar"></i>登出</a></li>
+            </ul>
             <a class='menu-trigger'>
               <span>Menu</span>
             </a>
@@ -87,85 +94,85 @@
   </div>
 
   <div class="contact-page section">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6" style="margin:auto">
-        <form id="contact-form" action="club_contact1.php" method="post" enctype="multipart/form-data">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6" style="margin:auto">
+          <form id="contact-form" action="club_contact1.php" method="post" enctype="multipart/form-data">
 
 
-        <?php
-        session_start();
-        $link = mysqli_connect('localhost', 'root', '', 'SAS');
-        
-        $sql = "SELECT * FROM identity WHERE identityID = '" . $_SESSION['identityID'] . "'";
-        $result = mysqli_query($link, $sql);
+            <?php
+            
+            $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-        if ($row = mysqli_fetch_assoc($result)) {
-          $school = $row['school'];
-          $club = $row['club'];
-          $clyear = $row['clyear'];
-          $cltype = $row['cltype'];
-          $clins = $row['clins'];
-        }
-        ?>
-        <input type="hidden" name="identityID" value="<?php echo $_SESSION['identityID']; ?>">
-          <div class="row">
-            <div class="col-12">
-  <div class="input-group mb-3">
-    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-      <span class="ms-1"><b>學校名稱</b></span>
-    </div>
-    <input class="form-control-plaintext" type="text" placeholder="請輸入學校名稱(請輸入學校全名eg:輔仁大學)" 
-      aria-label="請輸入學校全名" name="school" required value="<?php echo $school; ?>" readonly>
-  </div>
+            $sql = "SELECT * FROM identity WHERE identityID = '" . $_SESSION['identityID'] . "'";
+            $result = mysqli_query($link, $sql);
 
-  <div class="input-group">
-    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-      <span class="ms-1"><b>社團名稱</b></span>
-    </div>
-    <input class="form-control-plaintext" type="text" placeholder="請輸入社團名稱" 
-      aria-label="請輸社團名稱" name="club" required value="<?php echo $club; ?>" readonly>
-  </div>
-</div>
-
-                <div class="col-12">
-                  <div class="input-group">
-                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>社團成立年份</b></span>
-                    </div>
-                    <input class="form-control" type="text" placeholder="請輸入年份" aria-label="請輸入年份" name="year"
-                     value="<?php echo $clyear; ?>" >
+            if ($row = mysqli_fetch_assoc($result)) {
+              $school = $row['school'];
+              $club = $row['club'];
+              $clyear = $row['clyear'];
+              $cltype = $row['cltype'];
+              $clins = $row['clins'];
+            }
+            ?>
+            <input type="hidden" name="identityID" value="<?php echo $_SESSION['identityID']; ?>">
+            <div class="row">
+              <div class="col-12">
+                <div class="input-group mb-3">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>學校名稱</b></span>
                   </div>
+                  <input class="form-control-plaintext" type="text" placeholder="請輸入學校名稱(請輸入學校全名eg:輔仁大學)"
+                    aria-label="請輸入學校全名" name="school" required value="<?php echo $school; ?>" readonly>
                 </div>
-                <div class="col-12">
-                  <div class="input-group">
-                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>社團類型</b></span>
-                    </div>
-                    <input class="form-control" type="text" placeholder="請輸入社團類型"
-                      aria-label="請輸入社團類型" name="type" value="<?php echo $cltype; ?>" required title="必填欄位！">
+
+                <div class="input-group">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>社團名稱</b></span>
                   </div>
+                  <input class="form-control-plaintext" type="text" placeholder="請輸入社團名稱" aria-label="請輸社團名稱"
+                    name="club" required value="<?php echo $club; ?>" readonly>
                 </div>
-                <div class="col-12">
-                  <div class="input-group">
-                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                      <span class="ms-1"><b>活動類型</b></span>
-                    </div>
-                    <input class="form-control" type="text" placeholder="請輸入活動類型(eg:表演型、學術型)"
-                      aria-label="請輸入活動類型(eg:表演型、學術型)" name="type" value="" required title="必填欄位！">
-                  </div>
-                </div>
-            <div class="col-12">
-              <div class="input-group">
-                <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                  <span class="ms-1"><b>內文標題(必填)</b></span>
-                </div>
-                <input class="form-control" type="text" placeholder="請輸入內文標題" aria-label="Enter a City or Airport"
-                  name="title" value="" required title="必填欄位！">
-                <div class="invalid-feedback">請填寫內文標題</div>
               </div>
-            </div>
-            <div class="col-12">
+
+              <div class="col-12">
+                <div class="input-group">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>社團成立年份</b></span>
+                  </div>
+                  <input class="form-control" type="text" placeholder="請輸入年份" aria-label="請輸入年份" name="year"
+                    value="<?php echo $clyear; ?>">
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="input-group">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>社團類型</b></span>
+                  </div>
+                  <input class="form-control" type="text" placeholder="請輸入社團類型" aria-label="請輸入社團類型" name="type"
+                    value="<?php echo $cltype; ?>" required title="必填欄位！">
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="input-group">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>活動類型</b></span>
+                  </div>
+                  <input class="form-control" type="text" placeholder="請輸入活動類型(eg:表演型、學術型)"
+                    aria-label="請輸入活動類型(eg:表演型、學術型)" name="type" value="" required title="必填欄位！">
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="input-group">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>內文標題(必填)</b></span>
+                  </div>
+                  <input class="form-control" type="text" placeholder="請輸入內文標題" aria-label="Enter a City or Airport"
+                    name="title" value="" required title="必填欄位！">
+                  <div class="invalid-feedback">請填寫內文標題</div>
+                </div>
+              </div>
+              <div class="col-12">
                 <div class="input-group">
                   <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                     <span class="ms-1"><b>需要的贊助類型(必填)</b></span>
@@ -181,7 +188,7 @@
                   </select>
                 </div>
               </div>
-              
+
             </div>
             <br>
             <br>
@@ -194,70 +201,71 @@
                   </div>
                   <!-- <input type="number" class="form-control" name="money"  placeholder="請輸入金額" title="必填欄位！" min="0"> -->
                   <select name="money" class="form-select" id="money">
-                      <option value="">請選擇</option>
-                      <option value="$20,000以下">$20,000以下</option>
-                      <option value="$20,001-$30,000">$20,001-$30,000</option>
-                      <option value="$30,001-$50,000">$30,001-$50,000</option>
-                      <option value="$50,001-$70,000">$50,001-$70,000</option>
-                      <option value="$70,001以上">$70,001以上</option>
-                    </select>
-                    
+                    <option value="">請選擇</option>
+                    <option value="$20,000以下">$20,000以下</option>
+                    <option value="$20,001-$30,000">$20,001-$30,000</option>
+                    <option value="$30,001-$50,000">$30,001-$50,000</option>
+                    <option value="$50,001-$70,000">$50,001-$70,000</option>
+                    <option value="$70,001以上">$70,001以上</option>
+                  </select>
+
                 </div>
                 <br>
-             <div class="col-12" id="intern-group" style="display:none;">
-              <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                <span class="ms-1"><b>預估需要的實習人數(必填)</b></span>
-              </div>
-              <input type="number" class="form-control" name="intern_number" id="intern_number" placeholder="請輸入實習人數" min="1" title="必填欄位！">
-              </div>
+                <div class="col-12" id="intern-group" style="display:none;">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>預估需要的實習人數(必填)</b></span>
+                  </div>
+                  <input type="number" class="form-control" name="intern_number" id="intern_number"
+                    placeholder="請輸入實習人數" min="1" title="必填欄位！">
+                </div>
 
 
-              
+
                 <div id="people-group">
-  <div class="input-group">
-    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-      <span class="ms-1"><b>預估規模(必填)</b></span>
-    </div>
-    <select class="form-control" name="people" required>
-      <option value="">請選擇</option>
-      <option value="0-10人">0-10人</option>
-      <option value="11-20人">11-20人</option>
-      <option value="21-30人">21-30人</option>
-      <option value="31-40人">31-40人</option>
-      <option value="41-50人">41-50人</option>
-      <option value="50人以上">50人以上</option>
-    </select>
-  </div>
-</div>
-<br>
+                  <div class="input-group">
+                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                      <span class="ms-1"><b>預估規模(必填)</b></span>
+                    </div>
+                    <select class="form-control" name="people" required>
+                      <option value="">請選擇</option>
+                      <option value="0-10人">0-10人</option>
+                      <option value="11-20人">11-20人</option>
+                      <option value="21-30人">21-30人</option>
+                      <option value="31-40人">31-40人</option>
+                      <option value="41-50人">41-50人</option>
+                      <option value="50人以上">50人以上</option>
+                    </select>
+                  </div>
+                </div>
+                <br>
 
-<div id="region-group">
-  <div class="input-group">
-    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-      <span class="ms-1"><b>活動地區(必填)</b></span>
-    </div>
-    <select class="form-select" name="region" id="region" required title="必填欄位！">
-      <option value="">請選擇</option>
-      <option value="北部">北部</option>
-      <option value="中部">中部</option>
-      <option value="南部">南部</option>
-      <option value="東部">東部</option>
-    </select>
-  </div>
-</div>
-<br>
+                <div id="region-group">
+                  <div class="input-group">
+                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                      <span class="ms-1"><b>活動地區(必填)</b></span>
+                    </div>
+                    <select class="form-select" name="region" id="region" required title="必填欄位！">
+                      <option value="">請選擇</option>
+                      <option value="北部">北部</option>
+                      <option value="中部">中部</option>
+                      <option value="南部">南部</option>
+                      <option value="東部">東部</option>
+                    </select>
+                  </div>
+                </div>
+                <br>
 
-<div id="event_time-group">
-  <div class="input-group">
-    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-      <span class="ms-1"><b>預計活動月份(必填)</b></span>
-    </div>
-    <input type="date" name="event_time" id="event_time" class="form-control" required>
-  </div>
-</div>
+                <div id="event_time-group">
+                  <div class="input-group">
+                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                      <span class="ms-1"><b>預計活動月份(必填)</b></span>
+                    </div>
+                    <input type="date" name="event_time" id="event_time" class="form-control" required>
+                  </div>
+                </div>
 
 
-                
+
 
                 <div class="col-15">
                   <div class="input-group">
@@ -273,8 +281,8 @@
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                       <span class="ms-1"><b>社群連結</b></span>
                     </div>
-                    <input class="form-control" type="text" placeholder="請輸入相關社群連結"
-                       name="ins" value="<?php echo $clins; ?>" >
+                    <input class="form-control" type="text" placeholder="請輸入相關社群連結" name="ins"
+                      value="<?php echo $clins; ?>">
                   </div>
                 </div>
 
@@ -283,7 +291,8 @@
                     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                       <span class="ms-1"><b>內文(必填)</b></span>
                     </div>
-                    <textarea class="form-control" name="information" id="information" placeholder="請輸入內文內容" required></textarea>
+                    <textarea class="form-control" name="information" id="information" placeholder="請輸入內文內容"
+                      required></textarea>
                   </div>
                 </div>
 
@@ -293,114 +302,114 @@
                 </div>
               </div>
             </div>
-        </form>
+          </form>
+        </div>
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            const supportTypeSelect = document.getElementById('support_type');
+
+            const moneyGroup = document.getElementById('money-group');
+            const moneyInput = document.getElementById('money');
+
+            const internGroup = document.getElementById('intern-group');
+            const internInput = document.getElementById('intern_number');
+
+            const peopleGroup = document.getElementById('people-group');
+            const peopleInput = peopleGroup.querySelector('select');
+
+            const regionGroup = document.getElementById('region-group');
+            const regionInput = regionGroup.querySelector('select');
+
+            const eventTimeGroup = document.getElementById('event_time-group');
+            const eventTimeInput = eventTimeGroup.querySelector('input');
+
+            function toggleMoneyField() {
+              if (supportTypeSelect.value === '金錢') {
+                moneyGroup.style.display = 'block';
+                moneyInput.setAttribute('required', 'required');
+              } else {
+                moneyGroup.style.display = 'none';
+                moneyInput.removeAttribute('required');
+                moneyInput.value = '';
+              }
+            }
+
+            function toggleFieldsBySupportType() {
+              const val = supportTypeSelect.value;
+
+              if (val === '提供實習') {
+                internGroup.style.display = 'block';
+                internInput.setAttribute('required', 'required');
+
+                peopleGroup.style.display = 'none';
+                regionGroup.style.display = 'none';
+                eventTimeGroup.style.display = 'none';
+
+                peopleInput.removeAttribute('required');
+                regionInput.removeAttribute('required');
+                eventTimeInput.removeAttribute('required');
+
+              } else if (val === 'exposure') {  // 這裡要用 option 的 value "exposure"
+                internGroup.style.display = 'none';
+                internInput.removeAttribute('required');
+                internInput.value = '';
+
+                peopleGroup.style.display = 'none';
+                regionGroup.style.display = 'none';
+                eventTimeGroup.style.display = 'none';
+
+                peopleInput.removeAttribute('required');
+                regionInput.removeAttribute('required');
+                eventTimeInput.removeAttribute('required');
+
+              } else {
+                internGroup.style.display = 'none';
+                internInput.removeAttribute('required');
+                internInput.value = '';
+
+                peopleGroup.style.display = 'block';
+                regionGroup.style.display = 'block';
+                eventTimeGroup.style.display = 'block';
+
+                peopleInput.setAttribute('required', 'required');
+                regionInput.setAttribute('required', 'required');
+                eventTimeInput.setAttribute('required', 'required');
+              }
+            }
+
+            toggleMoneyField();
+            toggleFieldsBySupportType();
+
+            supportTypeSelect.addEventListener('change', function () {
+              toggleMoneyField();
+              toggleFieldsBySupportType();
+            });
+
+            const form = document.getElementById('contact-form');
+            form.addEventListener('submit', function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                const firstInvalid = form.querySelector(':invalid');
+                if (firstInvalid) {
+                  alert(firstInvalid.title || '請填寫所有必填欄位');
+                  firstInvalid.focus();
+                }
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        </script>
+
+
+
+
+
+
       </div>
-      <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const supportTypeSelect = document.getElementById('support_type');
-
-  const moneyGroup = document.getElementById('money-group');
-  const moneyInput = document.getElementById('money');
-
-  const internGroup = document.getElementById('intern-group');
-  const internInput = document.getElementById('intern_number');
-
-  const peopleGroup = document.getElementById('people-group');
-  const peopleInput = peopleGroup.querySelector('select');
-
-  const regionGroup = document.getElementById('region-group');
-  const regionInput = regionGroup.querySelector('select');
-
-  const eventTimeGroup = document.getElementById('event_time-group');
-  const eventTimeInput = eventTimeGroup.querySelector('input');
-
-  function toggleMoneyField() {
-    if (supportTypeSelect.value === '金錢') {
-      moneyGroup.style.display = 'block';
-      moneyInput.setAttribute('required', 'required');
-    } else {
-      moneyGroup.style.display = 'none';
-      moneyInput.removeAttribute('required');
-      moneyInput.value = '';
-    }
-  }
-
-  function toggleFieldsBySupportType() {
-    const val = supportTypeSelect.value;
-
-    if (val === '提供實習') {
-      internGroup.style.display = 'block';
-      internInput.setAttribute('required', 'required');
-
-      peopleGroup.style.display = 'none';
-      regionGroup.style.display = 'none';
-      eventTimeGroup.style.display = 'none';
-
-      peopleInput.removeAttribute('required');
-      regionInput.removeAttribute('required');
-      eventTimeInput.removeAttribute('required');
-
-    } else if (val === 'exposure') {  // 這裡要用 option 的 value "exposure"
-      internGroup.style.display = 'none';
-      internInput.removeAttribute('required');
-      internInput.value = '';
-
-      peopleGroup.style.display = 'none';
-      regionGroup.style.display = 'none';
-      eventTimeGroup.style.display = 'none';
-
-      peopleInput.removeAttribute('required');
-      regionInput.removeAttribute('required');
-      eventTimeInput.removeAttribute('required');
-
-    } else {
-      internGroup.style.display = 'none';
-      internInput.removeAttribute('required');
-      internInput.value = '';
-
-      peopleGroup.style.display = 'block';
-      regionGroup.style.display = 'block';
-      eventTimeGroup.style.display = 'block';
-
-      peopleInput.setAttribute('required', 'required');
-      regionInput.setAttribute('required', 'required');
-      eventTimeInput.setAttribute('required', 'required');
-    }
-  }
-
-  toggleMoneyField();
-  toggleFieldsBySupportType();
-
-  supportTypeSelect.addEventListener('change', function () {
-    toggleMoneyField();
-    toggleFieldsBySupportType();
-  });
-
-  const form = document.getElementById('contact-form');
-  form.addEventListener('submit', function (event) {
-    if (!form.checkValidity()) {
-      event.preventDefault();
-      event.stopPropagation();
-
-      const firstInvalid = form.querySelector(':invalid');
-      if (firstInvalid) {
-        alert(firstInvalid.title || '請填寫所有必填欄位');
-        firstInvalid.focus();
-      }
-    }
-    form.classList.add('was-validated');
-  }, false);
-});
-</script>
-
-
-
-
-
-      
     </div>
   </div>
-</div>
 
 
   <footer>
@@ -420,37 +429,37 @@ document.addEventListener('DOMContentLoaded', function () {
   <script src="assets/js/counter.js"></script>
   <script src="assets/js/custom.js"></script>
   <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const supportTypeSelect = document.getElementById('support_type');
-    const moneyGroup = document.getElementById('money-group');
-    const form = document.getElementById('contact-form');
+    document.addEventListener('DOMContentLoaded', function () {
+      const supportTypeSelect = document.getElementById('support_type');
+      const moneyGroup = document.getElementById('money-group');
+      const form = document.getElementById('contact-form');
 
-    function toggleMoneyField() {
-      if (supportTypeSelect.value === '金錢') {
-        moneyGroup.style.display = 'block';
-      } else {
-        moneyGroup.style.display = 'none';
-        // 如果不是金錢，清空選項避免誤送出
-        document.getElementById('money').value = '';
+      function toggleMoneyField() {
+        if (supportTypeSelect.value === '金錢') {
+          moneyGroup.style.display = 'block';
+        } else {
+          moneyGroup.style.display = 'none';
+          // 如果不是金錢，清空選項避免誤送出
+          document.getElementById('money').value = '';
+        }
       }
-    }
 
-    // 初始化
-    toggleMoneyField();
+      // 初始化
+      toggleMoneyField();
 
-    // 當下拉選單變更時，觸發判斷
-    supportTypeSelect.addEventListener('change', toggleMoneyField);
+      // 當下拉選單變更時，觸發判斷
+      supportTypeSelect.addEventListener('change', toggleMoneyField);
 
-    // 表單送出驗證
-    form.addEventListener('submit', function (event) {
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      form.classList.add('was-validated');
-    }, false);
-  });
-</script>
+      // 表單送出驗證
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  </script>
 
 
 </body>

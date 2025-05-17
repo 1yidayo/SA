@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,18 +31,21 @@
       <div class="row">
         <div class="col-12">
           <nav class="main-nav">
-          <ul class="nav">
-                            <li><a href="en.html">首頁</a></li>
-                            <li><a href="properties.php">瀏覽</a></li>
-                            <li><a href="en_contact.php"  class="active">發布</a></li>
-                            <li><a href="enhistory.php">發布歷史</a></li>
-                            <li><a href="enterprise_cooperations.php">我的合作</a></li>
-                            <li><a href="self.en.php">個人頁面</a></li>
-                            <li><a href="aftersearchforen.php">進階搜尋</a></li>
-                            <li><a href="login.html"><i
-                                        class="fa fa-calendar"></i>登出</a>
-                            </li>
-                        </ul>
+            <ul class="nav">
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="cl.php" class="active">首頁</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="en_html" class="active">首頁</a></li>
+              <?php endif; ?>
+              <li><a href="properties.php">瀏覽</a></li>
+              <li><a href="en_contact.php" class="active">發布</a></li>
+              <li><a href="enhistory.php">發布歷史</a></li>
+              <li><a href="enterprise_cooperations.php">我的合作</a></li>
+              <li><a href="self.en.php">個人頁面</a></li>
+              <li><a href="aftersearchforen.php">進階搜尋</a></li>
+              <li><a href="login.html"><i class="fa fa-calendar"></i>登出</a>
+              </li>
+            </ul>
             <a class='menu-trigger'><span>Menu</span></a>
           </nav>
         </div>
@@ -65,7 +71,7 @@
           <form id="contact-form" action="en_contact1.php" method="post">
             <div class="row">
               <?php
-              session_start();
+              
               $link = mysqli_connect('localhost', 'root', '', 'SAS');
               $sql = "SELECT * FROM identity WHERE identityID = '" . $_SESSION['identityID'] . "'";
               $result = mysqli_query($link, $sql);
@@ -140,7 +146,7 @@
                     value="<?php echo $enphone; ?>" required>
                 </div>
               </div>
-              
+
               <div class="col-12">
                 <div class="input-group">
                   <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
@@ -150,7 +156,7 @@
                 </div>
               </div>
 
-              
+
 
               <div class="col-12">
                 <div class="input-group">
