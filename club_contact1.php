@@ -47,7 +47,7 @@ VALUES ('$identityID', '$money', '$people', '$school', '$club', '$year', '$type'
     if (mysqli_query($link, $sql)) {
         echo "<script>
             alert('發布成功！');
-            window.location.href = 'club contact.php';
+            window.location.href = 'club_contact.php';
         </script>";
         exit();
     } else {

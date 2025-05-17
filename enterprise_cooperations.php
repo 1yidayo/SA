@@ -75,17 +75,16 @@ $result = mysqli_query($link, $sql);
       <div class="row">
         <div class="col-12">
           <nav class="main-nav">
-          <ul class="nav">
-                            <li><a href="en.html">首頁</a></li>
-                            <li><a href="properties.php">瀏覽</a></li>
-                            <li><a href="en_contact.php">發布</a></li>
-                            <li><a href="enhistory.php">發布歷史</a></li>
-                            <li><a href="enterprise_cooperations.php"  class="active">我的合作</a></li>
-                            <li><a href="self.en.php">個人頁面</a></li>
-                            <li><a href="aftersearchforen.php">進階搜尋</a></li>
-                            <li><a href="login.html"><i class="fa fa-calendar"></i>登出</a>
-                            </li>
-                        </ul>
+            <ul class="nav">
+              <li><a href="en.html">首頁</a></li>
+              <li><a href="properties.php">瀏覽</a></li>
+              <li><a href="en_contact.php">發布</a></li>
+              <li><a href="enhistory.php">發布歷史</a></li>
+              <li><a href="enterprise_cooperations.php" class="active">我的合作</a></li>
+              <li><a href="self.en.php">個人頁面</a></li>
+              <li><a href="aftersearchforen.php">進階搜尋</a></li>
+              <li><a href="login.html"><i class="fa fa-calendar"></i>登出</a></li>
+            </ul>
             <a class="menu-trigger"><span>Menu</span></a>
           </nav>
         </div>
@@ -108,14 +107,17 @@ $result = mysqli_query($link, $sql);
   <div class="container mt-5">
     <!-- 模式切換 -->
     <div class="mb-3">
-      <a href="?mode=receive&status=<?= $status ?>" class="btn btn-outline-primary <?= ($mode == 'receive') ? 'active' : '' ?>">收到的申請</a>
-      <a href="?mode=send&status=<?= $status ?>" class="btn btn-outline-primary <?= ($mode == 'send') ? 'active' : '' ?>">我邀請的合作</a>
+      <a href="?mode=receive&status=<?= $status ?>"
+        class="btn btn-outline-primary <?= ($mode == 'receive') ? 'active' : '' ?>">收到的申請</a>
+      <a href="?mode=send&status=<?= $status ?>"
+        class="btn btn-outline-primary <?= ($mode == 'send') ? 'active' : '' ?>">我邀請的合作</a>
     </div>
 
     <!-- 狀態切換 -->
     <div class="mb-3">
       <?php foreach (['待處理', '同意', '拒絕'] as $st): ?>
-        <a href="?mode=<?= $mode ?>&status=<?= $st ?>" class="btn btn-sm btn-outline-secondary <?= ($status == $st) ? 'active' : '' ?>"><?= $st ?></a>
+        <a href="?mode=<?= $mode ?>&status=<?= $st ?>"
+          class="btn btn-sm btn-outline-secondary <?= ($status == $st) ? 'active' : '' ?>"><?= $st ?></a>
       <?php endforeach; ?>
     </div>
 
@@ -128,8 +130,9 @@ $result = mysqli_query($link, $sql);
       <div class="card mb-3 shadow-sm">
         <div class="card-body">
           <h5 class="card-title"><?= $row['title'] ?></h5>
-          <p class="card-text">社團：<?= $row['school'] ?> <?= $row['club'] ?></p>
-          <p class="card-text">IG：<a href="https://instagram.com/<?= $row['clins'] ?>" target="_blank">@<?= $row['clins'] ?></a></p>
+          <p class="card-text">社團：<?= $row['school'] ?>   <?= $row['club'] ?></p>
+          <p class="card-text">IG：<a href="https://instagram.com/<?= $row['clins'] ?>"
+              target="_blank">@<?= $row['clins'] ?></a></p>
           <p class="card-text">申請時間：<?= $row['request_time'] ?></p>
           <p class="card-text">狀態：<span class="status-tag status-<?= $row['status'] ?>"><?= $row['status'] ?></span></p>
 
@@ -158,4 +161,5 @@ $result = mysqli_query($link, $sql);
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
+
 </html>

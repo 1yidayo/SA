@@ -70,7 +70,7 @@ session_start();
             <ul class="nav">
               <li><a href="cl.php">首頁</a></li>
               <li><a href="properties2.php" class="active">瀏覽</a></li>
-              <li><a href="club contact.php">發布</a></li>
+              <li><a href="club_contact.php">發布</a></li>
               <li><a href="clubhistory.php">發布歷史</a></li>
               <li><a href="club_cooperations.php">我的合作</a></li>
               <li><a href="self.cl.php">個人頁面</a></li>
@@ -96,7 +96,7 @@ session_start();
 
   <!-- 搜尋表單 -->
   
-  <div class="contact-page section">
+  <div class="contact-page section"  style="align-item:center">
     <div class="container" style="margin-top: -50px; margin-right: 100px;">
       <form id="search-form" action="properties2.php" method="post" style="align-item:right;">
         <div class="row">
@@ -156,7 +156,7 @@ session_start();
 
   $money = isset($_POST['money']) ? mysqli_real_escape_string($link, $_POST['money']) : '';
   $enterprise = isset($_POST['enterprise']) ? mysqli_real_escape_string($link, $_POST['enterprise']) : '';
-  $support_type = isset($_POST['support_type']) ? mysqli_real_escape_string($link, $_POST['support_type']) : '';
+  $sponsorship = isset($_POST['$sponsorship']) ? mysqli_real_escape_string($link, $_POST['$sponsorship']) : '';
   $type = isset($_POST['type']) ? mysqli_real_escape_string($link, $_POST['type']) : '';
 
   $conditions = [];
@@ -166,8 +166,8 @@ session_start();
   if (!empty($enterprise)) {
     $conditions[] = "enterprise LIKE '%$enterprise%'";
   }
-  if (!empty($support_type)) {
-    $conditions[] = "type LIKE '%$support_type%'";
+  if (!empty($sponsorship)) {
+    $conditions[] = "type LIKE '%$sponsorship%'";
   }
   if (!empty($type)) {
     $conditions[] = "type LIKE '%$type%'";
@@ -196,7 +196,7 @@ session_start();
                         <li>企業名稱：<span>" . htmlspecialchars($row['enterprise']) . "</span></li>
                         <li>行業別：<span>" . htmlspecialchars($row['type']) . "</span></li>
                         <li>贊助範圍：<span>" . htmlspecialchars($row['money']) . "</span></li>
-                        <li>企業贊助類型：<span>" . htmlspecialchars($row['type']) . "</span></li>
+                        <li>企業贊助類型：<span>" . htmlspecialchars($row['sponsorship']) . "</span></li>
                       </ul>
                       <div class='main-button'>
                           <a href='enterprise.php?enrequirement_num={$row['enrequirement_num']}'>了解活動詳情</a>
