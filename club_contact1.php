@@ -40,8 +40,8 @@
                                                                            
     $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-    $sql = "INSERT INTO club_requirements (identityID, money, people, school, club, year, type, region, event_time, support_type, upload, ins, title, information, intern_number, created_at)
-VALUES ('$identityID', '$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information', '$intern_number', '$created_at')
+    $sql = "INSERT INTO club_requirements (identityID, money, people, school, club, year, type, region, event_time, support_type, upload, ins, title, information, intern_number)
+VALUES ('$identityID', '$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information', '$intern_number')
 ";
 
     if (mysqli_query($link, $sql)) {

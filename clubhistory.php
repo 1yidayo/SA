@@ -179,7 +179,7 @@ https://templatemo.com/tm-591-villa-agency
         <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv">
 <?php
 $link = mysqli_connect('localhost', 'root', '', 'SAS');
-$sql = "SELECT * FROM club_requirements WHERE identityID = '{$_SESSION['identityID']}' ORDER BY created_at DESC";
+$sql = "SELECT * FROM club_requirements WHERE identityID = '{$_SESSION['identityID']}' ORDER BY created_time DESC";
 $result = mysqli_query($link, $sql);
 
 while($row = mysqli_fetch_assoc($result)) {
