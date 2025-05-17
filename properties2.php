@@ -73,13 +73,32 @@ session_start();
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="en_html" class="active">首頁</a></li>
               <?php endif; ?>
-              <li><a href="properties2.php" class="active">瀏覽</a></li>
-              <li><a href="club_contact.php">發布</a></li>
-              <li><a href="clubhistory.php">發布歷史</a></li>
-              <li><a href="club_cooperations.php">我的合作</a></li>
-              <li><a href="self.cl.php">個人頁面</a></li>
-              <li><a href="aftersearchforclub.php">進階搜尋</a></li>
-              <li><a href="login.html"><i class="fa fa-calendar"></i>登出</a></li>
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="properties2.php" class="active">瀏覽</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="properties.php" class="active">瀏覽</a></li>
+              <?php endif; ?>
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="club_contact.php" class="active">發布</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="en_contact.php" class="active">發布</a></li>
+              <?php endif; ?>
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="clubhistory.php" class="active">發布歷史</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="enhistory.php" class="active">發布歷史</a></li>
+              <?php endif; ?>
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="club_cooperations.php" class="active">我的合作</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="enterprise_cooperations.php" class="active">我的合作</a></li>
+              <?php endif; ?>
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="self.cl.php" class="active">個人頁面</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="self.en.php" class="active">個人頁面</a></li>
+              <?php endif; ?>
+              <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
             </ul>
             <a class="menu-trigger"><span>Menu</span></a>
           </nav>
@@ -99,8 +118,8 @@ session_start();
   </div>
 
   <!-- 搜尋表單 -->
-  
-  <div class="contact-page section"  style="align-item:center">
+
+  <div class="contact-page section" style="align-item:center">
     <div class="container" style="margin-top: -50px; margin-right: 100px;">
       <form id="search-form" action="properties2.php" method="post" style="align-item:right;">
         <div class="row">
@@ -143,57 +162,58 @@ session_start();
               <option value="提供實習">提供實習</option>
             </select>
           </div>
-          
+
           <div class="col-md-2" style="margin-top: 24px;">
-            <button class="btn btn-primary" type="submit" style="background-color:black; border: black;"><b>搜尋</b></button>
+            <button class="btn btn-primary" type="submit"
+              style="background-color:black; border: black;"><b>搜尋</b></button>
           </div>
         </div>
       </form>
     </div>
-  <!-- </div> -->
+    <!-- </div> -->
 
-  <?php
-  $link = mysqli_connect('localhost', 'root', '', 'SAS');
-  if (!$link) {
-    die("資料庫連線失敗: " . mysqli_connect_error());
-  }
+    <?php
+    $link = mysqli_connect('localhost', 'root', '', 'SAS');
+    if (!$link) {
+      die("資料庫連線失敗: " . mysqli_connect_error());
+    }
 
-  $money = isset($_POST['money']) ? mysqli_real_escape_string($link, $_POST['money']) : '';
-  $enterprise = isset($_POST['enterprise']) ? mysqli_real_escape_string($link, $_POST['enterprise']) : '';
-  $sponsorship = isset($_POST['$sponsorship']) ? mysqli_real_escape_string($link, $_POST['$sponsorship']) : '';
-  $type = isset($_POST['type']) ? mysqli_real_escape_string($link, $_POST['type']) : '';
+    $money = isset($_POST['money']) ? mysqli_real_escape_string($link, $_POST['money']) : '';
+    $enterprise = isset($_POST['enterprise']) ? mysqli_real_escape_string($link, $_POST['enterprise']) : '';
+    $sponsorship = isset($_POST['$sponsorship']) ? mysqli_real_escape_string($link, $_POST['$sponsorship']) : '';
+    $type = isset($_POST['type']) ? mysqli_real_escape_string($link, $_POST['type']) : '';
 
-  $conditions = [];
-  if (!empty($money)) {
-    $conditions[] = "money LIKE '%$money%'";
-  }
-  if (!empty($enterprise)) {
-    $conditions[] = "enterprise LIKE '%$enterprise%'";
-  }
-  if (!empty($sponsorship)) {
-    $conditions[] = "type LIKE '%$sponsorship%'";
-  }
-  if (!empty($type)) {
-    $conditions[] = "type LIKE '%$type%'";
-  }
+    $conditions = [];
+    if (!empty($money)) {
+      $conditions[] = "money LIKE '%$money%'";
+    }
+    if (!empty($enterprise)) {
+      $conditions[] = "enterprise LIKE '%$enterprise%'";
+    }
+    if (!empty($sponsorship)) {
+      $conditions[] = "type LIKE '%$sponsorship%'";
+    }
+    if (!empty($type)) {
+      $conditions[] = "type LIKE '%$type%'";
+    }
 
-  $sql = "SELECT * FROM en_requirements";
-  if (count($conditions) > 0) {
-    $sql .= " WHERE " . implode(" AND ", $conditions);
-  }
+    $sql = "SELECT * FROM en_requirements";
+    if (count($conditions) > 0) {
+      $sql .= " WHERE " . implode(" AND ", $conditions);
+    }
 
-  $result = mysqli_query($link, $sql);
-  ?>
+    $result = mysqli_query($link, $sql);
+    ?>
 
-  <div class="section properties">
-    <div class="container">
-      <div class="row properties-box">
-        <?php
-        if (mysqli_num_rows($result) == 0) {
-          echo "<p>未找到符合的活動</p>";
-        } else {
-          while ($row = mysqli_fetch_assoc($result)) {
-            echo "<div class='properties-items'>
+    <div class="section properties">
+      <div class="container">
+        <div class="row properties-box">
+          <?php
+          if (mysqli_num_rows($result) == 0) {
+            echo "<p>未找到符合的活動</p>";
+          } else {
+            while ($row = mysqli_fetch_assoc($result)) {
+              echo "<div class='properties-items'>
                   <div class='item'>
                       <h4><a href='enterprise.php?enrequirement_num={$row['enrequirement_num']}'>" . htmlspecialchars($row['title']) . "</a></h4>
                       <ul>
@@ -207,11 +227,12 @@ session_start();
                       </div>
                   </div>
                 </div>";
+            }
           }
-        }
-        ?>
+          ?>
+        </div>
       </div>
     </div>
-  </div>
 </body>
+
 </html>

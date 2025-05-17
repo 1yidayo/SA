@@ -11,7 +11,8 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>社團企業媒合平台</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/fontawesome.css">
   <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
@@ -33,12 +34,32 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="en_html" class="active">首頁</a></li>
               <?php endif; ?>
-              <li><a href="properties2.php">瀏覽</a></li>
-              <li><a href="club contact.html">發布</a></li>
-              <li><a href="clubhistory.php">發布歷史</a></li>
-              <li><a href="self.cl.php">個人頁面</a></li>
-              <li><a href="login.html">登出</a></li>
-              <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</a></li>
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="properties2.php" class="active">瀏覽</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="properties.php" class="active">瀏覽</a></li>
+              <?php endif; ?>
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="club_contact.php" class="active">發布</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="en_contact.php" class="active">發布</a></li>
+              <?php endif; ?>
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="clubhistory.php" class="active">發布歷史</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="enhistory.php" class="active">發布歷史</a></li>
+              <?php endif; ?>
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="club_cooperations.php" class="active">我的合作</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="enterprise_cooperations.php" class="active">我的合作</a></li>
+              <?php endif; ?>
+              <?php if ($_SESSION['level'] === 'cl'): ?>
+                <li><a href="self.cl.php" class="active">個人頁面</a></li>
+              <?php elseif ($_SESSION['level'] === 'en'): ?>
+                <li><a href="self.en.php" class="active">個人頁面</a></li>
+              <?php endif; ?>
+              <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
             </ul>
             <a class='menu-trigger'><span>Menu</span></a>
           </nav>
@@ -67,19 +88,19 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
     $result = mysqli_query($link, $sql);
 
     if ($row = mysqli_fetch_assoc($result)) {
-    ?>
+      ?>
       <div class='contact-page section' style='margin-top: 20px;'>
         <div class='row'>
           <div class='col-lg-6' style='margin:auto'>
             <form id='contact-form' action='club_edit.php' method='post' enctype='multipart/form-data'>
-            <div class='mb-3'>
-  <label class='form-label'><b>學校名稱</b></label>
-  <input class='form-control' name='school' value="<?= $row['school'] ?>" readonly>
-</div>
-<div class='mb-3'>
-  <label class='form-label'><b>社團名稱</b></label>
-  <input class='form-control' name='club' value="<?= $row['club'] ?>" readonly>
-</div>
+              <div class='mb-3'>
+                <label class='form-label'><b>學校名稱</b></label>
+                <input class='form-control' name='school' value="<?= $row['school'] ?>" readonly>
+              </div>
+              <div class='mb-3'>
+                <label class='form-label'><b>社團名稱</b></label>
+                <input class='form-control' name='club' value="<?= $row['club'] ?>" readonly>
+              </div>
 
               <div class='mb-3'>
                 <label class='form-label'><b>社團規模</b></label>
@@ -106,7 +127,7 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
           </div>
         </div>
       </div>
-    <?php
+      <?php
     } else {
       echo "<div class='alert alert-danger'>找不到您的資料，請重新登入。</div>";
     }
