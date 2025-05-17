@@ -108,27 +108,27 @@ https://templatemo.com/tm-591-villa-agency
       <div class="row">
         <div class="col-lg-12">
           <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
-          <h3>企業進階搜尋相關社團</h3>
+          <h3>企業搜尋相關社團</h3>
         </div>
       </div>
     </div>
   </div>
-  <div class="contact-page section">
-    <div class="container">
-      <div class="row">
 
-        <div class="col-lg-10" style="margin:auto">
-          <form id="contact-form" action="aftersearchforen.php" method="post">
-            <div class="row g-5">
-              <div class="col-4">
+  <div class="contact-page section"  style="align-item:center">
+    <div class="container" style="margin-top: -50px; margin-right: 100px;">
+      <form id="search-form" action="properties.php" method="post" style="align-item:right;">
+        <div class="row">
+          <div class="col-md-2">
+          </div>
+          <div class="col-2">
                 <label for="school">學校</label>
                 <input class="form-control" type="text" placeholder="請輸入學校名稱" name="school">
               </div>
-              <div class="col-4">
+              <div class="col-2">
                 <label for="school">社團</label>
                 <input class="form-control" type="text" placeholder="請輸入社團名稱" name="club">
               </div>
-              <div class="col-4">
+              <div class="col-2">
                 <label for="support_type">贊助類型</label>
                 <select name="support_type" id="support_type" class="form-control">
                   <option value="">請選擇</option>
@@ -138,18 +138,13 @@ https://templatemo.com/tm-591-villa-agency
                   <option value="提供實習">提供實習</option>
                 </select>
               </div>
-
-              <div class="col-12">
-                <button class="btn btn-light w-100 py-1" type="submit"><b>搜尋</b></button>
-              </div>
-            </div>
-          </form>
-
+          
+          <div class="col-md-2" style="margin-top: 24px;">
+            <button class="btn btn-primary" type="submit" style="background-color:black; border: black;"><b>搜尋</b></button>
+          </div>
         </div>
-
-      </div>
+      </form>
     </div>
-  </div>
 
   <div class="section properties">
     <div class="container">
