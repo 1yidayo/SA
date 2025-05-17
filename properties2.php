@@ -8,7 +8,6 @@ session_start();
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <title>社團企業媒合平台</title>
 
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -95,52 +94,36 @@ session_start();
     </div>
   </div>
 
-
   <div class="section properties">
     <div class="container">
       <?php
-
-
-
       $link = mysqli_connect('localhost', 'root', '', 'SAS');
-      $industry = $_GET['industry'] ?? 'all';
-      $type = $_GET['type'] ?? 'all';
+      $industryType = $_GET['industry'] ?? 'all';
+      $sponsorType = $_GET['type'] ?? 'all';
 
-      // 取得所有行業別（for 篩選按鈕）
-      $industryResult = mysqli_query($link, "SELECT DISTINCT type FROM en_requirements WHERE type IS NOT NULL AND type != ''");
-      $industries = [];
-      while ($row = mysqli_fetch_assoc($industryResult)) {
-        $industries[] = $row['type'];
-      }
-
-      function buildUrl($industry, $type)
-      {
-        $params = [];
-        if ($industry !== 'all')
-          $params[] = "industry=" . urlencode($industry);
-        if ($type !== 'all')
-          $params[] = "type=" . urlencode($type);
-        return "?" . implode("&", $params);
+      function buildUrl($industry, $type) {
+        return "properties2.php?industry=" . urlencode($industry) . "&type=" . urlencode($type);
       }
       ?>
 
       <div class="text-center mb-4">
         <strong>行業別：</strong>
-        <a href="<?= buildUrl('all', $type) ?>"
-          class="btn custom-filter-btn mx-1 <?= $industry === 'all' ? 'active' : '' ?>">全部</a>
-        <?php foreach ($industries as $ind): ?>
-          <a href="<?= buildUrl($ind, $type) ?>"
-            class="btn custom-filter-btn mx-1 <?= $industry === $ind ? 'active' : '' ?>"><?= $ind ?></a>
-        <?php endforeach; ?>
+        <?php
+        $industries = ['產業與工程類', '商業與物流類', '專業與金融服務', '教育與公共機構','文化與創意產業','其他'];
+        echo "<a href='" . buildUrl('all', $sponsorType) . "' class='btn custom-filter-btn mx-1 " . ($industryType === 'all' ? 'active' : '') . "'>全部</a>";
+        foreach ($industries as $ind) {
+          echo "<a href='" . buildUrl($ind, $sponsorType) . "' class='btn custom-filter-btn mx-1 " . ($industryType === $ind ? 'active' : '') . "'>$ind</a>";
+        }
+        ?>
       </div>
 
       <div class="text-center mb-4">
         <strong>贊助類型：</strong>
         <?php
-        $types = ['金錢', '物資', '場地', '提供實習'];
-        echo "<a href='" . buildUrl($industry, 'all') . "' class='btn custom-filter-btn mx-1 " . ($type === 'all' ? 'active' : '') . "'>全部</a>";
-        foreach ($types as $t) {
-          echo "<a href='" . buildUrl($industry, $t) . "' class='btn custom-filter-btn mx-1 " . ($type === $t ? 'active' : '') . "'>$t</a>";
+        $sponsorships = ['金錢', '物資', '場地', '提供實習'];
+        echo "<a href='" . buildUrl($industryType, 'all') . "' class='btn custom-filter-btn mx-1 " . ($sponsorType === 'all' ? 'active' : '') . "'>全部</a>";
+        foreach ($sponsorships as $s) {
+          echo "<a href='" . buildUrl($industryType, $s) . "' class='btn custom-filter-btn mx-1 " . ($sponsorType === $s ? 'active' : '') . "'>$s</a>";
         }
         ?>
       </div>
@@ -148,39 +131,36 @@ session_start();
       <div class="row properties-box">
         <?php
         $sql = "SELECT en.*, id.identityID 
-        FROM en_requirements en 
-        JOIN identity id ON en.identityID = id.identityID
-        WHERE 1";
+                FROM en_requirements en 
+                JOIN identity id ON en.identityID = id.identityID 
+                WHERE 1";
 
-        if ($industry !== 'all') {
-          $safeIndustry = mysqli_real_escape_string($link, $industry);
+        if ($industryType !== 'all') {
+          $safeIndustry = mysqli_real_escape_string($link, $industryType);
           $sql .= " AND en.type = '$safeIndustry'";
         }
-        if ($type !== 'all') {
-          $safeType = mysqli_real_escape_string($link, $type);
+        if ($sponsorType !== 'all') {
+          $safeType = mysqli_real_escape_string($link, $sponsorType);
           $sql .= " AND en.sponsorship LIKE '%$safeType%'";
         }
 
         $result = mysqli_query($link, $sql);
-        ?>
-        <?php while ($row = mysqli_fetch_assoc($result)): ?>
 
-          <?php
+        while ($row = mysqli_fetch_assoc($result)):
           $isApplied = false;
           if (isset($_SESSION['level']) && $_SESSION['level'] === 'cl') {
             $club_identityID = $_SESSION['identityID'];
             $en_num = $row['enrequirement_num'];
             $check_sql = "SELECT * FROM cooperation_requests 
-                    WHERE club_identityID = '$club_identityID' 
-                    AND enrequirement_num = '$en_num'";
+                          WHERE club_identityID = '$club_identityID' 
+                          AND enrequirement_num = '$en_num'";
             $check_result = mysqli_query($link, $check_sql);
             $isApplied = mysqli_num_rows($check_result) > 0;
           }
-          ?>
+        ?>
           <div class='properties-items'>
             <div class='item'>
-              <h4><a href='enterprise.php?enrequirement_num=<?= $row['enrequirement_num'] ?>'><?= $row['title'] ?></a>
-              </h4>
+              <h4><a href='enterprise.php?enrequirement_num=<?= $row['enrequirement_num'] ?>'><?= $row['title'] ?></a></h4>
               <ul>
                 <li>企業名稱：<span><?= $row['enterprise'] ?></span></li>
                 <li>贊助類型：<span><?= $row['sponsorship'] ?></span></li>
@@ -192,7 +172,6 @@ session_start();
               <br>
               <li>發布時間：<span><?= $row['created_time'] ?></span></li>
 
-              <!-- ✅ 我要合作按鈕加在這 -->
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <?php if ($isApplied): ?>
                   <button class="btn btn-secondary mt-2" disabled>已申請</button>
@@ -204,12 +183,9 @@ session_start();
                   </form>
                 <?php endif; ?>
               <?php endif; ?>
-
             </div>
           </div>
         <?php endwhile; ?>
-
-
       </div>
     </div>
   </div>
@@ -222,9 +198,7 @@ session_start();
     </div>
   </footer>
 
-  <!-- JS -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
-
 </html>
