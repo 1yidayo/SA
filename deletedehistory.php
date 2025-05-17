@@ -121,7 +121,7 @@ https://templatemo.com/tm-591-villa-agency
                             <?php if ($_SESSION['level'] === 'cl'): ?>
                                 <li><a href="cl.php" class="active">首頁</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
-                                <li><a href="en_html" class="active">首頁</a></li>
+                                <li><a href="en.php" class="active">首頁</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
                                 <li><a href="properties2.php" class="active">瀏覽</a></li>
@@ -186,8 +186,7 @@ https://templatemo.com/tm-591-villa-agency
 
 
 
-
-
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="col-lg-8">

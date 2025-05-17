@@ -61,7 +61,7 @@ session_start();
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="cl.php" class="active">首頁</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="en_html" class="active">首頁</a></li>
+                <li><a href="en.php" class="active">首頁</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="properties2.php" class="active">瀏覽</a></li>
@@ -105,7 +105,7 @@ session_start();
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <span class="breadcrumb"><a href="#">Home</a> / Contact Us</span>
+          <!-- <span class="breadcrumb"><a href="#">Home</a> / Contact Us</span> -->
           <h3>社團發布贊助需求</h3>
         </div>
       </div>
@@ -431,6 +431,7 @@ session_start();
   </div>
 
 
+  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="col-lg-8">
