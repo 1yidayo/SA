@@ -89,8 +89,13 @@
             <div class='col-lg-6' style='margin:auto'>
                 <form id='contact-form' action='en_edit.php' method='post' enctype='multipart/form-data'>
                     <div class='mb-3'>
-                        <div class='mb-3'><label class='form-label'>企業名稱：</label><div class='fs-5 fw-bold'>{$row['enterprise']}</div></div>
-                        <div class='mb-3'><label class='form-label'>行業別：</label><div class='fs-5 fw-bold'>{$row['entype']}</div></div>
+                        <label for='enterprise' class='form-label'><b>企業名稱：</b></label>
+                        
+                        <input  class='form-control' name='enterprise'  value='", $row['enterprise'], "' readonly>
+                    </div>
+                    <div class='mb-3'>
+                        <label for='entype' class='form-label'><b>行業別：</b></label>
+                        <input  class='form-control' name='entype'  value='", $row['entype'], "' readonly>
                     </div>
         
                     <div class='mb-3'>
