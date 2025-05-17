@@ -68,14 +68,15 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
         <div class='row'>
           <div class='col-lg-6' style='margin:auto'>
             <form id='contact-form' action='club_edit.php' method='post' enctype='multipart/form-data'>
-              <div class='mb-3'>
-                <label class='form-label'><b>學校名稱</b></label>
-                <p class='form-control-plaintext'><?= $row['school'] ?></p>
-              </div>
-              <div class='mb-3'>
-                <label class='form-label'><b>社團名稱</b></label>
-                <p class='form-control-plaintext'><?= $row['club'] ?></p>
-              </div>
+            <div class='mb-3'>
+  <label class='form-label'><b>學校名稱</b></label>
+  <input class='form-control' name='school' value="<?= $row['school'] ?>" readonly>
+</div>
+<div class='mb-3'>
+  <label class='form-label'><b>社團名稱</b></label>
+  <input class='form-control' name='club' value="<?= $row['club'] ?>" readonly>
+</div>
+
               <div class='mb-3'>
                 <label class='form-label'><b>社團規模</b></label>
                 <input class='form-control' name='clsize' value="<?= $row['clsize'] ?>" required>

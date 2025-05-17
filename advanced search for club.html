@@ -1,3 +1,4 @@
+F
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,57 +28,71 @@ TemplateMo 591 villa agency
 https://templatemo.com/tm-591-villa-agency
 
 -->
-<style>
-    .properties-box {
-        display: flex;
-        flex-wrap: wrap; /* 允許換行 */
-        gap: 20px; /* 設定間距 */
-        justify-content: flex-start; /* 讓內容從左到右排列 */
-    }
-    
-    .properties-items {
-        width: 30%; /* 保持與原本大小相近 */
-        min-width: 300px; /* 避免縮小過度 */
-    }
-    
-    /* 讓小螢幕時調整排列 */
-    @media (max-width: 992px) {
-        .properties-items {
-            width: 45%; /* 平板改為兩欄 */
+    <style>
+        .properties-box {
+            display: flex;
+            flex-wrap: wrap;
+            /* 允許換行 */
+            gap: 20px;
+            /* 設定間距 */
+            justify-content: flex-start;
+            /* 讓內容從左到右排列 */
         }
-    }
-    
-    @media (max-width: 600px) {
+
         .properties-items {
-            width: 100%; /* 手機版單欄 */
+            width: 30%;
+            /* 保持與原本大小相近 */
+            min-width: 300px;
+            /* 避免縮小過度 */
         }
-    }
-    .search-box {
-        margin: 10px 0;
-    }
-    .search-box input[type="text"], .search-box select {
-        height: 40px;
-        border-radius: 20px;
-        border: 1px solid #ddd;
-        padding: 0 15px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-    }
-    .search-box input[type="text"]:focus, .search-box select:focus {
-        border-color: #007bff;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    }
-    .search-box button {
-        height: 40px;
-        border-radius: 20px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        transition: background-color 0.3s ease;
-    }
-    .search-box button:hover {
-        background-color: #0056b3;
-    }
+
+        /* 讓小螢幕時調整排列 */
+        @media (max-width: 992px) {
+            .properties-items {
+                width: 45%;
+                /* 平板改為兩欄 */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .properties-items {
+                width: 100%;
+                /* 手機版單欄 */
+            }
+        }
+
+        .search-box {
+            margin: 10px 0;
+        }
+
+        .search-box input[type="text"],
+        .search-box select {
+            height: 40px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            padding: 0 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .search-box input[type="text"]:focus,
+        .search-box select:focus {
+            border-color: #007bff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-box button {
+            height: 40px;
+            border-radius: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-box button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 
@@ -142,35 +157,36 @@ https://templatemo.com/tm-591-villa-agency
     <div class="contact-page section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12" style="margin:auto">
+
+                <div class="col-lg-6" style="margin:auto">
                     <form id="contact-form" action="aftersearchforclub.php" method="post">
-                        <div class="row">
-                            <form>
-                                <div class="row g-3">
-                                    <div class="col-6">
-                                        <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                                            <span class="ms-1"><b>贊助範圍</b></span>
-                                        </div>
-                                        <input type="number" class="form-control" name="money" placeholder="請輸入金額" aria-label="金額輸入">
-                                    </div>
+                        <div class="row g-5">
 
-                                    <div class="col-6">
-                                        <div class="input-group">
-                                            <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                                                <span class="ms-1"><b>企業名稱</b></span>
-                                            </div>
-                                            <input class="form-control" type="text" placeholder="請輸入企業名稱"
-                                                aria-label="Enter a City or Airport" name="enterprise">
-                                    </div>
-                                    <div class="col-12">
-                                            <div class="col-18">
-                                                <button class="btn btn-light w-100 py-2"
-                                                    type="submit"><b>搜尋</b></button>
-                                            </div>
-                                        </div>
+                            <div class="col-12">
+                                <!-- <div class="col-6"> -->
+                                <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                    <span class="ms-1"><b>贊助範圍</b></span>
+                                </div>
+                                <input type="number" class="form-control" name="money" placeholder="請輸入金額"
+                                    aria-label="金額輸入">
+                            </div>
 
-                                        
-                            </form>
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                                        <span class="ms-1"><b>企業名稱</b></span>
+                                    </div>
+                                    <input class="form-control" type="text" placeholder="請輸入企業名稱"
+                                        aria-label="Enter a City or Airport" name="enterprise">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <button class="btn btn-light w-100 py-2" type="submit"><b>搜尋</b></button>
+                            </div>
+
+
+
                         </div>
                     </form>
                 </div>
