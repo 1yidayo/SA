@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <div class="mb-3">
                         <label class="form-label fw-bold">統一編號：</label>
-                        <input type="text" class="form-control" name="code" value="<?php echo htmlspecialchars($data["code"]); ?>" required>
+                        <input type="text" class="form-control" name="code" value="<?php echo htmlspecialchars($data["code"]); ?>" readonly>
                     </div>
 
                     <div class="mb-3">
