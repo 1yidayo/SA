@@ -55,16 +55,14 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-                            <li><a href="cl.php" >首頁</a></li>
+                            <li><a href="cl.php">首頁</a></li>
                             <li><a href="properties2.php">瀏覽</a></li>
                             <li><a href="club contact.php" class="active">發布</a></li>
                             <li><a href="clubhistory.php">發布歷史</a></li>
-                            
                             <li><a href="club_cooperations.php">我的合作</a></li>
-                            
                             <li><a href="self.cl.php">個人頁面</a></li>
-                            <li><a href="login.html">登出</a></li>
-                            <li><a href="aftersearchforclub.php"><i class="fa fa-calendar"></i>進階搜尋</a></li>
+                            <li><a href="aftersearchforclub.php">進階搜尋</a></li>
+                            <li><a href="login.html"><i class="fa fa-calendar"></i>登出</a></li>
                         </ul>
             <a class='menu-trigger'>
               <span>Menu</span>

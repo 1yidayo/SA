@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 
@@ -19,7 +19,6 @@ session_start();
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
   <style>
-    
     .custom-filter-btn {
       border: 2px solid #ff6600;
       background-color: white;
@@ -74,15 +73,10 @@ session_start();
               <li><a href="properties2.php" class="active">瀏覽</a></li>
               <li><a href="club contact.php">發布</a></li>
               <li><a href="clubhistory.php">發布歷史</a></li>
-              <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="club_cooperations.php">我的合作</a></li>
-              <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="enterprise_cooperations.php">合作請求</a></li>
-              <?php endif; ?>
-
+              <li><a href="club_cooperations.php">我的合作</a></li>
               <li><a href="self.cl.php">個人頁面</a></li>
-              <li><a href="login.html">登出</a></li>
               <li><a href="aftersearchforclub.php">進階搜尋</a></li>
+              <li><a href="login.html"><i class="fa fa-calendar"></i>登出</a></li>
             </ul>
             <a class="menu-trigger"><span>Menu</span></a>
           </nav>
@@ -100,12 +94,12 @@ session_start();
       </div>
     </div>
   </div>
-  
+
 
   <div class="section properties">
     <div class="container">
       <?php
-      
+
 
 
       $link = mysqli_connect('localhost', 'root', '', 'SAS');
@@ -170,19 +164,19 @@ session_start();
         $result = mysqli_query($link, $sql);
         ?>
         <?php while ($row = mysqli_fetch_assoc($result)): ?>
-        
-  <?php
-    $isApplied = false;
-    if (isset($_SESSION['level']) && $_SESSION['level'] === 'cl') {
-      $club_identityID = $_SESSION['identityID'];
-      $en_num = $row['enrequirement_num'];
-      $check_sql = "SELECT * FROM cooperation_requests 
+
+          <?php
+          $isApplied = false;
+          if (isset($_SESSION['level']) && $_SESSION['level'] === 'cl') {
+            $club_identityID = $_SESSION['identityID'];
+            $en_num = $row['enrequirement_num'];
+            $check_sql = "SELECT * FROM cooperation_requests 
                     WHERE club_identityID = '$club_identityID' 
                     AND enrequirement_num = '$en_num'";
-      $check_result = mysqli_query($link, $check_sql);
-      $isApplied = mysqli_num_rows($check_result) > 0;
-    }
-  ?>
+            $check_result = mysqli_query($link, $check_sql);
+            $isApplied = mysqli_num_rows($check_result) > 0;
+          }
+          ?>
           <div class='properties-items'>
             <div class='item'>
               <h4><a href='enterprise.php?enrequirement_num=<?= $row['enrequirement_num'] ?>'><?= $row['title'] ?></a>

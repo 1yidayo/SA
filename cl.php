@@ -63,11 +63,11 @@ https://templatemo.com/tm-591-villa-agency
                             <li><a href="club_cooperations.php">我的合作</a></li>
                             <li><a href="self.cl.php">個人頁面</a></li>
                             <li><a href="aftersearchforclub.php">進階搜尋</a></li>
-                            <li><a href="login.html">登出</a></li>
+                            <li><a href="login.html"><i class="fa fa-calendar"></i>登出</a></li>
                             
 
                             <!-- 顯示頭像 -->
-                            <?php
+                            <!-- <?php
                             session_start();
                             $pic = isset($_SESSION['clpicture']) && $_SESSION['clpicture'] !== ''
                                 ? 'uploads/' . $_SESSION['clpicture']
@@ -78,7 +78,7 @@ https://templatemo.com/tm-591-villa-agency
                                     <img src="<?= $pic ?>" alt="頭像"
                                         style="width: 40px; height: 40px; border-radius: 50%;">
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
 
                         <a class='menu-trigger'>

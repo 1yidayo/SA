@@ -83,10 +83,9 @@ $result = mysqli_query($link, $sql);
               <li><a href="clubhistory.php">發布歷史</a></li>
               <li><a href="club_cooperations.php" class="active">我的合作</a></li>
               <li><a href="self.cl.php">個人頁面</a></li>
-              <li><a href="login.html">登出</a></li>
-              <li><a href="aftersearchforclub.php"><i class="fa fa-calendar"></i>進階搜尋</a></li>
-            </ul>
-            <a class="menu-trigger"><span>Menu</span></a>
+              <li><a href="aftersearchforclub.php">進階搜尋</a></li>
+              <li><a href="login.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
+              
           </nav>
         </div>
       </div>
@@ -110,14 +109,17 @@ $result = mysqli_query($link, $sql);
 
     <!-- 切換角色 -->
     <div class="mb-3">
-      <a href="?mode=send&status=<?= $status ?>" class="btn btn-outline-primary <?= ($mode == 'send') ? 'active' : '' ?>">我申請的</a>
-      <a href="?mode=receive&status=<?= $status ?>" class="btn btn-outline-primary <?= ($mode == 'receive') ? 'active' : '' ?>">被邀請的</a>
+      <a href="?mode=send&status=<?= $status ?>"
+        class="btn btn-outline-primary <?= ($mode == 'send') ? 'active' : '' ?>">我申請的</a>
+      <a href="?mode=receive&status=<?= $status ?>"
+        class="btn btn-outline-primary <?= ($mode == 'receive') ? 'active' : '' ?>">被邀請的</a>
     </div>
 
     <!-- 切換狀態 -->
     <div class="mb-3">
       <?php foreach (['待處理', '同意', '拒絕'] as $st): ?>
-        <a href="?mode=<?= $mode ?>&status=<?= $st ?>" class="btn btn-sm btn-outline-secondary <?= ($status == $st) ? 'active' : '' ?>"><?= $st ?></a>
+        <a href="?mode=<?= $mode ?>&status=<?= $st ?>"
+          class="btn btn-sm btn-outline-secondary <?= ($status == $st) ? 'active' : '' ?>"><?= $st ?></a>
       <?php endforeach; ?>
     </div>
 
