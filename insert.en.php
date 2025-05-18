@@ -1,19 +1,20 @@
 <?php
 session_start();
 
-$enterprise = $_POST["enterprise"];
-$entype = $_POST["entype"];
-$enplace = $_POST["enplace"];
-$code = $_POST["code"];
-$enperson = $_POST["enperson"];
-$enins = $_POST["enins"];
-$enphone = $_POST["enphone"];
-$userID = $_SESSION['userID'];
+$enterprise = $_POST["enterprise"] ?? '';
+$entype = $_POST["entype"] ?? '';
+$enplace = $_POST["enplace"] ?? '';
+$code = $_POST["code"] ?? '';
+$enperson = $_POST["enperson"] ?? '';
+$enins = $_POST["enins"] ?? '';
+$enphone = $_POST["enphone"] ?? '';
+$userID = $_SESSION['userID'] ?? '';
 
-// 將多選欄位轉為字串
-$enprefer = isset($_POST["collab"]) ? implode(",", $_POST["collab"]) : "";
-$endonate = isset($_POST["sponsor"]) ? implode(",", $_POST["sponsor"]) : "";
+// 多選欄位
+$enprefer = isset($_POST["collab"]) ? implode(",", $_POST["collab"]) : '';
+$endonate = isset($_POST["sponsor"]) ? implode(",", $_POST["sponsor"]) : '';
 
+// 資料庫連線
 $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
 if (empty($enterprise) || empty($entype) || empty($code) || empty($enins)) {
@@ -21,6 +22,7 @@ if (empty($enterprise) || empty($entype) || empty($code) || empty($enins)) {
     exit();
 }
 
+// SQL 寫入
 $sql = "INSERT INTO identity (enterprise, entype, enplace, code, enperson, enins, enphone, userID, enprefer, endonate)
         VALUES ('$enterprise', '$entype', '$enplace', '$code', '$enperson', '$enins', '$enphone', '$userID', '$enprefer', '$endonate')";
 

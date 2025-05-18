@@ -87,57 +87,68 @@ session_start();
   </div>
 
   <div class="section">
-    <div class="container">
-      <div class="row">
-        <?php
-        $enrequirement_num = $_GET['enrequirement_num'];
-        $link = mysqli_connect('localhost', 'root', '', 'SAS');
-        $sql = "SELECT * FROM en_requirements WHERE enrequirement_num = '$enrequirement_num'";
-        $result = mysqli_query($link, $sql);
-        $row = mysqli_fetch_assoc($result);
-        if ($row) {
-          echo "<div class='col-lg-8'>
+  <div class="container">
+    <div class="row">
+      <?php
+      $enrequirement_num = $_GET['enrequirement_num'];
+      $link = mysqli_connect('localhost', 'root', '', 'SAS');
+      $sql = "SELECT * FROM en_requirements WHERE enrequirement_num = '$enrequirement_num'";
+      $result = mysqli_query($link, $sql);
+      $row = mysqli_fetch_assoc($result);
+      if ($row) {
+        echo "<div class='col-lg-8'>
   <div class='main-content mb-4'>
     <div class='d-flex justify-content-between align-items-center mb-2'>
-      <h2 class='mb-0' style='font-size: 40px;'>" . htmlspecialchars(string: $row['title']) . "&nbsp;</h2>
-      
+      <h2 class='mb-0' style='font-size: 40px;'>" . htmlspecialchars($row['title']) . "&nbsp;</h2>
     </div>
   </div>
 </div>";
-        } else {
-          echo "<div class='col-lg-8'>
+      } else {
+        echo "<div class='col-lg-8'>
           <div class='main-content'>
             <h2 class='mb-3'>找不到資料</h2>
           </div>
         </div>";
-        }
-        ?>
+      }
+      ?>
 
-        <div class="row">
-          <!-- Left Side: Title & Description -->
-          <div class="col-lg-3">
-            <div class="card shadow-sm p-3 mb-4 bg-white rounded">
+      <div class="row">
+        <!-- Left Side: Title & Description -->
+        <div class="col-lg-3">
+          <div class="card shadow-sm p-3 mb-4 bg-white rounded">
+            <h5 class="mb-3" style="font-size: 25px;">活動資訊</h5>
+            <ul class="list-unstyled">
+              <div class='mb-3' style="font-size: 18px;">
+                <label class='form-label text-muted'>可提供贊助類型：</label>
+                <b><?= $row['sponsorship'] ?></b>
+              </div>
 
+              <?php if ($row['sponsorship'] === '金錢'): ?>
+              <div class='mb-3' style="font-size: 18px;">
+                <label class='form-label text-muted'>贊助範圍：</label>
+                <b><?= $row['money'] ?? '未填寫' ?></b>
+              </div>
+              <?php endif; ?>
 
-              <h5 class="mb-3" style="font-size: 25px;">活動資訊</h5>
-              <ul class="list-unstyled">
-                <div class='mb-3' style="font-size: 18px;"><label
-                    class='form-label text-muted'>可提供贊助類型：</label><b><?= $row['sponsorship'] ?></b>
-                </div>
-                <?php if ($row['sponsorship'] === '金錢'): ?>
-                  <div class='mb-3' style="font-size: 18px;"><label
-                      class='form-label text-muted'>贊助範圍：</label><b><?= $row['money'] ?? '未填寫' ?></b>
-                  </div>
-                <?php endif; ?>
-                <div class='mb-3' style="font-size: 18px;"><label
-                    class='form-label text-muted'>預計活動時間：</label><b><?= $row['date'] ?></b></div>
-                <div class='mb-3' style="font-size: 18px;"><label
-                    class='form-label text-muted'>活動地區：</label><b><?= $row['region'] ?></b></div>
-                <div class='mb-3' style="font-size: 18px;"><label
-                    class='form-label text-muted'>希望社團達到目的：</label><b><?= $row['hope'] ?></b></div>
-              </ul>
-            </div>
+              <div class='mb-3' style="font-size: 18px;">
+                <label class='form-label text-muted'>預計活動時間：</label>
+                <b><?= $row['date'] ?></b>
+              </div>
+
+              <div class='mb-3' style="font-size: 18px;">
+                <label class='form-label text-muted'>
+                  <?= $row['sponsorship'] === '提供實習' ? '實習地區：' : '活動地區：' ?>
+                </label>
+                <b><?= $row['region'] ?></b>
+              </div>
+
+              <div class='mb-3' style="font-size: 18px;">
+                <label class='form-label text-muted'>希望社團達到目的：</label>
+                <b><?= $row['hope'] ?></b>
+              </div>
+            </ul>
           </div>
+        </div>
 
           <!-- 中間：貼文標題與活動詳情 -->
           <div class="col-lg-6">
@@ -208,7 +219,6 @@ session_start();
               <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>社群連結：</label><b><a class='fs-5' href='{$row['enins']}' target='_blank'>{$row['enins']}</a></b></div>
               <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>Email／聯絡電話：</label><b>{$row['enphone']}</b></div>
               <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>合作偏好類型：</label><b>{$row['enprefer']}</b></div>
-              <div class='mb-3' style='font-size: 18px;'><label class='form-label text-muted'>可提供贊勵類型：</label><b>{$row['endonate']}</b></div>
             </div>
           </div>";
           } else {

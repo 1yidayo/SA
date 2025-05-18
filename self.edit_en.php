@@ -146,10 +146,6 @@ session_start();
                         <label for='enprefer' class='form-label'><b>合作偏好類型</b></label>
                         <input type='text' class='form-control' name='enprefer' id='enprefer' value='", $row['enprefer'], "' required>
                     </div>
-                    <div class='mb-3'>
-                        <label for='endonate' class='form-label'><b>可提供贊勵類型</b></label>
-                        <input type='text' class='form-control' name='endonate' id='endonate' value='", $row['endonate'], "' required>
-                    </div>
                     <button class='btn btn-dark w-100' type='submit'><b>儲存修改</b></button>
                 </form>
             </div>";

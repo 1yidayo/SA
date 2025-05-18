@@ -117,7 +117,6 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
           <div class='mb-3'><label class='form-label'>社群連結：</label><div><a class='fs-5' href='{$row['enins']}' target='_blank'>{$row['enins']}</a></div></div>
           <div class='mb-3'><label class='form-label'>Email／聯絡電話</label><div class='fs-5 fw-bold'>{$row['enphone']}</div></div>
           <div class='mb-3'><label class='form-label'>合作偏好類型：</label><div class='fs-5 fw-bold'>{$row['enprefer']}</div></div>
-          <div class='mb-3'><label class='form-label'>可提供贊勵類型：</label><div class='fs-5 fw-bold'>{$row['endonate']}</div></div>
         </div>";
         ?>
       </div>
