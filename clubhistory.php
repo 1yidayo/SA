@@ -153,19 +153,19 @@ https://templatemo.com/tm-591-villa-agency
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="cl.php" class="active">首頁</a></li>
+                <li><a href="cl.php">首頁</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="en.php" class="active">首頁</a></li>
+                <li><a href="en.php">首頁</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="properties2.php" class="active">瀏覽</a></li>
+                <li><a href="properties2.php">瀏覽</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="properties.php" class="active">瀏覽</a></li>
+                <li><a href="properties.php">瀏覽</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="club_contact.php" class="active">發布</a></li>
+                <li><a href="club_contact.php">發布</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="en_contact.php" class="active">發布</a></li>
+                <li><a href="en_contact.php">發布</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="clubhistory.php" class="active">發布歷史</a></li>
@@ -173,14 +173,14 @@ https://templatemo.com/tm-591-villa-agency
                 <li><a href="enhistory.php" class="active">發布歷史</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="club_cooperations.php" class="active">我的合作</a></li>
+                <li><a href="club_cooperations.php">我的合作</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="enterprise_cooperations.php" class="active">我的合作</a></li>
+                <li><a href="enterprise_cooperations.php">我的合作</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="self.cl.php" class="active">個人頁面</a></li>
+                <li><a href="self.cl.php">個人頁面</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="self.en.php" class="active">個人頁面</a></li>
+                <li><a href="self.en.php">個人頁面</a></li>
               <?php endif; ?>
               <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
             </ul>
