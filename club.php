@@ -60,9 +60,9 @@ session_start();
                 <li><a href="en_contact.php">發布</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="clubhistory.php">發布歷史</a></li>
+                <li><a href="clubhistory.php" class="active">發布歷史</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="enhistory.php">發布歷史</a></li>
+                <li><a href="enhistory.php" class="active">發布歷史</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="club_cooperations.php">我的合作</a></li>
@@ -97,61 +97,92 @@ session_start();
   </div>
 
   <div class="section">
-    <div class="container">
-      <div class="row">
-        <?php
-        $clrequirement_num = $_GET['clrequirement_num'];
-        $link = mysqli_connect('localhost', 'root', '', 'SAS');
-        $sql = "SELECT * FROM club_requirements WHERE clrequirement_num = '$clrequirement_num'";
-        $result = mysqli_query($link, $sql);
-        $row = mysqli_fetch_assoc($result); // 只取出一筆結果，直接存入 $row 變數
-        
-        if ($row) {
-          echo "<div class='col-lg-8'>
-  <div class='main-content mb-4'>
-    <div class='d-flex justify-content-between align-items-center mb-2'>
-      <h2 class='mb-0' style='font-size: 40px;'>" . htmlspecialchars(string: $row['title']) . "&nbsp;</h2>
-      
-    </div>
-  </div>
-</div>";
-        } else {
-          echo "<div class='col-lg-8'>
-          <div class='main-content'>
-            <h2 class='mb-3'>找不到資料</h2>
-          </div>
-        </div>";
-        }
-        ?>
+  <div class="container">
+    <div class="row">
+      <?php
+      $clrequirement_num = $_GET['clrequirement_num'];
+      $link = mysqli_connect('localhost', 'root', '', 'SAS');
+      $sql = "SELECT * FROM club_requirements WHERE clrequirement_num = '$clrequirement_num'";
+      $result = mysqli_query($link, $sql);
+      $row = mysqli_fetch_assoc($result); // 只取出一筆結果
 
-
-        <div class="row">
-          <!-- 左側：活動資訊 -->
-          <div class="col-lg-3">
-            <div class="card shadow-sm p-3 mb-4 bg-white rounded">
-              <h5 class="mb-3" style="font-size: 25px;">活動資訊</h5>
-              <ul class="list-unstyled">
-                <div class='mb-3' style="font-size: 18px;"><label
-                    class='form-label text-muted'>贊助類型：</label><b><?= $row['support_type'] ?></b>
-                </div>
-                <?php if ($row['support_type'] === '金錢'): ?>
-                  <div class='mb-3' style="font-size: 18px;"><label
-                      class='form-label text-muted'>贊助範圍：</label><b><?= $row['money'] ?? '未填寫' ?></b>
+      if ($row) {
+        echo "<div class='col-lg-8'>
+                <div class='main-content mb-4'>
+                  <div class='d-flex justify-content-between align-items-center mb-2'>
+                    <h2 class='mb-0' style='font-size: 40px;'>" . htmlspecialchars($row['title']) . "&nbsp;</h2>
                   </div>
-                <?php endif; ?>
-                <div class='mb-3' style="font-size: 18px;"><label
-                    class='form-label text-muted'>活動預計規模：</label><b><?= $row['people'] ?></b></div>
-                <div class='mb-3' style="font-size: 18px;"><label
-                    class='form-label text-muted'>活動類型：</label><b><?= $row['type'] ?></b></div>
-                <div class='mb-3' style="font-size: 18px;"><label
-                    class='form-label text-muted'>活動地區：</label><b><?= $row['region'] ?></b></div>
-                <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>企劃書：</label><b><a
-                      href="<?= htmlspecialchars($row['upload']) ?>" download>下載</a></b></div>
-                <div class='mb-3' style="font-size: 18px;"><label class='form-label text-muted'>社群連結：</label><b><a
-                      href="<?= $row['ins'] ?>" target="_blank">點此前往</a></b></div>
-              </ul>
-            </div>
+                </div>
+              </div>";
+      } else {
+        echo "<div class='col-lg-8'>
+                <div class='main-content'>
+                  <h2 class='mb-3'>找不到資料</h2>
+                </div>
+              </div>";
+      }
+      ?>
+
+      <div class="row">
+        <!-- 左側：活動資訊 -->
+        <div class="col-lg-3">
+          <div class="card shadow-sm p-3 mb-4 bg-white rounded">
+            <h5 class="mb-3" style="font-size: 25px;">活動資訊</h5>
+            <ul class="list-unstyled">
+              <div class='mb-3' style="font-size: 18px;">
+                <label class='form-label text-muted'>贊助類型：</label>
+                <b><?= $row['support_type'] ?></b>
+              </div>
+
+              <?php if ($row['support_type'] === '金錢'): ?>
+                <div class='mb-3' style="font-size: 18px;">
+                  <label class='form-label text-muted'>贊助範圍：</label>
+                  <b><?= $row['money'] ?? '未填寫' ?></b>
+                </div>
+              <?php endif; ?>
+
+              <?php if ($row['support_type'] === '提供實習'): ?>
+                <div class='mb-3' style="font-size: 18px;">
+                  <label class='form-label text-muted'>預估需要的實習人數：</label>
+                  <b><?= $row['intern_number'] ?? '未填寫' ?></b>
+                </div>
+              <?php endif; ?>
+
+              <?php if (
+    $row['support_type'] !== 'exposure' &&
+    $row['support_type'] !== '提供實習'
+): ?>
+  <div class="mb-3" style="font-size: 18px;">
+    <label class="form-label text-muted">活動預計規模：</label>
+    <b><?= $row['people'] ?? '未填寫' ?></b>
+  </div>
+
+  <div class="mb-3" style="font-size: 18px;">
+    <label class="form-label text-muted">活動地區：</label>
+    <b><?= $row['region'] ?? '未填寫' ?></b>
+  </div>
+<?php endif; ?>
+
+
+              <div class='mb-3' style="font-size: 18px;">
+                <label class='form-label text-muted'>活動類型：</label>
+                <b><?= $row['type'] ?></b>
+              </div>
+
+              <div class='mb-3' style="font-size: 18px;">
+                <label class='form-label text-muted'>企劃書：</label>
+                <b><a href="<?= htmlspecialchars($row['upload']) ?>" download>下載</a></b>
+              </div>
+
+              <div class='mb-3' style="font-size: 18px;">
+                <label class='form-label text-muted'>社群連結：</label>
+                <b><a href="<?= $row['ins'] ?>" target="_blank">點此前往</a></b>
+              </div>
+            </ul>
           </div>
+        </div>
+
+
 
           <!-- 中間：貼文標題與活動詳情 -->
           <div class="col-lg-6">
@@ -235,7 +266,6 @@ session_start();
 
         </div>
 
-
       </div>
     </div>
   </div>
@@ -295,3 +325,4 @@ session_start();
 </body>
 
 </html>
+
