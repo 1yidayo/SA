@@ -1,55 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start();
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <meta http-equiv="refresh" content="0; url=self_en.php">
-</head>
+$userID = $_SESSION['userID'];
 
-<body>
-    <?php
-    session_start();
+$code = $_POST['code'] ?? '';
+$enplace = $_POST['enplace'] ?? '';
+$enperson = $_POST['enperson'] ?? '';
+$enphone = $_POST['enphone'] ?? '';
+$enins = $_POST['enins'] ?? '';
+$endonate = $_POST['endonate'] ?? '';
 
-    // 收集表單資料
-    $enterprise = $_POST['enterprise'];
-    $entype = $_POST['entype'];
-    $code = $_POST['code'];
-    $enplace = $_POST['enplace'];
-    $enperson = $_POST['enperson'];
-    $enphone = $_POST['enphone'];
-    $enins = $_POST['enins'];
-    $enprefer = $_POST['enprefer'];
-    $endonate = $_POST['endonate'];
-    $userID = $_SESSION['userID'];
+// 處理合作偏好多選
+$collab = '';
+if (isset($_POST['collab']) && is_array($_POST['collab'])) {
+    $collab = implode(',', $_POST['collab']);
+}
 
-    // 連接資料庫
-    $link = mysqli_connect('localhost', 'root', '', 'SAS');
+$link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-    // 更新 SQL 查詢語句
-    $sql = "UPDATE identity SET 
-                enterprise = '$enterprise', 
-                entype = '$entype', 
-                code = '$code', 
-                enplace = '$enplace',
-                enperson = '$enperson', 
-                enphone = '$enphone', 
-                enins = '$enins', 
-                enprefer = '$enprefer', 
-                endonate = '$endonate'
-            WHERE userID = '$userID'";
+if (!$link) {
+    die("連接資料庫失敗：" . mysqli_connect_error());
+}
 
-    // 執行 SQL 查詢
-    if (mysqli_query($link, $sql)) {
-        echo "<script>alert('更新成功');</script>";
-    } else {
-        echo "<script>alert('更新失敗'); window.history.back();</script>";
-    }
+$sql = "UPDATE identity SET 
+            code = '$code',
+            enplace = '$enplace',
+            enperson = '$enperson',
+            enphone = '$enphone',
+            enins = '$enins',
+            enprefer = '$collab',
+            endonate = '$endonate'
+        WHERE userID = '$userID'";
 
-    // 關閉資料庫連接
-    mysqli_close($link);
-    ?>
-</body>
+if (mysqli_query($link, $sql)) {
+    // 更新成功，跳回編輯頁（無 alert，避免 header 衝突）
+    header("Location: self_en.php");
+    exit();
+} else {
+    echo "<script>alert('更新失敗'); window.history.back();</script>";
+}
 
-</html>
+mysqli_close($link);
+?>
