@@ -84,22 +84,22 @@ $result = mysqli_query($link, $sql);
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="browse_cl.php">瀏覽</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="properties.php">瀏覽</a></li>
+                <li><a href="browse_en.php">瀏覽</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="post_cl.php">發布</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="en_contact.php">發布</a></li>
+                <li><a href="post_en.php">發布</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="post.history_cl.php">發布歷史</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="enhistory.php">發布歷史</a></li>
+                <li><a href="post.history_en.php">發布歷史</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="cooperations_cl.php" class="active">我的合作</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="enterprise_cooperations.php" class="active">我的合作</a></li>
+                <li><a href="cooperations_en.php" class="active">我的合作</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="self_cl.php">個人頁面</a></li>

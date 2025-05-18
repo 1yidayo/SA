@@ -49,22 +49,22 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="browse_cl.php">瀏覽</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="properties.php">瀏覽</a></li>
+                <li><a href="browse_en.php">瀏覽</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="post_cl.php">發布</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="en_contact.php">發布</a></li>
+                <li><a href="post_en.php">發布</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="post.history_cl.php">發布歷史</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="enhistory.php">發布歷史</a></li>
+                <li><a href="post.history_en.php">發布歷史</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="cooperations_cl.php">我的合作</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="enterprise_cooperations.php">我的合作</a></li>
+                <li><a href="cooperations_en.php">我的合作</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="self_cl.php" class="active">個人頁面</a></li>
@@ -99,7 +99,7 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
       <div class="col-lg-6">
         <h2 class="mb-4 d-flex justify-content-between align-items-center">
           我的個人檔案
-          <button class="btn btn-secondary" onclick="location.href='en_self.change.php'" type="button">
+          <button class="btn btn-secondary" onclick="location.href='self.edit_en.php'" type="button">
             <b>修改個人資料</b>
           </button>
         </h2>

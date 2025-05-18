@@ -25,7 +25,7 @@ if (isset($_GET['enrequirement_num'])) {
     if (mysqli_stmt_execute($stmt)) {
         mysqli_stmt_close($stmt);
         mysqli_close($link);
-        header("Location: enhistory.php");
+        header("Location: post.history_en.php");
         exit;
     } else {
         echo "刪除失敗：" . mysqli_error($link);

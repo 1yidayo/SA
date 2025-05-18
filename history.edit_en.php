@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sssssssssssi", $enterprise, $type, $code, $ins, $region, $date, $sponsorship, $money, $hope, $title, $information, $requirement_num);
 
     if ($stmt->execute()) {
-        echo "<script>alert('修改成功'); window.location.href='enhistory.php';</script>";
+        echo "<script>alert('修改成功'); window.location.href='post.history_en.php';</script>";
         exit();
     } else {
         echo "修改失敗：" . $stmt->error;
@@ -184,7 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         <div class="text-center mt-4">
                             <button type="submit" class="btn btn-success">儲存修改</button>
-                            <a href="enhistory.php" class="btn btn-secondary ms-2">返回歷史紀錄</a>
+                            <a href="post.history_en.php" class="btn btn-secondary ms-2">返回歷史紀錄</a>
                         </div>
                     </form>
                 <?php } else { ?>

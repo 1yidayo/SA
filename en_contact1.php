@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>社團企業媒合平台</title>
-    <meta http-equiv="refresh" content="3; url=en_contact.php">
+    <meta http-equiv="refresh" content="3; url=post_en.php">
 </head>
 <body>
     <?php
@@ -28,7 +28,7 @@
         if (mysqli_query($link, $sql)) {
             echo "<script>
                 alert('發布成功！');
-                window.location.href = 'en_contact.php';
+                window.location.href = 'post_en.php';
             </script>";
             exit();
         } else {
