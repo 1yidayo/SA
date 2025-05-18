@@ -60,9 +60,9 @@ session_start();
                 <li><a href="en_contact.php">發布</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="clubhistory.php" class="active">發布歷史</a></li>
+                <li><a href="clubhistory.php">發布歷史</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="enhistory.php" class="active">發布歷史</a></li>
+                <li><a href="enhistory.php">發布歷史</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
                 <li><a href="club_cooperations.php">我的合作</a></li>
