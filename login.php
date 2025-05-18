@@ -48,7 +48,7 @@ if ($row = mysqli_fetch_assoc($result)) {
                 header("Location: insert.cl.html");
                 exit();
             } elseif ($row['level'] === 'en') {
-                header("Location: insert.en.php");
+                header("Location: insert.en.html");
                 exit();
             } elseif ($row['level'] === 'ai') {
                 header("Location: insert.ai.html");
