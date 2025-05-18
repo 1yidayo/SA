@@ -55,17 +55,17 @@ https://templatemo.com/tm-591-villa-agency
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="index_cl.php" class="active">首頁</a></li>
+                                <li><a href="index_cl.php">首頁</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
                                 <li><a href="index_en.php" class="active">首頁</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="browse_cl.php" class="active">瀏覽</a></li>
+                                <li><a href="browse_cl.php">瀏覽</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
                                 <li><a href="browse_en.php" class="active">瀏覽</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="post_cl.php" class="active">發布</a></li>
+                                <li><a href="post_cl.php">發布</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
                                 <li><a href="post_en.php" class="active">發布</a></li>
                             <?php endif; ?>
@@ -75,12 +75,12 @@ https://templatemo.com/tm-591-villa-agency
                                 <li><a href="post.history_en.php" class="active">發布歷史</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="cooperations_cl.php" class="active">我的合作</a></li>
+                                <li><a href="cooperations_cl.php">我的合作</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
                                 <li><a href="cooperations_en.php" class="active">我的合作</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="self_cl.php" class="active">個人頁面</a></li>
+                                <li><a href="self_cl.php">個人頁面</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
                                 <li><a href="self_en.php" class="active">個人頁面</a></li>
                             <?php endif; ?>
@@ -96,6 +96,17 @@ https://templatemo.com/tm-591-villa-agency
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
+
+    <div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
+          <h3>修改發布歷史</h3>
+        </div>
+      </div>
+    </div>
+  </div>
     <?php
 
 
