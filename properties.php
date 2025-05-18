@@ -94,34 +94,34 @@ session_start();
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="cl.php">首頁</a></li>
+                <li><a href="index_cl.php">首頁</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="en.php">首頁</a></li>
+                <li><a href="index_en.php">首頁</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="properties2.php" class="active">瀏覽</a></li>
+                <li><a href="browse_cl.php" class="active">瀏覽</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="properties.php" class="active">瀏覽</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="club_contact.php">發布</a></li>
+                <li><a href="post_cl.php">發布</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="en_contact.php">發布</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="clubhistory.php">發布歷史</a></li>
+                <li><a href="post.history_cl.php">發布歷史</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="enhistory.php">發布歷史</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="club_cooperations.php">我的合作</a></li>
+                <li><a href="cooperations_cl.php">我的合作</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="enterprise_cooperations.php">我的合作</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="self.cl.php">個人頁面</a></li>
+                <li><a href="self_cl.php">個人頁面</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="self.en.php">個人頁面</a></li>
+                <li><a href="self_en.php">個人頁面</a></li>
               <?php endif; ?>
               <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
             </ul>
@@ -231,14 +231,14 @@ session_start();
             while ($row = mysqli_fetch_assoc($result)) {
               echo "<div class='properties-items'>
                 <div class='item'>
-                    <h4><a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . htmlspecialchars($row['title']) . "</a></h4>
+                    <h4><a href='history.details_cl.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . htmlspecialchars($row['title']) . "</a></h4>
                     <ul>
                         <li>學校：<span>" . htmlspecialchars($row['school']) . "</span></li>
                         <li>社團：<span>" . htmlspecialchars($row['club']) . "</span></li>
                         <li>需要贊助類型：<span>" . htmlspecialchars($row['support_type']) . "</span></li>
                     </ul>
                     <div class='main-button'>
-                        <a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>了解活動詳情</a>
+                        <a href='history.details_cl.php?clrequirement_num=" . $row['clrequirement_num'] . "'>了解活動詳情</a>
                     </div>
                 </div>
             </div>";

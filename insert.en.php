@@ -25,7 +25,7 @@ $sql = "INSERT INTO identity (enterprise, entype, enplace, code, enperson, enins
         VALUES ('$enterprise', '$entype', '$enplace', '$code', '$enperson', '$enins', '$enphone', '$userID', '$enprefer', '$endonate')";
 
 if (mysqli_query($link, $sql)) {
-    echo "<script>alert('新增成功'); location.href='en.php';</script>";
+    echo "<script>alert('新增成功'); location.href='index_en.php';</script>";
 } else {
     echo "<script>alert('新增失敗'); window.history.back();</script>";
 }

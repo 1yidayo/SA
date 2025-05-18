@@ -120,34 +120,34 @@ if (!isset($_SESSION['identityID']) || empty($_SESSION['identityID'])) {
           <nav class="main-nav">
             <ul class="nav">
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="cl.php">首頁</a></li>
+                <li><a href="index_cl.php">首頁</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="en.php">首頁</a></li>
+                <li><a href="index_en.php">首頁</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="properties2.php">瀏覽</a></li>
+                <li><a href="browse_cl.php">瀏覽</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="properties.php">瀏覽</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="club_contact.php">發布</a></li>
+                <li><a href="post_cl.php">發布</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="en_contact.php">發布</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="clubhistory.php" class="active">發布歷史</a></li>
+                <li><a href="post.history_cl.php" class="active">發布歷史</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="enhistory.php" class="active">發布歷史</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="club_cooperations.php">我的合作</a></li>
+                <li><a href="cooperations_cl.php">我的合作</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="enterprise_cooperations.php">我的合作</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="self.cl.php">個人頁面</a></li>
+                <li><a href="self_cl.php">個人頁面</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="self.en.php">個人頁面</a></li>
+                <li><a href="self_en.php">個人頁面</a></li>
               <?php endif; ?>
               <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
             </ul>
@@ -191,7 +191,7 @@ if (!isset($_SESSION['identityID']) || empty($_SESSION['identityID'])) {
           while ($row = mysqli_fetch_assoc($result)) {
             echo "<div class='col-lg-4 col-md-6 align-self-center mb-30 properties-items adv'>
                 <div class='item uniform-box'>
-                  <h4><a href='enterprise.php?enrequirement_num=" . htmlspecialchars($row['enrequirement_num']) . "'>" . htmlspecialchars($row['title']) . "</a></h4>
+                  <h4><a href='history.details_en.php?enrequirement_num=" . htmlspecialchars($row['enrequirement_num']) . "'>" . htmlspecialchars($row['title']) . "</a></h4>
                   <ul>
                     <li><span>" . htmlspecialchars($row['enterprise']) . "</span></li>
                     <br><br>
@@ -202,7 +202,7 @@ if (!isset($_SESSION['identityID']) || empty($_SESSION['identityID'])) {
                     <li>贊助類型：<span>" . htmlspecialchars($row['sponsorship']) . "</span></li>
                   </ul>
                   <div class='text-links'>
-                    <a href='enterprise.php?enrequirement_num=" . htmlspecialchars($row['enrequirement_num']) . "' class='custom-orange-btn'>詳情</a>
+                    <a href='history.details_en.php?enrequirement_num=" . htmlspecialchars($row['enrequirement_num']) . "' class='custom-orange-btn'>詳情</a>
                     <a href='editenhistory.php?enrequirement_num=" . htmlspecialchars($row['enrequirement_num']) . "'>修改</a> |
                     <a href='deleteenhistory.php?enrequirement_num=" . htmlspecialchars($row['enrequirement_num']) . "' onclick=\"return confirm('確定要刪除嗎？');\">刪除</a>
                   </div>

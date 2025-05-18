@@ -82,11 +82,11 @@ https://templatemo.com/tm-591-villa-agency
                     
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                            <li><a href="cl.php" class="active">首頁</a></li>
-                            <li><a href="properties2.php">瀏覽</a></li>
-                            <li><a href="club_contact.php">發布</a></li>
-                            <li><a href="clubhistory.php">發布歷史</a></li>
-                            <li><a href="self.cl.php">個人頁面</a></li>
+                            <li><a href="index_cl.php" class="active">首頁</a></li>
+                            <li><a href="browse_cl.php">瀏覽</a></li>
+                            <li><a href="post_cl.php">發布</a></li>
+                            <li><a href="post.history_cl.php">發布歷史</a></li>
+                            <li><a href="self_cl.php">個人頁面</a></li>
                             <li><a href="login.html">登出</a></li>
                             <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</a>
                             </li>
@@ -152,13 +152,13 @@ while($row = mysqli_fetch_assoc($result)){
 
   echo "<div class='col-lg-4 col-md-6 align-self-center mb-30 properties-items sponsor-card' data-industry='" . $row['type'] . "' data-type='" . $row['sponsorship'] . "'>
           <div class='item'>
-              <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
+              <h4><a href='history.details_en.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
               <ul>
                   <li>贊助類型：<span>" . $row['sponsorship'] . "</span></li>
                   <li>企業行業別：<span>" . $row['type'] . "</span></li>
               </ul>
               <div class='main-button mb-2'>
-                  <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
+                  <a href='history.details_en.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
               </div>
               <li>發布時間：<span>" . $row['created_time'] . "</span></li><br>";
 

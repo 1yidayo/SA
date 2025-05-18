@@ -37,34 +37,34 @@ session_start();
           <nav class="main-nav">
             <ul class="nav">
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="cl.php">首頁</a></li>
+                <li><a href="index_cl.php">首頁</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="en.php">首頁</a></li>
+                <li><a href="index_en.php">首頁</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="properties2.php">瀏覽</a></li>
+                <li><a href="browse_cl.php">瀏覽</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="properties.php">瀏覽</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="club_contact.php">發布</a></li>
+                <li><a href="post_cl.php">發布</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="en_contact.php">發布</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="clubhistory.php">發布歷史</a></li>
+                <li><a href="post.history_cl.php">發布歷史</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="enhistory.php">發布歷史</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="club_cooperations.php">我的合作</a></li>
+                <li><a href="cooperations_cl.php">我的合作</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="enterprise_cooperations.php">我的合作</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="self.cl.php">個人頁面</a></li>
+                <li><a href="self_cl.php">個人頁面</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="self.en.php">個人頁面</a></li>
+                <li><a href="self_en.php">個人頁面</a></li>
               <?php endif; ?>
               <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
             </ul>

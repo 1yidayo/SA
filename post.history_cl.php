@@ -153,34 +153,34 @@ https://templatemo.com/tm-591-villa-agency
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="cl.php">首頁</a></li>
+                <li><a href="index_cl.php">首頁</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="en.php">首頁</a></li>
+                <li><a href="index_en.php">首頁</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="properties2.php">瀏覽</a></li>
+                <li><a href="browse_cl.php">瀏覽</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="properties.php">瀏覽</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="club_contact.php">發布</a></li>
+                <li><a href="post_cl.php">發布</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="en_contact.php">發布</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="clubhistory.php" class="active">發布歷史</a></li>
+                <li><a href="post.history_cl.php" class="active">發布歷史</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="enhistory.php" class="active">發布歷史</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="club_cooperations.php">我的合作</a></li>
+                <li><a href="cooperations_cl.php">我的合作</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="enterprise_cooperations.php">我的合作</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="self.cl.php">個人頁面</a></li>
+                <li><a href="self_cl.php">個人頁面</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="self.en.php">個人頁面</a></li>
+                <li><a href="self_en.php">個人頁面</a></li>
               <?php endif; ?>
               <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
             </ul>
@@ -234,7 +234,7 @@ https://templatemo.com/tm-591-villa-agency
 
           echo "<div class='properties-items'>
       <div class='item uniform-box'>
-          <h4><a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . $row['title'] . "</a></h4>
+          <h4><a href='history.details_cl.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . $row['title'] . "</a></h4>
           <ul>
               <li><span>" . htmlspecialchars($row['school']) . "</span></li>
               <li><span>" . htmlspecialchars($row['club']) . "</span></li>
@@ -256,9 +256,9 @@ https://templatemo.com/tm-591-villa-agency
           echo "<li>活動類型：<span>" . htmlspecialchars($support_type_display) . "</span></li>
           </ul>
           <div class='text-links'>
-              <a href='club.php?clrequirement_num=" . $row['clrequirement_num'] . "' class='custom-orange-btn'>詳情</a>
-              <a href='editclubhistory.php?clrequirement_num=" . $row['clrequirement_num'] . "'>修改</a> |
-              <a href='deleteclubhistory.php?clrequirement_num=" . $row['clrequirement_num'] . "' onclick=\"return confirm('確定要刪除嗎？');\">刪除</a>
+              <a href='history.details_cl.php?clrequirement_num=" . $row['clrequirement_num'] . "' class='custom-orange-btn'>詳情</a>
+              <a href='history.edit_cl.php?clrequirement_num=" . $row['clrequirement_num'] . "'>修改</a> |
+              <a href='history.delete_cl.php?clrequirement_num=" . $row['clrequirement_num'] . "' onclick=\"return confirm('確定要刪除嗎？');\">刪除</a>
           </div>
           <p class='publish-time'>發布時間：<span>" . htmlspecialchars($row['created_time']) . "</span></p>
       </div>

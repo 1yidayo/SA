@@ -16,7 +16,6 @@ session_start();
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
@@ -30,6 +29,68 @@ TemplateMo 591 villa agency
 https://templatemo.com/tm-591-villa-agency
 
 -->
+
+    <style>
+        .properties-box {
+            display: flex;
+            flex-wrap: wrap;
+            /* 允許換行 */
+            gap: 10px;
+            /* 設定間距 */
+            justify-content: flex-start;
+            /* 讓內容從左到右排列 */
+        }
+
+        .properties-items {
+            width: 30%;
+            /* 保持與原本大小相近 */
+            min-width: 300px;
+            /* 避免縮小過度 */
+        }
+
+        /* 讓小螢幕時調整排列 */
+        @media (max-width: 992px) {
+            .properties-items {
+                width: 45%;
+                /* 平板改為兩欄 */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .properties-items {
+                width: 100%;
+                /* 手機版單欄 */
+            }
+        }
+
+        /* 確保每個歷史紀錄框高度一致 */
+        .uniform-box {
+            min-height: 430px;
+            /* 根據內容調整，讓每筆高度一致 */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* 讓修改/刪除連結整齊排列 */
+        .text-links {
+            margin-top: 10px;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        .text-links a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 5px;
+        }
+
+        .text-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+
 </head>
 
 <body>
@@ -48,50 +109,47 @@ https://templatemo.com/tm-591-villa-agency
     <!-- ***** Preloader End ***** -->
 
 
-
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
-                        <!-- ***** Logo
-                          End ***** -->
+
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="cl.php" class="active">首頁</a></li>
+                                <li><a href="index_cl.php">首頁</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
-                                <li><a href="en.php" class="active">首頁</a></li>
+                                <li><a href="index_en.php">首頁</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="properties2.php">瀏覽</a></li>
+                                <li><a href="browse_cl.php">瀏覽</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
                                 <li><a href="properties.php">瀏覽</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="club_contact.php">發布</a></li>
+                                <li><a href="post_cl.php">發布</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
                                 <li><a href="en_contact.php">發布</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="clubhistory.php">發布歷史</a></li>
+                                <li><a href="post.history_cl.php" class="active">發布歷史</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
-                                <li><a href="enhistory.php">發布歷史</a></li>
+                                <li><a href="enhistory.php" class="active">發布歷史</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="club_cooperations.php">我的合作</a></li>
+                                <li><a href="cooperations_cl.php">我的合作</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
                                 <li><a href="enterprise_cooperations.php">我的合作</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="self.cl.php">個人頁面</a></li>
+                                <li><a href="self_cl.php">個人頁面</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
-                                <li><a href="self.en.php">個人頁面</a></li>
+                                <li><a href="self_en.php">個人頁面</a></li>
                             <?php endif; ?>
                             <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
                         </ul>
-
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
@@ -102,20 +160,32 @@ https://templatemo.com/tm-591-villa-agency
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
+    <?php
 
-    <div class="main-banner"
-        style="background-image: url('https://themewagon.github.io/Sailor/assets/img/hero-carousel/hero-carousel-2.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; height: 100vh; display: flex; align-items: center; justify-content: center; filter: brightness(1.1) contrast(1.2); margin-bottom: 0;">
-        <div class="header-text text-center">
-            <h2 style="color: white; font-size: 3rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5);">Welcome!</h2>
-        </div>
-    </div>
+    $link = mysqli_connect("localhost", "root", "", "SAS");
 
-    <style>
-        footer {
-            margin-top: 0;
-            padding-top: 0;
+    // 檢查是否有傳入 clrequirement_num
+    if (isset($_GET['clrequirement_num'])) {
+        $num = intval($_GET['clrequirement_num']);
+
+        // 確保是自己的資料才能刪除
+        $identityID = $_SESSION['identityID'];
+        $sql = "DELETE FROM club_requirements WHERE clrequirement_num = $num AND identityID = '$identityID'";
+
+        if (mysqli_query($link, $sql)) {
+            header("Location: post.history_cl.php");
+            exit;
+        } else {
+            echo "刪除失敗：" . mysqli_error($link);
         }
-    </style>
+    } else {
+        echo "未提供要刪除的資料編號";
+    }
+    ?>
+
+
+
+
 
     <!-- Footer -->
     <footer>
@@ -125,8 +195,6 @@ https://templatemo.com/tm-591-villa-agency
             </div>
         </div>
     </footer>
-
-
 
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->

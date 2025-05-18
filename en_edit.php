@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <meta http-equiv="refresh" content="0; url=self.en.php">
+    <meta http-equiv="refresh" content="0; url=self_en.php">
 </head>
 
 <body>

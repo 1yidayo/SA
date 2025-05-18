@@ -119,34 +119,34 @@ https://templatemo.com/tm-591-villa-agency
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="cl.php" class="active">首頁</a></li>
+                                <li><a href="index_cl.php" class="active">首頁</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
-                                <li><a href="en.php" class="active">首頁</a></li>
+                                <li><a href="index_en.php" class="active">首頁</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="properties2.php" class="active">瀏覽</a></li>
+                                <li><a href="browse_cl.php" class="active">瀏覽</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
                                 <li><a href="properties.php" class="active">瀏覽</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="club_contact.php" class="active">發布</a></li>
+                                <li><a href="post_cl.php" class="active">發布</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
                                 <li><a href="en_contact.php" class="active">發布</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="clubhistory.php" class="active">發布歷史</a></li>
+                                <li><a href="post.history_cl.php" class="active">發布歷史</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
                                 <li><a href="enhistory.php" class="active">發布歷史</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="club_cooperations.php" class="active">我的合作</a></li>
+                                <li><a href="cooperations_cl.php" class="active">我的合作</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
                                 <li><a href="enterprise_cooperations.php" class="active">我的合作</a></li>
                             <?php endif; ?>
                             <?php if ($_SESSION['level'] === 'cl'): ?>
-                                <li><a href="self.cl.php" class="active">個人頁面</a></li>
+                                <li><a href="self_cl.php" class="active">個人頁面</a></li>
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
-                                <li><a href="self.en.php" class="active">個人頁面</a></li>
+                                <li><a href="self_en.php" class="active">個人頁面</a></li>
                             <?php endif; ?>
                             <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
                         </ul>
@@ -180,7 +180,7 @@ https://templatemo.com/tm-591-villa-agency
         $old = mysqli_fetch_assoc($result_old);
 
         if (!$old) {
-            header("Location: clubhistory.php");
+            header("Location: post.history_cl.php");
             exit();
         }
 
@@ -211,7 +211,7 @@ https://templatemo.com/tm-591-villa-agency
             WHERE clrequirement_num = $num AND identityID = '{$_SESSION['identityID']}'";
 
         mysqli_query($link, $sql);
-        header("Location: clubhistory.php");
+        header("Location: post.history_cl.php");
         exit();
     } else if (isset($_GET['clrequirement_num'])) {
         $num = intval($_GET['clrequirement_num']);
@@ -219,11 +219,11 @@ https://templatemo.com/tm-591-villa-agency
         $result = mysqli_query($link, $sql);
         $row = mysqli_fetch_assoc($result);
         if (!$row) {
-            header("Location: clubhistory.php");
+            header("Location: post.history_cl.php");
             exit();
         }
     } else {
-        header("Location: clubhistory.php");
+        header("Location: post.history_cl.php");
         exit();
     }
     ?>
@@ -287,7 +287,7 @@ https://templatemo.com/tm-591-villa-agency
 
         <div class="container edit-form-container">
             <h3>編輯贊助需求</h3>
-            <form method="POST" action="editclubhistory.php">
+            <form method="POST" action="history.edit_cl.php">
                 <input type="hidden" name="clrequirement_num" value="<?= $row['clrequirement_num'] ?>">
 
                 <div class="mb-3">
@@ -348,7 +348,7 @@ https://templatemo.com/tm-591-villa-agency
                 </div>
 
                 <button type="submit" class="btn btn-primary">更新</button>
-                <a href="clubhistory.php" class="btn btn-secondary">取消</a>
+                <a href="post.history_cl.php" class="btn btn-secondary">取消</a>
             </form>
         </div>
 

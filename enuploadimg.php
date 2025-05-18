@@ -34,7 +34,7 @@ if (isset($_FILES['profile_img']) && $_FILES['profile_img']['error'] === 0) {
         $sql = "UPDATE identity SET profile_img = '$newFileName' WHERE userID = '$userID'";
         mysqli_query($link, $sql);
 
-        echo "<script>alert('上傳成功'); window.location.href='self.en.php';</script>";
+        echo "<script>alert('上傳成功'); window.location.href='self_en.php';</script>";
     } else {
         echo "<script>alert('檔案儲存失敗'); history.back();</script>";
     }

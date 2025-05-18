@@ -24,5 +24,5 @@ $update = "UPDATE identity SET profile_img = 'default-profile.png' WHERE userID 
 mysqli_query($link, $update);
 
 // 回到個人頁面
-echo "<script>alert('已刪除照片'); window.location.href='self.cl.php';</script>";
+echo "<script>alert('已刪除照片'); window.location.href='self_cl.php';</script>";
 ?>

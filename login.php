@@ -31,10 +31,10 @@ if ($row = mysqli_fetch_assoc($result)) {
         if ($identity_row = mysqli_fetch_assoc($check_result)) {
             $_SESSION['identityID'] = $identity_row['identityID'];
             if ($row['level'] === 'cl') {
-                header("Location: cl.php");
+                header("Location: index_cl.php");
                 exit();
             } elseif ($row['level'] === 'en') {
-                header("Location: en.php");
+                header("Location: index_en.php");
                 exit();
             } elseif ($row['level'] === 'ai') {
                 header("Location: ai.html");

@@ -23,5 +23,5 @@ if (mysqli_num_rows($result) == 0) {
   mysqli_query($link, $insert);
 }
 
-header("Location: properties2.php");
+header("Location: browse_cl.php");
 ?>

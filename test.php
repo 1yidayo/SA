@@ -35,11 +35,11 @@
         <div class="col-12">
           <nav class="main-nav">
             <ul class="nav">
-              <li><a href="cl.php" class="active">首頁</a></li>
-              <li><a href="properties2.php">瀏覽</a></li>
-              <li><a href="club_contact.php">發布</a></li>
-              <li><a href="clubhistory.php">發布歷史</a></li>
-              <li><a href="self.cl.php">個人頁面</a></li>
+              <li><a href="index_cl.php" class="active">首頁</a></li>
+              <li><a href="browse_cl.php">瀏覽</a></li>
+              <li><a href="post_cl.php">發布</a></li>
+              <li><a href="post.history_cl.php">發布歷史</a></li>
+              <li><a href="self_cl.php">個人頁面</a></li>
               <li><a href="login.html">登出</a></li>
               <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</a></li>
             </ul>
@@ -68,7 +68,7 @@
       <!-- 左邊表單 -->
       <div class="col-lg-6">
         <h2 class="mb-4">您的個人檔案
-          <button class="btn btn-secondary" onclick="location.href='cl_self.change.php'" type="button">
+          <button class="btn btn-secondary" onclick="location.href='self.edit_cl.php'" type="button">
             <b>修改個人資料</b>
           </button>
         </h2>

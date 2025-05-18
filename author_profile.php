@@ -35,11 +35,11 @@
         <div class="col-12">
           <nav class="main-nav">
             <ul class="nav">
-              <li><a href="en.php" class="active">首頁</a></li>
-              <li><a href="properties2.php">瀏覽</a></li>
+              <li><a href="index_en.php" class="active">首頁</a></li>
+              <li><a href="browse_cl.php">瀏覽</a></li>
               <li><a href="cl_contact.php">發布</a></li>
               <li><a href="clhistory.php">發布歷史</a></li>
-              <li><a href="self.cl.php">個人頁面</a></li>
+              <li><a href="self_cl.php">個人頁面</a></li>
               <li><a href="login.html">登出</a></li>
               <li><a href="advanced search for club.html"><i class="fa fa-calendar"></i>進階搜尋</a></li>
             </ul>

@@ -147,13 +147,13 @@
           while($row = mysqli_fetch_assoc($result)) {
             echo "<div class='properties-items'>
                     <div class='item'>
-                      <h4><a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
+                      <h4><a href='history.details_en.php?enrequirement_num=" . $row['enrequirement_num'] . "'>" . $row['title'] . "</a></h4>
                       <ul>
                         <li>贊助類型：<span>" . $row['sponsorship'] . "</span></li>
                         <li>企業行業別：<span>" . $row['type'] . "</span></li>
                       </ul>
                       <div class='main-button'>
-                        <a href='enterprise.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
+                        <a href='history.details_en.php?enrequirement_num=" . $row['enrequirement_num'] . "'>了解活動詳情</a>
                       </div>
                     </div>
                   </div>";

@@ -25,12 +25,12 @@ $sql = "UPDATE identity
 if (mysqli_query($link, $sql)) {
     echo "<script>
         alert('更新成功');
-        window.location.href = 'self.cl.php';
+        window.location.href = 'self_cl.php';
     </script>";
 } else {
     echo "<script>
         alert('更新失敗：" . mysqli_error($link) . "');
-        window.location.href = 'self.cl.php';
+        window.location.href = 'self_cl.php';
     </script>";
 }
 ?>

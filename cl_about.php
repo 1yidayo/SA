@@ -38,34 +38,34 @@ session_start();
           <nav class="main-nav">
             <ul class="nav">
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="cl.php" class="active">首頁</a></li>
+                <li><a href="index_cl.php" class="active">首頁</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="en.php" class="active">首頁</a></li>
+                <li><a href="index_en.php" class="active">首頁</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="properties2.php" class="active">瀏覽</a></li>
+                <li><a href="browse_cl.php" class="active">瀏覽</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="properties.php" class="active">瀏覽</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="club_contact.php" class="active">發布</a></li>
+                <li><a href="post_cl.php" class="active">發布</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="en_contact.php" class="active">發布</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="clubhistory.php" class="active">發布歷史</a></li>
+                <li><a href="post.history_cl.php" class="active">發布歷史</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="enhistory.php" class="active">發布歷史</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="club_cooperations.php" class="active">我的合作</a></li>
+                <li><a href="cooperations_cl.php" class="active">我的合作</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="enterprise_cooperations.php" class="active">我的合作</a></li>
               <?php endif; ?>
               <?php if ($_SESSION['level'] === 'cl'): ?>
-                <li><a href="self.cl.php" class="active">個人頁面</a></li>
+                <li><a href="self_cl.php" class="active">個人頁面</a></li>
               <?php elseif ($_SESSION['level'] === 'en'): ?>
-                <li><a href="self.en.php" class="active">個人頁面</a></li>
+                <li><a href="self_en.php" class="active">個人頁面</a></li>
               <?php endif; ?>
               <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
             </ul>
@@ -94,7 +94,7 @@ session_start();
       <!-- 左邊表單 -->
       <div class="col-lg-6">
         <h2 class="mb-4">您的個人檔案
-          <button class="btn btn-secondary" onclick="location.href='cl_self.change.php'" type="button">
+          <button class="btn btn-secondary" onclick="location.href='self.edit_cl.php'" type="button">
             <b>修改個人資料</b>
           </button>
         </h2>
