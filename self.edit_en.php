@@ -141,7 +141,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 </div>
                 <div class='mb-3'>
                     <label for='code' class='form-label'><b>統一編號</b></label>
-                    <input type='text' class='form-control' name='code' id='code' value='" . $row['code'] . "' required>
+                    <input type='text' class='form-control' name='code' id='code' value='" . $row['code'] . "' readonly>
                 </div>
                 <div class='mb-3'>
                     <label for='enplace' class='form-label'><b>企業所在地區</b></label>

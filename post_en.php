@@ -124,27 +124,29 @@ session_start();
       value="<?php echo $entype; ?>" required readonly>
   </div>
 </div>
+<div class="col-12">
+                <div class="input-group">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>統一編號</b></span>
+                  </div>
+                  <input class="form-control" type="text" placeholder="請輸入公司統一編號" name="code"
+                    value="<?php echo $code; ?>" required>
+                </div>
+              </div>
+
 
 
               <div class="col-12">
                 <div class="input-group">
                   <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>企業所在地區</b></span>
+                    <span class="ms-1"><b>活動負責人姓名</b></span>
                   </div>
-                  <input class="form-control" type="text" placeholder="請輸入企業所在地區" name="enplace"
-                    value="<?php echo $enplace; ?>" required>
+                  <input class="form-control" type="text" placeholder="請輸入負責人姓名與職稱" name="ins"
+                    value="<?php echo $ins; ?>" required>
                 </div>
               </div>
 
-              <div class="col-12">
-                <div class="input-group">
-                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>負責人姓名與職稱</b></span>
-                  </div>
-                  <input class="form-control" type="text" placeholder="請輸入負責人姓名與職稱" name="enperson"
-                    value="<?php echo $enperson; ?>" required>
-                </div>
-              </div>
+              
 
               <div class="col-12">
                 <div class="input-group">

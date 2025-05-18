@@ -97,32 +97,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="mb-3">
                             <label class="form-label fw-bold">企業名稱：</label>
                             <input type="text" class="form-control" name="enterprise"
-                                value="<?php echo htmlspecialchars($data["enterprise"]); ?>" required>
+                                value="<?php echo htmlspecialchars($data["enterprise"]); ?>"readonly>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label fw-bold">產業類型：</label>
+                            <label class="form-label fw-bold">行業別：</label>
                             <input type="text" class="form-control" name="type"
-                                value="<?php echo htmlspecialchars($data["type"]); ?>" required>
+                                value="<?php echo htmlspecialchars($data["type"]); ?>"readonly>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label fw-bold">統一編號：</label>
                             <input type="text" class="form-control" name="code"
-                                value="<?php echo htmlspecialchars($data["code"]); ?>" readonly>
+                                value="<?php echo htmlspecialchars($data["code"]); ?>"readonly>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label fw-bold">聯絡人：</label>
+                            <label class="form-label fw-bold">負責人姓名：</label>
                             <input type="text" class="form-control" name="ins"
                                 value="<?php echo htmlspecialchars($data["ins"]); ?>" required>
                         </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">地區：</label>
-                            <input type="text" class="form-control" name="region"
-                                value="<?php echo htmlspecialchars($data["region"]); ?>" required>
-                        </div>
+          
+    
 
                         <div class="mb-3">
                             <label class="form-label fw-bold">贊助日期：</label>
@@ -131,20 +127,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label fw-bold">贊助種類：</label>
+                            <label class="form-label fw-bold">贊助類型：</label>
                             <select class="form-control" name="sponsorship" required>
+                            required><?php echo htmlspecialchars($data["sponsorship"]); ?>
                                 <option value="金錢" <?php if ($data["sponsorship"] == "金錢")
                                     echo "selected"; ?>>金錢</option>
                                 <option value="物資" <?php if ($data["sponsorship"] == "物資")
                                     echo "selected"; ?>>物資</option>
-                                <option value="其他" <?php if ($data["sponsorship"] == "其他")
-                                    echo "selected"; ?>>其他</option>
+                                <option value="場地" <?php if ($data["sponsorship"] == "場地")
+                                    echo "selected"; ?>>金錢</option>
+                                <option value="提供實習" <?php if ($data["sponsorship"] == "提供實習")
+                                    echo "selected"; ?>>物資</option>
                             </select>
                         </div>
 
                         <div id="money-field" class="mb-3">
                             <label class="form-label fw-bold">預算區間：</label>
                             <select class="form-control" name="money">
+                            required><?php echo htmlspecialchars($data["money"]); ?>
                                 <option value="5,000元以下" <?php if ($data["money"] == "5,000元以下")
                                     echo "selected"; ?>>5,000元以下
                                 </option>
@@ -158,15 +158,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </select>
                         </div>
 
+                        <div id="region-field" class="mb-3">
+                            <label class="form-label fw-bold">贊助地區</label>
+                            <select class="form-control" name="region">
+                            required><?php echo htmlspecialchars($data["region"]); ?>
+                                <option value="北部" <?php if ($data["region"] == "北部")
+                                    echo "selected"; ?>>北部
+                                </option>
+                                <option value="中部" <?php if ($data["region"] == "中部")
+                                    echo "selected"; ?>>中部</option>
+                                <option value="南部" <?php if ($data["region"] == "南部")
+                                    echo "selected"; ?>>南部</option>
+                                <option value="東部" <?php if ($data["region"] == "東部")
+                                    echo "selected"; ?>>
+                                    東部</option>
+                            </select>
+                        </div>
+
                         <div class="mb-3">
-                            <label class="form-label fw-bold">希望獲得的回饋：</label>
+                            <label class="form-label fw-bold">希望社團達到目的：</label>
                             <select class="form-control" name="hope" required>
+                            required><?php echo htmlspecialchars($data["hope"]); ?>
                                 <option value="宣傳" <?php if ($data["hope"] == "宣傳")
                                     echo "selected"; ?>>宣傳</option>
                                 <option value="表演" <?php if ($data["hope"] == "表演")
                                     echo "selected"; ?>>表演</option>
-                                <option value="其他" <?php if ($data["hope"] == "其他")
-                                    echo "selected"; ?>>其他</option>
+                                <option value="其他" <?php if ($data["hope"] == "了解本企業職務")
+                                    echo "selected"; ?>>了解本企業職務</option>
                             </select>
                         </div>
 

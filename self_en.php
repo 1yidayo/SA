@@ -113,7 +113,7 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
           <div class='mb-3'><label class='form-label'>行業別：</label><div class='fs-5 fw-bold'>{$row['entype']}</div></div>
           <div class='mb-3'><label class='form-label'>企業所在地區：</label><div class='fs-5 fw-bold'>{$row['enplace']}</div></div>
           <div class='mb-3'><label class='form-label'>統一編號：</label><div class='fs-5 fw-bold'>{$row['code']}</div></div>
-          <div class='mb-3'><label class='form-label'>負責人姓名與職稱：</label><div class='fs-5 fw-bold'>{$row['enperson']}</div></div>
+          <div class='mb-3'><label class='form-label'>企業負責人姓名：</label><div class='fs-5 fw-bold'>{$row['enperson']}</div></div>
           <div class='mb-3'><label class='form-label'>社群連結：</label><div><a class='fs-5' href='{$row['enins']}' target='_blank'>{$row['enins']}</a></div></div>
           <div class='mb-3'><label class='form-label'>Email／聯絡電話</label><div class='fs-5 fw-bold'>{$row['enphone']}</div></div>
           <div class='mb-3'><label class='form-label'>合作偏好類型：</label><div class='fs-5 fw-bold'>{$row['enprefer']}</div></div>
