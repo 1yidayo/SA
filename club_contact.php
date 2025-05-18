@@ -160,7 +160,7 @@ session_start();
                     <span class="ms-1"><b>社團成立年份</b></span>
                   </div>
                   <input class="form-control" type="text" placeholder="請輸入年份" aria-label="請輸入年份" name="year"
-                    value="<?php echo $clyear; ?>">
+                    value="<?php echo $clyear; ?>" readonly>
                 </div>
               </div>
               <div class="col-12">
