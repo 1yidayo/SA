@@ -1,6 +1,115 @@
 <?php
 session_start();
-$link = mysqli_connect('localhost', 'root', '', 'SAS');
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <title>社團企業媒合平台</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <!--
+
+TemplateMo 591 villa agency
+
+https://templatemo.com/tm-591-villa-agency
+
+-->
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <?php if ($_SESSION['level'] === 'cl'): ?>
+                                <li><a href="index_cl.php" class="active">首頁</a></li>
+                            <?php elseif ($_SESSION['level'] === 'en'): ?>
+                                <li><a href="index_en.php">首頁</a></li>
+                            <?php endif; ?>
+                            <?php if ($_SESSION['level'] === 'cl'): ?>
+                                <li><a href="browse_cl.php" class="active">瀏覽</a></li>
+                            <?php elseif ($_SESSION['level'] === 'en'): ?>
+                                <li><a href="browse_en.php">瀏覽</a></li>
+                            <?php endif; ?>
+                            <?php if ($_SESSION['level'] === 'cl'): ?>
+                                <li><a href="post_cl.php" class="active">發布</a></li>
+                            <?php elseif ($_SESSION['level'] === 'en'): ?>
+                                <li><a href="post_en.php">發布</a></li>
+                            <?php endif; ?>
+                            <?php if ($_SESSION['level'] === 'cl'): ?>
+                                <li><a href="post.history_cl.php" class="active">發布歷史</a></li>
+                            <?php elseif ($_SESSION['level'] === 'en'): ?>
+                                <li><a href="post.history_en.php" class="active">發布歷史</a></li>
+                            <?php endif; ?>
+                            <?php if ($_SESSION['level'] === 'cl'): ?>
+                                <li><a href="cooperations_cl.php" class="active">我的合作</a></li>
+                            <?php elseif ($_SESSION['level'] === 'en'): ?>
+                                <li><a href="cooperations_en.php">我的合作</a></li>
+                            <?php endif; ?>
+                            <?php if ($_SESSION['level'] === 'cl'): ?>
+                                <li><a href="self_cl.php" class="active">個人頁面</a></li>
+                            <?php elseif ($_SESSION['level'] === 'en'): ?>
+                                <li><a href="self_en.php">個人頁面</a></li>
+                            <?php endif; ?>
+                            <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <div class="page-heading header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- <span class="breadcrumb"><a href="#">首頁</a> / 社團活動</span> -->
+          <h3>修改發布歷史</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php
+  $link = mysqli_connect('localhost', 'root', '', 'SAS');
 if (!$link) {
     die("Connection failed: " . mysqli_connect_error());
 }
@@ -52,165 +161,142 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="zh-TW">
 
-<head>
-    <meta charset="UTF-8">
-    <title>修改贊助內容</title>
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <script>
-        function toggleBudgetField() {
-            const sponsorship = document.querySelector('select[name="sponsorship"]').value;
-            const moneyField = document.getElementById('money-field');
-            if (sponsorship === '金錢') {
-                moneyField.style.display = 'block';
-            } else {
-                moneyField.style.display = 'none';
+    <head>
+        <meta charset="UTF-8">
+        <title>編輯贊助需求</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/fontawesome.css">
+        <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
+        <style>
+            .edit-form-container {
+                max-width: 700px;
+                margin: 50px auto;
+                background-color: #f9f9f9;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             }
-        }
 
-        window.onload = function () {
-            toggleBudgetField();
-            document.querySelector('select[name="sponsorship"]').addEventListener('change', toggleBudgetField);
-        };
-    </script>
-</head>
-<!-- 替換原本 HTML <body> 以下的部分即可 -->
-<style>
-    .text-orange {
-        color: #fd7e14;
-    }
-</style>
+            .edit-form-container h3 {
+                color: #f39c12;
+                font-weight: 700;
+                margin-bottom: 30px;
+            }
 
-<body style="background-color: #f8f9fa;">
-    <div class="container mt-5 d-flex justify-content-center">
-        <div class="card shadow-lg" style="width: 100%; max-width: 720px;">
-            <div class="card-header text-center text-orange bg-white border-bottom-0">
-                <h4 class="fw-bold">修改贊助內容</h4>
-            </div>
-            <div class="card-body">
-                <?php if ($data) { ?>
-                    <form method="POST">
-                        <input type="hidden" name="enrequirement_num"
-                            value="<?php echo htmlspecialchars($data["enrequirement_num"]); ?>">
+            .edit-form-container label {
+                font-weight: 600;
+                font-size: 15px;
+            }
 
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">企業名稱：</label>
-                            <input type="text" class="form-control" name="enterprise"
-                                value="<?php echo htmlspecialchars($data["enterprise"]); ?>"readonly>
-                        </div>
+            .edit-form-container input,
+            .edit-form-container select,
+            .edit-form-container textarea {
+                font-size: 15px;
+                padding: 8px 12px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+                transition: border-color 0.3s;
+            }
 
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">行業別：</label>
-                            <input type="text" class="form-control" name="type"
-                                value="<?php echo htmlspecialchars($data["type"]); ?>"readonly>
-                        </div>
+            .edit-form-container input:focus,
+            .edit-form-container select:focus,
+            .edit-form-container textarea:focus {
+                border-color: #f39c12;
+                outline: none;
+                box-shadow: 0 0 0 2px rgba(243, 156, 18, 0.2);
+            }
 
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">統一編號：</label>
-                            <input type="text" class="form-control" name="code"
-                                value="<?php echo htmlspecialchars($data["code"]); ?>"readonly>
-                        </div>
+            .edit-form-container button {
+                margin-right: 10px;
+            }
+        </style>
+    </head>
 
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">負責人姓名：</label>
-                            <input type="text" class="form-control" name="ins"
-                                value="<?php echo htmlspecialchars($data["ins"]); ?>" required>
-                        </div>
-          
-    
+    <body>
 
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">贊助日期：</label>
-                            <input type="date" class="form-control" name="date"
-                                value="<?php echo htmlspecialchars($data["date"]); ?>" required>
-                        </div>
+        <div class="container edit-form-container">
+            <h3>修改贊助內容</h3>
+            <form method="POST" action="history.edit_cl.php">
+                <input type="hidden" name="clrequirement_num" value="<?= $row['clrequirement_num'] ?>">
 
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">贊助類型：</label>
-                            <select class="form-control" name="sponsorship" required>
-                            required><?php echo htmlspecialchars($data["sponsorship"]); ?>
-                                <option value="金錢" <?php if ($data["sponsorship"] == "金錢")
-                                    echo "selected"; ?>>金錢</option>
-                                <option value="物資" <?php if ($data["sponsorship"] == "物資")
-                                    echo "selected"; ?>>物資</option>
-                                <option value="場地" <?php if ($data["sponsorship"] == "場地")
-                                    echo "selected"; ?>>金錢</option>
-                                <option value="提供實習" <?php if ($data["sponsorship"] == "提供實習")
-                                    echo "selected"; ?>>物資</option>
-                            </select>
-                        </div>
+                <div class="mb-3">
+                    <label class="form-label">標題</label>
+                    <input type="text" class="form-control" name="title" value="<?= htmlspecialchars($row['title']) ?>"
+                        required>
+                </div>
 
-                        <div id="money-field" class="mb-3">
-                            <label class="form-label fw-bold">預算區間：</label>
-                            <select class="form-control" name="money">
-                            required><?php echo htmlspecialchars($data["money"]); ?>
-                                <option value="5,000元以下" <?php if ($data["money"] == "5,000元以下")
-                                    echo "selected"; ?>>5,000元以下
-                                </option>
-                                <option value="5,000元~10,000元" <?php if ($data["money"] == "5,000元~10,000元")
-                                    echo "selected"; ?>>5,000元~10,000元</option>
-                                <option value="10,000元~30,000元" <?php if ($data["money"] == "10,000元~30,000元")
-                                    echo "selected"; ?>>10,000元~30,000元</option>
-                                <option value="30,000元以上" <?php if ($data["money"] == "30,000元以上")
-                                    echo "selected"; ?>>
-                                    30,000元以上</option>
-                            </select>
-                        </div>
+                <div class="mb-3" id="money-group" style="<?= $row['type'] === '金錢' ? '' : 'display: none;' ?>">
+                    <label class="form-label">贊助金額</label>
+                    <input type="number" class="form-control" name="money"
+                        value="<?= htmlspecialchars($row['money']) ?>">
+                </div>
 
-                        <div id="region-field" class="mb-3">
-                            <label class="form-label fw-bold">贊助地區</label>
-                            <select class="form-control" name="region">
-                            required><?php echo htmlspecialchars($data["region"]); ?>
-                                <option value="北部" <?php if ($data["region"] == "北部")
-                                    echo "selected"; ?>>北部
-                                </option>
-                                <option value="中部" <?php if ($data["region"] == "中部")
-                                    echo "selected"; ?>>中部</option>
-                                <option value="南部" <?php if ($data["region"] == "南部")
-                                    echo "selected"; ?>>南部</option>
-                                <option value="東部" <?php if ($data["region"] == "東部")
-                                    echo "selected"; ?>>
-                                    東部</option>
-                            </select>
-                        </div>
+                <div class="mb-3">
+                    <label class="form-label">預估規模</label>
+                    <select class="form-control" name="people">
+                        <option value="">請選擇</option>
+                        <option value="0-10人" <?= $row['people'] == '0-10人' ? 'selected' : '' ?>>0-10人</option>
+                        <option value="11-20人" <?= $row['people'] == '11-20人' ? 'selected' : '' ?>>11-20人</option>
+                        <option value="21-30人" <?= $row['people'] == '21-30人' ? 'selected' : '' ?>>21-30人</option>
+                        <option value="31-40人" <?= $row['people'] == '31-40人' ? 'selected' : '' ?>>31-40人</option>
+                        <option value="41-50人" <?= $row['people'] == '41-50人' ? 'selected' : '' ?>>41-50人</option>
+                        <option value="50人以上" <?= $row['people'] == '50人以上' ? 'selected' : '' ?>>50人以上</option>
+                    </select>
+                </div>
 
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">希望社團達到目的：</label>
-                            <select class="form-control" name="hope" required>
-                            required><?php echo htmlspecialchars($data["hope"]); ?>
-                                <option value="宣傳" <?php if ($data["hope"] == "宣傳")
-                                    echo "selected"; ?>>宣傳</option>
-                                <option value="表演" <?php if ($data["hope"] == "表演")
-                                    echo "selected"; ?>>表演</option>
-                                <option value="其他" <?php if ($data["hope"] == "了解本企業職務")
-                                    echo "selected"; ?>>了解本企業職務</option>
-                            </select>
-                        </div>
+                <div class="mb-3">
+                    <label class="form-label">贊助類型</label>
+                    <select class="form-select" name="type" id="type" required>
+                        <option value="金錢" <?= $row['type'] == '金錢' ? 'selected' : '' ?>>金錢</option>
+                        <option value="人力" <?= $row['type'] == '人力' ? 'selected' : '' ?>>人力</option>
+                        <option value="其他" <?= $row['type'] == '其他' ? 'selected' : '' ?>>其他</option>
+                    </select>
+                </div>
 
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">標題：</label>
-                            <input type="text" class="form-control" name="title"
-                                value="<?php echo htmlspecialchars($data["title"]); ?>" required>
-                        </div>
+                <div class="mb-3">
+                    <label class="form-label">內文 (必填)</label>
+                    <textarea class="form-control" name="information"
+                        required><?= htmlspecialchars($row['information']) ?></textarea>
+                </div>
 
-                        <div class="mb-3">
-                            <label class="form-label fw-bold">內容說明：</label>
-                            <textarea class="form-control" name="information" rows="5"
-                                required><?php echo htmlspecialchars($data["information"]); ?></textarea>
-                        </div>
+                <div class="mb-3">
+                    <label class="form-label">預計活動月份</label>
+                    <input type="date" name="event_time" class="form-control"
+                        value="<?= htmlspecialchars($row['event_time']) ?>" required>
+                </div>
 
-                        <div class="text-center mt-4">
-                            <button type="submit" class="btn btn-success">儲存修改</button>
-                            <a href="post.history_en.php" class="btn btn-secondary ms-2">返回歷史紀錄</a>
-                        </div>
-                    </form>
-                <?php } else { ?>
-                    <div class="alert alert-warning text-center">找不到該筆資料，請確認網址是否正確。</div>
-                <?php } ?>
-            </div>
+                <div class="mb-4">
+                    <label class="form-label">活動地區</label>
+                    <select class="form-select" name="region" required>
+                        <option value="">請選擇</option>
+                        <option value="北部" <?= $row['region'] == '北部' ? 'selected' : '' ?>>北部</option>
+                        <option value="中部" <?= $row['region'] == '中部' ? 'selected' : '' ?>>中部</option>
+                        <option value="南部" <?= $row['region'] == '南部' ? 'selected' : '' ?>>南部</option>
+                        <option value="東部" <?= $row['region'] == '東部' ? 'selected' : '' ?>>東部</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">更新</button>
+                <a href="post.history_cl.php" class="btn btn-secondary">取消</a>
+            </form>
         </div>
-    </div>
+
+        <script>
+            document.getElementById('type').addEventListener('change', function () {
+                const moneyGroup = document.getElementById('money-group');
+                moneyGroup.style.display = this.value === '金錢' ? 'block' : 'none';
+            });
+        </script>
+
+    </body>
+
+    </html>
+
+
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -219,6 +305,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/counter.js"></script>
+    <script src="assets/js/custom.js"></script>
+
 </body>
 
 
