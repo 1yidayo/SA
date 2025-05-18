@@ -27,6 +27,10 @@ $sql = "INSERT INTO identity (enterprise, entype, enplace, code, enperson, enins
         VALUES ('$enterprise', '$entype', '$enplace', '$code', '$enperson', '$enins', '$enphone', '$userID', '$enprefer', '$endonate')";
 
 if (mysqli_query($link, $sql)) {
+    // 取得剛新增的 identityID
+    $identityID = mysqli_insert_id($link);
+    $_SESSION['identityID'] = $identityID; // 存入 session
+
     echo "<script>alert('新增成功'); location.href='index_en.php';</script>";
 } else {
     echo "<script>alert('新增失敗'); window.history.back();</script>";
