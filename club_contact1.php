@@ -15,6 +15,7 @@
     $club = $_POST['club'];
     $year = $_POST['year'];
     $type = $_POST['type'];
+    $cltype = $_POST['cltype'];
     $region = $_POST['region'];
     $event_time = $_POST['event_time'];
     $support_type = $_POST['support_type'];
@@ -40,8 +41,8 @@
                                                                            
     $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-    $sql = "INSERT INTO club_requirements (identityID, money, people, school, club, year, type, region, event_time, support_type, upload, ins, title, information, intern_number)
-VALUES ('$identityID', '$money', '$people', '$school', '$club', '$year', '$type', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information', '$intern_number')
+    $sql = "INSERT INTO club_requirements (identityID, money, people, school, club, year, type, cltype, region, event_time, support_type, upload, ins, title, information, intern_number)
+VALUES ('$identityID', '$money', '$people', '$school', '$club', '$year', '$type', '$cltype', '$region', '$event_time', '$support_type', '$upload', '$ins', '$title', '$information', '$intern_number')
 ";
 
     if (mysqli_query($link, $sql)) {
