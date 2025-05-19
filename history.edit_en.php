@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST["title"];
     $information = $_POST["information"];
 
-    $update_sql = "UPDATE en_requirements 
+    $update_sql = "UPDATE en_requirements
                    SET enterprise=?, type=?, code=?, ins=?, region=?, date=?, sponsorship=?, money=?, hope=?, title=?, information=? 
                    WHERE enrequirement_num=?";
     $stmt = $link->prepare($update_sql);
@@ -219,8 +219,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div class="container edit-form-container">
             <h3>修改贊助內容</h3>
-            <form method="POST" action="history.edit_cl.php">
-                <input type="hidden" name="clrequirement_num" value="<?= $row['clrequirement_num'] ?>">
+            <form method="POST" action="history.edit_en.php">
+                <input type="hidden" name="enrequirement_num" value="<?= $data['enrequirement_num'] ?>">
+                <input type="hidden" name="enterprise" value="<?= $data['enterprise'] ?>">
+                <input type="hidden" name="type" value="<?= $data['type'] ?>">
+                <input type="hidden" name="code" value="<?= $data['code'] ?>">
 
                 <div class="mb-3">
                             <label class="form-label fw-bold">負責人姓名：</label>
@@ -237,39 +240,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="mb-3">
                             <label class="form-label fw-bold">贊助類型：</label>
                             <select class="form-control" name="sponsorship" required>
-                            required><?php echo htmlspecialchars($data["sponsorship"]); ?>
+                            <?php echo htmlspecialchars($data["sponsorship"]); ?>
                                 <option value="金錢" <?php if ($data["sponsorship"] == "金錢")
                                     echo "selected"; ?>>金錢</option>
                                 <option value="物資" <?php if ($data["sponsorship"] == "物資")
                                     echo "selected"; ?>>物資</option>
                                 <option value="場地" <?php if ($data["sponsorship"] == "場地")
-                                    echo "selected"; ?>>金錢</option>
+                                    echo "selected"; ?>>場地</option>
                                 <option value="提供實習" <?php if ($data["sponsorship"] == "提供實習")
-                                    echo "selected"; ?>>物資</option>
+                                    echo "selected"; ?>>提供實習</option>
                             </select>
                         </div>
 
-                        <div id="money-field" class="mb-3">
-                            <label class="form-label fw-bold">預算區間：</label>
-                            <select class="form-control" name="money">
-                            required><?php echo htmlspecialchars($data["money"]); ?>
-                                <option value="5,000元以下" <?php if ($data["money"] == "5,000元以下")
-                                    echo "selected"; ?>>5,000元以下
-                                </option>
-                                <option value="5,000元~10,000元" <?php if ($data["money"] == "5,000元~10,000元")
-                                    echo "selected"; ?>>5,000元~10,000元</option>
-                                <option value="10,000元~30,000元" <?php if ($data["money"] == "10,000元~30,000元")
-                                    echo "selected"; ?>>10,000元~30,000元</option>
-                                <option value="30,000元以上" <?php if ($data["money"] == "30,000元以上")
-                                    echo "selected"; ?>>
-                                    30,000元以上</option>
-                            </select>
-                        </div>
 
                         <div id="region-field" class="mb-3">
                             <label class="form-label fw-bold">贊助地區</label>
                             <select class="form-control" name="region">
-                            required><?php echo htmlspecialchars($data["region"]); ?>
+                            <?php echo htmlspecialchars($data["region"]); ?>
                                 <option value="北部" <?php if ($data["region"] == "北部")
                                     echo "selected"; ?>>北部
                                 </option>
@@ -286,58 +273,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="mb-3">
                             <label class="form-label fw-bold">希望社團達到目的：</label>
                             <select class="form-control" name="hope" required>
-                            required><?php echo htmlspecialchars($data["hope"]); ?>
+                            <?php echo htmlspecialchars($data["hope"]); ?>
                                 <option value="宣傳" <?php if ($data["hope"] == "宣傳")
                                     echo "selected"; ?>>宣傳</option>
                                 <option value="表演" <?php if ($data["hope"] == "表演")
                                     echo "selected"; ?>>表演</option>
-                                <option value="其他" <?php if ($data["hope"] == "了解本企業職務")
+                                <option value="了解本企業職務" <?php if ($data["hope"] == "了解本企業職務")
                                     echo "selected"; ?>>了解本企業職務</option>
                             </select>
                         </div>
 
-                <div class="mb-3">
-                    <label class="form-label">標題</label>
-                    <input type="text" class="form-control" name="title" value="<?= htmlspecialchars($row['title']) ?>"
-                        required>
-                </div>
+
 
                 <div class="mb-3" id="money-group" style="<?= $row['type'] === '金錢' ? '' : 'display: none;' ?>">
                     <label class="form-label">贊助金額</label>
                     <input type="number" class="form-control" name="money"
-                        value="<?= htmlspecialchars($row['money']) ?>">
+                        value="<?= htmlspecialchars($data['money']) ?>">
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">預估規模</label>
-                    <select class="form-control" name="people">
-                        <option value="">請選擇</option>
-                        <option value="0-10人" <?= $row['people'] == '0-10人' ? 'selected' : '' ?>>0-10人</option>
-                        <option value="11-20人" <?= $row['people'] == '11-20人' ? 'selected' : '' ?>>11-20人</option>
-                        <option value="21-30人" <?= $row['people'] == '21-30人' ? 'selected' : '' ?>>21-30人</option>
-                        <option value="31-40人" <?= $row['people'] == '31-40人' ? 'selected' : '' ?>>31-40人</option>
-                        <option value="41-50人" <?= $row['people'] == '41-50人' ? 'selected' : '' ?>>41-50人</option>
-                        <option value="50人以上" <?= $row['people'] == '50人以上' ? 'selected' : '' ?>>50人以上</option>
-                    </select>
-                </div>
+                
 
                 <div class="mb-3">
-                    <label class="form-label">贊助類型</label>
-                    <select class="form-select" name="type" id="type" required>
-                        <option value="金錢" <?= $row['type'] == '金錢' ? 'selected' : '' ?>>金錢</option>
-                        <option value="人力" <?= $row['type'] == '人力' ? 'selected' : '' ?>>人力</option>
-                        <option value="其他" <?= $row['type'] == '其他' ? 'selected' : '' ?>>其他</option>
-                    </select>
+                    <label class="form-label">內文標題</label>
+                    <input type="text" class="form-control" name="title"
+                    value="<?php echo htmlspecialchars($data["title"]); ?>" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">內文 (必填)</label>
                     <textarea class="form-control" name="information"
-                        required><?= htmlspecialchars($row['information']) ?></textarea>
+                        required><?= htmlspecialchars($data['information']) ?></textarea>
                 </div>
 
                 <button type="submit" class="btn btn-primary">更新</button>
-                <a href="post.history_cl.php" class="btn btn-secondary">取消</a>
+                <a href="post.history_en.php" class="btn btn-secondary">取消</a>
             </form>
         </div>
 
