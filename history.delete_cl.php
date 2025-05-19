@@ -148,7 +148,7 @@ https://templatemo.com/tm-591-villa-agency
                             <?php elseif ($_SESSION['level'] === 'en'): ?>
                                 <li><a href="self_en.php">個人頁面</a></li>
                             <?php endif; ?>
-                            <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
+                            <li><a href="logout.php">登出</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>

@@ -59,7 +59,7 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="self_en.php" class="active">個人頁面</a></li>
               <?php endif; ?>
-              <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
+              <li><a href="logout.php">登出</a></li>
             </ul>
             <a class='menu-trigger'><span>Menu</span></a>
           </nav>

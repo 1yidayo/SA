@@ -129,7 +129,7 @@ $title = ($mode === 'send') ? "向企業申請的合作" : "被企業邀請的�
               <?php endif; ?>
 
               <li><a href="self_<?= $_SESSION['level'] ?>.php">個人頁面</a></li>
-              <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
+              <li><a href="logout.php">登出</a></li>
             </ul>
           </nav>
         </div>
