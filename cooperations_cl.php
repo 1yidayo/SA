@@ -30,20 +30,21 @@ if ($mode === 'send') {
             ORDER BY cr.request_time DESC";
 } else {
   $sql = "SELECT cr.*, 
-                 COALESCE(c.title, '') AS cl_title, 
-                 i.enterprise, 
-                 i.school, 
-                 i.club, 
-                 cr.status, 
-                 cr.request_time, 
-                 cr.clrequirement_num
-          FROM cooperation_requests cr
-          LEFT JOIN club_requirements c ON cr.clrequirement_num = c.clrequirement_num
-          LEFT JOIN identity i ON cr.enterprise_identityID = i.identityID
-          WHERE cr.club_identityID = ? 
-            AND cr.initiator = 'enterprise' 
-            AND cr.status = ?
-          ORDER BY cr.request_time DESC";
+               COALESCE(c.title, '') AS cl_title, 
+               COALESCE(i.school, '') AS school,
+               COALESCE(i.club, '') AS club,
+               i.enterprise, 
+               cr.status, 
+               cr.request_time, 
+               cr.clrequirement_num
+        FROM cooperation_requests cr
+        LEFT JOIN club_requirements c ON cr.clrequirement_num = c.clrequirement_num
+        LEFT JOIN identity i ON cr.club_identityID = i.identityID
+        WHERE cr.club_identityID = ? 
+          AND cr.initiator = 'enterprise' 
+          AND cr.status = ?
+        ORDER BY cr.request_time DESC";
+
 }
 
 
@@ -193,7 +194,7 @@ $title = ($mode === 'send') ? "向企業申請的合作" : "被企業邀請的�
                 <?= htmlspecialchars($row['cl_title']) ?>
               </a>
               <div style="font-weight:normal; margin-top:10px;">
-                <p class="card-text">學校社團：</p>：<?= htmlspecialchars($row['school']) ?>     <?= htmlspecialchars($row['club']) ?>
+                <p class="card-text">學校社團：<?= htmlspecialchars($row['school']) ?> <?= htmlspecialchars($row['club']) ?>
                 </p>
                 <p class="card-text">申請時間：<?= htmlspecialchars($row['request_time']) ?></p>
                 <p class="card-text">狀態：
