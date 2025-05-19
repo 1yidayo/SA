@@ -168,7 +168,7 @@ session_start();
                   <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                     <span class="ms-1"><b>社團類型</b></span>
                   </div>
-                  <input class="form-control" type="text" placeholder="請輸入社團類型" aria-label="請輸入社團類型" name="type"
+                  <input class="form-control" type="text" placeholder="請輸入社團類型" aria-label="請輸入社團類型" name="cltype"
                     value="<?php echo $cltype; ?>" required title="必填欄位！">
                 </div>
               </div>
