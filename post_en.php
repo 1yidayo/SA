@@ -105,81 +105,25 @@ session_start();
               ?>
               <input type="hidden" name="identityID" value="<?php echo $_SESSION['identityID']; ?>">
 
-              <div class="col-12">
-  <div class="input-group">
-    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-      <span class="ms-1"><b>企業名稱</b></span>
-    </div>
-    <input class="form-control" type="text" placeholder="請輸入企業名稱" name="enterprise"
+    <input class="form-control" type="hidden" placeholder="請輸入企業名稱" name="enterprise"
       value="<?php echo $enterprise; ?>" required readonly>
-  </div>
-</div>
 
-<div class="col-12">
-  <div class="input-group">
-    <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-      <span class="ms-1"><b>企業行業別</b></span>
-    </div>
-    <input class="form-control" type="text" placeholder="請輸入企業行業別(eg:科技業、金融業)" name="type"
+    <input class="form-control" type="hidden" placeholder="請輸入企業行業別(eg:科技業、金融業)" name="type"
       value="<?php echo $entype; ?>" required readonly>
-  </div>
-</div>
-<div class="col-12">
-                <div class="input-group">
-                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>統一編號</b></span>
-                  </div>
-                  <input class="form-control" type="text" placeholder="請輸入公司統一編號" name="code"
+
+                  <input class="form-control" type="hidden" placeholder="請輸入公司統一編號" name="code"
                     value="<?php echo $code; ?>" required>
-                </div>
-              </div>
 
-
-
-              <div class="col-12">
-                <div class="input-group">
-                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>活動負責人姓名</b></span>
-                  </div>
-                  <input class="form-control" type="text" placeholder="請輸入負責人姓名與職稱" name="enperson"
+                  <input class="form-control" type="hidden" placeholder="請輸入負責人姓名與職稱" name="person"
                     value="<?php echo $enperson; ?>" required>
-                </div>
-              </div>
 
-              
-
-              <div class="col-12">
-                <div class="input-group">
-                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>企業官方網站或社群連結</b></span>
-                  </div>
-                  <input class="form-control" type="text" placeholder="請輸入企業官方網站或社群連結" name="enins"
+                  <input class="form-control" type="hidden" placeholder="請輸入企業官方網站或社群連結" name="ins"
                     value="<?php echo $enins; ?>" required>
-                </div>
-              </div>
 
-              <div class="col-12">
-                <div class="input-group">
-                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>企業Gmail/連絡電話</b></span>
-                  </div>
-                  <input class="form-control" type="text" placeholder="請輸入企業Gmail/連絡電話" name="enphone"
+                  <input class="form-control" type="hidden" placeholder="請輸入企業Gmail/連絡電話" name="phone"
                     value="<?php echo $enphone; ?>" required>
-                </div>
-              </div>
 
-              <div class="col-12">
-                <div class="input-group">
-                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                    <span class="ms-1"><b>預計提供幫助日期</b></span>
-                  </div>
-                  <input type="date" name="date" class="form-control" required>
-                </div>
-              </div>
-              
-
-              <div class="col-12">
-  <div class="input-group">
+              <div class="input-group">
     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
       <span class="ms-1"><b>可提供的贊助類型</b></span>
     </div>
@@ -189,9 +133,24 @@ session_start();
       <option value="物資">物資</option>
       <option value="場地">場地</option>
       <option value="提供實習">提供實習</option>
+      <option value="other">其他</option>
     </select>
   </div><br>
-</div>
+</div><br>
+            <div id="event_time-group">
+              <div class="col-12">
+                <div class="input-group">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>預計提供幫助日期</b></span>
+                  </div>
+                  <input type="date" name="date" class="form-control" required>
+                </div>
+              </div>
+            </div>
+              
+
+              <div class="col-12">
+  
 
               <!-- 贊助範圍（動態顯示） -->
               <div class="col-12" id="moneyRangeGroup" style="display:none; margin-top:10px;">
@@ -199,6 +158,7 @@ session_start();
                   <span class="ms-1"><b>贊助範圍</b></span>
                 </div>
                 <select class="form-select" name="money">
+                  <option value="">請選擇</option>
                   <option value="$20,000以下">$20,000以下</option>
                   <option value="$20,001-$30,000">$20,001-$30,000</option>
                   <option value="$30,001-$50,000">$30,001-$50,000</option>
@@ -206,9 +166,17 @@ session_start();
                   <option value="$70,001以上">$70,001以上</option>
                 </select><br>
               </div>
+                <div class="col-12" id="intern-group" style="display:none;">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>預估提供的實習人數(必填)</b></span>
+                  </div>
+                  <input type="number" class="form-control" name="intern_number" id="intern_number"
+                    placeholder="請輸入實習人數" min="1" title="必填欄位！">
+                </div>
 
 
               <div class="col-12">
+  <div id="region-group">
   <div class="input-group">
     <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
       <span class="ms-1" id="region-label"><b>贊助地區</b></span>
@@ -220,22 +188,10 @@ session_start();
       <option value="南部">南部</option>
       <option value="東部">東部</option>
     </select>
-  </div><br>
+  </div>
+  <br>
 </div>
-
-              <!-- 贊助範圍（動態顯示） -->
-              <div class="col-12" id="moneyRangeGroup" style="display:none; margin-top:10px;">
-                <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
-                  <span class="ms-1"><b>贊助範圍</b></span>
-                </div>
-                <select class="form-select" name="money">
-                  <option value="$20,000以下">$20,000以下</option>
-                  <option value="$20,001-$30,000">$20,001-$30,000</option>
-                  <option value="$30,001-$50,000">$30,001-$50,000</option>
-                  <option value="$50,001-$70,000">$50,001-$70,000</option>
-                  <option value="$70,001以上">$70,001以上</option>
-                </select><br>
-              </div>
+</div>
 
               <div class="col-12">
                 <div class="input-group">
@@ -303,20 +259,46 @@ session_start();
     const sponsorshipSelect = document.getElementById('sponsorship');
     const regionLabel = document.getElementById('region-label');
     const moneyRangeGroup = document.getElementById('moneyRangeGroup');
+    const internGroup = document.getElementById('intern-group');
+    const internInput = document.getElementById('intern_number');
+    const eventTimeGroup = document.getElementById('event_time-group');
+    const eventTimeInput = eventTimeGroup.querySelector('input');
+    const regionGroup = document.getElementById('region-group');
+    const regionInput = regionGroup.querySelector('select');
 
     sponsorshipSelect.addEventListener('change', function () {
-      // 切換地區標籤文字
-      if (this.value === '提供實習') {
+      const selectedValue = this.value;
+
+      // Change region label
+      if (selectedValue === '提供實習') {
         regionLabel.innerHTML = '<b>實習地區</b>';
       } else {
         regionLabel.innerHTML = '<b>贊助地區</b>';
       }
 
-      // 顯示或隱藏金錢範圍欄位
-      moneyRangeGroup.style.display = (this.value === '金錢') ? 'block' : 'none';
+      // Show/hide money range
+      moneyRangeGroup.style.display = (selectedValue === '金錢') ? 'block' : 'none';
+
+      // Show/hide intern group and disable unrelated fields when '提供實習'
+      if (selectedValue === '提供實習') {
+        internGroup.style.display = 'block';
+        internInput.setAttribute('required', 'required');
+
+        regionGroup.style.display = 'none';
+        regionInput.removeAttribute('required');
+
+      } else {
+        internGroup.style.display = 'none';
+        internInput.removeAttribute('required');
+
+        regionGroup.style.display = 'block';
+        regionInput.setAttribute('required', 'required');
+
+      }
     });
   });
 </script>
+
 
 </body>
 

@@ -14,17 +14,20 @@
         $enterprise = $_POST['enterprise'];
         $type = $_POST['type'];
         $code = $_POST['code'];
+        $person = $_POST['person'];
         $ins = $_POST['ins'];
+        $phone = $_POST['phone'];
         $region = $_POST['region'];
         $date = $_POST['date'];
         $sponsorship = $_POST['sponsorship'];
         $hope = $_POST['hope'];
         $title = $_POST['title'];
         $information = $_POST['information'];
+        $intern_number = $_POST['intern_number'];
 
         $link = mysqli_connect('localhost', 'root', '', 'SAS');
-        $sql = "insert into en_requirements (identityID, money, enterprise, type, code, ins, region, date, sponsorship, hope, title, information)
-        VALUES ('$identityID', '$money', '$enterprise', '$type', '$code', '$ins', '$region', '$date', '$sponsorship', '$hope', '$title', '$information')";
+        $sql = "insert into en_requirements (identityID, money, enterprise, type, code, person, ins, phone, region, date, sponsorship, hope, title, information, intern_number)
+        VALUES ('$identityID', '$money', '$enterprise', '$type', '$code', '$person', '$ins', '$phone', '$region', '$date', '$sponsorship', '$hope', '$title', '$information', '$intern_number')";
         if (mysqli_query($link, $sql)) {
             echo "<script>
                 alert('發布成功！');
