@@ -4,26 +4,20 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
 $enrequirement_num = $_GET['enrequirement_num'];
 
 // 抓活動資料
-$sql = "SELECT er.*, 
-               i.profile_img, 
-               i.enterprise, 
-               i.entype, 
-               i.enplace, 
-               i.enperson, 
-               i.enins, 
-               i.enphone, 
-               i.enprefer, 
-               i.endonate
+$sql = "SELECT er.*, i.profile_img, i.enterprise, i.entype, i.enplace, i.enperson, i.enins, i.enphone, i.enprefer, i.endonate
         FROM en_requirements er
         LEFT JOIN identity i ON er.identityID = i.identityID
         WHERE er.enrequirement_num = '$enrequirement_num'";
 $result = mysqli_query($link, $sql);
 $row = mysqli_fetch_assoc($result);
-?>
 
+if (!$row) {
+    echo "<div class='container mt-5'><h3>找不到該篇貼文</h3></div>";
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="zh-TW">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -104,23 +98,30 @@ $row = mysqli_fetch_assoc($result);
   </div>
 
   <div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-2">
-      <h2 style="font-size: 40px;" class="mb-0"><?= htmlspecialchars($row['title']) ?></h2>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2 class="mb-0" style="font-size:40px;"><?= htmlspecialchars($row['title']) ?></h2>
       <?php if (isset($_SESSION['level']) && $_SESSION['level'] === 'cl'): ?>
         <?php
-        $clubID = $_SESSION['identityID'];
-        $enterpriseID = $row['identityID'];
-        $check_sql = "SELECT * FROM cooperation_requests WHERE initiator='club' AND club_identityID='$clubID' AND enterprise_identityID='$enterpriseID' AND enrequirement_num='$enrequirement_num'";
-        $check_result = mysqli_query($link, $check_sql);
-        $requested = mysqli_num_rows($check_result) > 0;
+          $clubID = $_SESSION['identityID'];
+          $enterpriseID = $row['identityID'];
+          // 檢查是否已申請
+          $check = $link->prepare(
+            "SELECT COUNT(*) FROM cooperation_requests WHERE initiator='club' AND club_identityID=? AND enterprise_identityID=? AND enrequirement_num=?"
+          );
+          $check->bind_param('iii', $clubID, $enterpriseID, $enrequirement_num);
+          $check->execute();
+          $check->bind_result($cnt);
+          $check->fetch();
+          $check->close();
         ?>
-        <?php if ($requested): ?>
+        <?php if ($cnt > 0): ?>
           <button class="btn btn-secondary" disabled>已申請</button>
         <?php else: ?>
           <form method="POST" action="send_cooperation.php" onsubmit="return confirm('確定要送出合作申請嗎？');">
-            <input type="hidden" name="target_identityID" value="<?= $enterpriseID ?>" />
-            <input type="hidden" name="enrequirement_num" value="<?= $enrequirement_num ?>" />
             <input type="hidden" name="initiator" value="club" />
+            <input type="hidden" name="club_identityID" value="<?= htmlspecialchars($_SESSION['identityID']) ?>" />
+            <input type="hidden" name="enterprise_identityID" value="<?= htmlspecialchars($row['identityID']) ?>" />
+            <input type="hidden" name="enrequirement_num" value="<?= htmlspecialchars($enrequirement_num) ?>" />
             <button type="submit" class="btn btn-warning">申請合作</button>
           </form>
         <?php endif; ?>

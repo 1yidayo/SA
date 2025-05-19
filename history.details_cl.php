@@ -10,8 +10,12 @@ $sql = "SELECT cr.*, i.profile_img, i.school, i.club, i.clsize, i.clyear, i.clty
         WHERE clrequirement_num = '$clrequirement_num'";
 $result = mysqli_query($link, $sql);
 $row = mysqli_fetch_assoc($result);
-?>
 
+if (!$row) {
+    echo "<div class='container mt-5'><h3>找不到該篇貼文</h3></div>";
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="zh-TW">
 
@@ -178,40 +182,39 @@ $row = mysqli_fetch_assoc($result);
   </div> -->
 
   <div class="container mt-4">
-    <!-- <h2 class='mb-0' style='font-size: 40px;'><?= htmlspecialchars($row['title']) ?></h2> -->
 
-    <div class="d-flex justify-content-between align-items-center mb-2">
-      <h2 class='mb-0' style='font-size: 40px;'><?= htmlspecialchars($row['title']) ?></h2>
-      <?php
-      // 判斷是否登入
-      if (isset($_SESSION['level']) && $_SESSION['level'] === 'en') {
-        $enterpriseID = $_SESSION['identityID'];
-        $clubID = $row['identityID'];
+    <div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="mb-0" style="font-size:40px;"><?= htmlspecialchars($row['title']) ?></h2>
+  <?php if (isset($_SESSION['level']) && $_SESSION['level'] === 'en'): ?>
+    <?php
+      $enterpriseID = $_SESSION['identityID'];
+      $clubID = $row['identityID'];
+      // 檢查是否已送出邀請
+      $check = $link->prepare(
+        "SELECT COUNT(*) FROM cooperation_requests WHERE initiator='enterprise' AND enterprise_identityID=? AND club_identityID=? AND clrequirement_num=?"
+      );
+      $check->bind_param('iii', $enterpriseID, $clubID, $clrequirement_num);
+      $check->execute();
+      $check->bind_result($cnt);
+      $check->fetch();
+      $check->close();
+    ?>
+    <?php if ($cnt > 0): ?>
+      <button class="btn btn-secondary" disabled>已邀請</button>
+    <?php else: ?>
+      <form method="POST" action="send_cooperation.php" onsubmit="return confirm('確定要送出合作邀請嗎？');">
+        <input type="hidden" name="initiator" value="enterprise" />
+        <input type="hidden" name="enterprise_identityID" value="<?= htmlspecialchars($enterpriseID) ?>" />
+        <input type="hidden" name="club_identityID" value="<?= htmlspecialchars($clubID) ?>" />
+        <input type="hidden" name="clrequirement_num" value="<?= htmlspecialchars($clrequirement_num) ?>" />
+        <button type="submit" class="btn btn-warning">邀請合作</button>
+      </form>
+    <?php endif; ?>
+  <?php elseif (!isset($_SESSION['level'])): ?>
+    <a href="login.php" class="btn btn-danger">請先登入</a>
+  <?php endif; ?>
+</div>
 
-        // 檢查是否已送出合作邀請
-        $check_sql = "SELECT * FROM cooperation_requests 
-                    WHERE initiator = 'enterprise' 
-                    AND enterprise_identityID = '$enterpriseID' 
-                    AND club_identityID = '$clubID' 
-                    AND clrequirement_num = '$clrequirement_num'";
-        $check_result = mysqli_query($link, $check_sql);
-        $invited = mysqli_num_rows($check_result) > 0;
-
-        if ($invited) {
-          echo "<button class='btn btn-secondary' disabled>已邀請</button>";
-        } else {
-          echo "<form method='POST' action='send_cooperation.php' onsubmit='return confirm(\"確定要送出合作邀請嗎？\");'>
-                <input type='hidden' name='target_identityID' value='$clubID' />
-                <input type='hidden' name='clrequirement_num' value='$clrequirement_num' />
-                <input type='hidden' name='initiator' value='enterprise' />
-                <button type='submit' class='btn btn-warning'>邀請合作</button>
-              </form>";
-        }
-      } elseif (!isset($_SESSION['level'])) {
-        echo "<a href='login.php' class='btn btn-danger'>請先登入</a>";
-      }
-      ?>
-    </div>
     <div class="card mb-4"></div>
 
     <div class="row">
