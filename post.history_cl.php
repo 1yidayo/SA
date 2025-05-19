@@ -226,8 +226,7 @@ https://templatemo.com/tm-591-villa-agency
         ];
 
         while ($row = mysqli_fetch_assoc($result)) {
-          $support_type = $row['support_type'];
-          $support_type_display = $supportTypeMap[$support_type] ?? $support_type;
+          $type = $row['type'];
 
           // 顯示人數（僅在不是社群曝光時）
           $people_display = ($support_type === '提供實習') ? $row['intern_number'] : $row['people'];
@@ -253,7 +252,7 @@ https://templatemo.com/tm-591-villa-agency
           }
 
           // ✅ 顯示活動類型（轉為中文）
-          echo "<li>活動類型：<span>" . htmlspecialchars($support_type_display) . "</span></li>
+          echo "<li>活動類型：<span>" . htmlspecialchars($type) . "</span></li>
           </ul>
           <div class='text-links'>
               <a href='history.details_cl.php?clrequirement_num=" . $row['clrequirement_num'] . "' class='custom-orange-btn'>詳情</a>
