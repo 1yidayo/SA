@@ -219,7 +219,6 @@ session_start();
                       <ul>
                         <li>企業名稱：<span>" . htmlspecialchars($row['enterprise']) . "</span></li>
                         <li>行業別：<span>" . htmlspecialchars($row['type']) . "</span></li>
-                        <li>贊助範圍：<span>" . htmlspecialchars($row['money']) . "</span></li>
                         <li>企業贊助類型：<span>" . htmlspecialchars($row['sponsorship']) . "</span></li>
                       </ul>
                       <div class='main-button'>
