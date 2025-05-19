@@ -245,8 +245,14 @@ https://templatemo.com/tm-591-villa-agency
 
                 <div class="mb-3" id="money-group" style="<?= $row['type'] === '金錢' ? '' : 'display: none;' ?>">
                     <label class="form-label">贊助金額</label>
-                    <input type="number" class="form-control" name="money"
-                        value="<?= htmlspecialchars($row['money']) ?>">
+                    <select name="money" class="form-select" id="money">
+                    <option value="">請選擇</option>
+                    <option value="$20,000以下">$20,000以下</option>
+                    <option value="$20,001-$30,000">$20,001-$30,000</option>
+                    <option value="$30,001-$50,000">$30,001-$50,000</option>
+                    <option value="$50,001-$70,000">$50,001-$70,000</option>
+                    <option value="$70,001以上">$70,001以上</option>
+                    </select>
                 </div>
 
                 <div class="mb-3">

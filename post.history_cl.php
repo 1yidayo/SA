@@ -227,6 +227,7 @@ https://templatemo.com/tm-591-villa-agency
 
         while ($row = mysqli_fetch_assoc($result)) {
           $type = $row['type'];
+          $support_type = $row['support_type'];
 
           // 顯示人數（僅在不是社群曝光時）
           $people_display = ($support_type === '提供實習') ? $row['intern_number'] : $row['people'];
