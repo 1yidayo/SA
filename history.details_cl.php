@@ -183,34 +183,34 @@ $row = mysqli_fetch_assoc($result);
     <div class="d-flex justify-content-between align-items-center mb-2">
       <h2 class='mb-0' style='font-size: 40px;'><?= htmlspecialchars($row['title']) ?></h2>
       <?php
-    // 判斷是否登入
-    if (isset($_SESSION['level']) && $_SESSION['level'] === 'en') {
-      $enterpriseID = $_SESSION['identityID'];
-      $clubID = $row['identityID'];
+      // 判斷是否登入
+      if (isset($_SESSION['level']) && $_SESSION['level'] === 'en') {
+        $enterpriseID = $_SESSION['identityID'];
+        $clubID = $row['identityID'];
 
-      // 檢查是否已送出合作邀請
-      $check_sql = "SELECT * FROM cooperation_requests 
+        // 檢查是否已送出合作邀請
+        $check_sql = "SELECT * FROM cooperation_requests 
                     WHERE initiator = 'enterprise' 
                     AND enterprise_identityID = '$enterpriseID' 
                     AND club_identityID = '$clubID' 
                     AND clrequirement_num = '$clrequirement_num'";
-      $check_result = mysqli_query($link, $check_sql);
-      $invited = mysqli_num_rows($check_result) > 0;
+        $check_result = mysqli_query($link, $check_sql);
+        $invited = mysqli_num_rows($check_result) > 0;
 
-      if ($invited) {
-        echo "<button class='btn btn-secondary' disabled>已邀請</button>";
-      } else {
-        echo "<form method='POST' action='send_cooperation.php' onsubmit='return confirm(\"確定要送出合作邀請嗎？\");'>
+        if ($invited) {
+          echo "<button class='btn btn-secondary' disabled>已邀請</button>";
+        } else {
+          echo "<form method='POST' action='send_cooperation.php' onsubmit='return confirm(\"確定要送出合作邀請嗎？\");'>
                 <input type='hidden' name='target_identityID' value='$clubID' />
                 <input type='hidden' name='clrequirement_num' value='$clrequirement_num' />
                 <input type='hidden' name='initiator' value='enterprise' />
                 <button type='submit' class='btn btn-warning'>邀請合作</button>
               </form>";
+        }
+      } elseif (!isset($_SESSION['level'])) {
+        echo "<a href='login.php' class='btn btn-danger'>請先登入</a>";
       }
-    } elseif (!isset($_SESSION['level'])) {
-      echo "<a href='login.php' class='btn btn-danger'>請先登入</a>";
-    }
-    ?>
+      ?>
     </div>
     <div class="card mb-4"></div>
 
@@ -265,9 +265,10 @@ $row = mysqli_fetch_assoc($result);
       <!-- 右邊：社團資料 + 頭像 -->
       <div class="col-lg-3">
         <div class="card p-3" style="">
-          <img src="uploads/<?= $row['profile_img'] ?? 'default-profile.png' ?>" alt="頭像" class="rounded-circle mb-3"
-            style="width: 100px; height: 100px; object-fit: cover; align-items: center;">
-
+          <div class="text-center mb-3">
+            <img src="uploads/<?= $row['profile_img'] ?? 'default-profile.png' ?>" alt="頭像" class="rounded-circle mb-3"
+              style="width: 100px; height: 100px; object-fit: cover; align-items: center;">
+          </div>
           <p style="font-size: 16px; text-align: left;"><strong>學校名稱：</strong><?= $row['school'] ?></p>
           <p style="font-size: 16px; text-align: left;"><strong>社團名稱：</strong><?= $row['club'] ?></p>
           <p style="font-size: 16px; text-align: left;"><strong>社團人數：</strong><?= $row['clsize'] ?></p>
