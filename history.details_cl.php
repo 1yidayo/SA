@@ -79,7 +79,7 @@ if (!$row) {
               <?php endif; ?>
 
               <li><a href="self_<?= $_SESSION['level'] ?>.php">個人頁面</a></li>
-              <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
+              <li><a href="logout.php">登出</a></li>
             </ul>
             <a class='menu-trigger'><span>Menu</span></a>
           </nav>

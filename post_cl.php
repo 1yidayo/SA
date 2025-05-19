@@ -88,7 +88,7 @@ session_start();
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="self_en.php">個人頁面</a></li>
               <?php endif; ?>
-              <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
+              <li><a href="logout.php">登出</a></li>
             </ul>
             <a class='menu-trigger'>
               <span>Menu</span>
@@ -202,7 +202,6 @@ session_start();
                     <option value="物資">物資</option>
                     <option value="場地">場地</option>
                     <option value="提供實習">提供實習</option>
-                    <option value="exposure">社群曝光／媒體報導</option>
                     <option value="other">其他</option>
                   </select>
                 </div>

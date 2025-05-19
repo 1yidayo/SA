@@ -16,32 +16,33 @@ $status = $_GET['status'] ?? '待處理';
 
 if ($mode === 'receive') {
   $sql = "SELECT cr.*, 
-                   COALESCE(c.title, '') AS cl_title, 
-                   i.school, i.club, 
-                   cr.status, 
-                   cr.request_time, 
-                   cr.clrequirement_num
-            FROM cooperation_requests cr
-            LEFT JOIN club_requirements c ON cr.clrequirement_num = c.clrequirement_num
-            LEFT JOIN identity i ON cr.club_identityID = i.identityID
-            WHERE cr.enterprise_identityID = ?
-              AND cr.initiator = 'club'
-              AND cr.status = ?
-            ORDER BY cr.request_time DESC";
+       COALESCE(e.title, '') AS en_title,
+       COALESCE(e.enterprise, '') AS enterprise,
+       i.club, i.school,
+       cr.request_time, cr.enrequirement_num
+FROM cooperation_requests cr
+LEFT JOIN en_requirements e ON cr.enrequirement_num = e.enrequirement_num
+LEFT JOIN identity i ON cr.club_identityID = i.identityID
+WHERE cr.enterprise_identityID = ?
+  AND cr.initiator = 'club'
+  AND cr.status = ?
+ORDER BY cr.request_time DESC;
+";
+
 } else {
   $sql = "SELECT cr.*, 
-                   COALESCE(e.title, '') AS en_title, 
-                   i.school, i.club, 
-                   cr.status, 
-                   cr.request_time, 
-                   cr.enrequirement_num
-            FROM cooperation_requests cr
-            LEFT JOIN en_requirements e ON cr.clrequirement_num = e.enrequirement_num
-            LEFT JOIN identity i ON cr.enterprise_identityID = i.identityID
-            WHERE cr.enterprise_identityID = ?
-              AND cr.initiator = 'enterprise'
-              AND cr.status = ?
-            ORDER BY cr.request_time DESC";
+       COALESCE(c.title, '') AS cl_title,
+       i.club, i.school,
+       cr.request_time, cr.clrequirement_num
+FROM cooperation_requests cr
+LEFT JOIN club_requirements c ON cr.clrequirement_num = c.clrequirement_num
+LEFT JOIN identity i ON cr.club_identityID = i.identityID
+WHERE cr.enterprise_identityID = ?
+  AND cr.initiator = 'enterprise'
+  AND cr.status = ?
+ORDER BY cr.request_time DESC;
+";
+
 }
 
 $stmt = $link->prepare($sql);
@@ -125,7 +126,7 @@ $title = ($mode === 'receive') ? "收到社團申請的合作" : "邀請社團�
               <?php endif; ?>
 
               <li><a href="self_<?= $_SESSION['level'] ?>.php">個人頁面</a></li>
-              <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
+              <li><a href="logout.php">登出</a></li>
             </ul>
           </nav>
         </div>
@@ -174,7 +175,7 @@ $title = ($mode === 'receive') ? "收到社團申請的合作" : "邀請社團�
                 <?= htmlspecialchars($row['cl_title']) ?>
               </a>
               <div style="font-weight:normal; margin-top:10px;">
-                <p class="card-text">學校社團：</p>：<?= htmlspecialchars($row['school']) ?>     <?= htmlspecialchars($row['club']) ?>
+                <p class="card-text">學校社團：<?= htmlspecialchars($row['school']) ?>     <?= htmlspecialchars($row['club']) ?>
                 </p>
                 <p class="card-text">申請時間：<?= htmlspecialchars($row['request_time']) ?></p>
                 <p class="card-text">狀態：

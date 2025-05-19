@@ -149,7 +149,7 @@ if (!isset($_SESSION['identityID']) || empty($_SESSION['identityID'])) {
               <?php elseif ($_SESSION['level'] === 'en'): ?>
                 <li><a href="self_en.php">個人頁面</a></li>
               <?php endif; ?>
-              <li><a href="logout.php">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登出</a></li>
+              <li><a href="logout.php">登出</a></li>
             </ul>
           </nav>
         </div>
