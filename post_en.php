@@ -141,8 +141,8 @@ session_start();
                   <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
                     <span class="ms-1"><b>活動負責人姓名</b></span>
                   </div>
-                  <input class="form-control" type="text" placeholder="請輸入負責人姓名與職稱" name="ins"
-                    value="<?php echo $ins; ?>" required>
+                  <input class="form-control" type="text" placeholder="請輸入負責人姓名與職稱" name="enperson"
+                    value="<?php echo $enperson; ?>" required>
                 </div>
               </div>
 
