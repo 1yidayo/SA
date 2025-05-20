@@ -1,4 +1,5 @@
 <?php
+ob_start(); // 啟用輸出緩衝
 session_start();
 
 // 檢查是否登入與是否有必要資訊
@@ -28,9 +29,15 @@ if (isset($_GET['enrequirement_num'])) {
         header("Location: post.history_en.php");
         exit;
     } else {
+        mysqli_stmt_close($stmt);
+        mysqli_close($link);
+        // 延後輸出
+        ob_end_flush();
         echo "刪除失敗：" . mysqli_error($link);
     }
 } else {
+    // 延後輸出
+    ob_end_flush();
     echo "未提供要刪除的資料編號";
 }
 ?>
