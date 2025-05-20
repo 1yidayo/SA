@@ -133,7 +133,7 @@ session_start();
       <option value="物資">物資</option>
       <option value="場地">場地</option>
       <option value="提供實習">提供實習</option>
-      <option value="other">其他</option>
+      <option value="其他">其他</option>
     </select>
   </div><br>
 </div><br>
@@ -172,6 +172,13 @@ session_start();
                   </div>
                   <input type="number" class="form-control" name="intern_number" id="intern_number"
                     placeholder="請輸入實習人數" min="1" title="必填欄位！">
+                </div>
+                <div class="col-12" id="others-group" style="display:none;">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>概述(必填)</b></span>
+                  </div>
+                  <input type="text" class="form-control" name="others" id="others"
+                    placeholder="請概述可提供的贊助" title="必填欄位！">
                 </div>
 
 
@@ -267,35 +274,42 @@ session_start();
     const regionInput = regionGroup.querySelector('select');
 
     sponsorshipSelect.addEventListener('change', function () {
-      const selectedValue = this.value;
+  const selectedValue = this.value;
 
-      // Change region label
-      if (selectedValue === '提供實習') {
-        regionLabel.innerHTML = '<b>實習地區</b>';
-      } else {
-        regionLabel.innerHTML = '<b>贊助地區</b>';
-      }
+  // Change region label
+  if (selectedValue === '提供實習') {
+    regionLabel.innerHTML = '<b>實習地區</b>';
+  } else {
+    regionLabel.innerHTML = '<b>贊助地區</b>';
+  }
 
-      // Show/hide money range
-      moneyRangeGroup.style.display = (selectedValue === '金錢') ? 'block' : 'none';
+  // Show/hide money range
+  moneyRangeGroup.style.display = (selectedValue === '金錢') ? 'block' : 'none';
 
-      // Show/hide intern group and disable unrelated fields when '提供實習'
-      if (selectedValue === '提供實習') {
-        internGroup.style.display = 'block';
-        internInput.setAttribute('required', 'required');
+  // Show/hide intern group and region
+  if (selectedValue === '提供實習') {
+    internGroup.style.display = 'block';
+    internInput.setAttribute('required', 'required');
 
-        regionGroup.style.display = 'none';
-        regionInput.removeAttribute('required');
+    regionGroup.style.display = 'none';
+    regionInput.removeAttribute('required');
+  } else {
+    internGroup.style.display = 'none';
+    internInput.removeAttribute('required');
 
-      } else {
-        internGroup.style.display = 'none';
-        internInput.removeAttribute('required');
+    regionGroup.style.display = 'block';
+    regionInput.setAttribute('required', 'required');
+  }
 
-        regionGroup.style.display = 'block';
-        regionInput.setAttribute('required', 'required');
-
-      }
-    });
+  // Show/hide 'others' group
+  if (selectedValue === '其他') {
+    document.getElementById('others-group').style.display = 'block';
+    document.getElementById('others').setAttribute('required', 'required');
+  } else {
+    document.getElementById('others-group').style.display = 'none';
+    document.getElementById('others').removeAttribute('required');
+  }
+});
   });
 </script>
 
