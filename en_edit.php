@@ -33,7 +33,7 @@ $sql = "UPDATE identity SET
         WHERE userID = '$userID'";
 
 if (mysqli_query($link, $sql)) {
-    // 更新成功，跳回編輯頁（無 alert，避免 header 衝突）
+    // 更新成功跳回編輯頁（無 alert避免 header 衝突）
     header("Location: self_en.php");
     exit();
 } else {

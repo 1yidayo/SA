@@ -12,12 +12,12 @@ if (isset($_FILES['profile_img']) && $_FILES['profile_img']['error'] === 0) {
         mkdir($targetDir, 0755, true);
     }
 
-    // 取得副檔名，避免重名，並加上 userID + timestamp
+    // 副檔名避免重名 加上 userID + timestamp
     $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
     $newFileName = 'user_' . $userID . '_' . time() . '.' . $extension;
     $targetFile = $targetDir . $newFileName;
 
-    // 先找出舊的圖片（如果有的話）
+    // 先找出舊的圖片
     $query = "SELECT profile_img FROM identity WHERE userID = '$userID'";
     $result = mysqli_query($link, $query);
     $row = mysqli_fetch_assoc($result);
@@ -25,7 +25,7 @@ if (isset($_FILES['profile_img']) && $_FILES['profile_img']['error'] === 0) {
 
     // 移動新圖並更新資料庫
     if (move_uploaded_file($file['tmp_name'], $targetFile)) {
-        // 刪除舊圖（不是預設圖，且存在於 uploads 資料夾）
+        // 刪除舊圖（存在於 uploads 資料夾）
         if (!empty($oldImage) && file_exists($targetDir . $oldImage) && $oldImage !== 'default-profile.png') {
             unlink($targetDir . $oldImage);
         }

@@ -106,7 +106,7 @@
   </div>
 </div>
 
-          <!-- 中間：貼文標題與活動詳情 -->
+          <!-- 貼文標題與活動詳情 -->
           <div class="col-lg-6">
             <div class="main-content">
               <div class="card shadow-sm p-3 mb-4 bg-white rounded">
@@ -132,12 +132,12 @@
             </div>
           </div>
 
-          <!-- 右側：發文者資訊與編輯按鈕 -->
+          <!-- 右發文者資訊與編輯按鈕 -->
           <?php
           $airequirement_num = $_GET['airequirement_num'];
           $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
-          // 使用 LEFT JOIN 來聯結資料表，確保 profile_img 被選取
+          // 使用 LEFT JOIN 來聯結資料表 確保 profile_img 被選取
           $sql = "SELECT ai_requirements.*, identity.profile_img 
         FROM ai_requirements 
         LEFT JOIN identity ON ai_requirements.identityID = identity.identityID 
@@ -154,7 +154,7 @@
           }
 
           if ($row) {
-            // 確認是否有 profile_img，若無則使用預設圖片
+            // 確認是否有 profile_img 若無則使用預設圖片
             $avatar = isset($row['profile_img']) && $row['profile_img'] ? $row['profile_img'] : 'default-profile.png';
             $sql = "SELECT * FROM identity WHERE userID = '$userID'";
             $result = mysqli_query($link, $sql);

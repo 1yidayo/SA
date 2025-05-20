@@ -240,19 +240,19 @@ https://templatemo.com/tm-591-villa-agency
               <li><span>" . htmlspecialchars($row['club']) . "</span></li>
               <br>";
 
-          // 👉 只有當 support_type 不是 "exposure" 時才顯示預估人數／實習人數
+          //  只有當 support_type 不是 "exposure" 時才顯示預估人數／實習人數
           if ($support_type !== 'exposure') {
             echo "<li>" . (($support_type === '提供實習') ? '預估需要的實習人數: ' : '預估規模：') . "<span>" . htmlspecialchars($people_display) . "</span></li>
               <br>";
           }
 
-          // ✅ 顯示預算（僅金錢）
+          //  顯示預算（僅金錢）
           if ($support_type === '金錢') {
             echo "<li>預算範圍：<span>" . htmlspecialchars($row['money']) . "</span></li>
               <br>";
           }
 
-          // ✅ 顯示活動類型（轉為中文）
+          //  顯示活動類型（轉為中文）
           echo "<li>活動類型：<span>" . htmlspecialchars($type) . "</span></li>
           </ul>
           <div class='text-links'>
