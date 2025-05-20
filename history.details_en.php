@@ -141,6 +141,12 @@ if (!$row) {
             <?php if ($row['sponsorship'] === '金錢'): ?>
               <p style="font-size:16px;"><strong>贊助範圍：</strong><?= $row['money'] ?: '未填寫' ?></p>
             <?php endif; ?>
+            <?php if ($row['sponsorship'] === '提供實習'): ?>
+              <p style="font-size:16px;"><strong>預估可提供的實習人數：</strong><?= $row['intern_number'] ?: '未填寫' ?></p>
+            <?php endif; ?>
+            <?php if ($row['sponsorship'] === '其他'): ?>
+              <p style="font-size:16px;"><strong>概述：</strong><?= $row['others'] ?: '未填寫' ?></p>
+            <?php endif; ?>
             <p style="font-size:16px;"><strong>預計活動時間：</strong><?= $row['date'] ?></p>
             <p style="font-size:16px;">
               <strong><?= ($row['sponsorship'] === '提供實習') ? '實習地區' : '活動地區' ?>：</strong><?= $row['region'] ?>
