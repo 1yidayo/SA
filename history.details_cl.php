@@ -143,7 +143,7 @@ if (!$row) {
       <p style="font-size: 16px; text-align: left;"><strong>贊助類型：</strong> <?= $row['support_type'] ?></p>
 
       <?php if ($row['support_type'] === '其他'): ?>
-        <p style="font-size: 16px; text-align: left;"><strong>其他類型：</strong> <?= !empty($row['others']) ? $row['others'] : '未填寫' ?></p>
+        <p style="font-size: 16px; text-align: left;"><strong>內容：</strong> <?= !empty($row['others']) ? $row['others'] : '未填寫' ?></p>
       <?php endif; ?>
 
 

@@ -228,7 +228,9 @@ session_start();
                     <h4><a href='history.details_cl.php?clrequirement_num=" . $row['clrequirement_num'] . "'>" . htmlspecialchars($row['title']) . "</a></h4>
                     <ul>
                         <li>學校：<span>" . htmlspecialchars($row['school']) . "</span></li>
+                        <br>
                         <li>社團：<span>" . htmlspecialchars($row['club']) . "</span></li>
+                        <br>
                         <li>需要贊助類型：<span>" . htmlspecialchars($row['support_type']) . "</span></li>
                     </ul>
                     <div class='main-button'>
