@@ -205,6 +205,19 @@ session_start();
                     <option value="other">其他</option>
                   </select>
                 </div>
+               
+              
+              <div class="col-12" id="others-group" style="display:none; margin-top: 10px;">
+                <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                  <span class="ms-1"><b>請輸入贊助類型</b></span>
+                </div>
+                <input type="text" class="form-control" name="others" id="others" placeholder="請輸入贊助類型">
+              </div>
+
+
+
+
+
               </div>
 
             </div>
@@ -236,6 +249,10 @@ session_start();
                   <input type="number" class="form-control" name="intern_number" id="intern_number"
                     placeholder="請輸入實習人數" min="1" title="必填欄位！">
                 </div>
+
+        
+
+
 
 
 
@@ -323,102 +340,121 @@ session_start();
           </form>
         </div>
         <script>
-          document.addEventListener('DOMContentLoaded', function () {
-            const supportTypeSelect = document.getElementById('support_type');
+  document.addEventListener('DOMContentLoaded', function () {
+    const supportTypeSelect = document.getElementById('support_type');
 
-            const moneyGroup = document.getElementById('money-group');
-            const moneyInput = document.getElementById('money');
+    const moneyGroup = document.getElementById('money-group');
+    const moneyInput = document.getElementById('money');
 
-            const internGroup = document.getElementById('intern-group');
-            const internInput = document.getElementById('intern_number');
+    const internGroup = document.getElementById('intern-group');
+    const internInput = document.getElementById('intern_number');
 
-            const peopleGroup = document.getElementById('people-group');
-            const peopleInput = peopleGroup.querySelector('select');
+    const peopleGroup = document.getElementById('people-group');
+    const peopleInput = peopleGroup.querySelector('select');
 
-            const regionGroup = document.getElementById('region-group');
-            const regionInput = regionGroup.querySelector('select');
+    const regionGroup = document.getElementById('region-group');
+    const regionInput = regionGroup.querySelector('select');
 
-            const eventTimeGroup = document.getElementById('event_time-group');
-            const eventTimeInput = eventTimeGroup.querySelector('input');
+    const eventTimeGroup = document.getElementById('event_time-group');
+    const eventTimeInput = eventTimeGroup.querySelector('input');
 
-            function toggleMoneyField() {
-              if (supportTypeSelect.value === '金錢') {
-                moneyGroup.style.display = 'block';
-                moneyInput.setAttribute('required', 'required');
-              } else {
-                moneyGroup.style.display = 'none';
-                moneyInput.removeAttribute('required');
-                moneyInput.value = '';
-              }
-            }
+    // 新增 others 欄位
+    const othersGroup = document.getElementById('others-group');
+    const othersInput = document.getElementById('others');
 
-            function toggleFieldsBySupportType() {
-              const val = supportTypeSelect.value;
+    function toggleMoneyField() {
+      if (supportTypeSelect.value === '金錢') {
+        moneyGroup.style.display = 'block';
+        moneyInput.setAttribute('required', 'required');
+      } else {
+        moneyGroup.style.display = 'none';
+        moneyInput.removeAttribute('required');
+        moneyInput.value = '';
+      }
+    }
 
-              if (val === '提供實習') {
-                internGroup.style.display = 'block';
-                internInput.setAttribute('required', 'required');
+    function toggleFieldsBySupportType() {
+      const val = supportTypeSelect.value;
 
-                peopleGroup.style.display = 'none';
-                regionGroup.style.display = 'none';
-                eventTimeGroup.style.display = 'none';
+      if (val === '提供實習') {
+        internGroup.style.display = 'block';
+        internInput.setAttribute('required', 'required');
 
-                peopleInput.removeAttribute('required');
-                regionInput.removeAttribute('required');
-                eventTimeInput.removeAttribute('required');
+        peopleGroup.style.display = 'none';
+        regionGroup.style.display = 'none';
+        eventTimeGroup.style.display = 'none';
 
-              } else if (val === 'exposure') {  // 這裡要用 option 的 value "exposure"
-                internGroup.style.display = 'none';
-                internInput.removeAttribute('required');
-                internInput.value = '';
+        peopleInput.removeAttribute('required');
+        regionInput.removeAttribute('required');
+        eventTimeInput.removeAttribute('required');
 
-                peopleGroup.style.display = 'none';
-                regionGroup.style.display = 'none';
-                eventTimeGroup.style.display = 'none';
+      } else if (val === 'exposure') {  // 保留你原本的判斷
+        internGroup.style.display = 'none';
+        internInput.removeAttribute('required');
+        internInput.value = '';
 
-                peopleInput.removeAttribute('required');
-                regionInput.removeAttribute('required');
-                eventTimeInput.removeAttribute('required');
+        peopleGroup.style.display = 'none';
+        regionGroup.style.display = 'none';
+        eventTimeGroup.style.display = 'none';
 
-              } else {
-                internGroup.style.display = 'none';
-                internInput.removeAttribute('required');
-                internInput.value = '';
+        peopleInput.removeAttribute('required');
+        regionInput.removeAttribute('required');
+        eventTimeInput.removeAttribute('required');
 
-                peopleGroup.style.display = 'block';
-                regionGroup.style.display = 'block';
-                eventTimeGroup.style.display = 'block';
+      } else {
+        internGroup.style.display = 'none';
+        internInput.removeAttribute('required');
+        internInput.value = '';
 
-                peopleInput.setAttribute('required', 'required');
-                regionInput.setAttribute('required', 'required');
-                eventTimeInput.setAttribute('required', 'required');
-              }
-            }
+        peopleGroup.style.display = 'block';
+        regionGroup.style.display = 'block';
+        eventTimeGroup.style.display = 'block';
 
-            toggleMoneyField();
-            toggleFieldsBySupportType();
+        peopleInput.setAttribute('required', 'required');
+        regionInput.setAttribute('required', 'required');
+        eventTimeInput.setAttribute('required', 'required');
+      }
+    }
 
-            supportTypeSelect.addEventListener('change', function () {
-              toggleMoneyField();
-              toggleFieldsBySupportType();
-            });
+    function toggleOthersField() {
+      if (supportTypeSelect.value === 'other') {
+        othersGroup.style.display = 'block';
+        othersInput.setAttribute('required', 'required');
+      } else {
+        othersGroup.style.display = 'none';
+        othersInput.removeAttribute('required');
+        othersInput.value = '';
+      }
+    }
 
-            const form = document.getElementById('contact-form');
-            form.addEventListener('submit', function (event) {
-              if (!form.checkValidity()) {
-                event.preventDefault();
-                event.stopPropagation();
+    // 一開始就判斷所有欄位狀態
+    toggleMoneyField();
+    toggleFieldsBySupportType();
+    toggleOthersField();
 
-                const firstInvalid = form.querySelector(':invalid');
-                if (firstInvalid) {
-                  alert(firstInvalid.title || '請填寫所有必填欄位');
-                  firstInvalid.focus();
-                }
-              }
-              form.classList.add('was-validated');
-            }, false);
-          });
-        </script>
+    supportTypeSelect.addEventListener('change', function () {
+      toggleMoneyField();
+      toggleFieldsBySupportType();
+      toggleOthersField();
+    });
+
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const firstInvalid = form.querySelector(':invalid');
+        if (firstInvalid) {
+          alert(firstInvalid.title || '請填寫所有必填欄位');
+          firstInvalid.focus();
+        }
+      }
+      form.classList.add('was-validated');
+    }, false);
+  });
+</script>
+
 
 
 

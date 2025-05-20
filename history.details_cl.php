@@ -98,7 +98,88 @@ if (!$row) {
     </div>
   </div>
 
-  
+  <!-- <div class="row">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2 class='mb-0' style='font-size: 40px;'><?= htmlspecialchars($row['title']) ?></h2>
+
+      <?php
+      if ($_SESSION['level'] === 'en') {
+        $enterpriseID = $_SESSION['identityID'];
+        $clubID = $row['identityID'];
+        $check_sql = "SELECT * FROM cooperation_requests WHERE initiator = 'enterprise' AND enterprise_identityID = '$enterpriseID' AND club_identityID = '$clubID' AND enrequirement_num = '$clrequirement_num'";
+        $check_result = mysqli_query($link, $check_sql);
+        $invited = mysqli_num_rows($check_result) > 0;
+
+        if ($invited) {
+          echo "<button class='btn btn-secondary' disabled>已邀請</button>";
+        } else {
+          echo "<form method='POST' action='send_cooperation.php'>
+                  <input type='hidden' name='target_identityID' value='$clubID' />
+                  <input type='hidden' name='enrequirement_num' value='$clrequirement_num' />
+                  <button type='submit' class='btn btn-warning'>邀請合作</button>
+                </form>";
+        }
+      }
+      ?>
+    </div>
+
+    <div class="card col-lg-3">
+      <div class="card-body">
+        <h5>活動資訊</h5>
+        <p><strong>贊助類型：</strong> <?= $row['support_type'] ?></p>
+
+        <?php if ($row['support_type'] === '金錢'): ?>
+          <p><strong>贊助範圍：</strong> <?= $row['money'] ?? '未填寫' ?></p>
+        <?php endif; ?>
+
+        <?php if ($row['support_type'] === '提供實習'): ?>
+          <p><strong>預估需要的實習人數：</strong> <?= $row['intern_number'] ?? '未填寫' ?></p>
+        <?php endif; ?>
+
+        <?php if ($row['support_type'] !== 'exposure' && $row['support_type'] !== '提供實習'): ?>
+          <p><strong>活動預計規模：</strong> <?= $row['people'] ?? '未填寫' ?></p>
+          <p><strong>活動地區：</strong> <?= $row['region'] ?? '未填寫' ?></p>
+        <?php endif; ?>
+
+        <p><strong>活動類型：</strong> <?= $row['type'] ?></p>
+        <p><strong>企劃書：</strong> <a href="<?= htmlspecialchars($row['upload']) ?>" download>下載</a></p>
+        <p><strong>社群連結：</strong> <a href="<?= $row['ins'] ?>" target="_blank">點此前往</a></p>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="main-content">
+        <div class="card card-body">
+          <h5>活動詳情內文</h5>
+          <p><?= nl2br(htmlspecialchars($row['information'])) ?></p>
+        </div>
+
+        <div class="card" id="comment-section">
+          <div class="card-body">
+            <h5>留言區</h5>
+            <textarea id="comment-text" class="form-control mb-2" rows="2" placeholder="留下你的留言..." style="resize: none;"></textarea>
+            <button class="btn btn-primary btn-sm" id="submit-comment">送出</button>
+            <div id="comments-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="card p-3">
+        <div class="text-center">
+          <img src="uploads/<?= $row['profile_img'] ?? 'default-profile.png' ?>" alt="頭像" class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;" />
+        </div>
+        <p><strong>學校：</strong><?= $row['school'] ?></p>
+        <p><strong>社團：</strong><?= $row['club'] ?></p>
+        <p><strong>人數：</strong><?= $row['clsize'] ?></p>
+        <p><strong>成立年：</strong><?= $row['clyear'] ?></p>
+        <p><strong>類型：</strong><?= $row['cltype'] ?></p>
+        <p><strong>社群：</strong><a href="<?= $row['clins'] ?>" target="_blank"><?= $row['clins'] ?></a></p>
+        <p><strong>電話：</strong><?= $row['clphone'] ?></p>
+      </div>
+    </div>
+  </div> -->
 
   <div class="container mt-4">
 
@@ -139,29 +220,42 @@ if (!$row) {
     <div class="row">
       <!-- 左邊：活動資訊 -->
       <div class="col-lg-3">
-        <div class="card">
-          <div class="card-body">
-            <h5 style="font-size: 25px; margin-bottom: 10px;">活動資訊</h5>
-            <p style="font-size: 16px; text-align: left;"><strong>贊助類型：</strong> <?= $row['support_type'] ?></p>
-            <?php if ($row['support_type'] === '金錢'): ?>
-              <p style="font-size: 16px; text-align: left;"><strong>贊助範圍：</strong> <?= $row['money'] ?? '未填寫' ?></p>
-            <?php endif; ?>
-            <?php if ($row['support_type'] === '提供實習'): ?>
-              <p style="font-size: 16px; text-align: left;"><strong>預估需要的實習人數：</strong>
-                <?= $row['intern_number'] ?? '未填寫' ?></p>
-            <?php endif; ?>
-            <?php if ($row['support_type'] !== 'exposure' && $row['support_type'] !== '提供實習'): ?>
-              <p style="font-size: 16px; text-align: left;"><strong>活動預計規模：</strong> <?= $row['people'] ?? '未填寫' ?></p>
-              <p style="font-size: 16px; text-align: left;"><strong>活動地區：</strong> <?= $row['region'] ?? '未填寫' ?></p>
-            <?php endif; ?>
-            <p style="font-size: 16px; text-align: left;"><strong>活動類型：</strong> <?= $row['type'] ?></p>
-            <p style="font-size: 16px; text-align: left;"><strong>企劃書：</strong> <a
-                href="<?= htmlspecialchars($row['upload']) ?>" download>下載</a></p>
-            <p style="font-size: 16px; text-align: left;"><strong>社群連結：</strong> <a href="<?= $row['ins'] ?>"
-                target="_blank">點此前往</a></p>
-          </div>
-        </div>
-      </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 style="font-size: 25px; margin-bottom: 10px;">活動資訊</h5>
+
+      <p style="font-size: 16px; text-align: left;"><strong>贊助類型：</strong> <?= $row['support_type'] ?></p>
+
+      <?php if ($row['support_type'] === 'other'): ?>
+        <p style="font-size: 16px; text-align: left;"><strong>其他類型：</strong> <?= !empty($row['others']) ? $row['others'] : '未填寫' ?></p>
+      <?php endif; ?>
+
+
+      <?php if ($row['support_type'] === '金錢'): ?>
+        <p style="font-size: 16px; text-align: left;"><strong>贊助範圍：</strong> <?= $row['money'] ?? '未填寫' ?></p>
+      <?php endif; ?>
+
+      <?php if ($row['support_type'] === '提供實習'): ?>
+        <p style="font-size: 16px; text-align: left;"><strong>預估需要的實習人數：</strong>
+          <?= $row['intern_number'] ?? '未填寫' ?></p>
+      <?php endif; ?>
+
+      <?php if ($row['support_type'] !== 'exposure' && $row['support_type'] !== '提供實習'): ?>
+        <p style="font-size: 16px; text-align: left;"><strong>活動預計規模：</strong> <?= $row['people'] ?? '未填寫' ?></p>
+        <p style="font-size: 16px; text-align: left;"><strong>活動地區：</strong> <?= $row['region'] ?? '未填寫' ?></p>
+      <?php endif; ?>
+
+      <p style="font-size: 16px; text-align: left;"><strong>活動類型：</strong> <?= $row['type'] ?></p>
+
+      <p style="font-size: 16px; text-align: left;"><strong>企劃書：</strong> <a
+          href="<?= htmlspecialchars($row['upload']) ?>" download>下載</a></p>
+
+      <p style="font-size: 16px; text-align: left;"><strong>社群連結：</strong> <a href="<?= $row['ins'] ?>"
+          target="_blank">點此前往</a></p>
+    </div>
+  </div>
+</div>
+
 
       <!-- 中間：內文 + 留言區 -->
       <div class="col-lg-6">
