@@ -145,12 +145,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hope = $_POST["hope"];
     $title = $_POST["title"];
     $information = $_POST["information"];
+    $intern_number = $_POST["intern_number"];
+    $others = $_POST["others"];
 
     $update_sql = "UPDATE en_requirements
-                   SET enterprise=?, type=?, code=?, ins=?, region=?, date=?, sponsorship=?, money=?, hope=?, title=?, information=? 
+                   SET enterprise=?, type=?, code=?, ins=?, region=?, date=?, sponsorship=?, money=?, hope=?, title=?, information=?, intern_number=?, others=?
                    WHERE enrequirement_num=?";
+    
     $stmt = $link->prepare($update_sql);
-    $stmt->bind_param("sssssssssssi", $enterprise, $type, $code, $ins, $region, $date, $sponsorship, $money, $hope, $title, $information, $requirement_num);
+    $stmt->bind_param("ssssssssssssssi", $enterprise, $type, $code, $ins, $region, $date, $sponsorship, $money, $hope, $title, $information, $intern_number, $others, $requirement_num);
 
     if ($stmt->execute()) {
         echo "<script>alert('修改成功'); window.location.href='post.history_en.php';</script>";
@@ -159,6 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "修改失敗：" . $stmt->error;
     }
 }
+
 ?>
 <!DOCTYPE html>
     <html lang="zh-TW">
@@ -240,23 +244,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="mb-3">
                     <label class="form-label">贊助類型</label>
                     <select class="form-select" name="sponsorship" id="sponsorship" required>
-                        <option value="金錢" <?= $row['sponsorship'] == '金錢' ? 'selected' : '' ?>>金錢</option>
-                        <option value="物資" <?= $row['sponsorship'] == '物資' ? 'selected' : '' ?>>物資</option>
-                        <option value="場地" <?= $row['sponsorship'] == '場地' ? 'selected' : '' ?>>場地</option>
-                        <option value="提供實習" <?= $row['sponsorship'] == '提供實習' ? 'selected' : '' ?>>提供實習</option>
+                        <option value="金錢" <?= $data['sponsorship'] == '金錢' ? 'selected' : '' ?>>金錢</option>
+                        <option value="物資" <?= $data['sponsorship'] == '物資' ? 'selected' : '' ?>>物資</option>
+                        <option value="場地" <?= $data['sponsorship'] == '場地' ? 'selected' : '' ?>>場地</option>
+                        <option value="提供實習" <?= $data['sponsorship'] == '提供實習' ? 'selected' : '' ?>>提供實習</option>
+                        <option value="其他" <?= $data['sponsorship'] == '其他' ? 'selected' : '' ?>>其他</option>
                     </select>
                 </div>
 
-                        <div class="mb-3" id="money-group" style="<?= $row['sponsorship'] === '金錢' ? '' : 'display: none;' ?>">
+                        <div class="mb-3" id="money-group" style="<?= $data['sponsorship'] === '金錢' ? '' : 'display: none;' ?>">
                     <label class="form-label">贊助範圍</label>
                     <select name="money" class="form-select" id="money">
                     <option value="">請選擇</option>
-                    <option value="$20,000以下">$20,000以下</option>
-                    <option value="$20,001-$30,000">$20,001-$30,000</option>
-                    <option value="$30,001-$50,000">$30,001-$50,000</option>
-                    <option value="$50,001-$70,000">$50,001-$70,000</option>
-                    <option value="$70,001以上">$70,001以上</option>
+                    <option value="$20,000以下" <?= $data['money'] == '$20,000以下' ? 'selected' : '' ?>>$20,000以下</option>
+                    <option value="$20,001-$30,000" <?= $data['money'] == '$20,001-$30,000' ? 'selected' : '' ?>>$20,001-$30,000</option>
+                    <option value="$30,001-$50,000" <?= $data['money'] == '$30,001-$50,000' ? 'selected' : '' ?>>$30,001-$50,000</option>
+                    <option value="$50,001-$70,000" <?= $data['money'] == '$50,001-$70,000' ? 'selected' : '' ?>>$50,001-$70,000</option>
+                    <option value="$70,001以上" <?= $data['money'] == '$70,001以上' ? 'selected' : '' ?>>$70,001以上</option>
+
                     </select>
+                </div>
+                <div class="col-12" id="intern-group" style="display:none;">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>預估提供的實習人數(必填)</b></span>
+                  </div>
+                  <input type="number" class="form-control" name="intern_number" id="intern_number"
+                        placeholder="請輸入實習人數" min="1" title="必填欄位！"
+                        value="<?= htmlspecialchars($data['intern_number']) ?>"> 
+                </div>
+                <div class="col-12" id="others-group" style="display:none;">
+                  <div class="d-flex align-items-center bg-light text-body rounded-start p-2">
+                    <span class="ms-1"><b>概述(必填)</b></span>
+                  </div>
+                  <input type="text" class="form-control" name="others" id="others"
+                        placeholder="請概述可提供的贊助" title="必填欄位！"
+                        value="<?= htmlspecialchars($data['others']) ?>">
                 </div>
 
 
@@ -291,13 +313,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
 
 
-
-                <div class="mb-3" id="money-group" style="<?= $row['type'] === '金錢' ? '' : 'display: none;' ?>">
-                    <label class="form-label">贊助金額</label>
-                    <input type="number" class="form-control" name="money"
-                        value="<?= htmlspecialchars($data['money']) ?>">
-                </div>
-
                 
 
                 <div class="mb-3">
@@ -317,12 +332,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </form>
         </div>
 
-        <script>
-            document.getElementById('type').addEventListener('change', function () {
-                const moneyGroup = document.getElementById('money-group');
-                moneyGroup.style.display = this.value === '金錢' ? 'block' : 'none';
-            });
-        </script>
+        <<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const sponsorship = document.getElementById('sponsorship');
+    const moneyGroup = document.getElementById('money-group');
+    const internGroup = document.getElementById('intern-group');
+    const othersGroup = document.getElementById('others-group');
+
+    function toggleFields() {
+        const value = sponsorship.value;
+        moneyGroup.style.display = value === '金錢' ? 'block' : 'none';
+        internGroup.style.display = value === '提供實習' ? 'block' : 'none';
+        othersGroup.style.display = value === '其他' ? 'block' : 'none';
+
+        // 清空不顯示的欄位
+        if (value !== '金錢') document.getElementById('money').value = '';
+        if (value !== '提供實習') document.getElementById('intern_number').value = '';
+        if (value !== '其他') document.getElementById('others').value = '';
+    }
+
+    sponsorship.addEventListener('change', toggleFields);
+
+    // 初次載入時觸發
+    toggleFields();
+});
+</script>
+
+
 
     </body>
 

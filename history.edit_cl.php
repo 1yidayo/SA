@@ -139,6 +139,7 @@ https://templatemo.com/tm-591-villa-agency
         $event_time = $_POST['event_time'] ?? $old['event_time'];
         $information = $_POST['information'] ?? $old['information'];
         $others = $_POST['others'] ?? $old['others'];
+        $intern_number = $_POST['intern_number'] ?? $old['intern_number'];
 
         $title = mysqli_real_escape_string($link, $title);
         $money = mysqli_real_escape_string($link, $money);
@@ -148,6 +149,8 @@ https://templatemo.com/tm-591-villa-agency
         $event_time = mysqli_real_escape_string($link, $event_time);
         $information = mysqli_real_escape_string($link, $information);
         $others = mysqli_real_escape_string($link, $others);
+        $intern_number = mysqli_real_escape_string($link, $intern_number);
+        
 
         $sql = "UPDATE club_requirements SET 
                 title = '$title',
@@ -157,7 +160,8 @@ https://templatemo.com/tm-591-villa-agency
                 region = '$region',
                 event_time = '$event_time',
                 information = '$information',
-                others = '$others'
+                others = '$others',
+                intern_number='$intern_number'
             WHERE clrequirement_num = $num AND identityID = '{$_SESSION['identityID']}'";
 
         mysqli_query($link, $sql);
@@ -289,6 +293,12 @@ https://templatemo.com/tm-591-villa-agency
     <input type="text" name="others" class="form-control" value="<?= htmlspecialchars($row['others'] ?? '') ?>">
 </div>
 
+<!-- 新增：實習人數輸入欄位 -->
+<div class="mb-3" id="intern-group" style="<?= $row['support_type'] === '提供實習' ? '' : 'display: none;' ?>">
+    <label class="form-label">預估需要的實習人數</label>
+    <input type="number" name="intern_number" class="form-control" min="1" value="<?= htmlspecialchars($row['intern_number'] ?? '') ?>">
+</div>
+
 <div class="mb-3">
     <label class="form-label">內文 (必填)</label>
     <textarea class="form-control" name="information" required><?= htmlspecialchars($row['information']) ?></textarea>
@@ -318,18 +328,19 @@ https://templatemo.com/tm-591-villa-agency
     const typeSelect = document.getElementById('type');
     const moneyGroup = document.getElementById('money-group');
     const othersGroup = document.getElementById('others-group');
+    const internGroup = document.getElementById('intern-group'); // 實習人數欄位
 
-    typeSelect.addEventListener('change', function () {
-        const selected = this.value;
-        moneyGroup.style.display = selected === '金錢' ? 'block' : 'none';
-        othersGroup.style.display = selected === 'other' ? 'block' : 'none';
-    });
-
-    // 初始頁面載入時也檢查一次
-    document.addEventListener('DOMContentLoaded', function () {
+    function updateSupportTypeFields() {
         const selected = typeSelect.value;
         moneyGroup.style.display = selected === '金錢' ? 'block' : 'none';
         othersGroup.style.display = selected === 'other' ? 'block' : 'none';
+        internGroup.style.display = selected === '提供實習' ? 'block' : 'none';
+    }
+
+    typeSelect.addEventListener('change', updateSupportTypeFields);
+
+    document.addEventListener('DOMContentLoaded', function () {
+        updateSupportTypeFields(); // 頁面一載入就顯示正確欄位
     });
 </script>
 
