@@ -24,10 +24,11 @@
         $title = $_POST['title'];
         $information = $_POST['information'];
         $intern_number = $_POST['intern_number'];
+        $others = $_POST['others'];
 
         $link = mysqli_connect('localhost', 'root', '', 'SAS');
-        $sql = "insert into en_requirements (identityID, money, enterprise, type, code, person, ins, phone, region, date, sponsorship, hope, title, information, intern_number)
-        VALUES ('$identityID', '$money', '$enterprise', '$type', '$code', '$person', '$ins', '$phone', '$region', '$date', '$sponsorship', '$hope', '$title', '$information', '$intern_number')";
+        $sql = "insert into en_requirements (identityID, money, enterprise, type, code, person, ins, phone, region, date, sponsorship, hope, title, information, intern_number, others)
+        VALUES ('$identityID', '$money', '$enterprise', '$type', '$code', '$person', '$ins', '$phone', '$region', '$date', '$sponsorship', '$hope', '$title', '$information', '$intern_number', '$others')";
         if (mysqli_query($link, $sql)) {
             echo "<script>
                 alert('發布成功！');
