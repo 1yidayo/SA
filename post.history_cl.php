@@ -270,16 +270,7 @@ https://templatemo.com/tm-591-villa-agency
         </div>
 
       </div>
-      <div class="row">
-        <!-- <div class="col-lg-12">
-          <ul class="pagination">
-            <li><a href="#">1</a></li>
-            <li><a class="is_active" href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">>></a></li>
-          </ul>
-        </div> -->
-      </div>
+      
     </div>
   </div>
 
