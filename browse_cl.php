@@ -160,6 +160,7 @@ session_start();
               <option value="物資">物資</option>
               <option value="場地">場地</option>
               <option value="提供實習">提供實習</option>
+              <option value="其他">其他</option>
             </select>
           </div>
 
@@ -218,9 +219,10 @@ session_start();
                       <h4><a href='history.details_en.php?enrequirement_num={$row['enrequirement_num']}'>" . htmlspecialchars($row['title']) . "</a></h4>
                       <ul>
                         <li>企業名稱：<span>" . htmlspecialchars($row['enterprise']) . "</span></li>
+                        <br>
                         <li>行業別：<span>" . htmlspecialchars($row['type']) . "</span></li>
+                        <br>
                         <li>企業贊助類型：<span>" . htmlspecialchars($row['sponsorship']) . "</span></li>
-                        <li>贊助範圍：<span>" . htmlspecialchars($row['money']) . "</span></li>
                         </ul>
                       <div class='main-button'>
                           <a href='history.details_en.php?enrequirement_num={$row['enrequirement_num']}'>了解活動詳情</a>
