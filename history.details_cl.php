@@ -220,29 +220,42 @@ if (!$row) {
     <div class="row">
       <!-- 左邊：活動資訊 -->
       <div class="col-lg-3">
-        <div class="card">
-          <div class="card-body">
-            <h5 style="font-size: 25px; margin-bottom: 10px;">活動資訊</h5>
-            <p style="font-size: 16px; text-align: left;"><strong>贊助類型：</strong> <?= $row['support_type'] ?></p>
-            <?php if ($row['support_type'] === '金錢'): ?>
-              <p style="font-size: 16px; text-align: left;"><strong>贊助範圍：</strong> <?= $row['money'] ?? '未填寫' ?></p>
-            <?php endif; ?>
-            <?php if ($row['support_type'] === '提供實習'): ?>
-              <p style="font-size: 16px; text-align: left;"><strong>預估需要的實習人數：</strong>
-                <?= $row['intern_number'] ?? '未填寫' ?></p>
-            <?php endif; ?>
-            <?php if ($row['support_type'] !== 'exposure' && $row['support_type'] !== '提供實習'): ?>
-              <p style="font-size: 16px; text-align: left;"><strong>活動預計規模：</strong> <?= $row['people'] ?? '未填寫' ?></p>
-              <p style="font-size: 16px; text-align: left;"><strong>活動地區：</strong> <?= $row['region'] ?? '未填寫' ?></p>
-            <?php endif; ?>
-            <p style="font-size: 16px; text-align: left;"><strong>活動類型：</strong> <?= $row['type'] ?></p>
-            <p style="font-size: 16px; text-align: left;"><strong>企劃書：</strong> <a
-                href="<?= htmlspecialchars($row['upload']) ?>" download>下載</a></p>
-            <p style="font-size: 16px; text-align: left;"><strong>社群連結：</strong> <a href="<?= $row['ins'] ?>"
-                target="_blank">點此前往</a></p>
-          </div>
-        </div>
-      </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 style="font-size: 25px; margin-bottom: 10px;">活動資訊</h5>
+
+      <p style="font-size: 16px; text-align: left;"><strong>贊助類型：</strong> <?= $row['support_type'] ?></p>
+
+      <?php if ($row['support_type'] === 'other'): ?>
+        <p style="font-size: 16px; text-align: left;"><strong>其他類型：</strong> <?= !empty($row['others']) ? $row['others'] : '未填寫' ?></p>
+      <?php endif; ?>
+
+
+      <?php if ($row['support_type'] === '金錢'): ?>
+        <p style="font-size: 16px; text-align: left;"><strong>贊助範圍：</strong> <?= $row['money'] ?? '未填寫' ?></p>
+      <?php endif; ?>
+
+      <?php if ($row['support_type'] === '提供實習'): ?>
+        <p style="font-size: 16px; text-align: left;"><strong>預估需要的實習人數：</strong>
+          <?= $row['intern_number'] ?? '未填寫' ?></p>
+      <?php endif; ?>
+
+      <?php if ($row['support_type'] !== 'exposure' && $row['support_type'] !== '提供實習'): ?>
+        <p style="font-size: 16px; text-align: left;"><strong>活動預計規模：</strong> <?= $row['people'] ?? '未填寫' ?></p>
+        <p style="font-size: 16px; text-align: left;"><strong>活動地區：</strong> <?= $row['region'] ?? '未填寫' ?></p>
+      <?php endif; ?>
+
+      <p style="font-size: 16px; text-align: left;"><strong>活動類型：</strong> <?= $row['type'] ?></p>
+
+      <p style="font-size: 16px; text-align: left;"><strong>企劃書：</strong> <a
+          href="<?= htmlspecialchars($row['upload']) ?>" download>下載</a></p>
+
+      <p style="font-size: 16px; text-align: left;"><strong>社群連結：</strong> <a href="<?= $row['ins'] ?>"
+          target="_blank">點此前往</a></p>
+    </div>
+  </div>
+</div>
+
 
       <!-- 中間：內文 + 留言區 -->
       <div class="col-lg-6">
