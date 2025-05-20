@@ -154,7 +154,7 @@ session_start();
           </div>
           <div class="col-md-2">
             <label for="support_type">企業贊助類型</label>
-            <select name="support_type" class="form-select">
+            <select name="sponsorship" class="form-select">
               <option value="">請選擇</option>
               <option value="金錢">金錢</option>
               <option value="物資">物資</option>
@@ -180,7 +180,7 @@ session_start();
 
     $money = isset($_POST['money']) ? mysqli_real_escape_string($link, $_POST['money']) : '';
     $enterprise = isset($_POST['enterprise']) ? mysqli_real_escape_string($link, $_POST['enterprise']) : '';
-    $sponsorship = isset($_POST['$sponsorship']) ? mysqli_real_escape_string($link, $_POST['$sponsorship']) : '';
+    $sponsorship = isset($_POST['sponsorship']) ? mysqli_real_escape_string($link, $_POST['sponsorship']) : '';
     $type = isset($_POST['type']) ? mysqli_real_escape_string($link, $_POST['type']) : '';
 
     $conditions = [];
@@ -191,7 +191,7 @@ session_start();
       $conditions[] = "enterprise LIKE '%$enterprise%'";
     }
     if (!empty($sponsorship)) {
-      $conditions[] = "type LIKE '%$sponsorship%'";
+      $conditions[] = "sponsorship LIKE '%$sponsorship%'";
     }
     if (!empty($type)) {
       $conditions[] = "type LIKE '%$type%'";
@@ -220,7 +220,8 @@ session_start();
                         <li>企業名稱：<span>" . htmlspecialchars($row['enterprise']) . "</span></li>
                         <li>行業別：<span>" . htmlspecialchars($row['type']) . "</span></li>
                         <li>企業贊助類型：<span>" . htmlspecialchars($row['sponsorship']) . "</span></li>
-                      </ul>
+                        <li>贊助範圍：<span>" . htmlspecialchars($row['money']) . "</span></li>
+                        </ul>
                       <div class='main-button'>
                           <a href='history.details_en.php?enrequirement_num={$row['enrequirement_num']}'>了解活動詳情</a>
                       </div>
