@@ -153,7 +153,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                    WHERE enrequirement_num=?";
     
     $stmt = $link->prepare($update_sql);
-    $stmt->bind_param("ssssssssssssssi", $enterprise, $type, $code, $ins, $region, $date, $sponsorship, $money, $hope, $title, $information, $intern_number, $others, $requirement_num);
+    $stmt->bind_param("sssssssssssssi", $enterprise, $type, $code, $ins, $region, $date, $sponsorship, $money, $hope, $title, $information, $intern_number, $others, $requirement_num);
 
     if ($stmt->execute()) {
         echo "<script>alert('修改成功'); window.location.href='post.history_en.php';</script>";
