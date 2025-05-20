@@ -132,6 +132,7 @@ https://templatemo.com/tm-591-villa-agency
         }
 
         $title = $_POST['title'] ?? $old['title'];
+        $type = $_POST['type'] ?? $old['type'];
         $money = $_POST['money'] ?? $old['money'];
         $people = $_POST['people'] ?? $old['people'];
         $support_type = $_POST['support_type'] ?? $old['support_type'];
@@ -142,6 +143,8 @@ https://templatemo.com/tm-591-villa-agency
         $intern_number = $_POST['intern_number'] ?? $old['intern_number'];
 
         $title = mysqli_real_escape_string($link, $title);
+        $type = mysqli_real_escape_string($link, $type);
+
         $money = mysqli_real_escape_string($link, $money);
         $people = mysqli_real_escape_string($link, $people);
         $support_type = mysqli_real_escape_string($link, $support_type);
@@ -154,6 +157,7 @@ https://templatemo.com/tm-591-villa-agency
 
         $sql = "UPDATE club_requirements SET 
                 title = '$title',
+                type = '$type',
                 money = '$money',
                 people = '$people',
                 support_type = '$support_type',
@@ -249,7 +253,11 @@ https://templatemo.com/tm-591-villa-agency
                     <input type="text" class="form-control" name="title" value="<?= htmlspecialchars($row['title']) ?>"
                         required>
                 </div>
-
+                <div class="mb-3">
+                    <label class="form-label">活動類型</label>
+                    <input type="text" class="form-control" name="type" value="<?= htmlspecialchars($row['type']) ?>"
+                        required>
+                </div>
 
 
                 <div class="mb-3">
@@ -267,12 +275,12 @@ https://templatemo.com/tm-591-villa-agency
 
                 <div class="mb-3">
     <label class="form-label">贊助類型</label>
-    <select class="form-select" name="support_type" id="type" required>
+    <select class="form-select" name="support_type" id="support_type" required>
         <option value="金錢" <?= $row['support_type'] == '金錢' ? 'selected' : '' ?>>金錢</option>
         <option value="物資" <?= $row['support_type'] == '物資' ? 'selected' : '' ?>>物資</option>
         <option value="場地" <?= $row['support_type'] == '場地' ? 'selected' : '' ?>>場地</option>
         <option value="提供實習" <?= $row['support_type'] == '提供實習' ? 'selected' : '' ?>>提供實習</option>
-        <option value="other" <?= $row['support_type'] == 'other' ? 'selected' : '' ?>>其他</option>
+        <option value="其他" <?= $row['support_type'] == '其他' ? 'selected' : '' ?>>其他</option>
     </select>
 </div>
 

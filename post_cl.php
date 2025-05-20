@@ -202,7 +202,7 @@ session_start();
                     <option value="物資">物資</option>
                     <option value="場地">場地</option>
                     <option value="提供實習">提供實習</option>
-                    <option value="other">其他</option>
+                    <option value="其他">其他</option>
                   </select>
                 </div>
                
