@@ -36,25 +36,13 @@ if ($row = mysqli_fetch_assoc($result)) {
             } elseif ($row['level'] === 'en') {
                 header("Location: index_en.php");
                 exit();
-            } elseif ($row['level'] === 'ai') {
-                header("Location: ai.html");
-                exit();
-            } elseif ($row['level'] === 'de') {
-                header("Location: de.html");
-                exit();
-            }
+            } 
         } else {
             if ($row['level'] === 'cl') {
                 header("Location: insert.cl.html");
                 exit();
             } elseif ($row['level'] === 'en') {
                 header("Location: insert.en.html");
-                exit();
-            } elseif ($row['level'] === 'ai') {
-                header("Location: insert.ai.html");
-                exit();
-            } elseif ($row['level'] === 'de') {
-                header("Location: insert.de.html");
                 exit();
             }
         }
