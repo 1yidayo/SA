@@ -332,25 +332,23 @@ https://templatemo.com/tm-591-villa-agency
 <button type="submit" class="btn btn-primary">更新</button>
 <a href="post.history_cl.php" class="btn btn-secondary">取消</a>
 
+
 <script>
-    const typeSelect = document.getElementById('type');
-    const moneyGroup = document.getElementById('money-group');
-    const othersGroup = document.getElementById('others-group');
-    const internGroup = document.getElementById('intern-group'); // 實習人數欄位
+function updateSupportTypeFields() {
+    const selected = document.getElementById('support_type').value;
 
-    function updateSupportTypeFields() {
-        const selected = typeSelect.value;
-        moneyGroup.style.display = selected === '金錢' ? 'block' : 'none';
-        othersGroup.style.display = selected === 'other' ? 'block' : 'none';
-        internGroup.style.display = selected === '提供實習' ? 'block' : 'none';
-    }
+    document.getElementById('money-group').style.display = (selected === '金錢') ? '' : 'none';
+    document.getElementById('others-group').style.display = (selected === '其他') ? '' : 'none';
+    document.getElementById('intern-group').style.display = (selected === '提供實習') ? '' : 'none';
+}
 
-    typeSelect.addEventListener('change', updateSupportTypeFields);
+document.getElementById('support_type').addEventListener('change', updateSupportTypeFields);
 
-    document.addEventListener('DOMContentLoaded', function () {
-        updateSupportTypeFields(); // 頁面一載入就顯示正確欄位
-    });
+// 頁面載入時初始化顯示狀態
+document.addEventListener('DOMContentLoaded', updateSupportTypeFields);
 </script>
+
+
 
 
     </body>
