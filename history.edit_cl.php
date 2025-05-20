@@ -138,6 +138,7 @@ https://templatemo.com/tm-591-villa-agency
         $region = $_POST['region'] ?? $old['region'];
         $event_time = $_POST['event_time'] ?? $old['event_time'];
         $information = $_POST['information'] ?? $old['information'];
+        $others = $_POST['others'] ?? $old['others'];
 
         $title = mysqli_real_escape_string($link, $title);
         $money = mysqli_real_escape_string($link, $money);
@@ -146,6 +147,7 @@ https://templatemo.com/tm-591-villa-agency
         $region = mysqli_real_escape_string($link, $region);
         $event_time = mysqli_real_escape_string($link, $event_time);
         $information = mysqli_real_escape_string($link, $information);
+        $others = mysqli_real_escape_string($link, $others);
 
         $sql = "UPDATE club_requirements SET 
                 title = '$title',
@@ -154,7 +156,8 @@ https://templatemo.com/tm-591-villa-agency
                 type = '$type',
                 region = '$region',
                 event_time = '$event_time',
-                information = '$information'
+                information = '$information',
+                others = '$others'
             WHERE clrequirement_num = $num AND identityID = '{$_SESSION['identityID']}'";
 
         mysqli_query($link, $sql);
@@ -259,60 +262,77 @@ https://templatemo.com/tm-591-villa-agency
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">贊助類型</label>
-                    <select class="form-select" name="type" id="type" required>
-                        <option value="金錢" <?= $row['type'] == '金錢' ? 'selected' : '' ?>>金錢</option>
-                        <option value="人力" <?= $row['type'] == '人力' ? 'selected' : '' ?>>人力</option>
-                        <option value="其他" <?= $row['type'] == '其他' ? 'selected' : '' ?>>其他</option>
-                    </select>
-                </div>
+    <label class="form-label">贊助類型</label>
+    <select class="form-select" name="support_type" id="type" required>
+        <option value="金錢" <?= $row['support_type'] == '金錢' ? 'selected' : '' ?>>金錢</option>
+        <option value="物資" <?= $row['support_type'] == '物資' ? 'selected' : '' ?>>物資</option>
+        <option value="場地" <?= $row['support_type'] == '場地' ? 'selected' : '' ?>>場地</option>
+        <option value="提供實習" <?= $row['support_type'] == '提供實習' ? 'selected' : '' ?>>提供實習</option>
+        <option value="other" <?= $row['support_type'] == 'other' ? 'selected' : '' ?>>其他</option>
+    </select>
+</div>
 
-                <div class="mb-3" id="money-group" style="<?= $row['type'] === '金錢' ? '' : 'display: none;' ?>">
-                    <label class="form-label">贊助金額</label>
-                    <select name="money" class="form-select" id="money">
-                    <option value="">請選擇</option>
-                    <option value="$20,000以下">$20,000以下</option>
-                    <option value="$20,001-$30,000">$20,001-$30,000</option>
-                    <option value="$30,001-$50,000">$30,001-$50,000</option>
-                    <option value="$50,001-$70,000">$50,001-$70,000</option>
-                    <option value="$70,001以上">$70,001以上</option>
-                    </select>
-                </div>
+<div class="mb-3" id="money-group" style="<?= $row['support_type'] === '金錢' ? '' : 'display: none;' ?>">
+    <label class="form-label">贊助金額</label>
+    <select name="money" class="form-select" id="money">
+        <option value="">請選擇</option>
+        <option value="$20,000以下" <?= $row['money'] == '$20,000以下' ? 'selected' : '' ?>>$20,000以下</option>
+        <option value="$20,001-$30,000" <?= $row['money'] == '$20,001-$30,000' ? 'selected' : '' ?>>$20,001-$30,000</option>
+        <option value="$30,001-$50,000" <?= $row['money'] == '$30,001-$50,000' ? 'selected' : '' ?>>$30,001-$50,000</option>
+        <option value="$50,001-$70,000" <?= $row['money'] == '$50,001-$70,000' ? 'selected' : '' ?>>$50,001-$70,000</option>
+        <option value="$70,001以上" <?= $row['money'] == '$70,001以上' ? 'selected' : '' ?>>$70,001以上</option>
+    </select>
+</div>
 
-                <div class="mb-3">
-                    <label class="form-label">內文 (必填)</label>
-                    <textarea class="form-control" name="information"
-                        required><?= htmlspecialchars($row['information']) ?></textarea>
-                </div>
+<div class="mb-3" id="others-group" style="<?= $row['support_type'] === 'other' ? '' : 'display: none;' ?>">
+    <label class="form-label">請輸入其他贊助類型</label>
+    <input type="text" name="others" class="form-control" value="<?= htmlspecialchars($row['others'] ?? '') ?>">
+</div>
 
-                <div class="mb-3">
-                    <label class="form-label">預計活動月份</label>
-                    <input type="date" name="event_time" class="form-control"
-                        value="<?= htmlspecialchars($row['event_time']) ?>" required>
-                </div>
+<div class="mb-3">
+    <label class="form-label">內文 (必填)</label>
+    <textarea class="form-control" name="information" required><?= htmlspecialchars($row['information']) ?></textarea>
+</div>
 
-                <div class="mb-4">
-                    <label class="form-label">活動地區</label>
-                    <select class="form-select" name="region" required>
-                        <option value="">請選擇</option>
-                        <option value="北部" <?= $row['region'] == '北部' ? 'selected' : '' ?>>北部</option>
-                        <option value="中部" <?= $row['region'] == '中部' ? 'selected' : '' ?>>中部</option>
-                        <option value="南部" <?= $row['region'] == '南部' ? 'selected' : '' ?>>南部</option>
-                        <option value="東部" <?= $row['region'] == '東部' ? 'selected' : '' ?>>東部</option>
-                    </select>
-                </div>
+<div class="mb-3">
+    <label class="form-label">預計活動月份</label>
+    <input type="date" name="event_time" class="form-control"
+        value="<?= htmlspecialchars($row['event_time']) ?>" required>
+</div>
 
-                <button type="submit" class="btn btn-primary">更新</button>
-                <a href="post.history_cl.php" class="btn btn-secondary">取消</a>
-            </form>
-        </div>
+<div class="mb-4">
+    <label class="form-label">活動地區</label>
+    <select class="form-select" name="region" required>
+        <option value="">請選擇</option>
+        <option value="北部" <?= $row['region'] == '北部' ? 'selected' : '' ?>>北部</option>
+        <option value="中部" <?= $row['region'] == '中部' ? 'selected' : '' ?>>中部</option>
+        <option value="南部" <?= $row['region'] == '南部' ? 'selected' : '' ?>>南部</option>
+        <option value="東部" <?= $row['region'] == '東部' ? 'selected' : '' ?>>東部</option>
+    </select>
+</div>
 
-        <script>
-            document.getElementById('type').addEventListener('change', function () {
-                const moneyGroup = document.getElementById('money-group');
-                moneyGroup.style.display = this.value === '金錢' ? 'block' : 'none';
-            });
-        </script>
+<button type="submit" class="btn btn-primary">更新</button>
+<a href="post.history_cl.php" class="btn btn-secondary">取消</a>
+
+<script>
+    const typeSelect = document.getElementById('type');
+    const moneyGroup = document.getElementById('money-group');
+    const othersGroup = document.getElementById('others-group');
+
+    typeSelect.addEventListener('change', function () {
+        const selected = this.value;
+        moneyGroup.style.display = selected === '金錢' ? 'block' : 'none';
+        othersGroup.style.display = selected === 'other' ? 'block' : 'none';
+    });
+
+    // 初始頁面載入時也檢查一次
+    document.addEventListener('DOMContentLoaded', function () {
+        const selected = typeSelect.value;
+        moneyGroup.style.display = selected === '金錢' ? 'block' : 'none';
+        othersGroup.style.display = selected === 'other' ? 'block' : 'none';
+    });
+</script>
+
 
     </body>
 
