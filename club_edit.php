@@ -10,7 +10,7 @@ $clphone = $_POST['clphone'];
 $userID = $_SESSION['userID'];
 
 $link = mysqli_connect('localhost', 'root', '', 'SAS');
-mysqli_set_charset($link, "utf8"); // 設定編碼，避免中文亂碼
+mysqli_set_charset($link, "utf8"); // 設定編碼 中文
 
 $sql = "UPDATE identity 
         SET school = '$school', 

@@ -5,7 +5,7 @@ $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
 $targetDir = 'uploads/';
 
-// 找到目前使用者的頭像
+// 找到使用者的頭像
 $query = "SELECT profile_img FROM identity WHERE userID = '$userID'";
 $result = mysqli_query($link, $query);
 $row = mysqli_fetch_assoc($result);
@@ -19,7 +19,7 @@ if (!empty($currentImg) && $currentImg !== 'default-profile.png') {
     }
 }
 
-// 更新資料庫欄位（改回 default）
+// 更新資料庫欄位
 $update = "UPDATE identity SET profile_img = 'default-profile.png' WHERE userID = '$userID'";
 mysqli_query($link, $update);
 

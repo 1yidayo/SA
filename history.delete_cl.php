@@ -164,7 +164,7 @@ https://templatemo.com/tm-591-villa-agency
 
     $link = mysqli_connect("localhost", "root", "", "SAS");
 
-    // 檢查是否有傳入 clrequirement_num
+    // 檢查是否傳入 clrequirement_num
     if (isset($_GET['clrequirement_num'])) {
         $num = intval($_GET['clrequirement_num']);
 

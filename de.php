@@ -112,7 +112,6 @@
           <div class="col-lg-6">
             <div class="main-content">
               <div class="card shadow-sm p-3 mb-4 bg-white rounded">
-                <!-- <div class="d-flex justify-content-between align-items-center mb-2"> -->
                 <div>
                   <h5 class="mb-3" style="font-size: 25px;">活動詳情內文：</h5>
                   <p style="font-size: 18px;"><?= nl2br(htmlspecialchars($row['information'])) ?></p>

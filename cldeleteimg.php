@@ -19,7 +19,7 @@ if (!empty($currentImg) && $currentImg !== 'default-profile.png') {
     }
 }
 
-// 更新資料庫欄位（改回 default）
+// 更新資料庫欄位
 $update = "UPDATE identity SET profile_img = 'default-profile.png' WHERE userID = '$userID'";
 mysqli_query($link, $update);
 

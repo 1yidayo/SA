@@ -12,7 +12,7 @@ if (isset($_FILES['profile_img']) && $_FILES['profile_img']['error'] === 0) {
         mkdir($targetDir, 0755, true);
     }
 
-    // 取得副檔名，避免重名，並加上 userID + timestamp
+    // 取得副檔名，避免重名 並加上 userID + timestamp
     $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
     $newFileName = 'user_' . $userID . '_' . time() . '.' . $extension;
     $targetFile = $targetDir . $newFileName;

@@ -179,11 +179,7 @@ session_start();
         </div>
       </form>
     </div>
-    <!-- 
-    <div class="section properties">
-      <div class="container">
-        <div class="row properties-box">
-          <div class="col-lg-4 col-md-6 align-self-center mb-30 properties-items col-md-6 adv"> -->
+    
     <?php
     $link = mysqli_connect('localhost', 'root', '', 'SAS');
 
@@ -216,9 +212,7 @@ session_start();
     }
 
     $result = mysqli_query($link, $sql);
-    // if (!$result) {
-    //   die("Query failed: " . mysqli_error($link));
-    // }
+
     ?>
     <div class="section properties">
       <div class="container">
