@@ -226,7 +226,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="hidden" name="code" value="<?= $data['code'] ?>">
 
                 <div class="mb-3">
-                            <label class="form-label fw-bold">負責人姓名：</label>
+                            <label class="form-label fw-bold">聯絡資訊：</label>
                             <input type="text" class="form-control" name="ins"
                                 value="<?php echo htmlspecialchars($data["ins"]); ?>" required>
                         </div>
@@ -238,19 +238,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label fw-bold">贊助類型：</label>
-                            <select class="form-control" name="sponsorship" required>
-                            <?php echo htmlspecialchars($data["sponsorship"]); ?>
-                                <option value="金錢" <?php if ($data["sponsorship"] == "金錢")
-                                    echo "selected"; ?>>金錢</option>
-                                <option value="物資" <?php if ($data["sponsorship"] == "物資")
-                                    echo "selected"; ?>>物資</option>
-                                <option value="場地" <?php if ($data["sponsorship"] == "場地")
-                                    echo "selected"; ?>>場地</option>
-                                <option value="提供實習" <?php if ($data["sponsorship"] == "提供實習")
-                                    echo "selected"; ?>>提供實習</option>
-                            </select>
-                        </div>
+                    <label class="form-label">贊助類型</label>
+                    <select class="form-select" name="sponsorship" id="sponsorship" required>
+                        <option value="金錢" <?= $row['sponsorship'] == '金錢' ? 'selected' : '' ?>>金錢</option>
+                        <option value="物資" <?= $row['sponsorship'] == '物資' ? 'selected' : '' ?>>物資</option>
+                        <option value="場地" <?= $row['sponsorship'] == '場地' ? 'selected' : '' ?>>場地</option>
+                        <option value="提供實習" <?= $row['sponsorship'] == '提供實習' ? 'selected' : '' ?>>提供實習</option>
+                    </select>
+                </div>
+
+                        <div class="mb-3" id="money-group" style="<?= $row['sponsorship'] === '金錢' ? '' : 'display: none;' ?>">
+                    <label class="form-label">贊助範圍</label>
+                    <select name="money" class="form-select" id="money">
+                    <option value="">請選擇</option>
+                    <option value="$20,000以下">$20,000以下</option>
+                    <option value="$20,001-$30,000">$20,001-$30,000</option>
+                    <option value="$30,001-$50,000">$30,001-$50,000</option>
+                    <option value="$50,001-$70,000">$50,001-$70,000</option>
+                    <option value="$70,001以上">$70,001以上</option>
+                    </select>
+                </div>
 
 
                         <div id="region-field" class="mb-3">
