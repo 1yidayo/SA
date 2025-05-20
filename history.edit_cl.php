@@ -134,7 +134,7 @@ https://templatemo.com/tm-591-villa-agency
         $title = $_POST['title'] ?? $old['title'];
         $money = $_POST['money'] ?? $old['money'];
         $people = $_POST['people'] ?? $old['people'];
-        $type = $_POST['type'] ?? $old['type'];
+        $support_type = $_POST['support_type'] ?? $old['support_type'];
         $region = $_POST['region'] ?? $old['region'];
         $event_time = $_POST['event_time'] ?? $old['event_time'];
         $information = $_POST['information'] ?? $old['information'];
@@ -143,7 +143,7 @@ https://templatemo.com/tm-591-villa-agency
         $title = mysqli_real_escape_string($link, $title);
         $money = mysqli_real_escape_string($link, $money);
         $people = mysqli_real_escape_string($link, $people);
-        $type = mysqli_real_escape_string($link, $type);
+        $support_type = mysqli_real_escape_string($link, $support_type);
         $region = mysqli_real_escape_string($link, $region);
         $event_time = mysqli_real_escape_string($link, $event_time);
         $information = mysqli_real_escape_string($link, $information);
@@ -153,7 +153,7 @@ https://templatemo.com/tm-591-villa-agency
                 title = '$title',
                 money = '$money',
                 people = '$people',
-                type = '$type',
+                support_type = '$support_type',
                 region = '$region',
                 event_time = '$event_time',
                 information = '$information',
